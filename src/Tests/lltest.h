@@ -1,8 +1,0 @@
-//
-// Created by antoine on 21/05/2022.
-//
-
-#ifndef MYLITTLECLIBRARY_LLTEST_H
-#define MYLITTLECLIBRARY_LLTEST_H
-
-#endif //MYLITTLECLIBRARY_LLTEST_H
