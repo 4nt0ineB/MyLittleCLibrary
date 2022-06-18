@@ -5,6 +5,7 @@
 #ifndef MYLITTLECLIBRARY_MLCL_H
 #define MYLITTLECLIBRARY_MLCL_H
 
-#include "include/LinkedList.h"
+#include "include/MLCL_LinkedList.h"
+#include "include/MLCL_Types.h"
 
 #endif /* MYLITTLECLIBRARY_MLCL_H */
