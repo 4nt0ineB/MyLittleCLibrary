@@ -26,10 +26,11 @@ typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int (*prepend) (LinkedList * l, const void * data);
     int (*append) (LinkedList * l, const void * data);
-    int (*search) (LinkedList l, const void * data, LinkedCell * cell);
+    int (*search) (LinkedList l, const void * data);
     int (*del) (LinkedList * l, const void * data);
-    int (*shift) (LinkedList * l, LinkedCell * cell);
-    int (*pop) (LinkedList * l, LinkedCell * cell);
+    LinkedCell* (*shift) (LinkedList * l);
+    LinkedCell * (*pop) (LinkedList * l);
+    void (*free) (LinkedList * l);
     void (*print) (LinkedList l);
 } LinkedListDescriptor;
 
@@ -78,7 +79,16 @@ int ll_append(LinkedList * l, const void * data);
  * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required
  * @return 1 if found or 0
  */
-int ll_search(LinkedList l, const void * data, LinkedCell ** r_cell);
+int ll_search(LinkedList l, const void * data);
+
+/**
+ * Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
+ * Uses linked list descriptor search function.
+ * @param l
+ * @param data
+ * @return
+ */
+int ll_del(LinkedList * l, const void * data);
 
 /**
  * Create new linked list by filtering given linked list and filtering function.
@@ -98,14 +108,6 @@ LinkedList * ll_filter(LinkedList l, int (* f) (const void *));
 LinkedList * ll_map(LinkedList l, int (* f) (const void *));
 
 /**
- * Delete cell from linked list. Uses linked list descriptor search function.
- * @param l
- * @param data
- * @return
- */
-int ll_del(LinkedList * l, const void * data);
-
-/**
  * Remove and return head's cell
  * @param l
  * @param cell
@@ -122,7 +124,13 @@ LinkedCell * ll_shift(LinkedList * l);
 LinkedCell * ll_pop(LinkedList * l);
 
 /**
- * Print on stdout the list
+ *
+ * @param l
+ */
+void ll_free(LinkedList * l);
+
+/**
+ * Print the list on stdout
  * @param l
  */
 void ll_print(LinkedList l);

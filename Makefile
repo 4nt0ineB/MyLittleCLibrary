@@ -23,7 +23,7 @@ all: --make_install_dir $(LIB_PATH) index
 # make the lib and run tests
 test: all
 	gcc test.c -o ./$(OUT_DIR)/MLCLTests -L.  -lMLCL
-	./$(OUT_DIR)/MLCLTests
+	valgrind ./$(OUT_DIR)/MLCLTests
 
 $(LIB_PATH): $(OBJ)
 	ar r $(LIB_NAME).a $^
