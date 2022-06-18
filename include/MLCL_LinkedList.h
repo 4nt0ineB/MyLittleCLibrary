@@ -8,16 +8,22 @@
 #include <stdlib.h>
 #include "../include/MLCL_Types.h"
 
+/**
+ * A generic linked list \n
+ * The list - the cells - refers to a linked list descriptor,
+ * gathering implemented functions of the LinkedList type, including
+ * a TypeDescriptor allowing manipulation of the data, shared across all cells.
+ *
+ *
+ */
 typedef struct s_linked_cell {
-    void * data;
-    struct s_linked_list_descriptor * d;
-    struct s_linked_cell * next;
+    void * data; /*!< Generic data */
+    struct s_linked_list_descriptor * d; /*!< Descriptor of the LinkedList */
+    struct s_linked_cell * next; /*!< Next cell */
 } LinkedCell, * LinkedList;
 
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
-
-    /* LinkedCell * (*ll_new_cell) (void * data, size_t size, struct LinkedListDescriptor * f); */
     int (*prepend) (LinkedList * l, const void * data);
     int (*append) (LinkedList * l, const void * data);
     int (*search) (LinkedList l, const void * data, LinkedCell * cell);
@@ -27,24 +33,98 @@ typedef struct s_linked_list_descriptor {
     void (*print) (LinkedList l);
 } LinkedListDescriptor;
 
+/**
+ * Allocate and return a default
+ * linked list descriptor for int data
+ * @return
+ */
 LinkedListDescriptor * ll_descriptor();
+
+/**
+ * A detailed constructor for the first cell of a linked list
+ * @param data First cell's data
+ * @param descriptor The linked list descriptor
+ * @return
+ */
 LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor);
+
+/**
+ * Short-hand linked list constructor
+ * @param data
+ * @return
+ */
 LinkedCell * new_ll(const void * data);
+
+/**
+ * Insert data to linked list head
+ * @param l
+ * @param data
+ * @return
+ */
 int ll_prepend(LinkedList * l, const void * data);
+
+/**
+ * Insert data to linked list tail
+ * @param l
+ * @param data
+ * @return
+ */
 int ll_append(LinkedList * l, const void * data);
-int ll_search(LinkedList l, const void * data, LinkedCell * cell);
+
+/**
+ * Short-hand search. Look for equality from TypeDescriptor comparison function
+ * @param l
+ * @param data
+ * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required
+ * @return 1 if found or 0
+ */
+int ll_search(LinkedList l, const void * data, LinkedCell ** r_cell);
+
+/**
+ * Create new linked list by filtering given linked list and filtering function.
+ * Do not alter given linked list.
+ * @param l
+ * @param filter filtering function
+ * @return LinkedList of filtered cells
+ */
+LinkedList * ll_filter(LinkedList l, int (* f) (const void *));
+
+/**
+ * Apply given modification function to all data of the linked list.
+ * @param l
+ * @param filter filtering function
+ * @return LinkedList of filtered cells
+ */
+LinkedList * ll_map(LinkedList l, int (* f) (const void *));
+
+/**
+ * Delete cell from linked list. Uses linked list descriptor search function.
+ * @param l
+ * @param data
+ * @return
+ */
 int ll_del(LinkedList * l, const void * data);
-int ll_shift(LinkedList * l, LinkedCell * cell);
-int ll_pop(LinkedList * l, LinkedCell * cell);
+
+/**
+ * Remove and return head's cell
+ * @param l
+ * @param cell
+ * @return
+ */
+LinkedCell * ll_shift(LinkedList * l);
+
+/**
+ * Remove and return tail's cell
+ * @param l
+ * @param cell
+ * @return
+ */
+LinkedCell * ll_pop(LinkedList * l);
+
+/**
+ * Print on stdout the list
+ * @param l
+ */
 void ll_print(LinkedList l);
-
-
-/*
- * unshift ->        <- push
- * <-- shift         --> pop
- *
-*/
-
-
 
 #endif /* MYLITTLECLIBRARY_MLCL_LINKEDLIST_H */
