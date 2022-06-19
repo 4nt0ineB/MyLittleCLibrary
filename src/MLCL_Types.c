@@ -1,6 +1,11 @@
 /*
-   Created by antoine on 6/18/22.
-*/
+ *   This file is part of the MLCL Library.
+ *
+ *   Copyright (C) 2022 Antoine Bastos
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
 
 #include "../include/MLCL_Types.h"
 #include <assert.h>
@@ -11,7 +16,6 @@ TypeDescriptor * new_type_descriptor(void (* type_manifest) (TypeDescriptor * ty
     assert(type_manifest);
     type_descriptor = (TypeDescriptor *) malloc(sizeof(TypeDescriptor));
     if(!type_descriptor) return NULL;
-    printf("HEYYY\n\n");
     type_manifest(type_descriptor);
     return type_descriptor;
 }
@@ -35,11 +39,11 @@ int int_cmp(const void * x, const void * y){
 }
 
 void int_print(const void * x){
-    printf("%d", *(int *) x);
+    printf("%d",  *(int *) x);
 }
 
 void int_free(void ** x){
     if(!*x) return;
-    free((int *) x);
+    free(*x);
     *x = NULL;
 }

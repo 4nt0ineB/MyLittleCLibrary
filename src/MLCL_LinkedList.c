@@ -1,4 +1,11 @@
-
+/*
+ *   This file is part of the MLCL Library.
+ *
+ *   Copyright (C) 2022 Antoine Bastos
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
 
 #include "../include/MLCL_LinkedList.h"
 #include <assert.h>
@@ -6,10 +13,11 @@
 #include <stdio.h>
 
 LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
-    LinkedCell * cell = (LinkedCell *) malloc(sizeof(LinkedCell));
+    LinkedCell * cell;
+    cell = (LinkedCell *) malloc(sizeof(LinkedCell));
     assert(descriptor);
     if(!cell) return NULL;
-    cell->data = (void *) malloc(descriptor->type_descriptor->data_size);
+    cell->data = (void *) calloc(1, descriptor->type_descriptor->data_size);
     if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
     memcpy(cell->data, data, 1);
     cell->d = descriptor;
@@ -18,7 +26,8 @@ LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
 }
 
 LinkedListDescriptor * ll_descriptor(){
-    LinkedListDescriptor * ll_descriptor = (LinkedListDescriptor *) malloc(sizeof(LinkedListDescriptor));
+    LinkedListDescriptor * ll_descriptor;
+    ll_descriptor = (LinkedListDescriptor *) calloc(1, sizeof(LinkedListDescriptor));
     if(!ll_descriptor) return NULL;
     ll_descriptor->append = ll_append;
     ll_descriptor->prepend = ll_prepend;
@@ -33,6 +42,7 @@ LinkedListDescriptor * ll_descriptor(){
     ll_descriptor->type_descriptor = new_type_descriptor(int_manifest);
     if(!ll_descriptor->type_descriptor) return NULL;
     /* ... */
+    ll_descriptor->length = 1; /*<! For the descriptor to exists at least one cell exists */
     return ll_descriptor;
 }
 
@@ -46,6 +56,7 @@ int ll_prepend(LinkedList * l, const void * data){
     if(!(cell = ll_builder(data, (*l)->d))) return 0;
     cell->next = *l;
     *l = cell;
+    (*l)->d->length++;
     return 1;
 }
 
@@ -57,6 +68,7 @@ int ll_append(LinkedList * l, const void * data){
     if(!(cell = ll_builder(data, (*l)->d)))
         return 0;
     (*l)->next = cell;
+    (*l)->d->length++;
     return 1;
 
 }
@@ -69,16 +81,13 @@ int ll_search(LinkedList l, const void * data){
 }
 
 int ll_del(LinkedList * l, const void * data){
-    LinkedList * tmp;
+    LinkedList tmp;
     if(!*l) return 0;
     if(!(*l)->d->type_descriptor->cmp((*l)->data, data)){
-        tmp = l;
-        *l = (*tmp)->next;
-        (*tmp)->next = NULL;
-        (*tmp)->d->free(tmp);
-        printf("Adresse suprr: %p\n", (void *) tmp);
-        printf("Adresse nouv: %p\n", (void *) *l);
-        printf("Val nouv: %d\n", *(int*)(*l)->data);
+        tmp = *l;
+        *l = tmp->next;
+        tmp->next = NULL;
+        tmp->d->free(&tmp);
         return 1;
     }
     return (*l)->d->del(&(*l)->next, data);
@@ -91,14 +100,26 @@ LinkedCell * ll_pop(LinkedList * l){
     return NULL;
 }
 
+void ll_descriptor_free(LinkedListDescriptor ** lld){
+    if(!*lld) return;
+    type_descriptor_free(&((*lld)->type_descriptor));
+    free(*lld);
+    *lld = NULL;
+}
+
 void ll_free(LinkedList * l){
     if(!*l) return;
     (*l)->d->free(&(*l)->next);
     (*l)->d->type_descriptor->free_data(&(*l)->data);
-    type_descriptor_free(&((*l)->d->type_descriptor));
+    /* The linked list will diminish of 1 elem*/
+    (*l)->d->length--;
+    /* After that, the list may be empty. Thus, the descriptor could no longer exist */
+    if((*l)->d->length == 0)
+        ll_descriptor_free(&(*l)->d);
     free(*l);
     (*l) = NULL;
 }
+
 
 void ll_print(LinkedList l){
     if(!l) return;

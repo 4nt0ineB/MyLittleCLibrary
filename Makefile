@@ -22,8 +22,12 @@ all: --make_install_dir $(LIB_PATH) index
 
 # make the lib and run tests
 test: all
-	gcc test.c -o ./$(OUT_DIR)/MLCLTests -L.  -lMLCL
-	valgrind ./$(OUT_DIR)/MLCLTests
+	gcc test.c -o ./$(OUT_DIR)/MLCLTests -L. -lMLCL
+	./$(OUT_DIR)/MLCLTests
+
+valtest: all
+	gcc test.c -o ./$(OUT_DIR)/MLCLTests -L. -lMLCL
+	valgrind --track-origins=yes --leak-check=full -s ./$(OUT_DIR)/MLCLTests
 
 $(LIB_PATH): $(OBJ)
 	ar r $(LIB_NAME).a $^
@@ -48,5 +52,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 mrproper: clean
-	@rm -f $(LIB_NAME).a
+	rm -f $(LIB_NAME).a
+	rm -f $(OUT_DIR)/MLCLTests
+	rmdir $(OUT_DIR)
 

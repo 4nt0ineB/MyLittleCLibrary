@@ -1,6 +1,11 @@
 /*
-   Created by antoine on 6/18/22.
-*/
+ *   This file is part of the MLCL Library.
+ *
+ *   Copyright (C) 2022 Antoine Bastos
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
 
 #ifndef MYLITTLECLIBRARY_MLCL_TYPES_H
 #define MYLITTLECLIBRARY_MLCL_TYPES_H

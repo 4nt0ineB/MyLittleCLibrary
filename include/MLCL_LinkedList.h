@@ -1,6 +1,11 @@
 /*
-  Created by antoine on 21/05/2022.
-*/
+ *   This file is part of the MLCL Library.
+ *
+ *   Copyright (C) 2022 Antoine Bastos
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
 
 #ifndef MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
 #define MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
@@ -24,6 +29,7 @@ typedef struct s_linked_cell {
 
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
+    int length; /*<! Linked list length */
     int (*prepend) (LinkedList * l, const void * data);
     int (*append) (LinkedList * l, const void * data);
     int (*search) (LinkedList l, const void * data);
@@ -122,6 +128,8 @@ LinkedCell * ll_shift(LinkedList * l);
  * @return
  */
 LinkedCell * ll_pop(LinkedList * l);
+
+void ll_descriptor_free(LinkedListDescriptor ** lld);
 
 /**
  *

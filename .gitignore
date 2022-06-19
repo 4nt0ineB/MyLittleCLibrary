@@ -1,6 +1,9 @@
+bin/
+libMLCL.a
+
 # IDE
-.vscode
-.idea
+.vscode/
+.idea/
 
 # Prerequisites
 *.d
