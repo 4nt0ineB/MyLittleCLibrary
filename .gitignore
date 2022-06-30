@@ -1,5 +1,6 @@
 bin/
 libMLCL.a
+Google_tests/
 
 # IDE
 .vscode/
@@ -57,3 +58,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/Google_tests/

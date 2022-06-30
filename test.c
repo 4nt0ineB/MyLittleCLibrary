@@ -12,27 +12,34 @@
 
 #include "MLCL.h"
 
-int randint(int a, int b){
+int int_rand(int a, int b){
     return (rand() % (b + 1 - a)) + a;
 }
 
+float float_rand(float min, float max){
+    return min + (rand() / (float) RAND_MAX) * (max - min);
+}
+
 int main(){
+    run_all_tests();
+
     LinkedList list;
-    int i, x;
+    int i;
+    char x;
     srand(time(0));
 
     list = NULL;
-    x = 67;
-    list = new_ll(&x);
-    for(i = 0; i < 1; i++){
-        x = randint(1, 120);
+    x = 'a';
+    list = new_ll(&x, new_type_descriptor(char_manifest));
+    for(i = 0; i < 5; i++){
+        x = 'a' + i;
         list->d->prepend(&list, &x);
     }
     list->d->print(list);printf("\n");
 
-    x = 64;
+    x = 'x';
     printf("\n64 in list ? %s\n", list->d->search(list, &x) ? "Yes" : "No");
-    x = 67;
+    x = 'x';
     list->d->prepend(&list, &x);
     list->d->print(list);printf("\n");
 

@@ -1,7 +1,6 @@
 /*
  *   This file is part of the MLCL Library.
- *
- *   Copyright (C) 2022 Antoine Bastos
+ *   Antoine Bastos 2022
  *
  *   This Library is free software under the terms of
  *   the MIT license.
@@ -19,7 +18,7 @@ LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
     if(!cell) return NULL;
     cell->data = (void *) calloc(1, descriptor->type_descriptor->data_size);
     if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
-    memcpy(cell->data, data, 1);
+    memcpy(cell->data, data, sizeof(descriptor->type_descriptor->data_size));
     cell->d = descriptor;
     cell->next = NULL;
     return cell;
@@ -27,7 +26,7 @@ LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
 
 LinkedListDescriptor * ll_descriptor(){
     LinkedListDescriptor * ll_descriptor;
-    ll_descriptor = (LinkedListDescriptor *) calloc(1, sizeof(LinkedListDescriptor));
+    ll_descriptor = (LinkedListDescriptor *) malloc(sizeof(LinkedListDescriptor));
     if(!ll_descriptor) return NULL;
     ll_descriptor->append = ll_append;
     ll_descriptor->prepend = ll_prepend;
@@ -38,17 +37,20 @@ LinkedListDescriptor * ll_descriptor(){
     ll_descriptor->pop = ll_pop;
     ll_descriptor->print = ll_print;
     ll_descriptor->free = ll_free;
-    /* Type ... int by default */
-    ll_descriptor->type_descriptor = new_type_descriptor(int_manifest);
-    if(!ll_descriptor->type_descriptor) return NULL;
+    /* Held type */
+    ll_descriptor->type_descriptor = NULL;
     /* ... */
     ll_descriptor->length = 1; /*<! For the descriptor to exists at least one cell exists */
     return ll_descriptor;
 }
 
-LinkedCell * new_ll(const void * data){
-    return ll_builder(data, ll_descriptor());
+LinkedCell * new_ll(const void * data, TypeDescriptor * type_descriptor){
+    LinkedListDescriptor * lld;
+    lld = ll_descriptor();
+    lld->type_descriptor = type_descriptor;
+    return ll_builder(data, lld);
 }
+
 
 int ll_prepend(LinkedList * l, const void * data){
     LinkedCell * cell;

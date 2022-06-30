@@ -11,15 +11,13 @@
 #define MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
 
 #include <stdlib.h>
-#include "../include/MLCL_Types.h"
+#include "../include/MLCL_TypeDescriptor.h"
 
 /**
- * A generic linked list \n
+ * @brief A generic linked list \n
  * The list - the cells - refers to a linked list descriptor,
  * gathering implemented functions of the LinkedList type, including
  * a TypeDescriptor allowing manipulation of the data, shared across all cells.
- *
- *
  */
 typedef struct s_linked_cell {
     void * data; /*!< Generic data */
@@ -41,14 +39,14 @@ typedef struct s_linked_list_descriptor {
 } LinkedListDescriptor;
 
 /**
- * Allocate and return a default
+ * @brief Allocate and return a default
  * linked list descriptor for int data
  * @return
  */
 LinkedListDescriptor * ll_descriptor();
 
 /**
- * A detailed constructor for the first cell of a linked list
+ * @brief A detailed constructor for the cells of a linked list.
  * @param data First cell's data
  * @param descriptor The linked list descriptor
  * @return
@@ -56,14 +54,14 @@ LinkedListDescriptor * ll_descriptor();
 LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor);
 
 /**
- * Short-hand linked list constructor
+ * @brief The linked list constructor
  * @param data
  * @return
  */
-LinkedCell * new_ll(const void * data);
+LinkedCell * new_ll(const void * data, TypeDescriptor * typeDescriptor);
 
 /**
- * Insert data to linked list head
+ * @brief Insert data to linked list head
  * @param l
  * @param data
  * @return
@@ -71,7 +69,7 @@ LinkedCell * new_ll(const void * data);
 int ll_prepend(LinkedList * l, const void * data);
 
 /**
- * Insert data to linked list tail
+ * @brief Insert data to linked list tail
  * @param l
  * @param data
  * @return
@@ -79,7 +77,7 @@ int ll_prepend(LinkedList * l, const void * data);
 int ll_append(LinkedList * l, const void * data);
 
 /**
- * Short-hand search. Look for equality from TypeDescriptor comparison function
+ * @brief Short-hand search. Look for equality from TypeDescriptor comparison function
  * @param l
  * @param data
  * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required
@@ -88,7 +86,7 @@ int ll_append(LinkedList * l, const void * data);
 int ll_search(LinkedList l, const void * data);
 
 /**
- * Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
+ * @brief Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
  * Uses linked list descriptor search function.
  * @param l
  * @param data
@@ -97,7 +95,7 @@ int ll_search(LinkedList l, const void * data);
 int ll_del(LinkedList * l, const void * data);
 
 /**
- * Create new linked list by filtering given linked list and filtering function.
+ * @brief Create new linked list by filtering given linked list and filtering function.
  * Do not alter given linked list.
  * @param l
  * @param filter filtering function
@@ -106,7 +104,7 @@ int ll_del(LinkedList * l, const void * data);
 LinkedList * ll_filter(LinkedList l, int (* f) (const void *));
 
 /**
- * Apply given modification function to all data of the linked list.
+ * @brief Apply given modification function to all data of the linked list.
  * @param l
  * @param filter filtering function
  * @return LinkedList of filtered cells
@@ -114,7 +112,7 @@ LinkedList * ll_filter(LinkedList l, int (* f) (const void *));
 LinkedList * ll_map(LinkedList l, int (* f) (const void *));
 
 /**
- * Remove and return head's cell
+ * @brief Remove and return head's cell
  * @param l
  * @param cell
  * @return
@@ -122,7 +120,7 @@ LinkedList * ll_map(LinkedList l, int (* f) (const void *));
 LinkedCell * ll_shift(LinkedList * l);
 
 /**
- * Remove and return tail's cell
+ * @brief Remove and return tail's cell
  * @param l
  * @param cell
  * @return
@@ -138,7 +136,7 @@ void ll_descriptor_free(LinkedListDescriptor ** lld);
 void ll_free(LinkedList * l);
 
 /**
- * Print the list on stdout
+ * @brief Print the list on stdout
  * @param l
  */
 void ll_print(LinkedList l);
