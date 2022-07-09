@@ -3,6 +3,8 @@
 #include "../../include/Tests/MLCL_LinkedList_test.h"
 #include "../../include/Tests/MLCL_exceptions.h"
 #include "../../include/MLCL_LinkedList.h"
+#include "../../include/MLCL_basic_types.h"
+
 
 int run_all_linked_list_tests(){
     printf("### Running all LinkedList tests\n");
@@ -14,9 +16,7 @@ int run_all_linked_list_tests(){
         return 0;
     if(!test_search())
         return 0;
-    if(!test_del())
-        return 0;
-    if(!test_del())
+    if(!test_ll_del())
         return 0;
     if(!test_ll_filter())
         return 0;
@@ -26,7 +26,6 @@ int run_all_linked_list_tests(){
         return 0;
     if(!test_ll_pop())
         return 0;
-
     return 1;
 }
 
@@ -39,37 +38,98 @@ int test_new_ll(){
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC);
     if((*(int *) ll->data) != 5)
-        MLCL_ERR(1, MLCL_ERR_NEQ);
+        MLCL_ERR(2, MLCL_ERR_NEQ);
+    ll->d->free(&ll);
     MLCL_OK();
     return 1;
 }
 
 int test_ll_prepend(){
+    LinkedList ll;
+    float x;
     printf("- test_ll_prepend\n");
+    x = 5.2;
+    ll = new_ll(&x, new_type_descriptor(float_manifest));
+    if(!ll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC);
+    x = 7.9;
+    ll->d->prepend(&ll, &x);
+    if(!ll)
+        MLCL_ERR(2, MLCL_ERR_ALLOC);
+    if(!ll->next)
+        MLCL_ERR(3, MLCL_ERR_ALLOC);
+    if((* (float *) ll->next->data) !=  5.2f)
+        MLCL_ERR(4, MLCL_ERR_EQ);
+    if((* (float *) ll->data) != 7.9f)
+        MLCL_ERR(5, MLCL_ERR_EQ);
+    ll->d->free(&ll);
     MLCL_OK();
     return 1;
 }
 
 int test_ll_append(){
+    LinkedList ll;
+    float x;
     printf("- test_ll_append\n");
+    x = 5.2;
+    ll = new_ll(&x, new_type_descriptor(float_manifest));
+    if(!ll)
+    MLCL_ERR(1, MLCL_ERR_ALLOC);
+    x = 7.9;
+    ll->d->append(&ll, &x);
+    if(!ll)
+        MLCL_ERR(2, MLCL_ERR_ALLOC);
+    if(!ll->next)
+        MLCL_ERR(3, MLCL_ERR_ALLOC);
+    if((* (float *) ll->next->data) != 7.9f)
+        MLCL_ERR(4, MLCL_ERR_EQ);
+    if((* (float *) ll->data) != 5.2f)
+        MLCL_ERR(5, MLCL_ERR_EQ);
+    ll->d->free(&ll);
     MLCL_OK();
     return 1;
 }
 
 int test_search(){
+    LinkedList ll;
+    int x;
     printf("- test_search\n");
+    x = 5;
+    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    if(!ll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC);
+    x = 6;
+    ll->d->prepend(&ll, &x);
+    x = 7;
+    ll->d->prepend(&ll, &x);
+    if((* (int *) ll->data) != 7)
+        MLCL_ERR(2, MLCL_ERR_EQ);
+    if(!ll->d->search(ll, &x))
+        MLCL_ERR(3, MLCL_ERR_TRUE);
+    ll->d->free(&ll);
     MLCL_OK();
     return 1;
 }
 
 int test_ll_del(){
+    LinkedList ll;
+    int x;
     printf("- test_ll_del\n");
-    MLCL_OK();
-    return 1;
-}
-
-int test_del(){
-    printf("- test_del\n");
+    x = 5;
+    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    if(!ll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC);
+    x = 6;
+    ll->d->prepend(&ll, &x);
+    ll->d->del(&ll, &x);
+    if((* (int *) ll->data) != 5)
+        MLCL_ERR(2, MLCL_ERR_EQ)
+    x = 5;
+    ll->d->del(&ll, &x);
+    if(ll)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    if(ll)
+        ll->d->free(&ll);
     MLCL_OK();
     return 1;
 }

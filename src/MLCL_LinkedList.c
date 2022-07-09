@@ -10,15 +10,16 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
     LinkedCell * cell;
-    cell = (LinkedCell *) malloc(sizeof(LinkedCell));
+    cell = (LinkedCell *) calloc(1, sizeof(LinkedCell));
     assert(descriptor);
     if(!cell) return NULL;
-    cell->data = (void *) calloc(1, descriptor->type_descriptor->data_size);
+    cell->data = calloc(1, descriptor->type_descriptor->data_size);
     if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
-    memcpy(cell->data, data, sizeof(descriptor->type_descriptor->data_size));
+    memcpy(cell->data, data, descriptor->type_descriptor->data_size);
     cell->d = descriptor;
     cell->next = NULL;
     return cell;
@@ -36,6 +37,7 @@ LinkedListDescriptor * ll_descriptor(){
     ll_descriptor->shift = ll_shift;
     ll_descriptor->pop = ll_pop;
     ll_descriptor->print = ll_print;
+    ll_descriptor->free_cell = ll_free_cell;
     ll_descriptor->free = ll_free;
     /* Held type */
     ll_descriptor->type_descriptor = NULL;
@@ -72,7 +74,6 @@ int ll_append(LinkedList * l, const void * data){
     (*l)->next = cell;
     (*l)->d->length++;
     return 1;
-
 }
 
 int ll_search(LinkedList l, const void * data){
@@ -95,33 +96,53 @@ int ll_del(LinkedList * l, const void * data){
     return (*l)->d->del(&(*l)->next, data);
 }
 
-LinkedCell * ll_shift(LinkedList * l){
-    return NULL;
+void * ll_shift(LinkedList * l){
+    LinkedCell * tmp;
+    void * data;
+    if(!*l) return NULL;
+    tmp = *l;
+    data = tmp->data;
+    *l = tmp->next;
+    tmp->next = NULL;
+    free(tmp);
+    (*l)->d->length--;
+    if((*l)->d->length == 0)
+        ll_free_descriptor(&(*l)->d);
+    return data;
 }
-LinkedCell * ll_pop(LinkedList * l){
+
+void * ll_pop(LinkedList * l){
     return NULL;
 }
 
-void ll_descriptor_free(LinkedListDescriptor ** lld){
+void ll_free_descriptor(LinkedListDescriptor ** lld){
     if(!*lld) return;
     type_descriptor_free(&((*lld)->type_descriptor));
     free(*lld);
     *lld = NULL;
 }
 
+void ll_free_cell(LinkedCell ** l){
+    if(!*l) return;
+    (*l)->d->type_descriptor->free_data(&(*l)->data);
+    /* Decrease the length of the list from the descriptor it was linked to. */
+    (*l)->d->length--;
+    free(*l);
+    *l = NULL;
+}
+
 void ll_free(LinkedList * l){
     if(!*l) return;
     (*l)->d->free(&(*l)->next);
     (*l)->d->type_descriptor->free_data(&(*l)->data);
-    /* The linked list will diminish of 1 elem*/
+    /* The linked list will decrease of 1 elem. */
     (*l)->d->length--;
-    /* After that, the list may be empty. Thus, the descriptor could no longer exist */
+    /* After that, the list may be empty. Thus, the descriptor could no longer exist. */
     if((*l)->d->length == 0)
-        ll_descriptor_free(&(*l)->d);
+        ll_free_descriptor(&(*l)->d);
     free(*l);
-    (*l) = NULL;
+    *l = NULL;
 }
-
 
 void ll_print(LinkedList l){
     if(!l) return;

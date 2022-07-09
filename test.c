@@ -22,31 +22,46 @@ float float_rand(float min, float max){
 
 int main(){
     run_all_tests();
+    return 0;
 
     LinkedList list;
     int i;
-    char x;
+    int x;
     srand(time(0));
 
     list = NULL;
-    x = 'a';
-    list = new_ll(&x, new_type_descriptor(char_manifest));
+    x = 1;
+    list = new_ll(&x, new_type_descriptor(int_manifest));
+    list->d->print(list);printf("\n");
     for(i = 0; i < 5; i++){
         x = 'a' + i;
         list->d->prepend(&list, &x);
     }
     list->d->print(list);printf("\n");
 
-    x = 'x';
-    printf("\n64 in list ? %s\n", list->d->search(list, &x) ? "Yes" : "No");
-    x = 'x';
+    x = 2;
+    printf("2 in list ? %s\n", list->d->search(list, &x) ? "Yes" : "No");
+
+    x = 2;
+    printf("Add 2:\n");
     list->d->prepend(&list, &x);
     list->d->print(list);printf("\n");
 
+    printf("2 in list ? %s\n", list->d->search(list, &x) ? "Yes" : "No");
+
+    x = 1;
+    printf("del 2:\n");
     list->d->del(&list, &x);
     list->d->print(list);printf("\n");
 
+    x = 1;
+    printf("del 1:\n");
+    list->d->del(&list, &x);
+    list->d->print(list);printf("\n");
+
+
     list->d->free(&list);
+
     printf("\n");
     return 0;
 }

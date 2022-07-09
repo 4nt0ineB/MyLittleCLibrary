@@ -18,14 +18,15 @@ int run_all_type_descriptor_tests(){
 }
 
 int test_new_int_descriptor(){
-    printf("- test_new_int_descriptor\n");
     TypeDescriptor * td;
     int x, y;
+    printf("- test_new_int_descriptor\n");
     x = 1;
     y = 2;
     td = new_type_descriptor(int_manifest);
     if(!td) MLCL_ERR(1, MLCL_ERR_ALLOC);
     if(!td->cmp(&x, &y)) MLCL_ERR(2, MLCL_ERR_EQ);
+    type_descriptor_free(&td);
     MLCL_OK();
     return 1;
 }
