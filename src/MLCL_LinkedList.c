@@ -36,6 +36,7 @@ LinkedListDescriptor * ll_descriptor(){
     ll_descriptor->del = ll_del;
     ll_descriptor->shift = ll_shift;
     ll_descriptor->pop = ll_pop;
+    ll_descriptor->filter = ll_filter;
     ll_descriptor->print = ll_print;
     ll_descriptor->free_cell = ll_free_cell;
     ll_descriptor->free = ll_free;
@@ -54,64 +55,82 @@ LinkedCell * new_ll(const void * data, TypeDescriptor * type_descriptor){
 }
 
 
-int ll_prepend(LinkedList * l, const void * data){
+int ll_prepend(LinkedList * ll, const void * data){
     LinkedCell * cell;
-    if(!*l) return 0;
-    if(!(cell = ll_builder(data, (*l)->d))) return 0;
-    cell->next = *l;
-    *l = cell;
-    (*l)->d->length++;
+    if(!*ll) return 0;
+    if(!(cell = ll_builder(data, (*ll)->d))) return 0;
+    cell->next = *ll;
+    *ll = cell;
+    (*ll)->d->length++;
     return 1;
 }
 
-int ll_append(LinkedList * l, const void * data){
+int ll_append(LinkedList * ll, const void * data){
     LinkedCell * cell;
-    if(!*l) return 0;
-    if((*l)->next)
-        return (*l)->d->append(&(*l)->next, data);
-    if(!(cell = ll_builder(data, (*l)->d)))
+    if(!*ll) return 0;
+    if((*ll)->next)
+        return (*ll)->d->append(&(*ll)->next, data);
+    if(!(cell = ll_builder(data, (*ll)->d)))
         return 0;
-    (*l)->next = cell;
-    (*l)->d->length++;
+    (*ll)->next = cell;
+    (*ll)->d->length++;
     return 1;
 }
 
-int ll_search(LinkedList l, const void * data){
-    if(!l) return 0;
-    if(!l->d->type_descriptor->cmp(l->data, data))
+int ll_search(LinkedList ll, const void * data){
+    if(!ll) return 0;
+    if(!ll->d->type_descriptor->cmp(ll->data, data))
         return 1;
-    return l->d->search(l->next, data);
+    return ll->d->search(ll->next, data);
 }
 
-int ll_del(LinkedList * l, const void * data){
+int ll_del(LinkedList * ll, const void * data){
     LinkedList tmp;
-    if(!*l) return 0;
-    if(!(*l)->d->type_descriptor->cmp((*l)->data, data)){
-        tmp = *l;
-        *l = tmp->next;
+    if(!*ll) return 0;
+    if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
+        tmp = *ll;
+        *ll = tmp->next;
         tmp->next = NULL;
         tmp->d->free(&tmp);
         return 1;
     }
-    return (*l)->d->del(&(*l)->next, data);
+    return (*ll)->d->del(&(*ll)->next, data);
 }
 
-void * ll_shift(LinkedList * l){
+void * ll_shift(LinkedList * ll){
     LinkedCell * tmp;
     void * data;
-    if(!*l) return NULL;
-    tmp = *l;
+    if(!*ll) return NULL;
+    tmp = *ll;
     data = tmp->data;
-    *l = tmp->next;
+    *ll = tmp->next;
     tmp->next = NULL;
+    tmp->d->length--;
+    if(tmp->d->length == 0)
+        ll_free_descriptor(&tmp->d);
     free(tmp);
-    (*l)->d->length--;
-    if((*l)->d->length == 0)
-        ll_free_descriptor(&(*l)->d);
     return data;
 }
 
-void * ll_pop(LinkedList * l){
+void * ll_pop(LinkedList * ll){
+    LinkedCell * tmp;
+    void * data;
+    if(!*ll) return NULL;
+    if((*ll)->next)
+        return (*ll)->d->pop(&(*ll)->next);
+    tmp = *ll;
+    data = tmp->data;
+    *ll = NULL;
+    tmp->next = NULL;
+    tmp->d->length--;
+    if(tmp->d->length == 0)
+        ll_free_descriptor(&tmp->d);
+    free(tmp);
+    return data;
+}
+
+LinkedList * ll_filter(LinkedList * ll, int (* f) (const void *)){
+
     return NULL;
 }
 
@@ -122,33 +141,33 @@ void ll_free_descriptor(LinkedListDescriptor ** lld){
     *lld = NULL;
 }
 
-void ll_free_cell(LinkedCell ** l){
-    if(!*l) return;
-    (*l)->d->type_descriptor->free_data(&(*l)->data);
+void ll_free_cell(LinkedCell ** ll){
+    if(!*ll) return;
+    (*ll)->d->type_descriptor->free_data(&(*ll)->data);
     /* Decrease the length of the list from the descriptor it was linked to. */
-    (*l)->d->length--;
-    free(*l);
-    *l = NULL;
+    (*ll)->d->length--;
+    free(*ll);
+    *ll = NULL;
 }
 
-void ll_free(LinkedList * l){
-    if(!*l) return;
-    (*l)->d->free(&(*l)->next);
-    (*l)->d->type_descriptor->free_data(&(*l)->data);
+void ll_free(LinkedList * ll){
+    if(!*ll) return;
+    (*ll)->d->free(&(*ll)->next);
+    (*ll)->d->type_descriptor->free_data(&(*ll)->data);
     /* The linked list will decrease of 1 elem. */
-    (*l)->d->length--;
+    (*ll)->d->length--;
     /* After that, the list may be empty. Thus, the descriptor could no longer exist. */
-    if((*l)->d->length == 0)
-        ll_free_descriptor(&(*l)->d);
-    free(*l);
-    *l = NULL;
+    if((*ll)->d->length == 0)
+        ll_free_descriptor(&(*ll)->d);
+    free(*ll);
+    *ll = NULL;
 }
 
-void ll_print(LinkedList l){
-    if(!l) return;
-    l->d->type_descriptor->print(l->data);
+void ll_print(LinkedList ll){
+    if(!ll) return;
+    ll->d->type_descriptor->print(ll->data);
     printf(", ");
-    l->d->print(l->next);
+    ll->d->print(ll->next);
 }
 
 

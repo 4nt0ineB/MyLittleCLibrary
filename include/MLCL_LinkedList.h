@@ -28,15 +28,16 @@ typedef struct s_linked_cell {
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
-    int (*prepend) (LinkedList * l, const void * data);
-    int (*append) (LinkedList * l, const void * data);
-    int (*search) (LinkedList l, const void * data);
-    int (*del) (LinkedList * l, const void * data);
-    void * (*shift) (LinkedList * l);
-    void * (*pop) (LinkedList * l);
+    int (*prepend) (LinkedList *, const void *);
+    int (*append) (LinkedList *, const void *);
+    int (*search) (LinkedList, const void *);
+    int (*del) (LinkedList *, const void *);
+    void * (*shift) (LinkedList *);
+    void * (*pop) (LinkedList *);
+    LinkedList * (*filter) (LinkedList *, int (* f) (const void *));
     void (*free_cell) (LinkedCell **);
-    void (*free) (LinkedList * l);
-    void (*print) (LinkedList l);
+    void (*free) (LinkedList *);
+    void (*print) (LinkedList);
 } LinkedListDescriptor;
 
 /**
@@ -67,7 +68,7 @@ LinkedCell * new_ll(const void * data, TypeDescriptor * typeDescriptor);
  * @param data
  * @return
  */
-int ll_prepend(LinkedList * l, const void * data);
+int ll_prepend(LinkedList * ll, const void * data);
 
 /**
  * @brief Insert data to linked list tail.
@@ -75,7 +76,7 @@ int ll_prepend(LinkedList * l, const void * data);
  * @param data
  * @return
  */
-int ll_append(LinkedList * l, const void * data);
+int ll_append(LinkedList * ll, const void * data);
 
 /**
  * @brief Short-hand search. Look for equality from TypeDescriptor comparison function.
@@ -84,7 +85,7 @@ int ll_append(LinkedList * l, const void * data);
  * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required.
  * @return 1 if found or 0.
  */
-int ll_search(LinkedList l, const void * data);
+int ll_search(LinkedList ll, const void * data);
 
 /**
  * @brief Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
@@ -93,7 +94,7 @@ int ll_search(LinkedList l, const void * data);
  * @param data
  * @return
  */
-int ll_del(LinkedList * l, const void * data);
+int ll_del(LinkedList * ll, const void * data);
 
 /**
  * @brief Create new linked list by filtering given linked list and filtering function.
@@ -102,15 +103,7 @@ int ll_del(LinkedList * l, const void * data);
  * @param filter filtering function.
  * @return LinkedList of filtered cells.
  */
-LinkedList * ll_filter(LinkedList l, int (* f) (const void *));
-
-/**
- * @brief Apply given modification function to all data of the linked list.
- * @param l
- * @param filter filtering function.
- * @return LinkedList of filtered cells.
- */
-LinkedList * ll_map(LinkedList l, int (* f) (const void *));
+LinkedList * ll_filter(LinkedList * ll, int (* f) (const void *));
 
 /**
  * @brief Remove and return head's data. The Targeted cell will be freed not the data.
@@ -118,7 +111,7 @@ LinkedList * ll_map(LinkedList l, int (* f) (const void *));
  * @param cell
  * @return
  */
-void * ll_shift(LinkedList * l);
+void * ll_shift(LinkedList * ll);
 
 /**
  * @brief Remove and return tail's data. The Targeted cell will be freed not the data.
@@ -126,7 +119,7 @@ void * ll_shift(LinkedList * l);
  * @param cell
  * @return
  */
-void * ll_pop(LinkedList * l);
+void * ll_pop(LinkedList *ll);
 
 void ll_free_descriptor(LinkedListDescriptor ** lld);
 
@@ -135,19 +128,19 @@ void ll_free_descriptor(LinkedListDescriptor ** lld);
  * Does free its carried value trough the type descriptor.
  * @param l
  */
-void ll_free_cell(LinkedCell ** l);
+void ll_free_cell(LinkedCell ** ll);
 
 /**
  * Recursive free of all cells (everything) in the list.
  * free the descriptor at last cell deletion.
  * @param l
  */
-void ll_free(LinkedList * l);
+void ll_free(LinkedList * ll);
 
 /**
  * @brief Print the list on stdout
  * @param l
  */
-void ll_print(LinkedList l);
+void ll_print(LinkedList ll);
 
 #endif /* MYLITTLECLIBRARY_MLCL_LINKEDLIST_H */
