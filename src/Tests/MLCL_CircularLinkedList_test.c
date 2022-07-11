@@ -15,8 +15,10 @@
 #include <stdio.h>
 
 int run_all_circular_linked_list_tests(){
-    printf("### Running all CircularLinkedList tests\n");
+    printf("|> Running all CircularLinkedList tests\n");
     if(!test_cll_append())
+        return 0;
+    if(!test_cll_pop())
         return 0;
     if(!test_cll_shift())
         return 0;
@@ -24,7 +26,7 @@ int run_all_circular_linked_list_tests(){
 }
 
 int test_cll_append(){
-    LinkedList ll;
+    CircularLinkedList ll;
     float x;
     printf("- test_cll_append\n");
     x = 5.4f;
@@ -43,17 +45,44 @@ int test_cll_append(){
     return 1;
 }
 
+int test_cll_pop(){
+    /* @Todo test_cll_pop rewrite cll_pop as it is like a shift*/
+   /* LinkedList ll;
+    int x;
+    void * data;
+    printf("- test_ll_pop\n");
+    x = 5;
+    ll = new_cll(&x, new_type_descriptor(int_manifest));
+    if(!ll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC);
+    x = 6;
+    ll->d->prepend(&ll, &x);
+    data = ll->d->pop(&ll);
+    if((* (int *) data) != 5)
+        MLCL_ERR(2, MLCL_ERR_TRUE);
+    if(!ll)
+        MLCL_ERR(3, MLCL_ERR_FALSE);
+    ll->d->free(&ll);
+    free(data);*/
+   /*Le pop est un shift modifié*/
+    MLCL_OK();
+    return 1;
+}
+
 int test_cll_shift(){
-    LinkedList cll;
+    CircularLinkedList cll;
     float x;
     printf("- test_cll_shift\n");
     x = 5.4f;
     cll = new_cll(&x, new_type_descriptor(float_manifest));
+    x = 5.5f;
+    cll->d->append(&cll, &x);
     if(!cll)
         MLCL_ERR(1, MLCL_ERR_ALLOC);
     free((float *) cll->d->shift(&cll));
-    if(cll)
-        MLCL_ERR(2, MLCL_ERR_FALSE);
+    if(cll->next->next != cll)
+        MLCL_ERR(2, MLCL_ERR_TRUE);
+    cll->d->free(&cll);
     MLCL_OK();
     return 1;
 }

@@ -11,7 +11,7 @@
 #include "../../include/Tests/MLCL_exceptions.h"
 
 int run_all_type_descriptor_tests(){
-    printf("### Running all TypeDescriptor tests\n");
+    printf("|> Running all TypeDescriptor tests\n");
     if(!test_new_int_descriptor())
         return 0;
     return 1;

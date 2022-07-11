@@ -21,7 +21,10 @@ CircularLinkedList new_cll(const void * data, TypeDescriptor * type_descriptor){
     cll->next = cll;
     /* Override affected function */
     cll->d->append = cll_append;
+    cll->d->shift = cll_shift;
+    cll->d->pop = cll_pop;
     cll->d->free = cll_free;
+    cll->d->print = cll_print;
     return cll;
 }
 
@@ -40,6 +43,44 @@ int cll_append(LinkedList * cll, const void * data){
     return 1;
 }
 
+void * cll_shift(CircularLinkedList * ll){
+    LinkedCell * tmp;
+    LinkedCell * tmp_2;
+    void * data;
+    if(!*ll) return NULL;
+    data = (*ll)->data;
+    tmp = *ll;
+    tmp_2 = (*ll)->next;
+    **ll = *tmp_2;
+    tmp->d->length--;
+    if(tmp->d->length == 0){
+        ll_free_descriptor(&tmp->d);
+        *ll = NULL;
+    }
+    free(tmp_2);
+    return data;
+}
+
+void * cll_pop(LinkedList * cll){
+    LinkedCell * tmp;
+    void * data;
+    if(!*cll) return NULL;
+    tmp = (*cll)->next;
+    while(tmp->next != *cll)
+        tmp = tmp->next;
+    tmp = *cll;
+    data = tmp->data;
+    *cll = tmp->next;
+    tmp->next = NULL;
+    tmp->d->length--;
+    if(tmp->d->length == 0){
+        ll_free_descriptor(&tmp->d);
+        *cll = NULL;
+    }
+    free(tmp);
+    return data;
+}
+
 void cll_free(CircularLinkedList * cll){
     CircularLinkedList tmp;
     CircularLinkedList tmp_2;
@@ -55,4 +96,15 @@ void cll_free(CircularLinkedList * cll){
     ll_free_descriptor(&(*cll)->d);
     free(*cll);
     *cll = NULL;
+}
+
+void cll_print(CircularLinkedList cll){
+    CircularLinkedList tmp;
+    if(!cll) return;
+    tmp = cll->next;
+    cll->d->print_cell(cll);printf(", ");
+    while(tmp != cll){
+        tmp->d->print_cell(tmp);printf(", ");
+        tmp = tmp->next;
+    }
 }

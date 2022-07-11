@@ -6,15 +6,25 @@
  *   the MIT license.
  */
 
-#include "../include/MLCL_LinkedList.h"
+#include "../include/MLCL_DoubleLinkedList.h"
+
+/*
+ *   This file is part of the MLCL Library.
+ *   Antoine Bastos 2022
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
+
+#include "../include/MLCL_DoubleLinkedList.h"
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
-    LinkedCell * cell;
-    cell = (LinkedCell *) calloc(1, sizeof(LinkedCell));
+DoubleLinkedCell * ll_builder(const void * data, DoubleLinkedListDescriptor * descriptor){
+    DoubleLinkedCell * cell;
+    cell = (DoubleLinkedCell *) calloc(1, sizeof(DoubleLinkedCell));
     assert(descriptor);
     if(!cell) return NULL;
     cell->data = calloc(1, descriptor->type_descriptor->data_size);
@@ -22,26 +32,26 @@ LinkedCell * ll_builder(const void * data, LinkedListDescriptor * descriptor){
     memcpy(cell->data, data, descriptor->type_descriptor->data_size);
     cell->d = descriptor;
     cell->next = NULL;
+    cell->prev = NULL;
     return cell;
 }
 
-LinkedListDescriptor * ll_descriptor(){
-    LinkedListDescriptor * ll_descriptor;
-    ll_descriptor = (LinkedListDescriptor *) malloc(sizeof(LinkedListDescriptor));
+DoubleLinkedListDescriptor * ll_descriptor(){
+    DoubleLinkedListDescriptor * ll_descriptor;
+    ll_descriptor = (DoubleLinkedListDescriptor *) malloc(sizeof(DoubleLinkedListDescriptor));
     if(!ll_descriptor) return NULL;
-    ll_descriptor->append = ll_append;
-    ll_descriptor->prepend = ll_prepend;
-    ll_descriptor->append = ll_append;
-    ll_descriptor->insert = ll_insert;
-    ll_descriptor->search = ll_search;
-    ll_descriptor->del = ll_del;
-    ll_descriptor->shift = ll_shift;
-    ll_descriptor->pop = ll_pop;
-    ll_descriptor->filter = ll_filter;
-    ll_descriptor->print_cell = ll_print_cell;
-    ll_descriptor->print = ll_print;
-    ll_descriptor->free_cell = ll_free_cell;
-    ll_descriptor->free = ll_free;
+    ll_descriptor->append = dll_append;
+    ll_descriptor->prepend = dll_prepend;
+    ll_descriptor->append = dll_append;
+    ll_descriptor->insert = dll_insert;
+    ll_descriptor->search = dll_search;
+    ll_descriptor->del = dll_del;
+    ll_descriptor->shift = dll_shift;
+    ll_descriptor->pop = dll_pop;
+    ll_descriptor->filter = dll_filter;
+    ll_descriptor->print = dll_print;
+    ll_descriptor->free_cell = dll_free_cell;
+    ll_descriptor->free = dll_free;
     /* Held type */
     ll_descriptor->type_descriptor = NULL;
     /* ... */
@@ -49,117 +59,123 @@ LinkedListDescriptor * ll_descriptor(){
     return ll_descriptor;
 }
 
-LinkedCell * new_ll(const void * data, TypeDescriptor * type_descriptor){
-    LinkedListDescriptor * lld;
+DoubleLinkedCell * new_dll(const void * data, TypeDescriptor * type_descriptor){
+    DoubleLinkedListDescriptor * lld;
     if(!type_descriptor) return NULL;
-    lld = ll_descriptor();
+    lld = dll_descriptor();
     if(!lld) return NULL;
     lld->type_descriptor = type_descriptor;
-    return ll_builder(data, lld);
+    return dll_builder(data, lld);
 }
 
-
-int ll_prepend(LinkedList * ll, const void * data){
-    LinkedCell * cell;
+int dll_prepend(DoubleLinkedList * ll, const void * data){
+    DoubleLinkedCell * cell;
     if(!*ll) return 0;
     if(!(cell = ll_builder(data, (*ll)->d))) return 0;
     cell->next = *ll;
     *ll = cell;
+    cell->next->prev = *ll;
     (*ll)->d->length++;
     return 1;
 }
 
-int ll_append(LinkedList * ll, const void * data){
-    LinkedCell * cell;
+int dll_append(DoubleLinkedList * ll, const void * data){
+    DoubleLinkedCell * cell;
     if(!*ll) return 0;
     if((*ll)->next)
         return (*ll)->d->append(&(*ll)->next, data);
     if(!(cell = ll_builder(data, (*ll)->d)))
         return 0;
     (*ll)->next = cell;
+    cell->prev = *ll;
     (*ll)->d->length++;
     return 1;
 }
 
-int ll_insert(LinkedList * ll, const void * data){
-    LinkedCell * cell;
+int dll_insert(DoubleLinkedList * ll, const void * data){
+    DoubleLinkedCell * cell;
     if(!*ll) return 0;
     if(!(cell = ll_builder(data, (*ll)->d))) return 0;
     cell->next = (*ll)->next;
+    cell->next->prev = cell;
+    cell->prev = *ll;
     (*ll)->next = cell;
     (*ll)->d->length++;
     return 1;
 }
 
-int ll_search(LinkedList ll, const void * data){
+int dll_search(DoubleLinkedList ll, const void * data){
     if(!ll) return 0;
     if(!ll->d->type_descriptor->cmp(ll->data, data))
         return 1;
     return ll->d->search(ll->next, data);
 }
 
-int ll_del(LinkedList * ll, const void * data){
-    LinkedList tmp;
+int dll_del(DoubleLinkedList * ll, const void * data){
+    DoubleLinkedList tmp;
     if(!*ll) return 0;
     if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
         tmp = *ll;
-        *ll = tmp->next;
-        tmp->next = NULL;
+        tmp->prev->next = tmp->next;
+        tmp->next->prev = tmp->prev;
+        tmp->next = tmp->prev = NULL;
         tmp->d->free(&tmp);
         return 1;
     }
     return (*ll)->d->del(&(*ll)->next, data);
 }
 
-void * ll_shift(LinkedList * ll){
-    LinkedCell * tmp;
+void * dll_shift(DoubleLinkedList * ll){
+    DoubleLinkedCell * tmp;
     void * data;
     if(!*ll) return NULL;
     tmp = *ll;
     data = tmp->data;
     *ll = tmp->next;
-    tmp->next = NULL;
+    tmp->next->prev = NULL;
+    tmp->next = tmp->prev = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        ll_free_descriptor(&tmp->d);
+        dll_free_descriptor(&tmp->d);
         *ll = NULL;
     }
     free(tmp);
     return data;
 }
 
-void * ll_pop(LinkedList * ll){
-    LinkedCell * tmp;
+void * dll_pop(DoubleLinkedList * ll){
+    DoubleLinkedCell * tmp;
     void * data;
     if(!*ll) return NULL;
     if((*ll)->next)
         return (*ll)->d->pop(&(*ll)->next);
     tmp = *ll;
     data = tmp->data;
+    tmp->prev->next = NULL;
     *ll = tmp->next;
     tmp->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        ll_free_descriptor(&tmp->d);
+        dll_free_descriptor(&tmp->d);
         *ll = NULL;
     }
     free(tmp);
     return data;
 }
 
-LinkedList * ll_filter(LinkedList * ll, int (* f) (const void *)){
-    /* @Todo ll_filter definition */
+DoubleLinkedList * dll_filter(DoubleLinkedList * ll, int (* f) (const void *)){
+    /* @Todo dll_filter definition */
     return NULL;
 }
 
-void ll_free_descriptor(LinkedListDescriptor ** lld){
+void dll_free_descriptor(DoubleLinkedListDescriptor ** lld){
     if(!*lld) return;
     type_descriptor_free(&((*lld)->type_descriptor));
     free(*lld);
     *lld = NULL;
 }
 
-void ll_free_cell(LinkedCell ** ll){
+void dll_free_cell(DoubleLinkedCell ** ll){
     if(!*ll) return;
     (*ll)->d->type_descriptor->free_data(&(*ll)->data);
     /* Decrease the length of the list from the descriptor it was linked to. */
@@ -168,7 +184,7 @@ void ll_free_cell(LinkedCell ** ll){
     *ll = NULL;
 }
 
-void ll_free(LinkedList * ll){
+void dll_free(DoubleLinkedList * ll){
     if(!*ll) return;
     (*ll)->d->free(&(*ll)->next);
     (*ll)->d->type_descriptor->free_data(&(*ll)->data);
@@ -176,19 +192,14 @@ void ll_free(LinkedList * ll){
     (*ll)->d->length--;
     /* After that, the list may be empty. Thus, the descriptor could no longer exist. */
     if((*ll)->d->length == 0)
-        ll_free_descriptor(&(*ll)->d);
+        dll_free_descriptor(&(*ll)->d);
     free(*ll);
     *ll = NULL;
 }
 
-void ll_print_cell(LinkedCell * lc){
-    if(!lc) return;
-    lc->d->type_descriptor->print(lc->data);
-}
-
-void ll_print(LinkedList ll){
+void dll_print(DoubleLinkedList ll){
     if(!ll) return;
-    ll->d->print_cell(ll);
+    ll->d->type_descriptor->print(ll->data);
     printf(", ");
     ll->d->print(ll->next);
 }

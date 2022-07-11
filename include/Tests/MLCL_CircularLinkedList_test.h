@@ -12,6 +12,7 @@
 
 int run_all_circular_linked_list_tests();
 int test_cll_append();
+int test_cll_pop();
 int test_cll_shift();
 
 #endif /* MYLITTLECLIBRARY_MLCL_CIRCULARLINKEDLIST_TEST_H */

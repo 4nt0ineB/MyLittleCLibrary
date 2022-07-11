@@ -7,7 +7,7 @@
 
 
 int run_all_linked_list_tests(){
-    printf("### Running all LinkedList tests\n");
+    printf("|> Running all LinkedList tests\n");
     if(!test_new_ll())
         return 0;
     if(!test_ll_prepend())

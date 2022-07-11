@@ -17,7 +17,7 @@
  * @brief A generic linked list \n
  * The list - the cells - refers to a linked list descriptor,
  * gathering implemented functions of the LinkedList type, including
- * a TypeDescriptor allowing manipulation of the data, shared across all cells.
+ * a TypeDescriptor allowing manipulation of the data.
  */
 typedef struct s_linked_cell {
     void * data; /*!< Generic data */
@@ -39,6 +39,7 @@ typedef struct s_linked_list_descriptor {
     void (*free_cell) (LinkedCell **);
     void (*free) (LinkedList *);
     void (*print) (LinkedList);
+    void (*print_cell) (LinkedCell *);
 } LinkedListDescriptor;
 
 /**
@@ -133,18 +134,24 @@ void * ll_pop(LinkedList *ll);
 void ll_free_descriptor(LinkedListDescriptor ** lld);
 
 /**
- * Just to free a unique cell.
+ * @brief Just to free a unique cell.
  * Does free its carried value trough the type descriptor.
  * @param l
  */
 void ll_free_cell(LinkedCell ** ll);
 
 /**
- * Recursive free of all cells (everything) in the list.
+ * @breif Recursive free of all cells (everything) in the list.
  * free the descriptor at last cell deletion.
  * @param l
  */
 void ll_free(LinkedList * ll);
+
+/**
+ * @brief Print the data of the given linked cell
+ * @param lc
+ */
+void ll_print_cell(LinkedCell * lc);
 
 /**
  * @brief Print the list on stdout
