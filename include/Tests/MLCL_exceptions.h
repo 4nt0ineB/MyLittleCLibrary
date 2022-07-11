@@ -13,7 +13,7 @@
 
 #define MLCL_ERR(id, msg) {printf("\t[%d]: " msg "\n", id); return 0;}
 #define MLCL_OK() {printf("\tok\n");}
-#define MLCL_ERR_ALLOC "Couldn't be allocated."
+#define MLCL_ERR_ALLOC "Allocation failed."
 #define MLCL_ERR_EQ "Should be equal."
 #define MLCL_ERR_NEQ "Shouldn't be equal."
 #define MLCL_ERR_VAL "Not the expected value."

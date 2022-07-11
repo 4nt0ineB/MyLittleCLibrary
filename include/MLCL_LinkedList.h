@@ -30,6 +30,7 @@ typedef struct s_linked_list_descriptor {
     int length; /*<! Linked list length */
     int (*prepend) (LinkedList *, const void *);
     int (*append) (LinkedList *, const void *);
+    int (*insert) (LinkedList *, const void *);
     int (*search) (LinkedList, const void *);
     int (*del) (LinkedList *, const void *);
     void * (*shift) (LinkedList *);
@@ -71,12 +72,20 @@ LinkedCell * new_ll(const void * data, TypeDescriptor * typeDescriptor);
 int ll_prepend(LinkedList * ll, const void * data);
 
 /**
- * @brief Insert data to linked list tail.
+ * @brief Insert data to linked list's tail.
  * @param l
  * @param data
  * @return
  */
 int ll_append(LinkedList * ll, const void * data);
+
+/**
+ * Insert data in new cell just after the given cell (aka given LinkedList's head)
+ * @param ll
+ * @param data
+ * @return
+ */
+int ll_insert(LinkedList * ll, const void * data);
 
 /**
  * @brief Short-hand search. Look for equality from TypeDescriptor comparison function.

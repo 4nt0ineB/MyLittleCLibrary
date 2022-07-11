@@ -9,17 +9,17 @@
 #include "../../include/Tests/MLCL_all_tests.h"
 #include "../../include/Tests/MLCL_TypeDescriptor_test.h"
 
+
 #include <stdio.h>
 
 int run_all_tests(){
-    printf("[Running all tests]\n");
-
+    printf("[MLCL] :: Running all tests ::\n");
     if(!run_all_type_descriptor_tests())
         return 0;
-
     if(!run_all_linked_list_tests())
         return 0;
-
+    if(!run_all_circular_linked_list_tests())
+        return 0;
     printf("All tests successfully passed.\n");
     return 1;
 }

@@ -32,6 +32,7 @@ LinkedListDescriptor * ll_descriptor(){
     ll_descriptor->append = ll_append;
     ll_descriptor->prepend = ll_prepend;
     ll_descriptor->append = ll_append;
+    ll_descriptor->insert = ll_insert;
     ll_descriptor->search = ll_search;
     ll_descriptor->del = ll_del;
     ll_descriptor->shift = ll_shift;
@@ -49,7 +50,9 @@ LinkedListDescriptor * ll_descriptor(){
 
 LinkedCell * new_ll(const void * data, TypeDescriptor * type_descriptor){
     LinkedListDescriptor * lld;
+    if(!type_descriptor) return NULL;
     lld = ll_descriptor();
+    if(!lld) return NULL;
     lld->type_descriptor = type_descriptor;
     return ll_builder(data, lld);
 }
@@ -72,6 +75,16 @@ int ll_append(LinkedList * ll, const void * data){
         return (*ll)->d->append(&(*ll)->next, data);
     if(!(cell = ll_builder(data, (*ll)->d)))
         return 0;
+    (*ll)->next = cell;
+    (*ll)->d->length++;
+    return 1;
+}
+
+int ll_insert(LinkedList * ll, const void * data){
+    LinkedCell * cell;
+    if(!*ll) return 0;
+    if(!(cell = ll_builder(data, (*ll)->d))) return 0;
+    cell->next = (*ll)->next;
     (*ll)->next = cell;
     (*ll)->d->length++;
     return 1;
@@ -106,8 +119,10 @@ void * ll_shift(LinkedList * ll){
     *ll = tmp->next;
     tmp->next = NULL;
     tmp->d->length--;
-    if(tmp->d->length == 0)
+    if(tmp->d->length == 0){
         ll_free_descriptor(&tmp->d);
+        *ll = NULL;
+    }
     free(tmp);
     return data;
 }
@@ -130,7 +145,7 @@ void * ll_pop(LinkedList * ll){
 }
 
 LinkedList * ll_filter(LinkedList * ll, int (* f) (const void *)){
-
+    /* @Todo */
     return NULL;
 }
 

@@ -46,11 +46,11 @@ int test_ll_prepend(){
     LinkedList ll;
     float x;
     printf("- test_ll_prepend\n");
-    x = 5.2;
+    x = 5.2f;
     ll = new_ll(&x, new_type_descriptor(float_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 7.9;
+    x = 7.9f;
     ll->d->prepend(&ll, &x);
     if(!ll)
         MLCL_ERR(2, MLCL_ERR_ALLOC)
@@ -69,11 +69,11 @@ int test_ll_append(){
     LinkedList ll;
     float x;
     printf("- test_ll_append\n");
-    x = 5.2;
+    x = 5.2f;
     ll = new_ll(&x, new_type_descriptor(float_manifest));
     if(!ll)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 7.9;
+    x = 7.9f;
     ll->d->append(&ll, &x);
     if(!ll)
         MLCL_ERR(2, MLCL_ERR_ALLOC)
@@ -85,6 +85,11 @@ int test_ll_append(){
         MLCL_ERR(5, MLCL_ERR_EQ)
     ll->d->free(&ll);
     MLCL_OK();
+    return 1;
+}
+
+int test_insert(){
+    /* @Todo Insert test*/
     return 1;
 }
 
@@ -178,7 +183,7 @@ int test_ll_pop(){
 
 int test_ll_filter(){
     printf("- test_ll_filter\n");
-    /* @Todo */
+    /* @Todo filter test */
     MLCL_OK();
     return 1;
 }
