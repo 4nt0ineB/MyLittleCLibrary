@@ -7,16 +7,6 @@
  */
 
 #include "../include/MLCL_DoubleLinkedList.h"
-
-/*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *   This Library is free software under the terms of
- *   the MIT license.
- */
-
-#include "../include/MLCL_DoubleLinkedList.h"
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
