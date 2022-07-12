@@ -38,12 +38,13 @@ LinkedListDescriptor * linked_list_descriptor(){
     ll_descriptor->shift = linked_list_shift;
     ll_descriptor->pop = linked_list_pop;
     ll_descriptor->filter = linked_list_filter;
-    ll_descriptor->print_cell = linked_list_print_cell;
+    ll_descriptor->cell_print = linked_list_cell_print;
     ll_descriptor->print = linked_list_print;
-    ll_descriptor->fprint_cell = linked_list_fprint_cell;
+    ll_descriptor->cell_fprint = linked_list_cell_fprint;
     ll_descriptor->fprint = linked_list_fprint;
-    ll_descriptor->free_cell = linked_list_free_cell;
+    ll_descriptor->cell_free = linked_list_cell_free;
     ll_descriptor->free = linked_list_free;
+    ll_descriptor->to_dot = linked_list_to_dot;
     /* Held type */
     ll_descriptor->type_descriptor = NULL;
     /* ... */
@@ -124,7 +125,7 @@ void * linked_list_shift(LinkedList * ll){
     tmp->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        linked_list_free_descriptor(&tmp->d);
+        linked_list_descriptor_free(&tmp->d);
         *ll = NULL;
     }
     free(tmp);
@@ -143,7 +144,7 @@ void * linked_list_pop(LinkedList * ll){
     tmp->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        linked_list_free_descriptor(&tmp->d);
+        linked_list_descriptor_free(&tmp->d);
         *ll = NULL;
     }
     free(tmp);
@@ -155,14 +156,14 @@ LinkedList * linked_list_filter(LinkedList * ll, int (* f) (const void *)){
     return NULL;
 }
 
-void linked_list_free_descriptor(LinkedListDescriptor ** lld){
+void linked_list_descriptor_free(LinkedListDescriptor ** lld){
     if(!*lld) return;
     type_descriptor_free(&((*lld)->type_descriptor));
     free(*lld);
     *lld = NULL;
 }
 
-void linked_list_free_cell(LinkedCell ** ll){
+void linked_list_cell_free(LinkedCell ** ll){
     if(!*ll) return;
     (*ll)->d->type_descriptor->free_data(&(*ll)->data);
     /* Decrease the length of the list from the descriptor it was linked to. */
@@ -179,31 +180,58 @@ void linked_list_free(LinkedList * ll){
     (*ll)->d->length--;
     /* After that, the list may be empty. Thus, the descriptor could no longer exist. */
     if((*ll)->d->length == 0)
-        linked_list_free_descriptor(&(*ll)->d);
+        linked_list_descriptor_free(&(*ll)->d);
     free(*ll);
     *ll = NULL;
 }
 
-void linked_list_print_cell(LinkedCell * lc){
+void linked_list_cell_print(LinkedCell * lc){
     if(!lc) return;
     lc->d->type_descriptor->print(lc->data);
 }
 
 void linked_list_print(LinkedList ll){
     if(!ll) return;
-    ll->d->print_cell(ll);
+    ll->d->cell_print(ll);
     printf(", ");
     ll->d->print(ll->next);
 }
 
-void linked_list_fprint_cell(FILE * file, LinkedCell * lc){
+void linked_list_cell_fprint(FILE * file, LinkedCell * lc){
     if(!lc) return;
     lc->d->type_descriptor->fprint(file, lc->data);
 }
 
 void linked_list_fprint(FILE * file, LinkedList ll){
     if(!ll) return;
-    ll->d->fprint_cell(file, ll);
+    ll->d->cell_fprint(file, ll);
     printf(", ");
     ll->d->fprint(file, ll->next);
+}
+
+static void _linked_list_to_dot(LinkedList ll, FILE * file){
+    while(ll){
+        fprintf(file, "  n%p [label=\"", (void *) ll);
+        ll->d->cell_fprint(file, ll);
+        fprintf(file, "\" color=\"#918d8d\"]\n");
+        if(ll->next)
+            fprintf(file, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
+        ll = ll->next;
+    }
+}
+
+void linked_list_to_dot(LinkedList ll, const char * dest_path){
+    FILE * file;
+    if(!ll) return;
+    file = fopen(dest_path, "w");
+    if(!file)
+        printf("Couldn't open a file\n");
+    fprintf(file, "digraph {\n"
+                  "rankdir=\"LR\";\n"
+                  "splines=ortho;\n"
+                  "node [shape=square , height=.1, rank = same]\n"
+    );
+    _linked_list_to_dot(ll, file);
+    fprintf(file, "}\n");
+    fclose(file);
 }

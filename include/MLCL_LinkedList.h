@@ -37,12 +37,13 @@ typedef struct s_linked_list_descriptor {
     void * (*shift) (LinkedList *);
     void * (*pop) (LinkedList *);
     LinkedList * (*filter) (LinkedList *, int (* f) (const void *));
-    void (*free_cell) (LinkedCell **);
+    void (*cell_free) (LinkedCell **);
     void (*free) (LinkedList *);
     void (*print) (LinkedList);
-    void (*print_cell) (LinkedCell *);
+    void (*cell_print) (LinkedCell *);
     void (*fprint) (FILE *, LinkedList);
-    void (*fprint_cell) (FILE *, LinkedCell *);
+    void (*cell_fprint) (FILE *, LinkedCell *);
+    void (*to_dot) (LinkedList, const char * path);
 } LinkedListDescriptor;
 
 /**
@@ -134,14 +135,14 @@ void * linked_list_shift(LinkedList * ll);
  */
 void * linked_list_pop(LinkedList *ll);
 
-void linked_list_free_descriptor(LinkedListDescriptor ** lld);
+void linked_list_descriptor_free(LinkedListDescriptor ** lld);
 
 /**
  * @brief Just to free a unique cell.
  * Does free its carried value trough the type descriptor.
  * @param l
  */
-void linked_list_free_cell(LinkedCell ** ll);
+void linked_list_cell_free(LinkedCell ** ll);
 
 /**
  * @breif Recursive free of all cells (everything) in the list.
@@ -154,7 +155,7 @@ void linked_list_free(LinkedList * ll);
  * @brief Print the data of the given linked cell
  * @param lc
  */
-void linked_list_print_cell(LinkedCell * lc);
+void linked_list_cell_print(LinkedCell * lc);
 
 /**
  * @brief Print the list on stdout
@@ -163,17 +164,24 @@ void linked_list_print_cell(LinkedCell * lc);
 void linked_list_print(LinkedList ll);
 
 /**
- * @brief Print the data of the given linked cell
- * @param lc
+ * @brief Print the data of the linked cell on given stream
  * @param file
+ * @param lc
  */
-void linked_list_fprint_cell(FILE * file, LinkedCell * lc);
+void linked_list_cell_fprint(FILE * file, LinkedCell * lc);
 
 /**
- * @brief Print the list on stdout
- * @param l
+ * @brief Print the list on give stream
  * @param file
+ * @param ll
  */
 void linked_list_fprint(FILE * file, LinkedList ll);
+
+/**
+ * @brief Produce a dot formatted file of a representation of the structure
+ * @param ll
+ * @param dest_path
+ */
+void linked_list_to_dot(LinkedList ll, const char * dest_path);
 
 #endif /* MYLITTLECLIBRARY_MLCL_LINKEDLIST_H */

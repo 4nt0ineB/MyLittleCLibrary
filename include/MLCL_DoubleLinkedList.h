@@ -36,9 +36,12 @@ typedef struct s_double_linked_list_descriptor {
     void * (*shift) (DoubleLinkedList *);
     void * (*pop) (DoubleLinkedList *);
     DoubleLinkedList * (*filter) (DoubleLinkedList *, int (* f) (const void *));
-    void (*free_cell) (DoubleLinkedCell **);
+    void (*cell_free) (DoubleLinkedCell **);
     void (*free) (DoubleLinkedList *);
     void (*print) (DoubleLinkedList);
+    void (*fprint) (FILE *, DoubleLinkedList);
+    void (*cell_fprint) (FILE *, DoubleLinkedCell *);
+    void (*to_dot) (DoubleLinkedList, const char * path);
 } DoubleLinkedListDescriptor;
 
 /**
@@ -130,14 +133,18 @@ void * double_linked_list_shift(DoubleLinkedList * dll);
  */
 void * double_linked_list_pop(DoubleLinkedList * dll);
 
-void double_linked_list_free_descriptor(DoubleLinkedListDescriptor ** lld);
+/**
+ * @brief
+ * @param lld
+ */
+void double_linked_list_descriptor_free(DoubleLinkedListDescriptor ** lld);
 
 /**
  * Just to free a unique cell.
  * Does free its carried value trough the type descriptor.
  * @param l
  */
-void double_linked_list_free_cell(DoubleLinkedCell ** dlc);
+void double_linked_list_cell_free(DoubleLinkedCell ** dlc);
 
 /**
  * Recursive free of all cells (everything) in the list.
@@ -151,5 +158,26 @@ void double_linked_list_free(DoubleLinkedList * dll);
  * @param l
  */
 void double_linked_list_print(DoubleLinkedList dll);
+
+/**
+ * @brief Print the data of the double linked cell on given stream
+ * @param file
+ * @param dlc
+ */
+void double_linked_list_cell_fprint(FILE * file, DoubleLinkedCell * dlc);
+
+/**
+ * @brief Print the list on give stream
+ * @param file
+ * @param dll
+ */
+void double_linked_list_fprint(FILE * file, DoubleLinkedList dll);
+
+/**
+ * @brief Produce a dot formatted file of a representation of the structure
+ * @param ll
+ * @param dest_path
+ */
+void double_linked_list_to_dot(DoubleLinkedList ll, const char * dest_path);
 
 #endif /* MYLITTLECLIBRARY_DOUBLELINKEDLIST_H */

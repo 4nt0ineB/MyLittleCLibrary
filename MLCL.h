@@ -22,7 +22,6 @@
 #include "include/MLCL_LinkedList.h"
 #include "include/MLCL_CircularLinkedList.h"
 #include "include/MLCL_DoubleLinkedList.h"
-#include "include/MLCL_graphviz.h"
 
 
 /* Tests */

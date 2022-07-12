@@ -7,30 +7,22 @@
 
 
 int run_all_linked_list_tests(){
-    printf("|> Running all LinkedList tests\n");
-    if(!test_new_ll())
-        return 0;
-    if(!test_ll_prepend())
-        return 0;
-    if(!test_ll_append())
-        return 0;
-    if(!test_ll_search())
-        return 0;
-    if(!test_ll_del())
-        return 0;
-    if(!test_ll_shift())
-        return 0;
-    if(!test_ll_pop())
-        return 0;
-    if(!test_ll_filter())
-        return 0;
+    printf("|> Running all LinkedList tests <|\n");
+    MLCL_TEST(test_new_linked_list);
+    MLCL_TEST(test_linked_list_prepend);
+    MLCL_TEST(test_linked_list_append);
+    MLCL_TEST(test_linked_list_search);
+    MLCL_TEST(test_linked_list_del);
+    MLCL_TEST(test_linked_list_shift);
+    MLCL_TEST(test_linked_list_pop);
+    MLCL_TEST(test_linked_list_filter);
     return 1;
 }
 
-int test_new_ll(){
+int test_new_linked_list(){
     LinkedList ll;
     int x;
-    printf("- test_new_ll\n");
+    printf("- test_new_linked_list:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -38,14 +30,13 @@ int test_new_ll(){
     if((*(int *) ll->data) != 5)
         MLCL_ERR(2, MLCL_ERR_NEQ)
     ll->d->free(&ll);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_prepend(){
+int test_linked_list_prepend(){
     LinkedList ll;
     float x;
-    printf("- test_ll_prepend\n");
+    printf("- test_linked_list_prepend:");
     x = 5.2f;
     ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -61,14 +52,13 @@ int test_ll_prepend(){
     if((* (float *) ll->data) != 7.9f)
         MLCL_ERR(5, MLCL_ERR_EQ)
     ll->d->free(&ll);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_append(){
+int test_linked_list_append(){
     LinkedList ll;
     float x;
-    printf("- test_ll_append\n");
+    printf("- test_linked_list_append:");
     x = 5.2f;
     ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -84,19 +74,18 @@ int test_ll_append(){
     if((* (float *) ll->data) != 5.2f)
         MLCL_ERR(5, MLCL_ERR_EQ)
     ll->d->free(&ll);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_insert(){
+int test_linked_list_insert(){
     /* @Todo Insert test*/
     return 1;
 }
 
-int test_ll_search(){
+int test_linked_list_search(){
     LinkedList ll;
     int x;
-    printf("- test_search\n");
+    printf("- test_linked_list_search:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -110,14 +99,13 @@ int test_ll_search(){
     if(!ll->d->search(ll, &x))
         MLCL_ERR(3, MLCL_ERR_TRUE)
     ll->d->free(&ll);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_del(){
+int test_linked_list_del(){
     LinkedList ll;
     int x;
-    printf("- test_ll_del\n");
+    printf("- test_linked_list_del:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -133,15 +121,14 @@ int test_ll_del(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
     if(ll)
         ll->d->free(&ll);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_shift(){
+int test_linked_list_shift(){
     LinkedList ll;
     int x;
     void * data;
-    printf("- test_ll_shift\n");
+    printf("- test_linked_list_shift:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -155,15 +142,14 @@ int test_ll_shift(){
         MLCL_ERR(3, MLCL_ERR_FALSE);
     ll->d->free(&ll);
     free(data);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_pop(){
+int test_linked_list_pop(){
     LinkedList ll;
     int x;
     void * data;
-    printf("- test_ll_pop\n");
+    printf("- test_linked_list_pop:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -177,13 +163,11 @@ int test_ll_pop(){
         MLCL_ERR(3, MLCL_ERR_FALSE);
     ll->d->free(&ll);
     free(data);
-    MLCL_OK();
     return 1;
 }
 
-int test_ll_filter(){
-    printf("- test_ll_filter\n");
+int test_linked_list_filter(){
+    printf("- test_linked_list_filter:");
     /* @Todo filter test */
-    MLCL_OK();
     return 1;
 }

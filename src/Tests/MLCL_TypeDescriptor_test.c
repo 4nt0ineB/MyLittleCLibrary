@@ -11,22 +11,20 @@
 #include "../../include/Tests/MLCL_exceptions.h"
 
 int run_all_type_descriptor_tests(){
-    printf("|> Running all TypeDescriptor tests\n");
-    if(!test_new_int_descriptor())
-        return 0;
+    printf("|> Running all TypeDescriptor tests <|\n");
+    MLCL_TEST(test_new_int_descriptor);
     return 1;
 }
 
 int test_new_int_descriptor(){
     TypeDescriptor * td;
     int x, y;
-    printf("- test_new_int_descriptor\n");
+    printf("- test_new_int_descriptor: ");
     x = 1;
     y = 2;
     td = new_type_descriptor(int_manifest);
     if(!td) MLCL_ERR(1, MLCL_ERR_ALLOC);
     if(!td->cmp(&x, &y)) MLCL_ERR(2, MLCL_ERR_EQ);
     type_descriptor_free(&td);
-    MLCL_OK();
     return 1;
 }

@@ -27,6 +27,8 @@ CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * 
     cll->d->pop = circular_linked_list_pop;
     cll->d->free = circular_linked_list_free;
     cll->d->print = circular_linked_list_print;
+    cll->d->fprint = circular_linked_list_fprint;
+    cll->d->to_dot = circular_linked_list_to_dot;
     return cll;
 }
 
@@ -94,7 +96,7 @@ void * circular_linked_list_shift(CircularLinkedList * ll){
     **ll = *tmp_2;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        linked_list_free_descriptor(&tmp->d);
+        linked_list_descriptor_free(&tmp->d);
         *ll = NULL;
     }
     free(tmp_2);
@@ -123,7 +125,7 @@ void * circular_linked_list_pop(CircularLinkedList * cll){
     tmp_2->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        linked_list_free_descriptor(&tmp->d);
+        linked_list_descriptor_free(&tmp->d);
         *cll = NULL;
     }
     free(tmp_2);
@@ -142,7 +144,7 @@ void circular_linked_list_free(CircularLinkedList * cll){
         tmp = tmp_2;
     }
     (*cll)->d->type_descriptor->free_data(&(*cll)->data);
-    linked_list_free_descriptor(&(*cll)->d);
+    linked_list_descriptor_free(&(*cll)->d);
     free(*cll);
     *cll = NULL;
 }
@@ -151,9 +153,51 @@ void circular_linked_list_print(CircularLinkedList cll){
     CircularLinkedList tmp;
     if(!cll) return;
     tmp = cll->next;
-    cll->d->print_cell(cll);printf(", ");
+    cll->d->cell_print(cll);printf(", ");
     while(tmp != cll){
-        tmp->d->print_cell(tmp);printf(", ");
+        tmp->d->cell_print(tmp);printf(", ");
         tmp = tmp->next;
     }
+}
+
+void circular_linked_list_fprint(FILE * file, CircularLinkedList cll){
+    CircularLinkedList tmp;
+    if(!cll) return;
+    tmp = cll->next;
+    cll->d->cell_fprint(file, cll);printf(", ");
+    while(tmp != cll){
+        tmp->d->cell_fprint(file, tmp);printf(", ");
+        tmp = tmp->next;
+    }
+}
+
+static void _circular_linked_list_to_dot(CircularLinkedList ll, FILE * file){
+    CircularLinkedList tmp;
+    tmp = ll;
+    while(tmp->next != ll){
+        fprintf(file, "  n%p [label=\"", (void *) tmp);
+        tmp->d->cell_fprint(file, tmp);
+        fprintf(file, "\"]\n");
+        fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+        tmp = tmp->next;
+    }
+    fprintf(file, "  n%p [label=\"", (void *) tmp);
+    tmp->d->cell_fprint(file, tmp);
+    fprintf(file, "\"]\n");
+    fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+}
+
+void circular_linked_list_to_dot(CircularLinkedList ll, const char * dest_path){
+    FILE * file;
+    if(!ll) return;
+    file = fopen(dest_path, "w");
+    if(!file)
+        printf("Couldn't open a file\n");
+    fprintf(file, "digraph {\n"
+                  "rankdir=\"LR\";\n"
+                  "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
+    );
+    _circular_linked_list_to_dot(ll, file);
+    fprintf(file, "}\n");
+    fclose(file);
 }

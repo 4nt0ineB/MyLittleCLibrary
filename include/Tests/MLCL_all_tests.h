@@ -13,6 +13,7 @@
 #include "MLCL_TypeDescriptor_test.h"
 #include "MLCL_LinkedList_test.h"
 #include "MLCL_CircularLinkedList_test.h"
+#include "MLCL_DoubleLinkedList_test.h"
 
 int run_all_tests();
 

@@ -67,5 +67,18 @@ void circular_linked_list_free(CircularLinkedList * cll);
  */
 void circular_linked_list_print(CircularLinkedList cll);
 
+/**
+ * @brief Print the list on give stream
+ * @param file
+ * @param ll
+ */
+void circular_linked_list_fprint(FILE * file, CircularLinkedList ll);
+
+/**
+ * @brief Produce a dot formatted file of a representation of the structure
+ * @param ll
+ * @param dest_path
+ */
+void circular_linked_list_to_dot(CircularLinkedList ll, const char * dest_path);
 
 #endif /* MYLITTLECLIBRARY_MLCL_CIRCULARLINKEDLIST_H */
