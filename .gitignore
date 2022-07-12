@@ -2,8 +2,8 @@ bin/
 libMLCL.a
 Google_tests/
 
-.dot
-.pdf
+*.dot
+*.pdf
 
 # IDE
 .vscode/
