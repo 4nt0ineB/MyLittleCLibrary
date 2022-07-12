@@ -17,9 +17,12 @@
 #ifndef MYLITTLECLIBRARY_MLCL_H
 #define MYLITTLECLIBRARY_MLCL_H
 
-#include "include/MLCL_LinkedList.h"
 #include "include/MLCL_TypeDescriptor.h"
 #include "include/MLCL_basic_types.h"
+#include "include/MLCL_LinkedList.h"
+#include "include/MLCL_CircularLinkedList.h"
+#include "include/MLCL_DoubleLinkedList.h"
+#include "include/MLCL_graphviz.h"
 
 
 /* Tests */

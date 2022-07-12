@@ -46,7 +46,7 @@ typedef struct s_double_linked_list_descriptor {
  * linked list descriptor for int data.
  * @return
  */
-DoubleLinkedListDescriptor * dll_descriptor();
+DoubleLinkedListDescriptor * double_linked_list_descriptor();
 
 /**
  * @brief A detailed constructor for the cells of a linked list.
@@ -54,14 +54,14 @@ DoubleLinkedListDescriptor * dll_descriptor();
  * @param descriptor The linked list descriptor.
  * @return
  */
-DoubleLinkedCell * dll_builder(const void * data, DoubleLinkedListDescriptor * descriptor);
+DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedListDescriptor * descriptor);
 
 /**
  * @brief The linked list constructor.
  * @param data
  * @return
  */
-DoubleLinkedCell * new_dll(const void * data, TypeDescriptor * typeDescriptor);
+DoubleLinkedCell * new_double_linked_list(const void * data, TypeDescriptor * typeDescriptor);
 
 /**
  * @brief Insert data to linked list head.
@@ -69,7 +69,7 @@ DoubleLinkedCell * new_dll(const void * data, TypeDescriptor * typeDescriptor);
  * @param data
  * @return
  */
-int dll_prepend(DoubleLinkedList * dll, const void * data);
+int double_linked_list_prepend(DoubleLinkedList * dll, const void * data);
 
 /**
  * @brief Insert data to linked list's tail.
@@ -77,7 +77,7 @@ int dll_prepend(DoubleLinkedList * dll, const void * data);
  * @param data
  * @return
  */
-int dll_append(DoubleLinkedList * dll, const void * data);
+int double_linked_list_append(DoubleLinkedList * dll, const void * data);
 
 /**
  * Insert data in new cell just after the given cell (aka given LinkedList's head)
@@ -85,7 +85,7 @@ int dll_append(DoubleLinkedList * dll, const void * data);
  * @param data
  * @return
  */
-int dll_insert(DoubleLinkedList * dll, const void * data);
+int double_linked_list_insert(DoubleLinkedList * dll, const void * data);
 
 /**
  * @brief Short-hand search. Look for equality from TypeDescriptor comparison function.
@@ -94,7 +94,7 @@ int dll_insert(DoubleLinkedList * dll, const void * data);
  * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required.
  * @return 1 if found or 0.
  */
-int dll_search(DoubleLinkedList dll, const void * data);
+int double_linked_list_search(DoubleLinkedList dll, const void * data);
 
 /**
  * @brief Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
@@ -103,7 +103,7 @@ int dll_search(DoubleLinkedList dll, const void * data);
  * @param data
  * @return
  */
-int dll_del(DoubleLinkedList * dll, const void * data);
+int double_linked_list_del(DoubleLinkedList * dll, const void * data);
 
 /**
  * @brief Create new linked list by filtering given linked list and filtering function.
@@ -112,7 +112,7 @@ int dll_del(DoubleLinkedList * dll, const void * data);
  * @param filter filtering function.
  * @return LinkedList of filtered cells.
  */
-DoubleLinkedList * dll_filter(DoubleLinkedList * dll, int (* f) (const void *));
+DoubleLinkedList * double_linked_list_filter(DoubleLinkedList * dll, int (* f) (const void *));
 
 /**
  * @brief Remove and return head's data. The Targeted cell will be freed not the data.
@@ -120,7 +120,7 @@ DoubleLinkedList * dll_filter(DoubleLinkedList * dll, int (* f) (const void *));
  * @param cell
  * @return
  */
-void * dll_shift(DoubleLinkedList * dll);
+void * double_linked_list_shift(DoubleLinkedList * dll);
 
 /**
  * @brief Remove and return tail's data. The Targeted cell will be freed not the data.
@@ -128,28 +128,28 @@ void * dll_shift(DoubleLinkedList * dll);
  * @param cell
  * @return
  */
-void * dll_pop(DoubleLinkedList * dll);
+void * double_linked_list_pop(DoubleLinkedList * dll);
 
-void dll_free_descriptor(DoubleLinkedListDescriptor ** lld);
+void double_linked_list_free_descriptor(DoubleLinkedListDescriptor ** lld);
 
 /**
  * Just to free a unique cell.
  * Does free its carried value trough the type descriptor.
  * @param l
  */
-void dll_free_cell(DoubleLinkedCell ** dlc);
+void double_linked_list_free_cell(DoubleLinkedCell ** dlc);
 
 /**
  * Recursive free of all cells (everything) in the list.
  * free the descriptor at last cell deletion.
  * @param l
  */
-void dll_free(DoubleLinkedList * dll);
+void double_linked_list_free(DoubleLinkedList * dll);
 
 /**
  * @brief Print the list on stdout
  * @param l
  */
-void dll_print(DoubleLinkedList dll);
+void double_linked_list_print(DoubleLinkedList dll);
 
 #endif /* MYLITTLECLIBRARY_DOUBLELINKEDLIST_H */

@@ -9,33 +9,73 @@
 #include "../include/MLCL_CircularLinkedList.h"
 #include <stdio.h>
 
-CircularLinkedList new_cll(const void * data, TypeDescriptor * type_descriptor){
+CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * type_descriptor){
     LinkedListDescriptor * lld;
     CircularLinkedList cll;
     if(!type_descriptor) return NULL;
-    lld = ll_descriptor();
+    lld = linked_list_descriptor();
     lld->type_descriptor = type_descriptor;
-    cll = ll_builder(data, lld);
+    cll = linked_list_builder(data, lld);
     if(!cll) return NULL;
     /* Circular */
     cll->next = cll;
     /* Override affected function */
-    cll->d->append = cll_append;
-    cll->d->shift = cll_shift;
-    cll->d->pop = cll_pop;
-    cll->d->free = cll_free;
-    cll->d->print = cll_print;
+    cll->d->prepend = circular_linked_list_prepend;
+    cll->d->append = circular_linked_list_append;
+    cll->d->shift = circular_linked_list_shift;
+    cll->d->search = circular_linked_list_search;
+    cll->d->pop = circular_linked_list_pop;
+    cll->d->free = circular_linked_list_free;
+    cll->d->print = circular_linked_list_print;
     return cll;
 }
 
-int cll_append(LinkedList * cll, const void * data){
+CircularLinkedList circular_linked_list_search(CircularLinkedList ll, const void * data){
+    CircularLinkedList tmp;
+    if(!ll) return 0;
+    if(!ll->d->type_descriptor->cmp(ll->data, data))
+        return ll;
+    tmp = ll->next;
+    while(tmp->next != ll){
+        if(!tmp->d->type_descriptor->cmp(tmp->data, data))
+            return tmp;
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+
+int circular_linked_list_prepend(CircularLinkedList * ll, const void * data){
+    LinkedCell * cell;
+    void * data_tmp;
+    if(!*ll)
+        return 0;
+    if(!(cell = linked_list_builder(data, (*ll)->d)))
+        return 0;
+    /*
+      We have to switch the data of the cells
+      because we don't want to mess with the pointer.
+      As the last cell, from the point of view of the head, which we can't reach,
+      still points to the head's address.
+     */
+    /* Add allocated cell next to the head */
+    cell->next = (*ll)->next;
+    (*ll)->next = cell;
+    /* Switch data */
+    data_tmp = cell->data;
+    cell->data = (*ll)->data;
+    (*ll)->data = data_tmp;
+    (*ll)->d->length++;
+    return 1;
+}
+
+int circular_linked_list_append(CircularLinkedList * cll, const void * data){
     LinkedCell * cell;
     LinkedCell * tmp;
     if(!*cll) return 0;
     tmp = (*cll)->next;
     while(tmp->next != *cll)
         tmp = tmp->next;
-    if(!(cell = ll_builder(data, (*cll)->d)))
+    if(!(cell = linked_list_builder(data, (*cll)->d)))
         return 0;
     cell->next = tmp->next;
     tmp->next = cell;
@@ -43,7 +83,7 @@ int cll_append(LinkedList * cll, const void * data){
     return 1;
 }
 
-void * cll_shift(CircularLinkedList * ll){
+void * circular_linked_list_shift(CircularLinkedList * ll){
     LinkedCell * tmp;
     LinkedCell * tmp_2;
     void * data;
@@ -54,34 +94,43 @@ void * cll_shift(CircularLinkedList * ll){
     **ll = *tmp_2;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        ll_free_descriptor(&tmp->d);
+        linked_list_free_descriptor(&tmp->d);
         *ll = NULL;
     }
     free(tmp_2);
     return data;
 }
 
-void * cll_pop(LinkedList * cll){
+void * circular_linked_list_pop(CircularLinkedList * cll){
     LinkedCell * tmp;
+    LinkedCell * tmp_2;
     void * data;
     if(!*cll) return NULL;
     tmp = (*cll)->next;
-    while(tmp->next != *cll)
-        tmp = tmp->next;
-    tmp = *cll;
-    data = tmp->data;
-    *cll = tmp->next;
-    tmp->next = NULL;
+    if(tmp != *cll){
+        /*
+          1->2->3->4 ..->1
+          we want to get the 3 to make it point to 1 and free the 4
+         */
+        while(tmp->next->next != *cll)
+            tmp = tmp->next;
+        tmp_2 = tmp->next;
+        tmp->next = tmp->next->next;
+    }else{
+        tmp_2 = tmp;
+    }
+    data = tmp_2->data;
+    tmp_2->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        ll_free_descriptor(&tmp->d);
+        linked_list_free_descriptor(&tmp->d);
         *cll = NULL;
     }
-    free(tmp);
+    free(tmp_2);
     return data;
 }
 
-void cll_free(CircularLinkedList * cll){
+void circular_linked_list_free(CircularLinkedList * cll){
     CircularLinkedList tmp;
     CircularLinkedList tmp_2;
     if(!*cll) return;
@@ -93,12 +142,12 @@ void cll_free(CircularLinkedList * cll){
         tmp = tmp_2;
     }
     (*cll)->d->type_descriptor->free_data(&(*cll)->data);
-    ll_free_descriptor(&(*cll)->d);
+    linked_list_free_descriptor(&(*cll)->d);
     free(*cll);
     *cll = NULL;
 }
 
-void cll_print(CircularLinkedList cll){
+void circular_linked_list_print(CircularLinkedList cll){
     CircularLinkedList tmp;
     if(!cll) return;
     tmp = cll->next;

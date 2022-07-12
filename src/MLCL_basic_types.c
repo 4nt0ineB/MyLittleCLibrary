@@ -19,6 +19,7 @@ void char_manifest(TypeDescriptor * type_descriptor){
     type_descriptor->data_size = sizeof(float);
     type_descriptor->cmp = char_cmp;
     type_descriptor->print = char_print;
+    type_descriptor->fprint = char_fprint;
     type_descriptor->free_data = char_free;
 }
 
@@ -30,13 +31,15 @@ void char_print(const void * x){
     printf("%c",  *(char *) x);
 }
 
+void char_fprint(FILE * file, const void * x){
+    fprintf(file, "%c",  *(char *) x);
+}
+
 void char_free(void ** x){
     if(!*x) return;
     free(*x);
     *x = NULL;
 }
-
-/* ############################ */
 
 /* ############## int ############## */
 
@@ -45,6 +48,7 @@ void int_manifest(TypeDescriptor * type_descriptor){
     type_descriptor->data_size = sizeof(int);
     type_descriptor->cmp = int_cmp;
     type_descriptor->print = int_print;
+    type_descriptor->fprint = int_fprint;
     type_descriptor->free_data = int_free;
 }
 
@@ -56,13 +60,16 @@ void int_print(const void * x){
     printf("%d",  *(int *) x);
 }
 
+void int_fprint(FILE * file, const void * x){
+    fprintf(file, "%d",  *(int *) x);
+}
+
 void int_free(void ** x){
     if(!*x) return;
     free(*x);
     *x = NULL;
 }
 
-/* ############################ */
 
 /* ############## float ############## */
 
@@ -71,6 +78,7 @@ void float_manifest(TypeDescriptor * type_descriptor){
     type_descriptor->data_size = sizeof(float);
     type_descriptor->cmp = float_cmp;
     type_descriptor->print = float_print;
+    type_descriptor->fprint = float_fprint;
     type_descriptor->free_data = float_free;
 }
 
@@ -82,11 +90,14 @@ void float_print(const void * x){
     printf("%.2f",  *(float *) x);
 }
 
+void float_fprint(FILE * file, const void * x){
+    fprintf(file, "%.2f",  *(float *) x);
+}
+
 void float_free(void ** x){
     if(!*x) return;
     free(*x);
     *x = NULL;
 }
 
-/* ############################ */
 

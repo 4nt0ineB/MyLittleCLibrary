@@ -14,7 +14,7 @@ int run_all_linked_list_tests(){
         return 0;
     if(!test_ll_append())
         return 0;
-    if(!test_search())
+    if(!test_ll_search())
         return 0;
     if(!test_ll_del())
         return 0;
@@ -32,7 +32,7 @@ int test_new_ll(){
     int x;
     printf("- test_new_ll\n");
     x = 5;
-    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     if((*(int *) ll->data) != 5)
@@ -47,7 +47,7 @@ int test_ll_prepend(){
     float x;
     printf("- test_ll_prepend\n");
     x = 5.2f;
-    ll = new_ll(&x, new_type_descriptor(float_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 7.9f;
@@ -70,7 +70,7 @@ int test_ll_append(){
     float x;
     printf("- test_ll_append\n");
     x = 5.2f;
-    ll = new_ll(&x, new_type_descriptor(float_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 7.9f;
@@ -88,17 +88,17 @@ int test_ll_append(){
     return 1;
 }
 
-int test_insert(){
+int test_ll_insert(){
     /* @Todo Insert test*/
     return 1;
 }
 
-int test_search(){
+int test_ll_search(){
     LinkedList ll;
     int x;
     printf("- test_search\n");
     x = 5;
-    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -119,7 +119,7 @@ int test_ll_del(){
     int x;
     printf("- test_ll_del\n");
     x = 5;
-    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -143,7 +143,7 @@ int test_ll_shift(){
     void * data;
     printf("- test_ll_shift\n");
     x = 5;
-    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC);
     x = 6;
@@ -165,7 +165,7 @@ int test_ll_pop(){
     void * data;
     printf("- test_ll_pop\n");
     x = 5;
-    ll = new_ll(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC);
     x = 6;

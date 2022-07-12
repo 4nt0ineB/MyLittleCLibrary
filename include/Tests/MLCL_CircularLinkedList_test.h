@@ -11,7 +11,9 @@
 
 
 int run_all_circular_linked_list_tests();
+int test_cll_prepend();
 int test_cll_append();
+int test_cll_search();
 int test_cll_pop();
 int test_cll_shift();
 

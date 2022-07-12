@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-DoubleLinkedCell * ll_builder(const void * data, DoubleLinkedListDescriptor * descriptor){
+DoubleLinkedCell * dll_builder(const void * data, DoubleLinkedListDescriptor * descriptor){
     DoubleLinkedCell * cell;
     cell = (DoubleLinkedCell *) calloc(1, sizeof(DoubleLinkedCell));
     assert(descriptor);
@@ -31,27 +31,26 @@ DoubleLinkedCell * ll_builder(const void * data, DoubleLinkedListDescriptor * de
     if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
     memcpy(cell->data, data, descriptor->type_descriptor->data_size);
     cell->d = descriptor;
-    cell->next = NULL;
-    cell->prev = NULL;
+    cell->next = cell->prev = NULL;
     return cell;
 }
 
-DoubleLinkedListDescriptor * ll_descriptor(){
+DoubleLinkedListDescriptor * dll_descriptor(){
     DoubleLinkedListDescriptor * ll_descriptor;
     ll_descriptor = (DoubleLinkedListDescriptor *) malloc(sizeof(DoubleLinkedListDescriptor));
     if(!ll_descriptor) return NULL;
-    ll_descriptor->append = dll_append;
-    ll_descriptor->prepend = dll_prepend;
-    ll_descriptor->append = dll_append;
-    ll_descriptor->insert = dll_insert;
-    ll_descriptor->search = dll_search;
-    ll_descriptor->del = dll_del;
-    ll_descriptor->shift = dll_shift;
-    ll_descriptor->pop = dll_pop;
-    ll_descriptor->filter = dll_filter;
-    ll_descriptor->print = dll_print;
-    ll_descriptor->free_cell = dll_free_cell;
-    ll_descriptor->free = dll_free;
+    ll_descriptor->append = double_linked_list_append;
+    ll_descriptor->prepend = double_linked_list_prepend;
+    ll_descriptor->append = double_linked_list_append;
+    ll_descriptor->insert = double_linked_list_insert;
+    ll_descriptor->search = double_linked_list_search;
+    ll_descriptor->del = double_linked_list_del;
+    ll_descriptor->shift = double_linked_list_shift;
+    ll_descriptor->pop = double_linked_list_pop;
+    ll_descriptor->filter = double_linked_list_filter;
+    ll_descriptor->print = double_linked_list_print;
+    ll_descriptor->free_cell = double_linked_list_free_cell;
+    ll_descriptor->free = double_linked_list_free;
     /* Held type */
     ll_descriptor->type_descriptor = NULL;
     /* ... */
@@ -62,16 +61,17 @@ DoubleLinkedListDescriptor * ll_descriptor(){
 DoubleLinkedCell * new_dll(const void * data, TypeDescriptor * type_descriptor){
     DoubleLinkedListDescriptor * lld;
     if(!type_descriptor) return NULL;
-    lld = dll_descriptor();
+    lld = double_linked_list_descriptor();
     if(!lld) return NULL;
+    /* Define list type */
     lld->type_descriptor = type_descriptor;
-    return dll_builder(data, lld);
+    return double_linked_list_builder(data, lld);
 }
 
-int dll_prepend(DoubleLinkedList * ll, const void * data){
+int double_linked_list_prepend(DoubleLinkedList * ll, const void * data){
     DoubleLinkedCell * cell;
     if(!*ll) return 0;
-    if(!(cell = ll_builder(data, (*ll)->d))) return 0;
+    if(!(cell = double_linked_list_builder(data, (*ll)->d))) return 0;
     cell->next = *ll;
     *ll = cell;
     cell->next->prev = *ll;
@@ -79,12 +79,12 @@ int dll_prepend(DoubleLinkedList * ll, const void * data){
     return 1;
 }
 
-int dll_append(DoubleLinkedList * ll, const void * data){
+int double_linked_list_append(DoubleLinkedList * ll, const void * data){
     DoubleLinkedCell * cell;
     if(!*ll) return 0;
     if((*ll)->next)
         return (*ll)->d->append(&(*ll)->next, data);
-    if(!(cell = ll_builder(data, (*ll)->d)))
+    if(!(cell = double_linked_list_builder(data, (*ll)->d)))
         return 0;
     (*ll)->next = cell;
     cell->prev = *ll;
@@ -92,10 +92,10 @@ int dll_append(DoubleLinkedList * ll, const void * data){
     return 1;
 }
 
-int dll_insert(DoubleLinkedList * ll, const void * data){
+int double_linked_list_insert(DoubleLinkedList * ll, const void * data){
     DoubleLinkedCell * cell;
     if(!*ll) return 0;
-    if(!(cell = ll_builder(data, (*ll)->d))) return 0;
+    if(!(cell = double_linked_list_builder(data, (*ll)->d))) return 0;
     cell->next = (*ll)->next;
     cell->next->prev = cell;
     cell->prev = *ll;
@@ -104,14 +104,14 @@ int dll_insert(DoubleLinkedList * ll, const void * data){
     return 1;
 }
 
-int dll_search(DoubleLinkedList ll, const void * data){
+int double_linked_list_search(DoubleLinkedList ll, const void * data){
     if(!ll) return 0;
     if(!ll->d->type_descriptor->cmp(ll->data, data))
         return 1;
     return ll->d->search(ll->next, data);
 }
 
-int dll_del(DoubleLinkedList * ll, const void * data){
+int double_linked_list_del(DoubleLinkedList * ll, const void * data){
     DoubleLinkedList tmp;
     if(!*ll) return 0;
     if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
@@ -125,7 +125,7 @@ int dll_del(DoubleLinkedList * ll, const void * data){
     return (*ll)->d->del(&(*ll)->next, data);
 }
 
-void * dll_shift(DoubleLinkedList * ll){
+void * double_linked_list_shift(DoubleLinkedList * ll){
     DoubleLinkedCell * tmp;
     void * data;
     if(!*ll) return NULL;
@@ -136,14 +136,14 @@ void * dll_shift(DoubleLinkedList * ll){
     tmp->next = tmp->prev = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        dll_free_descriptor(&tmp->d);
+        double_linked_list_free_descriptor(&tmp->d);
         *ll = NULL;
     }
     free(tmp);
     return data;
 }
 
-void * dll_pop(DoubleLinkedList * ll){
+void * double_linked_list_pop(DoubleLinkedList * ll){
     DoubleLinkedCell * tmp;
     void * data;
     if(!*ll) return NULL;
@@ -156,7 +156,7 @@ void * dll_pop(DoubleLinkedList * ll){
     tmp->next = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){
-        dll_free_descriptor(&tmp->d);
+        double_linked_list_free_descriptor(&tmp->d);
         *ll = NULL;
     }
     free(tmp);

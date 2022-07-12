@@ -11,6 +11,7 @@
 #define MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H
 
 #include "MLCL_TypeDescriptor.h"
+#include <stdio.h>
 
 /* ############## char ############## */
 /**
@@ -37,9 +38,16 @@ void char_print(const void * x);
 /**
  *
  * @param x
+ * @param file
+ */
+void char_fprint(FILE * file, const void * x);
+
+/**
+ *
+ * @param x
  */
 void char_free(void ** x);
-/* ############################ */
+
 
 /* ############## int ############## */
 /**
@@ -67,8 +75,14 @@ void int_print(const void * x);
  *
  * @param x
  */
+void int_fprint(FILE * file, const void * x);
+
+/**
+ *
+ * @param x
+ * @param file
+ */
 void int_free(void ** x);
-/* ############################ */
 
 /* ############## float ############## */
 /**
@@ -95,8 +109,14 @@ void float_print(const void * x);
 /**
  *
  * @param x
+  * @param file
+ */
+void float_fprint(FILE * file, const void * x);
+
+/**
+ *
+ * @param x
  */
 void float_free(void ** x);
-/* ############################ */
 
 #endif /* MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H */

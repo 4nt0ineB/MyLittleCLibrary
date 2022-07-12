@@ -2,6 +2,9 @@ bin/
 libMLCL.a
 Google_tests/
 
+.dot
+.pdf
+
 # IDE
 .vscode/
 .idea/
