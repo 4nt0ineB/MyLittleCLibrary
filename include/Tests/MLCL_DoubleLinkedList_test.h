@@ -15,7 +15,7 @@ int test_new_double_linked_list();
 int test_double_linked_list_prepend();
 int test_double_linked_list_append();
 int test_double_linked_list_search();
-int test_double_linked_list_del();
+int test_double_linked_list_remove();
 int test_double_linked_list_filter();
 int test_double_linked_list_map();
 int test_double_linked_list_shift();

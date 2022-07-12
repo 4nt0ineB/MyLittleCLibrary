@@ -15,7 +15,7 @@
 #include <stdio.h>
 
 int run_all_circular_linked_list_tests(){
-    printf("|> Running all CircularLinkedList tests <|\n");
+    printf("▒▓ Running all CircularLinkedList tests\n");
     MLCL_TEST(test_cll_prepend);
     MLCL_TEST(test_cll_append);
     MLCL_TEST(test_cll_search);
@@ -27,7 +27,7 @@ int run_all_circular_linked_list_tests(){
 int test_cll_append(){
     CircularLinkedList ll;
     float x;
-    printf("- test_cll_append:");
+    printf("├ test_cll_append:");
     x = 5.4f;
     ll = new_circular_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -46,7 +46,7 @@ int test_cll_append(){
 int test_cll_search(){
     CircularLinkedList ll;
     int x;
-    printf("- test_search:");
+    printf("├ test_search:");
     x = 5;
     ll = new_circular_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -66,7 +66,7 @@ int test_cll_search(){
 int test_cll_prepend(){
     CircularLinkedList ll;
     float x;
-    printf("- test_cell_prepend:");
+    printf("├ test_cell_prepend:");
     x = 5.4f;
     ll = new_circular_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -83,7 +83,7 @@ int test_cll_pop(){
     CircularLinkedList ll;
     int x;
     void * data;
-    printf("- test_ll_pop:");
+    printf("├ test_ll_pop:");
     x = 5;
     ll = new_circular_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -101,7 +101,7 @@ int test_cll_pop(){
 int test_cll_shift(){
     CircularLinkedList cll;
     float x;
-    printf("- test_cll_shift:");
+    printf("├ test_cll_shift:");
     x = 5.4f;
     cll = new_circular_linked_list(&x, new_type_descriptor(float_manifest));
     x = 5.5f;

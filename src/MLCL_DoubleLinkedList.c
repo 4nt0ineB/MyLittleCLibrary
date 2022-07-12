@@ -44,7 +44,8 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     ll_descriptor->append = double_linked_list_append;
     ll_descriptor->insert = double_linked_list_insert;
     ll_descriptor->search = double_linked_list_search;
-    ll_descriptor->del = double_linked_list_del;
+    ll_descriptor->extract = double_linked_list_extract;
+    ll_descriptor->remove = double_linked_list_remove;
     ll_descriptor->shift = double_linked_list_shift;
     ll_descriptor->pop = double_linked_list_pop;
     ll_descriptor->filter = double_linked_list_filter;
@@ -114,18 +115,39 @@ int double_linked_list_search(DoubleLinkedList ll, const void * data){
     return ll->d->search(ll->next, data);
 }
 
-int double_linked_list_del(DoubleLinkedList * ll, const void * data){
-    DoubleLinkedList tmp;
-    if(!*ll) return 0;
-    if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
-        tmp = *ll;
+void * double_linked_list_extract(DoubleLinkedCell ** dlc){
+    DoubleLinkedCell * tmp;
+    void * data;
+    if(!dlc) return NULL;
+    tmp = *dlc;
+    data = tmp->data;
+    if(!tmp->prev){
+        *dlc = tmp->next;
+        if(*dlc)
+            (*dlc)->prev = NULL;
+    }else if(!tmp->next){
+        tmp->prev->next = NULL;
+    }else{
         tmp->prev->next = tmp->next;
         tmp->next->prev = tmp->prev;
-        tmp->next = tmp->prev = NULL;
-        tmp->d->free(&tmp);
+    }
+    tmp->d->length--;
+    tmp->next = tmp->prev = NULL;
+    if(tmp->d->length == 0){
+        double_linked_list_descriptor_free(&tmp->d);
+        *dlc = NULL;
+    }
+    free(tmp);
+    return data;
+}
+
+int double_linked_list_remove(DoubleLinkedList * ll, const void * data){
+    if(!*ll) return 0;
+    if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
+        free((*ll)->d->extract(ll));
         return 1;
     }
-    return (*ll)->d->del(&(*ll)->next, data);
+    return (*ll)->d->remove(&(*ll)->next, data);
 }
 
 void * double_linked_list_shift(DoubleLinkedList * ll){

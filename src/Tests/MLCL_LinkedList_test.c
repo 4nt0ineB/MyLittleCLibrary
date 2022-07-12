@@ -7,7 +7,7 @@
 
 
 int run_all_linked_list_tests(){
-    printf("|> Running all LinkedList tests <|\n");
+    printf("▒▓ Running all LinkedList tests\n");
     MLCL_TEST(test_new_linked_list);
     MLCL_TEST(test_linked_list_prepend);
     MLCL_TEST(test_linked_list_append);
@@ -22,7 +22,7 @@ int run_all_linked_list_tests(){
 int test_new_linked_list(){
     LinkedList ll;
     int x;
-    printf("- test_new_linked_list:");
+    printf("├ test_new_linked_list:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -36,7 +36,7 @@ int test_new_linked_list(){
 int test_linked_list_prepend(){
     LinkedList ll;
     float x;
-    printf("- test_linked_list_prepend:");
+    printf("├ test_linked_list_prepend:");
     x = 5.2f;
     ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -58,7 +58,7 @@ int test_linked_list_prepend(){
 int test_linked_list_append(){
     LinkedList ll;
     float x;
-    printf("- test_linked_list_append:");
+    printf("├ test_linked_list_append:");
     x = 5.2f;
     ll = new_linked_list(&x, new_type_descriptor(float_manifest));
     if(!ll)
@@ -85,7 +85,7 @@ int test_linked_list_insert(){
 int test_linked_list_search(){
     LinkedList ll;
     int x;
-    printf("- test_linked_list_search:");
+    printf("├ test_linked_list_search:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -105,7 +105,7 @@ int test_linked_list_search(){
 int test_linked_list_del(){
     LinkedList ll;
     int x;
-    printf("- test_linked_list_del:");
+    printf("├ test_linked_list_del:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -128,7 +128,7 @@ int test_linked_list_shift(){
     LinkedList ll;
     int x;
     void * data;
-    printf("- test_linked_list_shift:");
+    printf("├ test_linked_list_shift:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -149,7 +149,7 @@ int test_linked_list_pop(){
     LinkedList ll;
     int x;
     void * data;
-    printf("- test_linked_list_pop:");
+    printf("├ test_linked_list_pop:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
@@ -167,7 +167,7 @@ int test_linked_list_pop(){
 }
 
 int test_linked_list_filter(){
-    printf("- test_linked_list_filter:");
+    printf("├ test_linked_list_filter:");
     /* @Todo filter test */
     return 1;
 }

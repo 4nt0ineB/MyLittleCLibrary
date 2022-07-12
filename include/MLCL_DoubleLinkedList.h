@@ -32,7 +32,8 @@ typedef struct s_double_linked_list_descriptor {
     int (*append) (DoubleLinkedList *, const void *);
     int (*insert) (DoubleLinkedList *, const void *);
     int (*search) (DoubleLinkedList, const void *);
-    int (*del) (DoubleLinkedList *, const void *);
+    void * (*extract) (DoubleLinkedCell **);
+    int (*remove) (DoubleLinkedList *, const void *);
     void * (*shift) (DoubleLinkedList *);
     void * (*pop) (DoubleLinkedList *);
     DoubleLinkedList * (*filter) (DoubleLinkedList *, int (* f) (const void *));
@@ -100,13 +101,20 @@ int double_linked_list_insert(DoubleLinkedList * dll, const void * data);
 int double_linked_list_search(DoubleLinkedList dll, const void * data);
 
 /**
- * @brief Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
+ * Extract a double linked cell from its list, the data pointer is returned and the cell freed.
+ * @param dlc
+ * @return
+ */
+void * double_linked_list_extract(DoubleLinkedCell ** dlc);
+
+/**
+ * @brief Remove the first occurrence of the cell containing equal data to the given one, from the linked list.
  * Uses linked list descriptor search function.
  * @param l
  * @param data
  * @return
  */
-int double_linked_list_del(DoubleLinkedList * dll, const void * data);
+int double_linked_list_remove(DoubleLinkedList * dll, const void * data);
 
 /**
  * @brief Create new linked list by filtering given linked list and filtering function.
