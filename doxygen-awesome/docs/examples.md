@@ -82,12 +82,16 @@ void char_free(void ** x){
 /* Which allow us to do */
 
 int main(){
+    
     /* A new brand new TypeDescriptor */
+
 	TypeDescriptor td;
 	td = new_type_descriptor(char_manifest);
     
-	/* This is done inside the constructor of the structure,
-	  so you just have to pass the manifest */
+	/* 
+	  This is done inside the constructor of the structure,
+	  so you just have to pass the manifest 
+	*/
 
 	char c;
 	CircularLinkedList l;
@@ -98,7 +102,8 @@ int main(){
     /* 
      You can redefine the TypeDescriptor of a structure by its own descriptor.
      Its has effect on all the structure, so you know what you are doing.
-     */
+    */
+    
 	type_descriptor_free(&l->d->type_descriptor);
     l->d->type_descriptor = td;
 	
