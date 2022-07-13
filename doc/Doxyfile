@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "A small C lib to stop reinvent the wheel"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = ./logo.drawio.svg
+PROJECT_LOGO           = doxygen-awesome/logo.drawio.svg
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -172,6 +172,7 @@ FULL_PATH_NAMES        = YES
 
 STRIP_FROM_PATH        =
 
+
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of the
 # path mentioned in the documentation of a class, which tells the reader which
 # header file to include in order to use a class. If left blank only the name of
@@ -179,7 +180,8 @@ STRIP_FROM_PATH        =
 # specify the list of include paths that are normally passed to the compiler
 # using the -I flag.
 
-STRIP_FROM_INC_PATH    =
+STRIP_FROM_INC_PATH    = MyLittleCLibrary/ \
+
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
 # less readable) file names. This can be useful is your file systems doesn't
@@ -864,11 +866,14 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = README.md \
-                         docs/extensions.md \
-                         docs/customization.md \
-                         docs/tricks.md \
-                         ..
+INPUT                  = doxygen-awesome/README.md \
+                         doxygen-awesome/docs/extensions.md \
+                         doxygen-awesome/docs/customization.md \
+                         doxygen-awesome/docs/tricks.md \
+                         src \
+                         include \
+                         .MLCL.h \
+                         test.c
                          
 
 # This tag can be used to specify the character encoding of the source files
@@ -957,8 +962,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ../bin \
-			 include
+EXCLUDE                = bin \
+			             doxygen-awesome/include
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1254,7 +1259,7 @@ HTML_FILE_EXTENSION    = .html
 # of the possible markers and block names see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_HEADER            = doxygen-custom/header.html
+HTML_HEADER            = doxygen-awesome/doxygen-custom/header.html
 
 # The HTML_FOOTER tag can be used to specify a user-defined HTML footer for each
 # generated HTML page. If the tag is left blank doxygen will generate a standard
@@ -1289,11 +1294,11 @@ HTML_STYLESHEET        =
 # list). For an example see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = doxygen-awesome.css \
-                         doxygen-custom/custom.css \
-                         doxygen-awesome-sidebar-only.css \
-                         doxygen-awesome-sidebar-only-darkmode-toggle.css \
-                         doxygen-custom/custom-alternative.css \
+HTML_EXTRA_STYLESHEET  = doxygen-awesome/doxygen-awesome.css \
+                         doxygen-awesome/doxygen-custom/custom.css \
+                         doxygen-awesome/doxygen-awesome-sidebar-only.css \
+                         doxygen-awesome/doxygen-awesome-sidebar-only-darkmode-toggle.css \
+                         doxygen-awesome/doxygen-custom/custom-alternative.css \
                          
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
@@ -1304,10 +1309,10 @@ HTML_EXTRA_STYLESHEET  = doxygen-awesome.css \
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = doxygen-awesome-darkmode-toggle.js \
-                         doxygen-awesome-fragment-copy-button.js \
-                         doxygen-awesome-paragraph-link.js \
-                         doxygen-custom/toggle-alternative-theme.js
+HTML_EXTRA_FILES       = doxygen-awesome/doxygen-awesome-darkmode-toggle.js \
+                         doxygen-awesome/doxygen-awesome-fragment-copy-button.js \
+                         doxygen-awesome/doxygen-awesome-paragraph-link.js \
+                         doxygen-awesome/doxygen-custom/toggle-alternative-theme.js
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen
 # will adjust the colors in the style sheet and background images according to
@@ -2363,7 +2368,7 @@ DIA_PATH               =
 # and usage relations if the target is undocumented or is not a class.
 # The default value is: YES.
 
-HIDE_UNDOC_RELATIONS   = YES
+HIDE_UNDOC_RELATIONS   = NO
 
 # If you set the HAVE_DOT tag to YES then doxygen will assume the dot tool is
 # available from the path. This tool is part of Graphviz (see:
