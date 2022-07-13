@@ -19,6 +19,8 @@ int run_all_tests(){
         return 0;
     if(!run_all_double_linked_list_tests())
         return 0;
+    if(!run_all_circular_double_linked_list_tests())
+        return 0;
     printf("└[All tests successfully passed]\n");
     return 1;
 }

@@ -16,9 +16,6 @@
 
 /**
  * @brief A generic linked list \n
- * The list - the cells - refers to a linked list descriptor,
- * gathering implemented functions of the LinkedList type, including
- * a TypeDescriptor allowing manipulation of the data.
  */
 typedef struct s_linked_cell {
     void * data; /*!< Generic data */
@@ -26,6 +23,12 @@ typedef struct s_linked_cell {
     struct s_linked_cell * next; /*!< Next cell */
 } LinkedCell, * LinkedList;
 
+/**
+ * @brief Descriptor of the linked list
+ * The list - the cells - refers to a linked list descriptor,
+ * gathering implemented functions of the LinkedList type, including
+ * a TypeDescriptor allowing manipulation of the data, and the list length.
+ */
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
@@ -33,7 +36,7 @@ typedef struct s_linked_list_descriptor {
     int (*append) (LinkedList *, const void *);
     int (*insert) (LinkedList *, const void *);
     LinkedList (*search) (LinkedList, const void *);
-    int (*del) (LinkedList *, const void *);
+    int (*remove) (LinkedList *, const void *);
     void * (*shift) (LinkedList *);
     void * (*pop) (LinkedList *);
     LinkedList * (*filter) (LinkedList *, int (* f) (const void *));
@@ -48,7 +51,7 @@ typedef struct s_linked_list_descriptor {
 
 /**
  * @brief Allocate and return a default
- * linked list descriptor for int data.
+ * linked list descriptor. Type descriptor set to null.
  * @return
  */
 LinkedListDescriptor * linked_list_descriptor();
@@ -64,10 +67,10 @@ LinkedCell * linked_list_builder(const void * data, LinkedListDescriptor * descr
 /**
  * @brief The linked list constructor.
  * @param data
- * @param typeDescriptor
+ * @param type_descriptor
  * @return
  */
-LinkedCell * new_linked_list(const void * data, TypeDescriptor * typeDescriptor);
+LinkedCell * new_linked_list(const void * data, TypeDescriptor * type_descriptor);
 
 /**
  * @brief Insert data to linked list head.
@@ -102,13 +105,13 @@ int linked_list_insert(LinkedList * ll, const void * data);
 LinkedList linked_list_search(LinkedList ll, const void * data);
 
 /**
- * @brief Delete the first occurrence of the cell containing equal data to the given one, from the linked list.
+ * @brief removeete the first occurrence of the cell containing equal data to the given one, from the linked list.
  * Uses linked list descriptor search function.
  * @param l
  * @param data
  * @return
  */
-int linked_list_del(LinkedList * ll, const void * data);
+int linked_list_remove(LinkedList * ll, const void * data);
 
 /**
  * @brief Create new linked list by filtering given linked list and filtering function.
@@ -146,7 +149,7 @@ void linked_list_cell_free(LinkedCell ** ll);
 
 /**
  * @breif Recursive free of all cells (everything) in the list.
- * free the descriptor at last cell deletion.
+ * free the descriptor at last cell removeetion.
  * @param l
  */
 void linked_list_free(LinkedList * ll);

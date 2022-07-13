@@ -8,28 +8,41 @@
 
 #include "../include/MLCL_CircularLinkedList.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+LinkedCell * circular_linked_list_builder(const void * data, CircularLinkedListDescriptor * descriptor){
+    LinkedCell * cell;
+    if((cell = linked_list_builder(data, descriptor))){
+        /* Circular */
+        cell->next = cell;
+    }
+    return cell;
+}
+
+CircularLinkedListDescriptor * circular_linked_list_descriptor(){
+    CircularLinkedListDescriptor * cll_descriptor;
+    if((cll_descriptor = linked_list_descriptor())){
+        /* Override affected function */
+        cll_descriptor->prepend = circular_linked_list_prepend;
+        cll_descriptor->append = circular_linked_list_append;
+        cll_descriptor->shift = circular_linked_list_shift;
+        cll_descriptor->search = circular_linked_list_search;
+        cll_descriptor->pop = circular_linked_list_pop;
+        cll_descriptor->free = circular_linked_list_free;
+        cll_descriptor->print = circular_linked_list_print;
+        cll_descriptor->fprint = circular_linked_list_fprint;
+        cll_descriptor->to_dot = circular_linked_list_to_dot;
+    }
+    return cll_descriptor;
+}
 
 CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * type_descriptor){
-    LinkedListDescriptor * lld;
-    CircularLinkedList cll;
+    CircularLinkedListDescriptor * cll_descriptor;
     if(!type_descriptor) return NULL;
-    lld = linked_list_descriptor();
-    lld->type_descriptor = type_descriptor;
-    cll = linked_list_builder(data, lld);
-    if(!cll) return NULL;
-    /* Circular */
-    cll->next = cll;
-    /* Override affected function */
-    cll->d->prepend = circular_linked_list_prepend;
-    cll->d->append = circular_linked_list_append;
-    cll->d->shift = circular_linked_list_shift;
-    cll->d->search = circular_linked_list_search;
-    cll->d->pop = circular_linked_list_pop;
-    cll->d->free = circular_linked_list_free;
-    cll->d->print = circular_linked_list_print;
-    cll->d->fprint = circular_linked_list_fprint;
-    cll->d->to_dot = circular_linked_list_to_dot;
-    return cll;
+    if((cll_descriptor = circular_linked_list_descriptor()))
+        cll_descriptor->type_descriptor = type_descriptor;
+    return circular_linked_list_builder(data, cll_descriptor);
 }
 
 CircularLinkedList circular_linked_list_search(CircularLinkedList ll, const void * data){

@@ -34,7 +34,7 @@ LinkedListDescriptor * linked_list_descriptor(){
     ll_descriptor->append = linked_list_append;
     ll_descriptor->insert = linked_list_insert;
     ll_descriptor->search = linked_list_search;
-    ll_descriptor->del = linked_list_del;
+    ll_descriptor->remove = linked_list_remove;
     ll_descriptor->shift = linked_list_shift;
     ll_descriptor->pop = linked_list_pop;
     ll_descriptor->filter = linked_list_filter;
@@ -102,7 +102,7 @@ LinkedList linked_list_search(LinkedList ll, const void * data){
     return ll->d->search(ll->next, data);
 }
 
-int linked_list_del(LinkedList * ll, const void * data){
+int linked_list_remove(LinkedList * ll, const void * data){
     LinkedList tmp;
     if(!*ll) return 0;
     if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
@@ -112,7 +112,7 @@ int linked_list_del(LinkedList * ll, const void * data){
         tmp->d->free(&tmp);
         return 1;
     }
-    return (*ll)->d->del(&(*ll)->next, data);
+    return (*ll)->d->remove(&(*ll)->next, data);
 }
 
 void * linked_list_shift(LinkedList * ll){

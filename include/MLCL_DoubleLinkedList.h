@@ -14,9 +14,6 @@
 
 /**
  * @brief A generic Double linked list \n
- * The list - the cells - refers to a double linked list descriptor,
- * gathering implemented functions of the DoubleLinkedList type, including
- * a TypeDescriptor allowing manipulation of the data.
  */
 typedef struct s_double_linked_cell {
     void * data; /*!< Generic data */
@@ -25,6 +22,12 @@ typedef struct s_double_linked_cell {
     struct s_double_linked_cell * prev; /*!< Previous cell */
 } DoubleLinkedCell, * DoubleLinkedList;
 
+/**
+ * @brief Descriptor of the linked list
+ * The list - the cells - refers to a linked list descriptor,
+ * gathering implemented functions of the DoubleLinkedList type, including
+ * a TypeDescriptor allowing manipulation of the data, and the list length.
+ */
 typedef struct s_double_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
@@ -63,6 +66,7 @@ DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedLis
 /**
  * @brief The linked list constructor.
  * @param data
+ * @param typeDescriptor
  * @return
  */
 DoubleLinkedCell * new_double_linked_list(const void * data, TypeDescriptor * typeDescriptor);
@@ -156,7 +160,7 @@ void double_linked_list_cell_free(DoubleLinkedCell ** dlc);
 
 /**
  * Recursive free of all cells (everything) in the list.
- * free the descriptor at last cell deletion.
+ * free the descriptor at last cell freed.
  * @param l
  */
 void double_linked_list_free(DoubleLinkedList * dll);

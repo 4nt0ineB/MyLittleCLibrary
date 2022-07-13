@@ -114,7 +114,7 @@ int test_double_linked_list_search(){
 int test_double_linked_list_remove(){
     DoubleLinkedList ll;
     int x;
-    printf("├ test_double_linked_list_del:");
+    printf("├ test_double_linked_list_remove:");
     x = 5;
     ll = new_double_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)

@@ -22,13 +22,13 @@
 #include "include/MLCL_LinkedList.h"
 #include "include/MLCL_CircularLinkedList.h"
 #include "include/MLCL_DoubleLinkedList.h"
-
-
+#include "include/MLCL_CircularDoubleLinkedList.h"
 /* Tests */
 #include "include/Tests/MLCL_all_tests.h"
 #include "include/Tests/MLCL_exceptions.h"
 #include "include/Tests/MLCL_TypeDescriptor_test.h"
 #include "include/Tests/MLCL_LinkedList_test.h"
 #include "include/Tests/MLCL_CircularLinkedList_test.h"
+#include "include/Tests/MLCL_CircularDoubleLinkedList_test.h"
 
 #endif /* MYLITTLECLIBRARY_MLCL_H */

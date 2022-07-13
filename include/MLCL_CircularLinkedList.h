@@ -11,9 +11,38 @@
 
 #include "MLCL_LinkedList.h"
 #include <assert.h>
+
+/**
+ * @brief CircularLinkedList extends LinkedList
+ */
 typedef LinkedList CircularLinkedList;
 
+/**
+ * @brief CircularLinkedListDescriptor extends LinkedListDescriptor
+ */
+typedef LinkedListDescriptor CircularLinkedListDescriptor;
 
+/**
+ * @brief A detailed constructor for the cells of a linked list.
+ * @param data First cell's data.
+ * @param descriptor The circular linked list descriptor.
+ * @return
+ */
+LinkedCell * circular_linked_list_builder(const void * data, CircularLinkedListDescriptor * descriptor);
+
+/**
+ * @brief Allocate and return a default
+ * linked list descriptor. Type descriptor set to null.
+ * @return
+ */
+CircularLinkedListDescriptor * circular_linked_list_descriptor();
+
+/**
+ * @brief The circular linked list constructor.
+ * @param data
+ * @param type_descriptor
+ * @return
+ */
 CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * type_descriptor);
 
 /**
@@ -56,7 +85,7 @@ void * circular_linked_list_pop(LinkedList * cll);
 
 /**
  * Iterative free of all cells (everything) in the list.
- * free the descriptor at last cell deletion.
+ * free the descriptor at last cell removeetion.
  * @param cll
  */
 void circular_linked_list_free(CircularLinkedList * cll);

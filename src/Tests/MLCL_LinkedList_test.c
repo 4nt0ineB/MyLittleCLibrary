@@ -8,14 +8,14 @@
 
 int run_all_linked_list_tests(){
     printf("▒▓ Running all LinkedList tests\n");
-    MLCL_TEST(test_new_linked_list);
-    MLCL_TEST(test_linked_list_prepend);
-    MLCL_TEST(test_linked_list_append);
-    MLCL_TEST(test_linked_list_search);
-    MLCL_TEST(test_linked_list_del);
-    MLCL_TEST(test_linked_list_shift);
-    MLCL_TEST(test_linked_list_pop);
-    MLCL_TEST(test_linked_list_filter);
+    MLCL_TEST(test_new_linked_list)
+    MLCL_TEST(test_linked_list_prepend)
+    MLCL_TEST(test_linked_list_append)
+    MLCL_TEST(test_linked_list_search)
+    MLCL_TEST(test_linked_list_remove)
+    MLCL_TEST(test_linked_list_shift)
+    MLCL_TEST(test_linked_list_pop)
+    MLCL_TEST(test_linked_list_filter)
     return 1;
 }
 
@@ -70,7 +70,7 @@ int test_linked_list_append(){
     if(!ll->next)
         MLCL_ERR(3, MLCL_ERR_ALLOC)
     if((* (float *) ll->next->data) != 7.9f)
-        MLCL_ERR(4, MLCL_ERR_EQ);
+        MLCL_ERR(4, MLCL_ERR_EQ)
     if((* (float *) ll->data) != 5.2f)
         MLCL_ERR(5, MLCL_ERR_EQ)
     ll->d->free(&ll);
@@ -102,21 +102,21 @@ int test_linked_list_search(){
     return 1;
 }
 
-int test_linked_list_del(){
+int test_linked_list_remove(){
     LinkedList ll;
     int x;
-    printf("├ test_linked_list_del:");
+    printf("├ test_linked_list_remove:");
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
     ll->d->prepend(&ll, &x);
-    ll->d->del(&ll, &x);
+    ll->d->remove(&ll, &x);
     if((* (int *) ll->data) != 5)
         MLCL_ERR(2, MLCL_ERR_EQ)
     x = 5;
-    ll->d->del(&ll, &x);
+    ll->d->remove(&ll, &x);
     if(ll)
         MLCL_ERR(3, MLCL_ERR_TRUE)
     if(ll)
@@ -132,14 +132,14 @@ int test_linked_list_shift(){
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
-        MLCL_ERR(1, MLCL_ERR_ALLOC);
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
     ll->d->prepend(&ll, &x);
     data = ll->d->shift(&ll);
     if((* (int *) data) != 6)
-        MLCL_ERR(2, MLCL_ERR_TRUE);
+        MLCL_ERR(2, MLCL_ERR_TRUE)
     if(!ll)
-        MLCL_ERR(3, MLCL_ERR_FALSE);
+        MLCL_ERR(3, MLCL_ERR_FALSE)
     ll->d->free(&ll);
     free(data);
     return 1;
@@ -153,14 +153,14 @@ int test_linked_list_pop(){
     x = 5;
     ll = new_linked_list(&x, new_type_descriptor(int_manifest));
     if(!ll)
-        MLCL_ERR(1, MLCL_ERR_ALLOC);
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
     ll->d->prepend(&ll, &x);
     data = ll->d->pop(&ll);
     if((* (int *) data) != 5)
-        MLCL_ERR(2, MLCL_ERR_TRUE);
+        MLCL_ERR(2, MLCL_ERR_TRUE)
     if(!ll)
-        MLCL_ERR(3, MLCL_ERR_FALSE);
+        MLCL_ERR(3, MLCL_ERR_FALSE)
     ll->d->free(&ll);
     free(data);
     return 1;
