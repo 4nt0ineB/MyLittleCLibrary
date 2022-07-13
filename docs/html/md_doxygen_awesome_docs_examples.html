@@ -198,12 +198,16 @@ Writing your own TypeDescriptor</h2>
 <div class="line"><span class="comment">/* Which allow us to do */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> <a class="code" href="test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(){</div>
+<div class="line">    </div>
 <div class="line">    <span class="comment">/* A new brand new TypeDescriptor */</span></div>
+<div class="line"> </div>
 <div class="line">    <a class="code" href="structs__type__descriptor.html">TypeDescriptor</a> td;</div>
 <div class="line">    td = <a class="code" href="_m_l_c_l___type_descriptor_8h.html#a5b443ff770622e989d18a6f9f025ccf5">new_type_descriptor</a>(<a class="code" href="_m_l_c_l__basic__types_8c.html#a3d1b43406f4db3efeef421178d152d3b">char_manifest</a>);</div>
 <div class="line">    </div>
-<div class="line">    <span class="comment">/* This is done inside the constructor of the structure,</span></div>
-<div class="line"><span class="comment">      so you just have to pass the manifest */</span></div>
+<div class="line">    <span class="comment">/* </span></div>
+<div class="line"><span class="comment">      This is done inside the constructor of the structure,</span></div>
+<div class="line"><span class="comment">      so you just have to pass the manifest </span></div>
+<div class="line"><span class="comment">    */</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">char</span> c;</div>
 <div class="line">    <a class="code" href="structs__linked__cell.html">CircularLinkedList</a> l;</div>
@@ -214,7 +218,8 @@ Writing your own TypeDescriptor</h2>
 <div class="line">    <span class="comment">/* </span></div>
 <div class="line"><span class="comment">     You can redefine the TypeDescriptor of a structure by its own descriptor.</span></div>
 <div class="line"><span class="comment">     Its has effect on all the structure, so you know what you are doing.</span></div>
-<div class="line"><span class="comment">     */</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line">    </div>
 <div class="line">    <a class="code" href="_m_l_c_l___type_descriptor_8h.html#a87aba20fdae25e7c3d70bce4e90408d7">type_descriptor_free</a>(&amp;l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">type_descriptor</a>);</div>
 <div class="line">    l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">type_descriptor</a> = td;</div>
 <div class="line">    </div>

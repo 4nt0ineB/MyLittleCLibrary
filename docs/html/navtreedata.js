@@ -26,9 +26,7 @@ var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
     [ "Motivation", "index.html#autotoc_md24", null ],
-    [ "This library is made with the idea of having shorthand use of certain structures,", "index.html#autotoc_md25", [
-      [ "Credits", "index.html#autotoc_md26", null ]
-    ] ],
+    [ "Credits", "index.html#autotoc_md25", null ],
     [ "Extensions", "md_doxygen_awesome_docs_extensions.html", [
       [ "Dark Mode Toggle", "md_doxygen_awesome_docs_extensions.html#autotoc_md1", [
         [ "Installation", "md_doxygen_awesome_docs_extensions.html#autotoc_md2", null ]
