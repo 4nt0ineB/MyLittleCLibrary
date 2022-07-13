@@ -62,10 +62,52 @@ int circular_double_linked_list_prepend(CircularDoubleLinkedList * ll, const voi
 int circular_double_linked_list_append(CircularDoubleLinkedList * cdll, const void * data);
 
 /**
+ * @brief Short-hand search. Look for equality with TypeDescriptor comparison function.
+ * @param cdll
+ * @param data
+ * @return cell's address if found or NULL.
+ */
+CircularDoubleLinkedList circular_double_linked_list_search(CircularDoubleLinkedList cdll, const void * data);
+
+/**
+ * @brief Remove and return head's data. The Targeted cell will be freed not the data.
+ * @param cdll
+ * @return
+ */
+void * circular_double_linked_list_shift(CircularDoubleLinkedList * cdll);
+
+/**
+ * @brief Remove and return tail's data. The Targeted cell will be freed not the data.
+ * @param cdll
+ * @return
+ */
+void * circular_double_linked_list_pop(CircularDoubleLinkedList * cdll);
+
+/**
  * Iterative free of all cells (everything) in the list.
  * free the descriptor at last cell freed.
- * @param l
+ * @param cdll
  */
-void circular_double_linked_list_free(CircularDoubleLinkedList * ll);
+void circular_double_linked_list_free(CircularDoubleLinkedList * cdll);
+
+/**
+ * @brief Print the list on stdout
+ * @param cdll
+ */
+void circular_double_linked_list_print(CircularDoubleLinkedList cdll);
+
+/**
+ * @brief Print the list on give stream
+ * @param file
+ * @param cdll
+ */
+void circular_double_linked_list_fprint(FILE * file, CircularDoubleLinkedList cdll);
+
+/**
+ * @brief Produce a dot formatted file of a representation of the structure
+ * @param cdll
+ * @param dest_path
+ */
+void circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, const char * dest_path);
 
 #endif /* MYLITTLECLIBRARY_MLCL_CIRCULARDOUBLELINKEDLIST_H */

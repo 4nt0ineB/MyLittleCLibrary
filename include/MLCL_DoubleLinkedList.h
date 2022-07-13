@@ -34,7 +34,7 @@ typedef struct s_double_linked_list_descriptor {
     int (*prepend) (DoubleLinkedList *, const void *);
     int (*append) (DoubleLinkedList *, const void *);
     int (*insert) (DoubleLinkedList *, const void *);
-    int (*search) (DoubleLinkedList, const void *);
+    DoubleLinkedCell * (*search) (DoubleLinkedList, const void *);
     void * (*extract) (DoubleLinkedCell **);
     int (*remove) (DoubleLinkedList *, const void *);
     void * (*shift) (DoubleLinkedList *);
@@ -42,6 +42,7 @@ typedef struct s_double_linked_list_descriptor {
     DoubleLinkedList * (*filter) (DoubleLinkedList *, int (* f) (const void *));
     void (*cell_free) (DoubleLinkedCell **);
     void (*free) (DoubleLinkedList *);
+    void (*cell_print) (DoubleLinkedList);
     void (*print) (DoubleLinkedList);
     void (*fprint) (FILE *, DoubleLinkedList);
     void (*cell_fprint) (FILE *, DoubleLinkedCell *);
@@ -102,7 +103,7 @@ int double_linked_list_insert(DoubleLinkedList * dll, const void * data);
  * @param cell Pointer to the first cell containing equal data to the given one. Set to NULL if not required.
  * @return 1 if found or 0.
  */
-int double_linked_list_search(DoubleLinkedList dll, const void * data);
+DoubleLinkedCell * double_linked_list_search(DoubleLinkedList dll, const void * data);
 
 /**
  * Extract a double linked cell from its list, the data pointer is returned and the cell freed.
@@ -164,6 +165,12 @@ void double_linked_list_cell_free(DoubleLinkedCell ** dlc);
  * @param l
  */
 void double_linked_list_free(DoubleLinkedList * dll);
+
+/**
+ * @brief Print the data of the given double linked cell
+ * @param dlc
+ */
+void double_linked_list_cell_print(DoubleLinkedCell * dlc);
 
 /**
  * @brief Print the list on stdout

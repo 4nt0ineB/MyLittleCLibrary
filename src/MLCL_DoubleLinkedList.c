@@ -43,6 +43,8 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     ll_descriptor->cell_free = double_linked_list_cell_free;
     ll_descriptor->free = double_linked_list_free;
     ll_descriptor->to_dot = double_linked_list_to_dot;
+    ll_descriptor->cell_print = double_linked_list_cell_print;
+    ll_descriptor->print = double_linked_list_print;
     ll_descriptor->cell_fprint = double_linked_list_cell_fprint;
     ll_descriptor->fprint = double_linked_list_fprint;
     /* Held type */
@@ -98,10 +100,10 @@ int double_linked_list_insert(DoubleLinkedList * ll, const void * data){
     return 1;
 }
 
-int double_linked_list_search(DoubleLinkedList ll, const void * data){
-    if(!ll) return 0;
+DoubleLinkedCell * double_linked_list_search(DoubleLinkedList ll, const void * data){
+    if(!ll) return NULL;
     if(!ll->d->type_descriptor->cmp(ll->data, data))
-        return 1;
+        return ll;
     return ll->d->search(ll->next, data);
 }
 
@@ -121,8 +123,8 @@ void * double_linked_list_extract(DoubleLinkedCell ** dlc){
         tmp->prev->next = tmp->next;
         tmp->next->prev = tmp->prev;
     }
-    tmp->d->length--;
     tmp->next = tmp->prev = NULL;
+    tmp->d->length--;
     if(tmp->d->length == 0){
         double_linked_list_descriptor_free(&tmp->d);
         *dlc = NULL;
@@ -133,7 +135,7 @@ void * double_linked_list_extract(DoubleLinkedCell ** dlc){
 
 int double_linked_list_remove(DoubleLinkedList * ll, const void * data){
     if(!*ll) return 0;
-    if(!(*ll)->d->type_descriptor->cmp((*ll)->data, data)){
+    if(!((*ll)->d->type_descriptor->cmp((*ll)->data, data))){
         free((*ll)->d->extract(ll));
         return 1;
     }
@@ -212,18 +214,18 @@ void double_linked_list_free(DoubleLinkedList * ll){
     *ll = NULL;
 }
 
-void double_linked_list_print(DoubleLinkedList ll){
-    if(!ll) return;
-    ll->d->type_descriptor->print(ll->data);
-    printf(", ");
-    ll->d->print(ll->next);
+void double_linked_list_cell_print(DoubleLinkedCell * dlc){
+    double_linked_list_cell_fprint(stdout, dlc);
+}
+
+void double_linked_list_print(DoubleLinkedList dll){
+    double_linked_list_fprint(stdout, dll);
 }
 
 void double_linked_list_cell_fprint(FILE * file, DoubleLinkedCell * dlc){
     if(!dlc) return;
     dlc->d->type_descriptor->fprint(file, dlc->data);
 }
-
 void double_linked_list_fprint(FILE * file, DoubleLinkedList dll){
     if(!dll) return;
     dll->d->cell_fprint(file, dll);

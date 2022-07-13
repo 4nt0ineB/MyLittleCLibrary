@@ -163,14 +163,7 @@ void circular_linked_list_free(CircularLinkedList * cll){
 }
 
 void circular_linked_list_print(CircularLinkedList cll){
-    CircularLinkedList tmp;
-    if(!cll) return;
-    tmp = cll->next;
-    cll->d->cell_print(cll);printf(", ");
-    while(tmp != cll){
-        tmp->d->cell_print(tmp);printf(", ");
-        tmp = tmp->next;
-    }
+    circular_linked_list_fprint(stdout, cll);
 }
 
 void circular_linked_list_fprint(FILE * file, CircularLinkedList cll){

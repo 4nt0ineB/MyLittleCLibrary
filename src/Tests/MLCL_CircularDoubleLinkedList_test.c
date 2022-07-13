@@ -57,16 +57,57 @@ int test_circular_double_linked_list_append(){
 }
 
 int test_circular_double_linked_list_search(){
+    CircularDoubleLinkedList ll;
+    int x;
     printf("├ test_circular_double_linked_list_search:");
+    x = 5;
+    ll = new_circular_double_linked_list(&x, new_type_descriptor(int_manifest));
+    if(!ll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+    x = 6;
+    ll->d->prepend(&ll, &x);
+    x = 7;
+    ll->d->prepend(&ll, &x);
+    if((* (int *) ll->data) != 7)
+        MLCL_ERR(2, MLCL_ERR_EQ)
+    if(!ll->d->search(ll, &x))
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    ll->d->free(&ll);
     return 1;
 }
 
 int test_circular_double_linked_list_pop(){
+    CircularDoubleLinkedList cdll;
+    int x;
+    void * data;
     printf("├ test_circular_double_linked_list_pop:");
+    x = 5;
+    cdll = new_circular_double_linked_list(&x, new_type_descriptor(int_manifest));
+    if(!cdll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+    x = 6;
+    cdll->d->prepend(&cdll, &x);
+    data = cdll->d->pop(&cdll);
+    if((* (int *) data) != 5)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    cdll->d->free(&cdll);
+    free(data);
     return 1;
 }
 
 int test_circular_double_linked_list_shift(){
+    CircularDoubleLinkedList cdll;
+    float x;
     printf("├ test_circular_double_linked_list_shift:");
+    x = 5.4f;
+    cdll = new_circular_double_linked_list(&x, new_type_descriptor(float_manifest));
+    x = 5.5f;
+    cdll->d->append(&cdll, &x);
+    if(!cdll)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+    free(cdll->d->shift(&cdll));
+    if(cdll->next->next != cdll)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    cdll->d->free(&cdll);
     return 1;
 }

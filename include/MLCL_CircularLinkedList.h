@@ -81,7 +81,7 @@ void * circular_linked_list_shift(CircularLinkedList * cll);
  * @param cll
  * @return
  */
-void * circular_linked_list_pop(LinkedList * cll);
+void * circular_linked_list_pop(CircularLinkedList * cll);
 
 /**
  * Iterative free of all cells (everything) in the list.
