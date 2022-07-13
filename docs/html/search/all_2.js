@@ -29,6 +29,6 @@ var searchData=
   ['circularlinkedlist_30',['CircularLinkedList',['../_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67',1,'MLCL_CircularLinkedList.h']]],
   ['circularlinkedlistdescriptor_31',['CircularLinkedListDescriptor',['../_m_l_c_l___circular_linked_list_8h.html#a0962f779826d891a834a26642035d482',1,'MLCL_CircularLinkedList.h']]],
   ['cmp_32',['cmp',['../structs__type__descriptor.html#a0d93fbbf8f94177e9420c5201da8ebdf',1,'s_type_descriptor']]],
-  ['customization_33',['Customization',['../md_doc_docs_customization.html',1,'']]],
+  ['customization_33',['Customization',['../md_doxygen_awesome_docs_customization.html',1,'']]],
   ['customization_2emd_34',['customization.md',['../customization_8md.html',1,'']]]
 ];

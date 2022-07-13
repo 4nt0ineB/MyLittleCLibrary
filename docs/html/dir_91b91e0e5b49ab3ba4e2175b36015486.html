@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>MyLittleCLibrary: Tips &amp; Tricks</title>
+<title>MyLittleCLibrary: src Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -94,7 +94,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('md_doc_docs_tricks.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('dir_91b91e0e5b49ab3ba4e2175b36015486.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -112,49 +112,44 @@ $(document).ready(function(){initNavTree('md_doc_docs_tricks.html',''); initResi
 </iframe>
 </div>
 
-<div class="PageDoc"><div class="header">
+<div class="header">
   <div class="headertitle">
-<div class="title">Tips &amp; Tricks </div>  </div>
+<div class="title">src Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md21">Class Diagrams with Graphviz</a></li>
-<li class="level1"><a href="#autotoc_md22">Disable Dark Mode</a></li>
-<li class="level1"><a href="#autotoc_md23">Choosing Sidebar Width</a></li>
-</ul>
+<div class="dynheader">
+Directory dependency graph for src:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="dir_91b91e0e5b49ab3ba4e2175b36015486_dep.svg" width="243" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-<div class="textblock"><h1><a class="anchor" id="autotoc_md21"></a>
-Class Diagrams with Graphviz</h1>
-<p>To get the best looking class diagrams for your documentation, generate them with Graphviz as vector graphics with transparent background:</p>
-<div class="fragment"><div class="line"># Doxyfile</div>
-<div class="line">HAVE_DOT = YES</div>
-<div class="line">DOT_IMAGE_FORMAT = svg</div>
-<div class="line">DOT_TRANSPARENT = YES</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
-Disable Dark Mode</h1>
-<p>If for some reason you don't want the theme to automatically switch to dark mode depending on the browser preference, you can disable dark mode by adding the <code>light-mode</code> class to the html-tag in the header template:</p>
-<div class="fragment"><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;light-mode&quot;&gt;</div>
-</div><!-- fragment --><p>The same can be done to always enable dark-mode:</p>
-<div class="fragment"><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;dark-mode&quot;&gt;</div>
-</div><!-- fragment --><p><b>This only works if you don't use the dark-mode toggle extension.</b></p>
-<h1><a class="anchor" id="autotoc_md23"></a>
-Choosing Sidebar Width</h1>
-<p>If you have enabled the sidebar-only theme variant, make sure to carefully choose a proper width for your sidebar. It should be wide enough to hold the icon, project title and version number. If the content is too wide, it will be cut off.</p>
-<div class="fragment"><div class="line">html {</div>
-<div class="line">    /* Make sure sidebar is wide enough to contain the page title (logo + title + version) */</div>
-<div class="line">    --side-nav-fixed-width: 335px;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p>The choosen width should also be set in the Doxyfile:</p>
-<div class="fragment"><div class="line"># Doxyfile</div>
-<div class="line">TREEVIEW_WIDTH = 335</div>
-</div><!-- fragment --><p><span class="next_section_button"></span></p>
-<p><span class="next_section_button">Read Next: <a href="https://jothepro.github.io/doxygen-awesome-css/class_my_library_1_1_example.html">Example</a> </span> </p>
-</div></div><!-- contents -->
-</div><!-- PageDoc -->
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
+Directories</h2></td></tr>
+<tr class="memitem:dir_636543e588661f76585760be83e15cbb"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_636543e588661f76585760be83e15cbb.html">Tests</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:_m_l_c_l__basic__types_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l__basic__types_8c.html">MLCL_basic_types.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_m_l_c_l___circular_double_linked_list_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_double_linked_list_8c.html">MLCL_CircularDoubleLinkedList.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_m_l_c_l___circular_linked_list_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_linked_list_8c.html">MLCL_CircularLinkedList.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_m_l_c_l___double_linked_list_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8c.html">MLCL_DoubleLinkedList.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_m_l_c_l___linked_list_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___linked_list_8c.html">MLCL_LinkedList.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_m_l_c_l___type_descriptor_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___type_descriptor_8c.html">MLCL_TypeDescriptor.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_3375c9a58ca87dafddcdcfed34991568.html">antoine</a></li><li class="navelem"><a class="el" href="dir_ba2eecf1df2c730a77c8387e693dae3e.html">Documents</a></li><li class="navelem"><a class="el" href="dir_1e01802e9c07a6309ac8441fe3ca297d.html">Developpement</a></li><li class="navelem"><a class="el" href="dir_adb8b39fc28dcd85e3cc304b0b6553df.html">C</a></li><li class="navelem"><a class="el" href="dir_1519ca9e8b05cccad84ed44e180bf63d.html">MyLittleCLibrary</a></li><li class="navelem"><a class="el" href="dir_91b91e0e5b49ab3ba4e2175b36015486.html">src</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
