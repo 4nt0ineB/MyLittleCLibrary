@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "A small C lib to stop reinvent the wheel"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = doxygen-awesome/logo.drawio.svg
+PROJECT_LOGO           = 
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -866,14 +866,15 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = doxygen-awesome/README.md \
-                         doxygen-awesome/docs/extensions.md \
+INPUT                  = doxygen-awesome/docs/extensions.md \
                          doxygen-awesome/docs/customization.md \
                          doxygen-awesome/docs/tricks.md \
+                         doxygen-awesome/docs/examples.md \
                          src \
                          include \
                          .MLCL.h \
-                         test.c
+                         test.c \
+                         README.md
                          
 
 # This tag can be used to specify the character encoding of the source files

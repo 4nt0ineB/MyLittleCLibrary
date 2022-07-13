@@ -42,7 +42,7 @@ CircularDoubleLinkedListDescriptor * circular_double_linked_list_descriptor();
  * @param type_descriptor
  * @return
  */
-DoubleLinkedCell * new_circular_double_linked_list(const void * data, TypeDescriptor * type_descriptor);
+DoubleLinkedCell * new_circular_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Insert data to linked list head.

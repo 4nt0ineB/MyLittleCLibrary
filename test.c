@@ -22,14 +22,14 @@ float float_rand(float min, float max){
 
 int main(){
     run_all_tests();
-    DoubleLinkedList tmp;
+    /*DoubleLinkedList tmp;
     int i, x;
     x = 5;
-    tmp = new_double_linked_list(&x, new_type_descriptor(int_manifest));
+    tmp = new_double_linked_list(&x, int_manifest);
     x = 10;
     for(i = 0; i < 20; i++)
         tmp->d->append(&tmp, &i);
     tmp->d->to_dot(tmp, "./test.dot");
-    tmp->d->free(&tmp);
+    tmp->d->free(&tmp);*/
     return 0;
 }

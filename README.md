@@ -1,6 +1,8 @@
 # MyLittleCLibrary
 A C library gathering things I learnt in college. It's a C toolbox to faster implement things for my homework.
 
+## Motivation
+
 This library is made with the idea of having shorthand use of certain structures,
 but it is not meant to be a performance model. 
 It is for me a comfort for not having to reinvent the wheel every time. 

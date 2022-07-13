@@ -54,7 +54,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.drawio.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MyLittleCLibrary
    </div>
@@ -118,26 +117,26 @@ $(document).ready(function(){initNavTree('md_doxygen_awesome_docs_tricks.html','
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md21">Class Diagrams with Graphviz</a></li>
-<li class="level1"><a href="#autotoc_md22">Disable Dark Mode</a></li>
-<li class="level1"><a href="#autotoc_md23">Choosing Sidebar Width</a></li>
+<ul><li class="level1"><a href="#autotoc_md14">Class Diagrams with Graphviz</a></li>
+<li class="level1"><a href="#autotoc_md15">Disable Dark Mode</a></li>
+<li class="level1"><a href="#autotoc_md16">Choosing Sidebar Width</a></li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="autotoc_md21"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md14"></a>
 Class Diagrams with Graphviz</h1>
 <p>To get the best looking class diagrams for your documentation, generate them with Graphviz as vector graphics with transparent background:</p>
 <div class="fragment"><div class="line"># Doxyfile</div>
 <div class="line">HAVE_DOT = YES</div>
 <div class="line">DOT_IMAGE_FORMAT = svg</div>
 <div class="line">DOT_TRANSPARENT = YES</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
 Disable Dark Mode</h1>
 <p>If for some reason you don't want the theme to automatically switch to dark mode depending on the browser preference, you can disable dark mode by adding the <code>light-mode</code> class to the html-tag in the header template:</p>
 <div class="fragment"><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;light-mode&quot;&gt;</div>
 </div><!-- fragment --><p>The same can be done to always enable dark-mode:</p>
 <div class="fragment"><div class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;dark-mode&quot;&gt;</div>
 </div><!-- fragment --><p><b>This only works if you don't use the dark-mode toggle extension.</b></p>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Choosing Sidebar Width</h1>
 <p>If you have enabled the sidebar-only theme variant, make sure to carefully choose a proper width for your sidebar. It should be wide enough to hold the icon, project title and version number. If the content is too wide, it will be cut off.</p>
 <div class="fragment"><div class="line">html {</div>

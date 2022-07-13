@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>MyLittleCLibrary: Doxygen Awesome</title>
+<title>MyLittleCLibrary: MyLittleCLibrary</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -54,7 +54,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.drawio.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MyLittleCLibrary
    </div>
@@ -114,74 +113,19 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Doxygen Awesome </div>  </div>
+<div class="title">MyLittleCLibrary </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_doxygen_awesome_README"></a> <a href="https://github.com/jothepro/doxygen-awesome-css/releases/latest"><img src="https://img.shields.io/github/v/release/jothepro/doxygen-awesome-css" alt="GitHub release (latest by date)" class="inline"/></a> <a href="https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE"><img src="https://img.shields.io/github/license/jothepro/doxygen-awesome-css" alt="GitHub" class="inline"/></a> <img src="https://img.shields.io/github/stars/jothepro/doxygen-awesome-css" alt="GitHub Repo stars" class="inline"/></p>
-<div style="filter: drop-shadow(0px 3px 10px rgba(0,0,0,0.22)); max-width: 500px"></div><div style="filter: drop-shadow(0px 3px 10px rgba(0,0,0,0.22)); max-width: 500px"><img src="img/screenshot.png" alt="Screenshot of Doxygen Awesome CSS" class="inline"/></div><div style="filter: drop-shadow(0px 3px 10px rgba(0,0,0,0.22)); max-width: 500px"></div><p><b>Doxygen Awesome</b> is a custom <b>CSS theme for Doxygen HTML-documentation</b> with lots of customization parameters.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<div class="textblock"><p><a class="anchor" id="md_README"></a>A C library gathering things I learnt in college. It's a C toolbox to faster implement things for my homework.</p>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Motivation</h1>
-<p>I really like how the Doxygen HTML-documentation is structured! But IMHO it looks a bit outdated.</p>
-<p>This theme is an attemt to update the visuals of Doxygen without changing it's overall layout too much.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Features</h1>
-<ul>
-<li>🌈 Clean, modern design</li>
-<li>🚀 Heavily customizable by adjusting CSS-variables</li>
-<li>🧩 No changes to the HTML structure of Doxygen required</li>
-<li>📱 Improved mobile usability</li>
-<li>🌘 Dark mode support!</li>
-<li>🥇 Works best with <b>doxygen 1.9.1</b> - <b>1.9.3</b></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Examples</h1>
-<ul>
-<li>Sidebar-Only theme: <a href="https://jothepro.github.io/doxygen-awesome-css/">Documentation of this repository</a></li>
-<li>Base theme: <a href="https://a4z.github.io/libsl3/">libsl3</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Installation</h1>
-<p>Copy the file <code>doxygen-awesome.css</code> from this repository into your project or add this repository as submodule and check out the latest release:</p>
-<div class="fragment"><div class="line">git submodule add https://github.com/jothepro/doxygen-awesome-css.git</div>
-<div class="line">cd doxygen-awesome-css</div>
-<div class="line">git checkout v2.0.3</div>
-</div><!-- fragment --><p>Choose one of the theme variants and configure Doxygen accordingly:</p>
-<p><span id="variants_image"></span></p>
-<p><span id="variants_image"><img src="img/theme-variants.drawio.svg" alt="Available theme variants" style="pointer-events: none;" class="inline"/></span></p>
-<p><span id="variants_image"></span></p>
-<ol type="1">
-<li><b>Base theme</b>: <div class="fragment"><div class="line"># Doxyfile</div>
-<div class="line">GENERATE_TREEVIEW      = YES # optional. Also works without treeview</div>
-<div class="line">HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css</div>
-</div><!-- fragment --></li>
-<li><b>Sidebar-only theme</b>: <div class="fragment"><div class="line"># Doxyfile</div>
-<div class="line">GENERATE_TREEVIEW      = YES # required!</div>
-<div class="line">HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \</div>
-<div class="line">                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css</div>
-</div><!-- fragment --></li>
-</ol>
-<p>Further installation instructions:</p>
-<ul>
-<li><a class="el" href="md_doxygen_awesome_docs_extensions.html">How to install extensions</a></li>
-<li><a class="el" href="md_doxygen_awesome_docs_customization.html">How to customize the theme (colors, spacing, border-radius, ...)</a></li>
-<li><a class="el" href="md_doxygen_awesome_docs_tricks.html">Tips and Tricks for further configuration</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md5"></a>
-Browser support</h1>
-<p>Tested with</p>
-<ul>
-<li>Chrome 98, Chrome 98 for Android, Chrome 87 for iOS</li>
-<li>Safari 15, Safari for iOS 15</li>
-<li>Firefox 97, Firefox Daylight 97 for Android, Firefox Daylight 96 for iOS</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<p>This library is made with the idea of having shorthand use of certain structures, but it is not meant to be a performance model. It is for me a comfort for not having to reinvent the wheel every time. A custom structure fitting to your need will ever be more efficient as unwanted and heavy abstraction will be reduced, besides you'll know how it works. Word to the wise: probably carry some bad conceptions or bugs ; use at your own risk.</p>
+<p>The way I have coded things don't allow to have different types in a list, for example. You can have a list of int, a list of char, a list of what ever type you made, but you can't have a list of int and float etc., like Python. I could have done that, but I didn't think about it at the beginning. However, I think it keeps things clean, more efficient, and the C spirit.</p>
+<p>The lib was made with those flags: </p><div class="fragment"><div class="line">-ansi -pedantic -Wall -O2</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md25"></a>
 Credits</h1>
-<ul>
-<li>This theme is inspired by the <a href="https://vuepress.vuejs.org/">vuepress</a> static site generator default theme.</li>
-<li>Thank you for all the feedback on github!</li>
-</ul>
-<p><span class="next_section_button"></span></p>
-<p><span class="next_section_button">Read Next: <a class="el" href="md_doxygen_awesome_docs_extensions.html">Extensions</a> </span> </p>
+<p>doxygen-awesome-css - github.com/jothepro</p>
+<p>To me: <a href="https://franckh.developpez.com/tutoriels/outils/doxygen/">https://franckh.developpez.com/tutoriels/outils/doxygen/</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

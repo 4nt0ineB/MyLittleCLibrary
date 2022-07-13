@@ -38,11 +38,11 @@ CircularDoubleLinkedListDescriptor * circular_double_linked_list_descriptor(){
     return dlld;
 }
 
-DoubleLinkedCell * new_circular_double_linked_list(const void * data, TypeDescriptor * type_descriptor){
+DoubleLinkedCell * new_circular_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
     CircularDoubleLinkedListDescriptor * cdlld;
-    if(!type_descriptor) return NULL;
+    if(!type_manifest) return NULL;
     if((cdlld = circular_double_linked_list_descriptor()))
-        cdlld->type_descriptor = type_descriptor;
+        cdlld->type_descriptor = new_type_descriptor(type_manifest);
     return circular_double_linked_list_builder(data, cdlld);
 }
 

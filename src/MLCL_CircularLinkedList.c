@@ -37,11 +37,11 @@ CircularLinkedListDescriptor * circular_linked_list_descriptor(){
     return cll_descriptor;
 }
 
-CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * type_descriptor){
+CircularLinkedList new_circular_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
     CircularLinkedListDescriptor * cll_descriptor;
-    if(!type_descriptor) return NULL;
+    if(!type_manifest) return NULL;
     if((cll_descriptor = circular_linked_list_descriptor()))
-        cll_descriptor->type_descriptor = type_descriptor;
+        cll_descriptor->type_descriptor = new_type_descriptor(type_manifest);
     return circular_linked_list_builder(data, cll_descriptor);
 }
 

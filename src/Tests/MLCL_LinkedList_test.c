@@ -24,7 +24,7 @@ int test_new_linked_list(){
     int x;
     printf("├ test_new_linked_list:");
     x = 5;
-    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     if((*(int *) ll->data) != 5)
@@ -38,7 +38,7 @@ int test_linked_list_prepend(){
     float x;
     printf("├ test_linked_list_prepend:");
     x = 5.2f;
-    ll = new_linked_list(&x, new_type_descriptor(float_manifest));
+    ll = new_linked_list(&x, float_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 7.9f;
@@ -60,7 +60,7 @@ int test_linked_list_append(){
     float x;
     printf("├ test_linked_list_append:");
     x = 5.2f;
-    ll = new_linked_list(&x, new_type_descriptor(float_manifest));
+    ll = new_linked_list(&x, float_manifest);
     if(!ll)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 7.9f;
@@ -87,7 +87,7 @@ int test_linked_list_search(){
     int x;
     printf("├ test_linked_list_search:");
     x = 5;
-    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -107,7 +107,7 @@ int test_linked_list_remove(){
     int x;
     printf("├ test_linked_list_remove:");
     x = 5;
-    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -130,7 +130,7 @@ int test_linked_list_shift(){
     void * data;
     printf("├ test_linked_list_shift:");
     x = 5;
-    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -151,7 +151,7 @@ int test_linked_list_pop(){
     void * data;
     printf("├ test_linked_list_pop:");
     x = 5;
-    ll = new_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;

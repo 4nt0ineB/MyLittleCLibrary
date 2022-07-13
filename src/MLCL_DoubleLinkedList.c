@@ -54,13 +54,13 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     return ll_descriptor;
 }
 
-DoubleLinkedCell * new_double_linked_list(const void * data, TypeDescriptor * type_descriptor){
+DoubleLinkedCell * new_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
     DoubleLinkedListDescriptor * lld;
-    if(!type_descriptor) return NULL;
+    if(!type_manifest) return NULL;
     lld = double_linked_list_descriptor();
     if(!lld) return NULL;
     /* Define list type */
-    lld->type_descriptor = type_descriptor;
+    lld->type_descriptor = new_type_descriptor(type_manifest);
     return double_linked_list_builder(data, lld);
 }
 

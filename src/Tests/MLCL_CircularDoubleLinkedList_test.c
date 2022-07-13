@@ -26,7 +26,7 @@ int test_circular_double_linked_list_prepend(){
     float x;
     printf("├ test_circular_double_linked_list_prepend:");
     x = 5.4f;
-    ll = new_circular_double_linked_list(&x, new_type_descriptor(float_manifest));
+    ll = new_circular_double_linked_list(&x, float_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 5.3f;
@@ -42,7 +42,7 @@ int test_circular_double_linked_list_append(){
     float x;
     printf("├ test_circular_double_linked_list_append:");
     x = 5.4f;
-    ll = new_circular_double_linked_list(&x, new_type_descriptor(float_manifest));
+    ll = new_circular_double_linked_list(&x, float_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 5.3f;
@@ -61,7 +61,7 @@ int test_circular_double_linked_list_search(){
     int x;
     printf("├ test_circular_double_linked_list_search:");
     x = 5;
-    ll = new_circular_double_linked_list(&x, new_type_descriptor(int_manifest));
+    ll = new_circular_double_linked_list(&x, int_manifest);
     if(!ll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -82,7 +82,7 @@ int test_circular_double_linked_list_pop(){
     void * data;
     printf("├ test_circular_double_linked_list_pop:");
     x = 5;
-    cdll = new_circular_double_linked_list(&x, new_type_descriptor(int_manifest));
+    cdll = new_circular_double_linked_list(&x, int_manifest);
     if(!cdll)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 6;
@@ -100,7 +100,7 @@ int test_circular_double_linked_list_shift(){
     float x;
     printf("├ test_circular_double_linked_list_shift:");
     x = 5.4f;
-    cdll = new_circular_double_linked_list(&x, new_type_descriptor(float_manifest));
+    cdll = new_circular_double_linked_list(&x, float_manifest);
     x = 5.5f;
     cdll->d->append(&cdll, &x);
     if(!cdll)

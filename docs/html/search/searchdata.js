@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "acdefilnprst",
   5: "cdlt",
   6: "m",
-  7: "cdet"
+  7: "cemt"
 };
 
 var indexSectionNames =

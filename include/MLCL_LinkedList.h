@@ -70,7 +70,7 @@ LinkedCell * linked_list_builder(const void * data, LinkedListDescriptor * descr
  * @param type_descriptor
  * @return
  */
-LinkedCell * new_linked_list(const void * data, TypeDescriptor * type_descriptor);
+LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Insert data to linked list head.

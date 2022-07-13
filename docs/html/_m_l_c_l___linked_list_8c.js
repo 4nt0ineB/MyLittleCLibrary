@@ -19,5 +19,5 @@ var _m_l_c_l___linked_list_8c =
     [ "linked_list_search", "_m_l_c_l___linked_list_8c.html#a88f48bb39e6254588800e204c785901a", null ],
     [ "linked_list_shift", "_m_l_c_l___linked_list_8c.html#a8b6128bb0cc13eb31855feb0b8d4bc0c", null ],
     [ "linked_list_to_dot", "_m_l_c_l___linked_list_8c.html#aa3d5c6b637b0fe6a431056e4598aede0", null ],
-    [ "new_linked_list", "_m_l_c_l___linked_list_8c.html#a3fcedabfb06f8e1e384e5fcbc00fc7b0", null ]
+    [ "new_linked_list", "_m_l_c_l___linked_list_8c.html#a18fa0f4b189e1774ec3394c2bb729f30", null ]
 ];

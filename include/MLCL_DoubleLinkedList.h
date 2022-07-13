@@ -70,7 +70,7 @@ DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedLis
  * @param typeDescriptor
  * @return
  */
-DoubleLinkedCell * new_double_linked_list(const void * data, TypeDescriptor * typeDescriptor);
+DoubleLinkedCell * new_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Insert data to linked list head.

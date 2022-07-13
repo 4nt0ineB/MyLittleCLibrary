@@ -43,7 +43,7 @@ CircularLinkedListDescriptor * circular_linked_list_descriptor();
  * @param type_descriptor
  * @return
  */
-CircularLinkedList new_circular_linked_list(const void * data, TypeDescriptor * type_descriptor);
+CircularLinkedList new_circular_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Insert data to circular linked to list's head.

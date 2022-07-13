@@ -52,12 +52,12 @@ LinkedListDescriptor * linked_list_descriptor(){
     return ll_descriptor;
 }
 
-LinkedCell * new_linked_list(const void * data, TypeDescriptor * type_descriptor){
+LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
     LinkedListDescriptor * lld;
-    if(!type_descriptor) return NULL;
+    if(!type_manifest) return NULL;
     lld = linked_list_descriptor();
     if(!lld) return NULL;
-    lld->type_descriptor = type_descriptor;
+    lld->type_descriptor = new_type_descriptor(type_manifest);
     return linked_list_builder(data, lld);
 }
 
