@@ -26,7 +26,9 @@ var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
     [ "Motivation", "index.html#autotoc_md24", null ],
-    [ "Credits", "index.html#autotoc_md25", null ],
+    [ "This library is made with the idea of having shorthand use of certain structures,", "index.html#autotoc_md25", [
+      [ "Credits", "index.html#autotoc_md26", null ]
+    ] ],
     [ "Extensions", "md_doxygen_awesome_docs_extensions.html", [
       [ "Dark Mode Toggle", "md_doxygen_awesome_docs_extensions.html#autotoc_md1", [
         [ "Installation", "md_doxygen_awesome_docs_extensions.html#autotoc_md2", null ]
@@ -52,7 +54,7 @@ var NAVTREE =
       [ "Choosing Sidebar Width", "md_doxygen_awesome_docs_tricks.html#autotoc_md16", null ]
     ] ],
     [ "Examples", "md_doxygen_awesome_docs_examples.html", [
-      [ "TypeDescriptor : How do I make my own", "md_doxygen_awesome_docs_examples.html#autotoc_md20", [
+      [ "Type_manifest : How do I make my own", "md_doxygen_awesome_docs_examples.html#autotoc_md20", [
         [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md18", null ],
         [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md19", null ],
         [ "What's that", "md_doxygen_awesome_docs_examples.html#autotoc_md21", null ],

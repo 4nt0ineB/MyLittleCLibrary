@@ -28,7 +28,7 @@ l->d->free(&tmp);
 
 ```
 
-## TypeDescriptor : How do I make my own
+## Type_manifest : How do I make my own
 
 ### What's that
 
@@ -79,14 +79,13 @@ void char_free(void ** x){
     *x = NULL;
 }
 
-/* Wich allow us to do */
+/* Which allow us to do */
 
 int main(){
-
+    /* A new brand new TypeDescriptor */
 	TypeDescriptor td;
 	td = new_type_descriptor(char_manifest);
-	type_descriptor_free(&td);
-
+    
 	/* This is done inside the constructor of the structure,
 	  so you just have to pass the manifest */
 
@@ -95,8 +94,15 @@ int main(){
 
 	c = 'a';
 	l = new_circular_linked_list(&x, char_manifest);
+    
+    /* 
+     You can redefine the TypeDescriptor of a structure by its own descriptor.
+     Its has effect on all the structure, so you know what you are doing.
+     */
+	type_descriptor_free(&l->d->type_descriptor);
+    l->d->type_descriptor = td;
+	
 	l->d->free(&tmp);
-
 	return 0;
 }
 

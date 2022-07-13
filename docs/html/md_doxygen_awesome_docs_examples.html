@@ -149,7 +149,7 @@ Double linked list</h2>
 <div class="ttc" id="astructs__double__linked__list__descriptor_html_aae58e105aa319966f357afe32f53313d"><div class="ttname"><a href="structs__double__linked__list__descriptor.html#aae58e105aa319966f357afe32f53313d">s_double_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(DoubleLinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_DoubleLinkedList.h:44</div></div>
 <div class="ttc" id="astructs__double__linked__list__descriptor_html_af5820a2c99114478811a92c45ecfce21"><div class="ttname"><a href="structs__double__linked__list__descriptor.html#af5820a2c99114478811a92c45ecfce21">s_double_linked_list_descriptor::append</a></div><div class="ttdeci">int(* append)(DoubleLinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_DoubleLinkedList.h:35</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
-TypeDescriptor : How do I make my own</h1>
+Type_manifest : How do I make my own</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 What's that</h2>
 <p>The TypeDescriptor is an interface required to manipulate the data across all the lib's structures.</p>
@@ -195,14 +195,13 @@ Writing your own TypeDescriptor</h2>
 <div class="line">    *x = NULL;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* Wich allow us to do */</span></div>
+<div class="line"><span class="comment">/* Which allow us to do */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> <a class="code" href="test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(){</div>
-<div class="line"> </div>
+<div class="line">    <span class="comment">/* A new brand new TypeDescriptor */</span></div>
 <div class="line">    <a class="code" href="structs__type__descriptor.html">TypeDescriptor</a> td;</div>
 <div class="line">    td = <a class="code" href="_m_l_c_l___type_descriptor_8h.html#a5b443ff770622e989d18a6f9f025ccf5">new_type_descriptor</a>(<a class="code" href="_m_l_c_l__basic__types_8c.html#a3d1b43406f4db3efeef421178d152d3b">char_manifest</a>);</div>
-<div class="line">    <a class="code" href="_m_l_c_l___type_descriptor_8h.html#a87aba20fdae25e7c3d70bce4e90408d7">type_descriptor_free</a>(&amp;td);</div>
-<div class="line"> </div>
+<div class="line">    </div>
 <div class="line">    <span class="comment">/* This is done inside the constructor of the structure,</span></div>
 <div class="line"><span class="comment">      so you just have to pass the manifest */</span></div>
 <div class="line"> </div>
@@ -211,8 +210,15 @@ Writing your own TypeDescriptor</h2>
 <div class="line"> </div>
 <div class="line">    c = <span class="charliteral">&#39;a&#39;</span>;</div>
 <div class="line">    l = <a class="code" href="_m_l_c_l___circular_linked_list_8c.html#a43e3edc4de847577b4a2d5f0e63543d2">new_circular_linked_list</a>(&amp;x, <a class="code" href="_m_l_c_l__basic__types_8c.html#a3d1b43406f4db3efeef421178d152d3b">char_manifest</a>);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">/* </span></div>
+<div class="line"><span class="comment">     You can redefine the TypeDescriptor of a structure by its own descriptor.</span></div>
+<div class="line"><span class="comment">     Its has effect on all the structure, so you know what you are doing.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    <a class="code" href="_m_l_c_l___type_descriptor_8h.html#a87aba20fdae25e7c3d70bce4e90408d7">type_descriptor_free</a>(&amp;l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">type_descriptor</a>);</div>
+<div class="line">    l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">type_descriptor</a> = td;</div>
+<div class="line">    </div>
 <div class="line">    l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;tmp);</div>
-<div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="a_m_l_c_l___circular_linked_list_8c_html_a43e3edc4de847577b4a2d5f0e63543d2"><div class="ttname"><a href="_m_l_c_l___circular_linked_list_8c.html#a43e3edc4de847577b4a2d5f0e63543d2">new_circular_linked_list</a></div><div class="ttdeci">CircularLinkedList new_circular_linked_list(const void *data, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The circular linked list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_CircularLinkedList.c:40</div></div>
@@ -223,6 +229,7 @@ Writing your own TypeDescriptor</h2>
 <div class="ttc" id="a_m_l_c_l__basic__types_8c_html_a7363a18107d88c983f9ab80389985a94"><div class="ttname"><a href="_m_l_c_l__basic__types_8c.html#a7363a18107d88c983f9ab80389985a94">char_free</a></div><div class="ttdeci">void char_free(void **x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:38</div></div>
 <div class="ttc" id="a_m_l_c_l__basic__types_8c_html_aa7d1a7693f4998fc2e5aece11571458f"><div class="ttname"><a href="_m_l_c_l__basic__types_8c.html#aa7d1a7693f4998fc2e5aece11571458f">char_fprint</a></div><div class="ttdeci">void char_fprint(FILE *file, const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:34</div></div>
 <div class="ttc" id="a_m_l_c_l__basic__types_8c_html_aac1895a4866a738835221db6c4ab93f6"><div class="ttname"><a href="_m_l_c_l__basic__types_8c.html#aac1895a4866a738835221db6c4ab93f6">char_print</a></div><div class="ttdeci">void char_print(const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:30</div></div>
+<div class="ttc" id="astructs__linked__list__descriptor_html_a9f2d5c514c7c3ac0d228697ce9246b1f"><div class="ttname"><a href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">s_linked_list_descriptor::type_descriptor</a></div><div class="ttdeci">TypeDescriptor * type_descriptor</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:33</div></div>
 <div class="ttc" id="astructs__type__descriptor_html"><div class="ttname"><a href="structs__type__descriptor.html">s_type_descriptor</a></div><div class="ttdoc">Interface for basic types and more complex structures of the lib.</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:19</div></div>
 <div class="ttc" id="astructs__type__descriptor_html_a0d93fbbf8f94177e9420c5201da8ebdf"><div class="ttname"><a href="structs__type__descriptor.html#a0d93fbbf8f94177e9420c5201da8ebdf">s_type_descriptor::cmp</a></div><div class="ttdeci">int(* cmp)(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:21</div></div>
 <div class="ttc" id="astructs__type__descriptor_html_a12e6642df2d6502155eeeff089a4ed79"><div class="ttname"><a href="structs__type__descriptor.html#a12e6642df2d6502155eeeff089a4ed79">s_type_descriptor::data_size</a></div><div class="ttdeci">size_t data_size</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:20</div></div>
