@@ -16,7 +16,7 @@ However, I think it keeps things clean, more efficient, and the C spirit.
 
 The lib was made with those flags:
 ```bash
--ansi -pedantic -Wall -Wfatal-errors
+-ansi -pedantic -Wall -O2
 ```
 
 ## Credits
