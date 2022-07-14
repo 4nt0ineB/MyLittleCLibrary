@@ -1,6 +1,7 @@
 var _m_l_c_l___linked_list__test_8h =
 [
     [ "run_all_linked_list_tests", "_m_l_c_l___linked_list__test_8h.html#ae339346be8459f1e2e521a74fd78154b", null ],
+    [ "test_linked_list_add", "_m_l_c_l___linked_list__test_8h.html#abc49c57839f28f264e4890dfacb881c4", null ],
     [ "test_linked_list_append", "_m_l_c_l___linked_list__test_8h.html#a57c31be5f5941a31bbd767d0c1201fa5", null ],
     [ "test_linked_list_filter", "_m_l_c_l___linked_list__test_8h.html#adc80e1f41d51843220a4b5a0095f7f53", null ],
     [ "test_linked_list_map", "_m_l_c_l___linked_list__test_8h.html#a035e14baeea1f3d1c8d36c1aede48996", null ],

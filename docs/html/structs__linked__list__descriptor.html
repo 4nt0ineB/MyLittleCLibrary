@@ -131,6 +131,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9f2d5c514c7c3ac0d228697ce9246b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25ca966cdb549f03ec2d134257741e83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a25ca966cdb549f03ec2d134257741e83">length</a></td></tr>
 <tr class="separator:a25ca966cdb549f03ec2d134257741e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f8fd5d49b93902e41f0bae9b81365c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a51f8fd5d49b93902e41f0bae9b81365c">add_</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="separator:a51f8fd5d49b93902e41f0bae9b81365c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f057a51735cd6587274485e612dd54"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a86f057a51735cd6587274485e612dd54">add</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
+<tr class="separator:a86f057a51735cd6587274485e612dd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ceb52b5f46cad9d3e76e85c0fa2e84"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
 <tr class="separator:a53ceb52b5f46cad9d3e76e85c0fa2e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b388e256d97221aedd6894b23a6bd5"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">append</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
@@ -159,12 +163,40 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad6a0aebfb3520be78856f88a627e35f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d868eb23eca697806bdfcd189b242a7"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a9d868eb23eca697806bdfcd189b242a7">cell_fprint</a> )(FILE *, <a class="el" href="_m_l_c_l___linked_list_8h.html#ab7600085c7fa714f35235f207208ac1f">LinkedCell</a> *)</td></tr>
 <tr class="separator:a9d868eb23eca697806bdfcd189b242a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59775e1dd50d44d00b2bacaf93fa54ca"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a59775e1dd50d44d00b2bacaf93fa54ca">to_dot</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a>, const char *path)</td></tr>
-<tr class="separator:a59775e1dd50d44d00b2bacaf93fa54ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458f8726953d33f29754930191827103"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a458f8726953d33f29754930191827103">to_dot</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a>, const char *)</td></tr>
+<tr class="separator:a458f8726953d33f29754930191827103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Descriptor of the linked list The list - the cells - refers to a linked list descriptor, gathering implemented functions of the LinkedList type, including a TypeDescriptor allowing manipulation of the data, and the list length. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a86f057a51735cd6587274485e612dd54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f057a51735cd6587274485e612dd54">&#9670;&nbsp;</a></span>add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_linked_list_descriptor::add) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51f8fd5d49b93902e41f0bae9b81365c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f8fd5d49b93902e41f0bae9b81365c">&#9670;&nbsp;</a></span>add_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_linked_list_descriptor::add_) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *, int(*cmp)(const void *, const void *))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa8b388e256d97221aedd6894b23a6bd5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8b388e256d97221aedd6894b23a6bd5">&#9670;&nbsp;</a></span>append</h2>
 
@@ -375,14 +407,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a59775e1dd50d44d00b2bacaf93fa54ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59775e1dd50d44d00b2bacaf93fa54ca">&#9670;&nbsp;</a></span>to_dot</h2>
+<a id="a458f8726953d33f29754930191827103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a458f8726953d33f29754930191827103">&#9670;&nbsp;</a></span>to_dot</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* s_linked_list_descriptor::to_dot) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a>, const char *path)</td>
+          <td class="memname">void(* s_linked_list_descriptor::to_dot) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a>, const char *)</td>
         </tr>
       </table>
 </div><div class="memdoc">

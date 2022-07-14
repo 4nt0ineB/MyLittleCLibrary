@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['customization_415',['Customization',['../md_doxygen_awesome_docs_customization.html',1,'']]]
+  ['examples_416',['Examples',['../md_doxygen_awesome_docs_examples.html',1,'']]]
 ];

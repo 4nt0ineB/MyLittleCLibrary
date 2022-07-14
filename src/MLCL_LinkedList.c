@@ -29,6 +29,8 @@ LinkedListDescriptor * linked_list_descriptor(){
     LinkedListDescriptor * ll_descriptor;
     ll_descriptor = (LinkedListDescriptor *) malloc(sizeof(LinkedListDescriptor));
     if(!ll_descriptor) return NULL;
+    ll_descriptor->add_ = linked_list_add_;
+    ll_descriptor->add = linked_list_add;
     ll_descriptor->append = linked_list_append;
     ll_descriptor->prepend = linked_list_prepend;
     ll_descriptor->append = linked_list_append;
@@ -61,6 +63,32 @@ LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescr
     return linked_list_builder(data, lld);
 }
 
+int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *)){
+    LinkedCell * new_cell;
+    /* End of list OR Inside the list but inferior to the current cell*/
+    if(!*ll) return 0;
+    if(cmp(data, (*ll)->data) < 0){
+        if(!(new_cell = linked_list_builder(data, (*ll)->d)))
+            return 0;
+        new_cell->next = *ll;
+        (*ll) = new_cell;
+        (*ll)->d->length++;
+        return 1;
+    }else if(!(*ll)->next){
+        if(!(new_cell = linked_list_builder(data, (*ll)->d)))
+            return 0;
+        (*ll)->next = new_cell;
+        (*ll)->d->length++;
+        return 1;
+    }
+    return (*ll)->d->add_(&(*ll)->next, data, cmp);
+}
+
+int linked_list_add(LinkedList * ll, const void * data){
+    if(!*ll) return 0;
+    (*ll)->d->add_(ll, data, (*ll)->d->type_descriptor->cmp);
+    return 1;
+}
 
 int linked_list_prepend(LinkedList * ll, const void * data){
     LinkedCell * cell;

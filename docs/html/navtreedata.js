@@ -25,38 +25,17 @@
 var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
-    [ "Motivation", "index.html#autotoc_md24", null ],
-    [ "Credits", "index.html#autotoc_md25", null ],
-    [ "Extensions", "md_doxygen_awesome_docs_extensions.html", [
-      [ "Dark Mode Toggle", "md_doxygen_awesome_docs_extensions.html#autotoc_md1", [
-        [ "Installation", "md_doxygen_awesome_docs_extensions.html#autotoc_md2", null ]
-      ] ],
-      [ "Fragment Copy Button", "md_doxygen_awesome_docs_extensions.html#autotoc_md3", [
-        [ "Installation", "md_doxygen_awesome_docs_extensions.html#autotoc_md4", null ]
-      ] ],
-      [ "Paragraph Linking", "md_doxygen_awesome_docs_extensions.html#autotoc_md5", [
-        [ "Installation", "md_doxygen_awesome_docs_extensions.html#autotoc_md6", null ]
-      ] ]
-    ] ],
-    [ "Customization", "md_doxygen_awesome_docs_customization.html", [
-      [ "CSS-Variables", "md_doxygen_awesome_docs_customization.html#autotoc_md8", [
-        [ "Setup", "md_doxygen_awesome_docs_customization.html#autotoc_md9", null ],
-        [ "Available variables", "md_doxygen_awesome_docs_customization.html#autotoc_md10", null ]
-      ] ],
-      [ "Doxygen generator", "md_doxygen_awesome_docs_customization.html#autotoc_md11", null ],
-      [ "Share your customizations", "md_doxygen_awesome_docs_customization.html#autotoc_md12", null ]
-    ] ],
-    [ "Tips & Tricks", "md_doxygen_awesome_docs_tricks.html", [
-      [ "Class Diagrams with Graphviz", "md_doxygen_awesome_docs_tricks.html#autotoc_md14", null ],
-      [ "Disable Dark Mode", "md_doxygen_awesome_docs_tricks.html#autotoc_md15", null ],
-      [ "Choosing Sidebar Width", "md_doxygen_awesome_docs_tricks.html#autotoc_md16", null ]
-    ] ],
+    [ "Motivation", "index.html#autotoc_md9", null ],
+    [ "Credits", "index.html#autotoc_md10", null ],
     [ "Examples", "md_doxygen_awesome_docs_examples.html", [
-      [ "Type_manifest : How do I make my own", "md_doxygen_awesome_docs_examples.html#autotoc_md20", [
-        [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md18", null ],
-        [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md19", null ],
-        [ "What's that", "md_doxygen_awesome_docs_examples.html#autotoc_md21", null ],
-        [ "Writing your own TypeDescriptor", "md_doxygen_awesome_docs_examples.html#autotoc_md22", null ]
+      [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md1", null ],
+      [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md2", null ],
+      [ "Extended Examples <span style=\"color: grey;\"> (Not yet implemented) </span>", "md_doxygen_awesome_docs_examples.html#autotoc_md3", [
+        [ "DoubleLinkedList of CircularDoubleLinkedLists", "md_doxygen_awesome_docs_examples.html#autotoc_md4", null ],
+        [ "Type_manifest : How do I make my own", "md_doxygen_awesome_docs_examples.html#autotoc_md5", [
+          [ "What's that", "md_doxygen_awesome_docs_examples.html#autotoc_md6", null ]
+        ] ],
+        [ "Writing your own TypeDescriptor", "md_doxygen_awesome_docs_examples.html#autotoc_md7", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -82,7 +61,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_m_l_c_l___circular_double_linked_list_8c.html",
-"_m_l_c_l__basic__types_8c.html#a0b41206c9f6598fc3a2643094b28bed6"
+"_m_l_c_l__all__tests_8c.html#ae361531e05b616a7b36f007582048de8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

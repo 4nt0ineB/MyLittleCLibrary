@@ -1,5 +1,7 @@
 var structs__linked__list__descriptor =
 [
+    [ "add", "structs__linked__list__descriptor.html#a86f057a51735cd6587274485e612dd54", null ],
+    [ "add_", "structs__linked__list__descriptor.html#a51f8fd5d49b93902e41f0bae9b81365c", null ],
     [ "append", "structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5", null ],
     [ "cell_fprint", "structs__linked__list__descriptor.html#a9d868eb23eca697806bdfcd189b242a7", null ],
     [ "cell_free", "structs__linked__list__descriptor.html#a1e1d41719d5654e8e085699d6757d506", null ],
@@ -15,6 +17,6 @@ var structs__linked__list__descriptor =
     [ "remove", "structs__linked__list__descriptor.html#a2063759675a6db12c2bf6f51ab236288", null ],
     [ "search", "structs__linked__list__descriptor.html#add595d9d5b9a7e39a5a029ca515417a6", null ],
     [ "shift", "structs__linked__list__descriptor.html#a140f475e93d59d6a52bc786dc5948133", null ],
-    [ "to_dot", "structs__linked__list__descriptor.html#a59775e1dd50d44d00b2bacaf93fa54ca", null ],
+    [ "to_dot", "structs__linked__list__descriptor.html#a458f8726953d33f29754930191827103", null ],
     [ "type_descriptor", "structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f", null ]
 ];

@@ -1,6 +1,8 @@
 var _m_l_c_l___linked_list_8c =
 [
     [ "_linked_list_to_dot", "_m_l_c_l___linked_list_8c.html#a1fe4c0a31f39f2bdc566f1279133e3e2", null ],
+    [ "linked_list_add", "_m_l_c_l___linked_list_8c.html#a48996997a3cdbe2ab0e251196a639074", null ],
+    [ "linked_list_add_", "_m_l_c_l___linked_list_8c.html#a3a6238db2e4f84e01dde78d2adace73f", null ],
     [ "linked_list_append", "_m_l_c_l___linked_list_8c.html#a185d6610f5f1be5566c48f747b34caac", null ],
     [ "linked_list_builder", "_m_l_c_l___linked_list_8c.html#a1211cd0949a46e62353f2408884d9f6c", null ],
     [ "linked_list_cell_fprint", "_m_l_c_l___linked_list_8c.html#ab9be0187523a80d33b2126e98fb91f39", null ],

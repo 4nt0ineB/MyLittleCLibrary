@@ -1,8 +1,7 @@
 # Examples
 
-### Linked list
+## Linked list
 ```c
-
 int x;
 LinkedList l;
 
@@ -14,9 +13,8 @@ l->d->free(&tmp);
 
 ```
 
-### Double linked list
+## Double linked list
 ```c
-
 int x;
 DoubleLinkedList l;
 
@@ -25,12 +23,28 @@ l = new_double_linked_list(&x, int_manifest);
 
 l->d->append(&l, &x);
 l->d->free(&tmp);
+```
+
+## Extended Examples <span style="color: grey;"> (Not yet implemented) </span>
+
+### DoubleLinkedList of CircularDoubleLinkedLists
+```c
+DoubleLinkedList l;
+CircularDoubleLinkedList l_2;
+float x;
+
+x = 3.14f;
+l_2 = new_circular_double_linked_list(&x, float_manifest);
+l = new_double_linked_list(&l_2, circular_double_linked_list_manifest);
+l->d->append(&l, &x); 
+l->d->free(&tmp);
 
 ```
 
-## Type_manifest : How do I make my own
 
-### What's that
+### Type_manifest : How do I make my own
+
+#### What's that
 
 The TypeDescriptor is an interface required to manipulate the data across all the lib's structures. 
 

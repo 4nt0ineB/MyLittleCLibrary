@@ -32,6 +32,8 @@ typedef struct s_linked_cell {
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
+    int (*add_) (LinkedList *, const void *, int (*cmp) (const void *, const void *));
+    int (*add) (LinkedList *, const void *);
     int (*prepend) (LinkedList *, const void *);
     int (*append) (LinkedList *, const void *);
     int (*insert) (LinkedList *, const void *);
@@ -46,7 +48,7 @@ typedef struct s_linked_list_descriptor {
     void (*cell_print) (LinkedCell *);
     void (*fprint) (FILE *, LinkedList);
     void (*cell_fprint) (FILE *, LinkedCell *);
-    void (*to_dot) (LinkedList, const char * path);
+    void (*to_dot) (LinkedList, const char *);
 } LinkedListDescriptor;
 
 /**
@@ -71,6 +73,23 @@ LinkedCell * linked_list_builder(const void * data, LinkedListDescriptor * descr
  * @return
  */
 LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
+
+/**
+ * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
+ * @param ll
+ * @param data
+ * @param cmp
+ * @return
+ */
+int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *));
+
+/**
+ * @brief Shorthand of linked_list_add_(), passing the cmp function of the TypeDescriptor
+ * @param ll
+ * @param data
+ * @return
+ */
+int linked_list_add(LinkedList * ll, const void * data);
 
 /**
  * @brief Insert data to linked list head.

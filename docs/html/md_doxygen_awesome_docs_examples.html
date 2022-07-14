@@ -116,8 +116,8 @@ $(document).ready(function(){initNavTree('md_doxygen_awesome_docs_examples.html'
 <div class="title">Examples </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md18"></a>
-Linked list</h2>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+Linked list</h1>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;</div>
 <div class="line"><a class="code" href="structs__linked__cell.html">LinkedList</a> l;</div>
 <div class="line"> </div>
@@ -126,14 +126,14 @@ Linked list</h2>
 <div class="line"> </div>
 <div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">append</a>(&amp;l, &amp;x);</div>
 <div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;tmp);</div>
-<div class="ttc" id="a_m_l_c_l___linked_list_8c_html_a18fa0f4b189e1774ec3394c2bb729f30"><div class="ttname"><a href="_m_l_c_l___linked_list_8c.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a></div><div class="ttdeci">LinkedCell * new_linked_list(const void *data, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The linked list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.c:55</div></div>
+<div class="ttc" id="a_m_l_c_l___linked_list_8c_html_a18fa0f4b189e1774ec3394c2bb729f30"><div class="ttname"><a href="_m_l_c_l___linked_list_8c.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a></div><div class="ttdeci">LinkedCell * new_linked_list(const void *data, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The linked list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.c:57</div></div>
 <div class="ttc" id="a_m_l_c_l__basic__types_8c_html_aa38a82d9d5c7fea34de55832c6fa9e95"><div class="ttname"><a href="_m_l_c_l__basic__types_8c.html#aa38a82d9d5c7fea34de55832c6fa9e95">float_manifest</a></div><div class="ttdeci">void float_manifest(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The float manifest assign its respective functions according to the required ones by the type interfa...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:76</div></div>
 <div class="ttc" id="astructs__linked__cell_html"><div class="ttname"><a href="structs__linked__cell.html">s_linked_cell</a></div><div class="ttdoc">A generic linked list  .</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:20</div></div>
 <div class="ttc" id="astructs__linked__cell_html_a2ced86f7cf585f7e56f1ffb6b8c0d452"><div class="ttname"><a href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">s_linked_cell::d</a></div><div class="ttdeci">struct s_linked_list_descriptor * d</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:22</div></div>
-<div class="ttc" id="astructs__linked__list__descriptor_html_a26f5fcb26c30ebac217af8f0f2b07616"><div class="ttname"><a href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">s_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(LinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:44</div></div>
-<div class="ttc" id="astructs__linked__list__descriptor_html_aa8b388e256d97221aedd6894b23a6bd5"><div class="ttname"><a href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">s_linked_list_descriptor::append</a></div><div class="ttdeci">int(* append)(LinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:36</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
-Double linked list</h2>
+<div class="ttc" id="astructs__linked__list__descriptor_html_a26f5fcb26c30ebac217af8f0f2b07616"><div class="ttname"><a href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">s_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(LinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:46</div></div>
+<div class="ttc" id="astructs__linked__list__descriptor_html_aa8b388e256d97221aedd6894b23a6bd5"><div class="ttname"><a href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">s_linked_list_descriptor::append</a></div><div class="ttdeci">int(* append)(LinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:38</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+Double linked list</h1>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;</div>
 <div class="line"><a class="code" href="structs__double__linked__cell.html">DoubleLinkedList</a> l;</div>
 <div class="line"> </div>
@@ -148,10 +148,24 @@ Double linked list</h2>
 <div class="ttc" id="astructs__double__linked__cell_html_a2dbb2a4a7a052f2952d2800abc1a5e75"><div class="ttname"><a href="structs__double__linked__cell.html#a2dbb2a4a7a052f2952d2800abc1a5e75">s_double_linked_cell::d</a></div><div class="ttdeci">struct s_double_linked_list_descriptor * d</div><div class="ttdef"><b>Definition:</b> MLCL_DoubleLinkedList.h:20</div></div>
 <div class="ttc" id="astructs__double__linked__list__descriptor_html_aae58e105aa319966f357afe32f53313d"><div class="ttname"><a href="structs__double__linked__list__descriptor.html#aae58e105aa319966f357afe32f53313d">s_double_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(DoubleLinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_DoubleLinkedList.h:44</div></div>
 <div class="ttc" id="astructs__double__linked__list__descriptor_html_af5820a2c99114478811a92c45ecfce21"><div class="ttname"><a href="structs__double__linked__list__descriptor.html#af5820a2c99114478811a92c45ecfce21">s_double_linked_list_descriptor::append</a></div><div class="ttdeci">int(* append)(DoubleLinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_DoubleLinkedList.h:35</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
-Type_manifest : How do I make my own</h1>
-<h2><a class="anchor" id="autotoc_md21"></a>
-What's that</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+Extended Examples &lt;span style="color: grey;"&gt; (Not yet implemented) &lt;/span&gt;</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+DoubleLinkedList of CircularDoubleLinkedLists</h2>
+<div class="fragment"><div class="line"><a class="code" href="structs__double__linked__cell.html">DoubleLinkedList</a> l;</div>
+<div class="line"><a class="code" href="structs__double__linked__cell.html">CircularDoubleLinkedList</a> l_2;</div>
+<div class="line"><span class="keywordtype">float</span> x;</div>
+<div class="line"> </div>
+<div class="line">x = 3.14f;</div>
+<div class="line">l_2 = <a class="code" href="_m_l_c_l___circular_double_linked_list_8c.html#a8cd6e569554ac0883bf4fdf101d8bbe5">new_circular_double_linked_list</a>(&amp;x, <a class="code" href="_m_l_c_l__basic__types_8c.html#aa38a82d9d5c7fea34de55832c6fa9e95">float_manifest</a>);</div>
+<div class="line">l = <a class="code" href="_m_l_c_l___double_linked_list_8h.html#a3286cfa2a289c321b1e22f6ece891ba7">new_double_linked_list</a>(&amp;l_2, circular_double_linked_list_manifest);</div>
+<div class="line">l-&gt;<a class="code" href="structs__double__linked__cell.html#a2dbb2a4a7a052f2952d2800abc1a5e75">d</a>-&gt;<a class="code" href="structs__double__linked__list__descriptor.html#af5820a2c99114478811a92c45ecfce21">append</a>(&amp;l, &amp;x); </div>
+<div class="line">l-&gt;<a class="code" href="structs__double__linked__cell.html#a2dbb2a4a7a052f2952d2800abc1a5e75">d</a>-&gt;<a class="code" href="structs__double__linked__list__descriptor.html#aae58e105aa319966f357afe32f53313d">free</a>(&amp;tmp);</div>
+<div class="ttc" id="a_m_l_c_l___circular_double_linked_list_8c_html_a8cd6e569554ac0883bf4fdf101d8bbe5"><div class="ttname"><a href="_m_l_c_l___circular_double_linked_list_8c.html#a8cd6e569554ac0883bf4fdf101d8bbe5">new_circular_double_linked_list</a></div><div class="ttdeci">DoubleLinkedCell * new_circular_double_linked_list(const void *data, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The circular double linked list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_CircularDoubleLinkedList.c:41</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+Type_manifest : How do I make my own</h2>
+<h3><a class="anchor" id="autotoc_md6"></a>
+What's that</h3>
 <p>The TypeDescriptor is an interface required to manipulate the data across all the lib's structures.</p>
 <p>It require (for now), few things:</p><ul>
 <li>the size of the the type you want to use</li>
@@ -161,7 +175,7 @@ What's that</h2>
 <li>a function to free the data</li>
 </ul>
 <p>The TypeDescriptor gets those trough a type_manifest which handle specific functions of the type to be manipulated.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Writing your own TypeDescriptor</h2>
 <p>Let's look at the char_manifest for example:</p>
 <div class="fragment"><div class="line"><span class="comment">/* </span></div>

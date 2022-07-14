@@ -866,10 +866,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = doxygen-awesome/docs/extensions.md \
-                         doxygen-awesome/docs/customization.md \
-                         doxygen-awesome/docs/tricks.md \
-                         doxygen-awesome/docs/examples.md \
+INPUT                  = doxygen-awesome/docs/examples.md \
                          src \
                          include \
                          .MLCL.h \

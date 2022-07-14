@@ -9,6 +9,7 @@
 int run_all_linked_list_tests(){
     printf("▒▓ Running all LinkedList tests\n");
     MLCL_TEST(test_new_linked_list)
+    MLCL_TEST(test_linked_list_add)
     MLCL_TEST(test_linked_list_prepend)
     MLCL_TEST(test_linked_list_append)
     MLCL_TEST(test_linked_list_search)
@@ -29,6 +30,35 @@ int test_new_linked_list(){
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     if((*(int *) ll->data) != 5)
         MLCL_ERR(2, MLCL_ERR_NEQ)
+    ll->d->free(&ll);
+    return 1;
+}
+
+int test_linked_list_add(){
+    LinkedList ll;
+    int x;
+    printf("├ test_new_linked_add:");
+    x = 5;
+    ll = new_linked_list(&x, int_manifest);
+    x = 6;
+    ll->d->add(&ll, &x);
+    x = 2;
+    ll->d->add(&ll, &x);
+    x = 3;
+    ll->d->add(&ll, &x);
+
+    x = 2;
+    if(ll->d->type_descriptor->cmp(&x, ll->data) != 0)
+        MLCL_ERR(1, MLCL_ERR_TRUE)
+    x = 3;
+    if(ll->d->type_descriptor->cmp(&x, ll->next->data) != 0)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    x = 5;
+    if(ll->d->type_descriptor->cmp(&x, ll->next->next->data) != 0)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    x = 6;
+    if(ll->d->type_descriptor->cmp(&x, ll->next->next->next->data) != 0)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
     ll->d->free(&ll);
     return 1;
 }
@@ -62,7 +92,7 @@ int test_linked_list_append(){
     x = 5.2f;
     ll = new_linked_list(&x, float_manifest);
     if(!ll)
-    MLCL_ERR(1, MLCL_ERR_ALLOC)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
     x = 7.9f;
     ll->d->append(&ll, &x);
     if(!ll)

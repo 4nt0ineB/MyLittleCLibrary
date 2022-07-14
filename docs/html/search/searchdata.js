@@ -2,12 +2,12 @@ var indexSectionsWithContent =
 {
   0: "_acdefilmnprst",
   1: "s",
-  2: "cemrt",
+  2: "emrt",
   3: "_cdfilmnrt",
   4: "acdefilnprst",
   5: "cdlt",
   6: "m",
-  7: "cemt"
+  7: "em"
 };
 
 var indexSectionNames =

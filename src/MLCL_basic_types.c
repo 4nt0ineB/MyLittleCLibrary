@@ -28,7 +28,7 @@ int char_cmp(const void * x, const void * y){
 }
 
 void char_print(const void * x){
-    printf("%c",  *(char *) x);
+    char_fprint(stdout, x);
 }
 
 void char_fprint(FILE * file, const void * x){
@@ -53,11 +53,11 @@ void int_manifest(TypeDescriptor * type_descriptor){
 }
 
 int int_cmp(const void * x, const void * y){
-    return (*(int *) x == *(int *) y) ? 0 : (*(int *) x < *(int *) y) ? -1 :  1;
+    return ((*(int *) x) == (*(int *) y)) ? 0 : ((*(int *) x) < (*(int *) y)) ? -1 : 1;
 }
 
 void int_print(const void * x){
-    printf("%d",  *(int *) x);
+    int_fprint(stdout, x);
 }
 
 void int_fprint(FILE * file, const void * x){
@@ -87,7 +87,7 @@ int float_cmp(const void * x, const void * y){
 }
 
 void float_print(const void * x){
-    printf("%.2f",  *(float *) x);
+    float_fprint(stdout, x);
 }
 
 void float_fprint(FILE * file, const void * x){
