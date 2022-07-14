@@ -30,9 +30,9 @@ var NAVTREE =
     [ "Examples", "md_doxygen_awesome_docs_examples.html", [
       [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md1", null ],
       [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md2", null ],
-      [ "Extended Examples <span style=\"color: grey;\"> (Not yet implemented) </span>", "md_doxygen_awesome_docs_examples.html#autotoc_md3", [
+      [ "Extended Examples", "md_doxygen_awesome_docs_examples.html#autotoc_md3", [
         [ "DoubleLinkedList of CircularDoubleLinkedLists", "md_doxygen_awesome_docs_examples.html#autotoc_md4", null ],
-        [ "Type_manifest : How do I make my own", "md_doxygen_awesome_docs_examples.html#autotoc_md5", [
+        [ "Type_manifest", "md_doxygen_awesome_docs_examples.html#autotoc_md5", [
           [ "What's that", "md_doxygen_awesome_docs_examples.html#autotoc_md6", null ]
         ] ],
         [ "Writing your own TypeDescriptor", "md_doxygen_awesome_docs_examples.html#autotoc_md7", null ]
