@@ -131,6 +131,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6966a9ec100d25f93964fb9610f045d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acebcea778a042e083a588a9c24eea03d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#acebcea778a042e083a588a9c24eea03d">length</a></td></tr>
 <tr class="separator:acebcea778a042e083a588a9c24eea03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76576089c02587b8307b82bbf5e3de0e"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#a76576089c02587b8307b82bbf5e3de0e">add_</a> )(<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="separator:a76576089c02587b8307b82bbf5e3de0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c846b078f8bfd670014d03459c1dc34"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#a2c846b078f8bfd670014d03459c1dc34">ordered_add</a> )(<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td></tr>
+<tr class="separator:a2c846b078f8bfd670014d03459c1dc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b1fd96e1b5e16571cecf2d614787e9"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#a07b1fd96e1b5e16571cecf2d614787e9">reverse_ordered_add</a> )(<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td></tr>
+<tr class="separator:a07b1fd96e1b5e16571cecf2d614787e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a814b812524a5ae9f1b3ab2a422237739"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#a814b812524a5ae9f1b3ab2a422237739">prepend</a> )(<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td></tr>
 <tr class="separator:a814b812524a5ae9f1b3ab2a422237739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5820a2c99114478811a92c45ecfce21"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__double__linked__list__descriptor.html#af5820a2c99114478811a92c45ecfce21">append</a> )(<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td></tr>
@@ -167,6 +173,20 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Descriptor of the linked list The list - the cells - refers to a linked list descriptor, gathering implemented functions of the DoubleLinkedList type, including a TypeDescriptor allowing manipulation of the data, and the list length. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a76576089c02587b8307b82bbf5e3de0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76576089c02587b8307b82bbf5e3de0e">&#9670;&nbsp;</a></span>add_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_double_linked_list_descriptor::add_) (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *, int(*cmp)(const void *, const void *))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af5820a2c99114478811a92c45ecfce21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5820a2c99114478811a92c45ecfce21">&#9670;&nbsp;</a></span>append</h2>
 
@@ -307,6 +327,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2c846b078f8bfd670014d03459c1dc34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c846b078f8bfd670014d03459c1dc34">&#9670;&nbsp;</a></span>ordered_add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_double_linked_list_descriptor::ordered_add) (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac5bfb1e243157c3ddc2a97d6d204045d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5bfb1e243157c3ddc2a97d6d204045d">&#9670;&nbsp;</a></span>pop</h2>
 
@@ -357,6 +391,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int(* s_double_linked_list_descriptor::remove) (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07b1fd96e1b5e16571cecf2d614787e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b1fd96e1b5e16571cecf2d614787e9">&#9670;&nbsp;</a></span>reverse_ordered_add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_double_linked_list_descriptor::reverse_ordered_add) (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *, const void *)</td>
         </tr>
       </table>
 </div><div class="memdoc">

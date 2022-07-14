@@ -33,7 +33,8 @@ typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
     int (*add_) (LinkedList *, const void *, int (*cmp) (const void *, const void *));
-    int (*add) (LinkedList *, const void *);
+    int (*ordered_add) (LinkedList *, const void *);
+    int (*reverse_ordered_add) (LinkedList *, const void *);
     int (*prepend) (LinkedList *, const void *);
     int (*append) (LinkedList *, const void *);
     int (*insert) (LinkedList *, const void *);
@@ -78,18 +79,28 @@ LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescr
  * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
  * @param ll
  * @param data
- * @param cmp
+ * @param cmp comparison function returning 1 or 0, to check if the have to be inserted
  * @return
  */
 int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *));
 
 /**
- * @brief Shorthand of linked_list_add_(), passing the cmp function of the TypeDescriptor
+ * @brief Add item considering the list is sorted with an ascending order
+ * Shorthand of linked_list_add_(), passing the lt function of the TypeDescriptor.
  * @param ll
  * @param data
  * @return
  */
-int linked_list_add(LinkedList * ll, const void * data);
+int linked_list_ordered_add(LinkedList * ll, const void * data);
+
+/**
+ * @brief Add item considering the list is sorted with a descending order
+ * Shorthand of linked_list_add_(), passing the ge function of the TypeDescriptor.
+ * @param ll
+ * @param data
+ * @return
+ */
+int linked_list_reverse_ordered_add(LinkedList * ll, const void * data);
 
 /**
  * @brief Insert data to linked list head.

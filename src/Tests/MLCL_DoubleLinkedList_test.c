@@ -18,6 +18,7 @@
 int run_all_double_linked_list_tests(){
     printf("▒▓ Running all DoubleLinkedList tests\n");
     MLCL_TEST(test_new_double_linked_list)
+    MLCL_TEST(test_double_linked_list_ordered_add)
     MLCL_TEST(test_double_linked_list_prepend)
     MLCL_TEST(test_double_linked_list_append)
     MLCL_TEST(test_double_linked_list_search)
@@ -39,6 +40,35 @@ int test_new_double_linked_list(){
     if((*(int *) ll->data) != 5)
         MLCL_ERR(2, MLCL_ERR_NEQ)
     ll->d->free(&ll);
+    return 1;
+}
+
+int test_double_linked_list_ordered_add(){
+    DoubleLinkedList dll;
+    int x;
+    printf("├ test_new_linked_add:");
+    x = 5;
+    dll = new_double_linked_list(&x, int_manifest);
+    x = 6;
+    dll->d->ordered_add(&dll, &x);
+    x = 2;
+    dll->d->ordered_add(&dll, &x);
+    x = 3;
+    dll->d->ordered_add(&dll, &x);
+
+    x = 2;
+    if(dll->d->type_descriptor->cmp(&x, dll->data) != 0)
+        MLCL_ERR(1, MLCL_ERR_TRUE)
+    x = 3;
+    if(dll->d->type_descriptor->cmp(&x, dll->next->data) != 0)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    x = 5;
+    if(dll->d->type_descriptor->cmp(&x, dll->next->next->data) != 0)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    x = 6;
+    if(dll->d->type_descriptor->cmp(&x, dll->next->next->next->data) != 0)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+    dll->d->free(&dll);
     return 1;
 }
 

@@ -45,6 +45,15 @@ CircularDoubleLinkedListDescriptor * circular_double_linked_list_descriptor();
 DoubleLinkedCell * new_circular_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
+ * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
+ * @param cdll
+ * @param data
+ * @param cmp
+ * @return
+ */
+int circular_double_linked_list_add_(CircularDoubleLinkedList * cdll, const void * data, int (*cmp) (const void *, const void *));
+
+/**
  * @brief Insert data to linked list head.
  * @param l
  * @param data

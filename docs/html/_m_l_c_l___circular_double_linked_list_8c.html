@@ -137,6 +137,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cd6e569554ac0883bf4fdf101d8bbe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#a738083643b75c96c228af3d14b09090b">DoubleLinkedCell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_double_linked_list_8c.html#a8cd6e569554ac0883bf4fdf101d8bbe5">new_circular_double_linked_list</a> (const void *data, void(*type_manifest)(<a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a> *))</td></tr>
 <tr class="memdesc:a8cd6e569554ac0883bf4fdf101d8bbe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The circular double linked list constructor.  <a href="_m_l_c_l___circular_double_linked_list_8c.html#a8cd6e569554ac0883bf4fdf101d8bbe5">More...</a><br /></td></tr>
 <tr class="separator:a8cd6e569554ac0883bf4fdf101d8bbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7257dca5ed37a13fff4ac364d176e48"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_double_linked_list_8c.html#ae7257dca5ed37a13fff4ac364d176e48">circular_double_linked_list_add_</a> (<a class="el" href="_m_l_c_l___circular_double_linked_list_8h.html#a28759e8c0cb666bedefd19f4a02e9a18">CircularDoubleLinkedList</a> *cll, const void *data, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="memdesc:ae7257dca5ed37a13fff4ac364d176e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add data to the list depending on the given comparison function. To have like an ordered list.  <a href="_m_l_c_l___circular_double_linked_list_8c.html#ae7257dca5ed37a13fff4ac364d176e48">More...</a><br /></td></tr>
+<tr class="separator:ae7257dca5ed37a13fff4ac364d176e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f529b3adf913ef790cdc5f5fe8369d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_double_linked_list_8c.html#a58f529b3adf913ef790cdc5f5fe8369d">circular_double_linked_list_prepend</a> (<a class="el" href="_m_l_c_l___circular_double_linked_list_8h.html#a28759e8c0cb666bedefd19f4a02e9a18">CircularDoubleLinkedList</a> *cdll, const void *data)</td></tr>
 <tr class="memdesc:a58f529b3adf913ef790cdc5f5fe8369d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert data to linked list head.  <a href="_m_l_c_l___circular_double_linked_list_8c.html#a58f529b3adf913ef790cdc5f5fe8369d">More...</a><br /></td></tr>
 <tr class="separator:a58f529b3adf913ef790cdc5f5fe8369d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,6 +203,51 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7257dca5ed37a13fff4ac364d176e48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7257dca5ed37a13fff4ac364d176e48">&#9670;&nbsp;</a></span>circular_double_linked_list_add_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int circular_double_linked_list_add_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___circular_double_linked_list_8h.html#a28759e8c0cb666bedefd19f4a02e9a18">CircularDoubleLinkedList</a> *&#160;</td>
+          <td class="paramname"><em>cdll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
+          <td class="paramname"><em>cmp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add data to the list depending on the given comparison function. To have like an ordered list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cdll</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">cmp</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

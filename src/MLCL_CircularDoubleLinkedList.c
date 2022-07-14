@@ -25,6 +25,7 @@ CircularDoubleLinkedListDescriptor * circular_double_linked_list_descriptor(){
     DoubleLinkedListDescriptor * dlld;
     if((dlld = double_linked_list_descriptor())){
         /* Override affected function */
+        dlld->add_ = circular_double_linked_list_add_;
         dlld->prepend = circular_double_linked_list_prepend;
         dlld->append = circular_double_linked_list_append;
         dlld->free = circular_double_linked_list_free;
@@ -44,6 +45,35 @@ DoubleLinkedCell * new_circular_double_linked_list(const void * data, void (*typ
     if((cdlld = circular_double_linked_list_descriptor()))
         cdlld->type_descriptor = new_type_descriptor(type_manifest);
     return circular_double_linked_list_builder(data, cdlld);
+}
+
+int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
+    DoubleLinkedCell * new_cell;
+    DoubleLinkedCell * tmp;
+    if(!*cll) return 0;
+    /* Prepend */
+    if(cmp(data, (*cll)->data))
+        return (*cll)->d->prepend(cll, data);
+    /* Insert */
+    if(!(new_cell = double_linked_list_builder(data, (*cll)->d)))
+        return 0;
+    tmp = (*cll)->next;
+    while(tmp != *cll){
+        if(cmp(data, (*cll)->data)){
+            new_cell->next = tmp->next;
+            tmp->next->prev = new_cell;
+            tmp->next = new_cell;
+            (*cll)->d->length++;
+            return 1;
+        }
+        tmp = tmp->next;
+    }
+    /* after "last" cell */
+    new_cell->next = tmp->next;
+    tmp->next->prev = new_cell;
+    tmp->next = new_cell;
+    (*cll)->d->length++;
+    return 1;
 }
 
 int circular_double_linked_list_prepend(CircularDoubleLinkedList * cdll, const void * data){
@@ -104,8 +134,6 @@ void * circular_double_linked_list_shift(CircularDoubleLinkedList * cdll){
     *cdll = tmp->next;
     (*cdll)->prev = tmp->prev;
     tmp->prev->next = *cdll;
-
-
     tmp->next = tmp->prev = NULL;
     tmp->d->length--;
     if(tmp->d->length == 0){

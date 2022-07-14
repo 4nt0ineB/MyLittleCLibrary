@@ -1,5 +1,6 @@
 var structs__double__linked__list__descriptor =
 [
+    [ "add_", "structs__double__linked__list__descriptor.html#a76576089c02587b8307b82bbf5e3de0e", null ],
     [ "append", "structs__double__linked__list__descriptor.html#af5820a2c99114478811a92c45ecfce21", null ],
     [ "cell_fprint", "structs__double__linked__list__descriptor.html#a8ec17c1104a889b246ab41b1ad27e480", null ],
     [ "cell_free", "structs__double__linked__list__descriptor.html#a84f5988446196dc8ba868b2528839c52", null ],
@@ -10,10 +11,12 @@ var structs__double__linked__list__descriptor =
     [ "free", "structs__double__linked__list__descriptor.html#aae58e105aa319966f357afe32f53313d", null ],
     [ "insert", "structs__double__linked__list__descriptor.html#a3a1797df2dde10865bcbfa92ffe20f81", null ],
     [ "length", "structs__double__linked__list__descriptor.html#acebcea778a042e083a588a9c24eea03d", null ],
+    [ "ordered_add", "structs__double__linked__list__descriptor.html#a2c846b078f8bfd670014d03459c1dc34", null ],
     [ "pop", "structs__double__linked__list__descriptor.html#ac5bfb1e243157c3ddc2a97d6d204045d", null ],
     [ "prepend", "structs__double__linked__list__descriptor.html#a814b812524a5ae9f1b3ab2a422237739", null ],
     [ "print", "structs__double__linked__list__descriptor.html#a481e51f8aaba9f75474f85689366461a", null ],
     [ "remove", "structs__double__linked__list__descriptor.html#add1c49393176a73c80184e5a78257616", null ],
+    [ "reverse_ordered_add", "structs__double__linked__list__descriptor.html#a07b1fd96e1b5e16571cecf2d614787e9", null ],
     [ "search", "structs__double__linked__list__descriptor.html#acb3a03f756e564ed8b4b771feb9ec155", null ],
     [ "shift", "structs__double__linked__list__descriptor.html#aaacba3efa52f30b822b31cad62c27883", null ],
     [ "to_dot", "structs__double__linked__list__descriptor.html#a5f54dd4a2a47db4200073182f7c993f9", null ],

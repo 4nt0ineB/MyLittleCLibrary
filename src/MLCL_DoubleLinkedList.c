@@ -17,9 +17,9 @@ DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedLis
     cell = (DoubleLinkedCell *) calloc(1, sizeof(DoubleLinkedCell));
     assert(descriptor);
     if(!cell) return NULL;
-    cell->data = calloc(1, descriptor->type_descriptor->data_size);
-    if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
-    memcpy(cell->data, data, descriptor->type_descriptor->data_size);
+    if(!(cell->data = descriptor->type_descriptor->copy(data))
+       && descriptor->type_descriptor->data_size)
+        return NULL;
     cell->d = descriptor;
     cell->next = cell->prev = NULL;
     return cell;
@@ -29,6 +29,9 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     DoubleLinkedListDescriptor * ll_descriptor;
     ll_descriptor = (DoubleLinkedListDescriptor *) malloc(sizeof(DoubleLinkedListDescriptor));
     if(!ll_descriptor) return NULL;
+    ll_descriptor->add_ = double_linked_list_add_;
+    ll_descriptor->ordered_add = double_linked_list_ordered_add;
+    ll_descriptor->reverse_ordered_add = double_linked_list_reverse_ordered_add;
     ll_descriptor->append = double_linked_list_append;
     ll_descriptor->prepend = double_linked_list_prepend;
     ll_descriptor->append = double_linked_list_append;
@@ -62,6 +65,39 @@ DoubleLinkedCell * new_double_linked_list(const void * data, void (*type_manifes
     /* Define list type */
     lld->type_descriptor = new_type_descriptor(type_manifest);
     return double_linked_list_builder(data, lld);
+}
+
+int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp) (const void *, const void *)){
+    DoubleLinkedCell * new_cell;
+    /* End of list OR Inside the list but inferior to the current cell */
+    if(!*dll) return 0;
+    if(cmp(data, (*dll)->data)){
+        if(!(new_cell = double_linked_list_builder(data, (*dll)->d)))
+            return 0;
+        new_cell->next = *dll;
+        (*dll)->prev = new_cell;
+        (*dll) = new_cell;
+        (*dll)->d->length++;
+        return 1;
+    }else if(!(*dll)->next){
+        if(!(new_cell = double_linked_list_builder(data, (*dll)->d)))
+            return 0;
+        (*dll)->next = new_cell;
+        new_cell->prev = *dll;
+        (*dll)->d->length++;
+        return 1;
+    }
+    return (*dll)->d->add_(&(*dll)->next, data, cmp);
+}
+
+int double_linked_list_ordered_add(DoubleLinkedList * dll, const void * data){
+    if(!*dll) return 0;
+    return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->lt);
+}
+
+int double_linked_list_reverse_ordered_add(DoubleLinkedList * dll, const void * data){
+    if(!*dll) return 0;
+    return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->ge);
 }
 
 int double_linked_list_prepend(DoubleLinkedList * ll, const void * data){

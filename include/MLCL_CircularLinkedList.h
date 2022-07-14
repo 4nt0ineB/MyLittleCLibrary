@@ -46,6 +46,15 @@ CircularLinkedListDescriptor * circular_linked_list_descriptor();
 CircularLinkedList new_circular_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
 
 /**
+ * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
+ * @param cll
+ * @param data
+ * @param cmp comparison function returning 1 or 0, to check if the have to be inserted
+ * @return
+ */
+int circular_linked_list_add_(CircularLinkedList * cll, const void * data, int (*cmp) (const void *, const void *));
+
+/**
  * @brief Insert data to circular linked to list's head.
  * @param cll
  * @param data

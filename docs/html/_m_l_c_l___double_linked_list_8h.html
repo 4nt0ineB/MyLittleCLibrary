@@ -168,6 +168,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a3286cfa2a289c321b1e22f6ece891ba7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#a738083643b75c96c228af3d14b09090b">DoubleLinkedCell</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#a3286cfa2a289c321b1e22f6ece891ba7">new_double_linked_list</a> (const void *data, void(*type_manifest)(<a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a> *))</td></tr>
 <tr class="memdesc:a3286cfa2a289c321b1e22f6ece891ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linked list constructor.  <a href="_m_l_c_l___double_linked_list_8h.html#a3286cfa2a289c321b1e22f6ece891ba7">More...</a><br /></td></tr>
 <tr class="separator:a3286cfa2a289c321b1e22f6ece891ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e3e8642051415b67a3e99f0e06eea0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0">double_linked_list_add_</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *dll, const void *data, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="memdesc:ae6e3e8642051415b67a3e99f0e06eea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add data to the list depending on the given comparison function. To have like an ordered list.  <a href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0">More...</a><br /></td></tr>
+<tr class="separator:ae6e3e8642051415b67a3e99f0e06eea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1231c1bd91ce396ffefa041801ff560d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#a1231c1bd91ce396ffefa041801ff560d">double_linked_list_ordered_add</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *dll, const void *data)</td></tr>
+<tr class="memdesc:a1231c1bd91ce396ffefa041801ff560d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add item considering the list is sorted with an ascending order Shorthand of <a class="el" href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0" title="Add data to the list depending on the given comparison function. To have like an ordered list.">double_linked_list_add_()</a>, passing the lt function of the TypeDescriptor.  <a href="_m_l_c_l___double_linked_list_8h.html#a1231c1bd91ce396ffefa041801ff560d">More...</a><br /></td></tr>
+<tr class="separator:a1231c1bd91ce396ffefa041801ff560d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34628df1bdd7d7d87283ccd1e953f2fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#a34628df1bdd7d7d87283ccd1e953f2fe">double_linked_list_reverse_ordered_add</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *ll, const void *data)</td></tr>
+<tr class="memdesc:a34628df1bdd7d7d87283ccd1e953f2fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add item considering the list is sorted with a descending order Shorthand of <a class="el" href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0" title="Add data to the list depending on the given comparison function. To have like an ordered list.">double_linked_list_add_()</a>, passing the ge function of the TypeDescriptor.  <a href="_m_l_c_l___double_linked_list_8h.html#a34628df1bdd7d7d87283ccd1e953f2fe">More...</a><br /></td></tr>
+<tr class="separator:a34628df1bdd7d7d87283ccd1e953f2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1c0e262bd65132d925e5ce0aa549f6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#aa1c0e262bd65132d925e5ce0aa549f6e">double_linked_list_prepend</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *dll, const void *data)</td></tr>
 <tr class="memdesc:aa1c0e262bd65132d925e5ce0aa549f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert data to linked list head.  <a href="_m_l_c_l___double_linked_list_8h.html#aa1c0e262bd65132d925e5ce0aa549f6e">More...</a><br /></td></tr>
 <tr class="separator:aa1c0e262bd65132d925e5ce0aa549f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,6 +273,51 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ae6e3e8642051415b67a3e99f0e06eea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e3e8642051415b67a3e99f0e06eea0">&#9670;&nbsp;</a></span>double_linked_list_add_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int double_linked_list_add_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *&#160;</td>
+          <td class="paramname"><em>dll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
+          <td class="paramname"><em>cmp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add data to the list depending on the given comparison function. To have like an ordered list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dll</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">cmp</td><td>comparison function returning 1 or 0, to check if the have to be inserted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a31eec7c327c5886afb0f8fbb8ff84d85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31eec7c327c5886afb0f8fbb8ff84d85">&#9670;&nbsp;</a></span>double_linked_list_append()</h2>
 
@@ -631,6 +685,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1231c1bd91ce396ffefa041801ff560d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1231c1bd91ce396ffefa041801ff560d">&#9670;&nbsp;</a></span>double_linked_list_ordered_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int double_linked_list_ordered_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *&#160;</td>
+          <td class="paramname"><em>dll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add item considering the list is sorted with an ascending order Shorthand of <a class="el" href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0" title="Add data to the list depending on the given comparison function. To have like an ordered list.">double_linked_list_add_()</a>, passing the lt function of the TypeDescriptor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dll</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a9dfcbf390a8622533b2faaa145413dbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9dfcbf390a8622533b2faaa145413dbf">&#9670;&nbsp;</a></span>double_linked_list_pop()</h2>
 
@@ -753,6 +845,44 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">l</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a34628df1bdd7d7d87283ccd1e953f2fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34628df1bdd7d7d87283ccd1e953f2fe">&#9670;&nbsp;</a></span>double_linked_list_reverse_ordered_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int double_linked_list_reverse_ordered_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *&#160;</td>
+          <td class="paramname"><em>ll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add item considering the list is sorted with a descending order Shorthand of <a class="el" href="_m_l_c_l___double_linked_list_8h.html#ae6e3e8642051415b67a3e99f0e06eea0" title="Add data to the list depending on the given comparison function. To have like an ordered list.">double_linked_list_add_()</a>, passing the ge function of the TypeDescriptor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ll</td><td></td></tr>
     <tr><td class="paramname">data</td><td></td></tr>
   </table>
   </dd>

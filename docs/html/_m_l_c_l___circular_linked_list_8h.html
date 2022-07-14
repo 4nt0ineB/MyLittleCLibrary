@@ -154,6 +154,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a43e3edc4de847577b4a2d5f0e63543d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67">CircularLinkedList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_linked_list_8h.html#a43e3edc4de847577b4a2d5f0e63543d2">new_circular_linked_list</a> (const void *data, void(*type_manifest)(<a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a> *))</td></tr>
 <tr class="memdesc:a43e3edc4de847577b4a2d5f0e63543d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The circular linked list constructor.  <a href="_m_l_c_l___circular_linked_list_8h.html#a43e3edc4de847577b4a2d5f0e63543d2">More...</a><br /></td></tr>
 <tr class="separator:a43e3edc4de847577b4a2d5f0e63543d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6ca2b6af4b43cd776486b3e548a128"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_linked_list_8h.html#a1e6ca2b6af4b43cd776486b3e548a128">circular_linked_list_add_</a> (<a class="el" href="_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67">CircularLinkedList</a> *cll, const void *data, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="memdesc:a1e6ca2b6af4b43cd776486b3e548a128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add data to the list depending on the given comparison function. To have like an ordered list.  <a href="_m_l_c_l___circular_linked_list_8h.html#a1e6ca2b6af4b43cd776486b3e548a128">More...</a><br /></td></tr>
+<tr class="separator:a1e6ca2b6af4b43cd776486b3e548a128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f642b1da935a66533dd2c8696564ef9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___circular_linked_list_8h.html#a1f642b1da935a66533dd2c8696564ef9">circular_linked_list_prepend</a> (<a class="el" href="_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67">CircularLinkedList</a> *cll, const void *data)</td></tr>
 <tr class="memdesc:a1f642b1da935a66533dd2c8696564ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert data to circular linked to list's head.  <a href="_m_l_c_l___circular_linked_list_8h.html#a1f642b1da935a66533dd2c8696564ef9">More...</a><br /></td></tr>
 <tr class="separator:a1f642b1da935a66533dd2c8696564ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +218,51 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a1e6ca2b6af4b43cd776486b3e548a128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e6ca2b6af4b43cd776486b3e548a128">&#9670;&nbsp;</a></span>circular_linked_list_add_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int circular_linked_list_add_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67">CircularLinkedList</a> *&#160;</td>
+          <td class="paramname"><em>cll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
+          <td class="paramname"><em>cmp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add data to the list depending on the given comparison function. To have like an ordered list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cll</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">cmp</td><td>comparison function returning 1 or 0, to check if the have to be inserted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="abfda2bdcb31a4a8dcb1c52c104ca9096"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abfda2bdcb31a4a8dcb1c52c104ca9096">&#9670;&nbsp;</a></span>circular_linked_list_append()</h2>
 

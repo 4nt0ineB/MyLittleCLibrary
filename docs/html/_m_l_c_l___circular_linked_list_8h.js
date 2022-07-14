@@ -2,6 +2,7 @@ var _m_l_c_l___circular_linked_list_8h =
 [
     [ "CircularLinkedList", "_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67", null ],
     [ "CircularLinkedListDescriptor", "_m_l_c_l___circular_linked_list_8h.html#a0962f779826d891a834a26642035d482", null ],
+    [ "circular_linked_list_add_", "_m_l_c_l___circular_linked_list_8h.html#a1e6ca2b6af4b43cd776486b3e548a128", null ],
     [ "circular_linked_list_append", "_m_l_c_l___circular_linked_list_8h.html#abfda2bdcb31a4a8dcb1c52c104ca9096", null ],
     [ "circular_linked_list_builder", "_m_l_c_l___circular_linked_list_8h.html#a13a66795963514149e8d60355efc78f1", null ],
     [ "circular_linked_list_descriptor", "_m_l_c_l___circular_linked_list_8h.html#a33be431e853040e5ad9ee61612466231", null ],

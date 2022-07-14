@@ -9,7 +9,7 @@
 int run_all_linked_list_tests(){
     printf("▒▓ Running all LinkedList tests\n");
     MLCL_TEST(test_new_linked_list)
-    MLCL_TEST(test_linked_list_add)
+    MLCL_TEST(test_linked_list_ordered_add)
     MLCL_TEST(test_linked_list_prepend)
     MLCL_TEST(test_linked_list_append)
     MLCL_TEST(test_linked_list_search)
@@ -34,19 +34,18 @@ int test_new_linked_list(){
     return 1;
 }
 
-int test_linked_list_add(){
+int test_linked_list_ordered_add(){
     LinkedList ll;
     int x;
-    printf("├ test_new_linked_add:");
+    printf("├ test_linked_list_ordered_add:");
     x = 5;
     ll = new_linked_list(&x, int_manifest);
     x = 6;
-    ll->d->add(&ll, &x);
+    ll->d->ordered_add(&ll, &x);
     x = 2;
-    ll->d->add(&ll, &x);
+    ll->d->ordered_add(&ll, &x);
     x = 3;
-    ll->d->add(&ll, &x);
-
+    ll->d->ordered_add(&ll, &x);
     x = 2;
     if(ll->d->type_descriptor->cmp(&x, ll->data) != 0)
         MLCL_ERR(1, MLCL_ERR_TRUE)

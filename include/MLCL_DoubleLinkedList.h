@@ -31,6 +31,9 @@ typedef struct s_double_linked_cell {
 typedef struct s_double_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
+    int (*add_) (DoubleLinkedList *, const void *, int (*cmp) (const void *, const void *));
+    int (*ordered_add) (DoubleLinkedList *, const void *);
+    int (*reverse_ordered_add) (DoubleLinkedList *, const void *);
     int (*prepend) (DoubleLinkedList *, const void *);
     int (*append) (DoubleLinkedList *, const void *);
     int (*insert) (DoubleLinkedList *, const void *);
@@ -71,6 +74,33 @@ DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedLis
  * @return
  */
 DoubleLinkedCell * new_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *));
+
+/**
+ * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
+ * @param dll
+ * @param data
+ * @param cmp comparison function returning 1 or 0, to check if the have to be inserted
+ * @return
+ */
+int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp) (const void *, const void *));
+
+/**
+ * @brief Add item considering the list is sorted with an ascending order
+ * Shorthand of double_linked_list_add_(), passing the lt function of the TypeDescriptor.
+ * @param dll
+ * @param data
+ * @return
+ */
+int double_linked_list_ordered_add(DoubleLinkedList * dll, const void * data);
+
+/**
+ * @brief Add item considering the list is sorted with a descending order
+ * Shorthand of double_linked_list_add_(), passing the ge function of the TypeDescriptor.
+ * @param ll
+ * @param data
+ * @return
+ */
+int double_linked_list_reverse_ordered_add(DoubleLinkedList * ll, const void * data);
 
 /**
  * @brief Insert data to linked list head.

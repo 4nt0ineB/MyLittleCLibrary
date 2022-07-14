@@ -18,10 +18,16 @@
  */
 typedef struct s_type_descriptor {
     size_t data_size;
-    int (*cmp) (const void * x, const void * y);
-    void (*print) (const void * data);
-    void (*fprint) (FILE *, const void * data);
-    void (*free_data) (void ** data);
+    int (*cmp) (const void *, const void *);
+    void (*print) (const void *);
+    void (*fprint) (FILE *, const void *);
+    void * (*copy) (const void *);
+    void (*free_data) (void **);
+    int (*eq) (const void *, const void *);
+    int (*lt) (const void *, const void *);
+    int (*le) (const void *, const void *);
+    int (*gt) (const void *, const void *);
+    int (*ge) (const void *, const void *);
 } TypeDescriptor;
 
 /**

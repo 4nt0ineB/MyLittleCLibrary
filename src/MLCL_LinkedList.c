@@ -17,9 +17,9 @@ LinkedCell * linked_list_builder(const void * data, LinkedListDescriptor * descr
     cell = (LinkedCell *) calloc(1, sizeof(LinkedCell));
     assert(descriptor);
     if(!cell) return NULL;
-    cell->data = calloc(1, descriptor->type_descriptor->data_size);
-    if(!cell->data && descriptor->type_descriptor->data_size) return NULL;
-    memcpy(cell->data, data, descriptor->type_descriptor->data_size);
+    if(!(cell->data = descriptor->type_descriptor->copy(data))
+        && descriptor->type_descriptor->data_size)
+        return NULL;
     cell->d = descriptor;
     cell->next = NULL;
     return cell;
@@ -30,7 +30,8 @@ LinkedListDescriptor * linked_list_descriptor(){
     ll_descriptor = (LinkedListDescriptor *) malloc(sizeof(LinkedListDescriptor));
     if(!ll_descriptor) return NULL;
     ll_descriptor->add_ = linked_list_add_;
-    ll_descriptor->add = linked_list_add;
+    ll_descriptor->ordered_add = linked_list_ordered_add;
+    ll_descriptor->reverse_ordered_add = linked_list_reverse_ordered_add;
     ll_descriptor->append = linked_list_append;
     ll_descriptor->prepend = linked_list_prepend;
     ll_descriptor->append = linked_list_append;
@@ -65,9 +66,9 @@ LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescr
 
 int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *)){
     LinkedCell * new_cell;
-    /* End of list OR Inside the list but inferior to the current cell*/
+    /* End of list OR Inside the list but inferior to the current cell */
     if(!*ll) return 0;
-    if(cmp(data, (*ll)->data) < 0){
+    if(cmp(data, (*ll)->data)){
         if(!(new_cell = linked_list_builder(data, (*ll)->d)))
             return 0;
         new_cell->next = *ll;
@@ -84,10 +85,14 @@ int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void 
     return (*ll)->d->add_(&(*ll)->next, data, cmp);
 }
 
-int linked_list_add(LinkedList * ll, const void * data){
+int linked_list_ordered_add(LinkedList * ll, const void * data){
     if(!*ll) return 0;
-    (*ll)->d->add_(ll, data, (*ll)->d->type_descriptor->cmp);
-    return 1;
+    return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->lt);
+}
+
+int linked_list_reverse_ordered_add(LinkedList * ll, const void * data){
+    if(!*ll) return 0;
+    return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->ge);
 }
 
 int linked_list_prepend(LinkedList * ll, const void * data){
@@ -121,7 +126,6 @@ int linked_list_insert(LinkedList * ll, const void * data){
     (*ll)->d->length++;
     return 1;
 }
-
 
 LinkedList linked_list_search(LinkedList ll, const void * data){
     if(!ll) return 0;

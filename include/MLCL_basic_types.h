@@ -22,28 +22,41 @@
 void char_manifest(TypeDescriptor * type_descriptor);
 
 /**
- *
+ * @brief
  * @param x
  * @param y
  * @return
  */
 int char_cmp(const void * x, const void * y);
 
+int char_eq(const void * x, const void * y);
+int char_lt(const void * x, const void * y);
+int char_le(const void * x, const void * y);
+int char_gt(const void * x, const void * y);
+int char_ge(const void * x, const void * y);
+
 /**
- *
+ * @brief
  * @param x
  */
 void char_print(const void * x);
 
 /**
- *
+ * @brief
  * @param x
  * @param file
  */
 void char_fprint(FILE * file, const void * x);
 
 /**
- *
+ * Copy the given data to a new address
+ * @param data data considered as a char
+ * @return pointer to a new allocated copy of the given data
+ */
+void * char_copy(const void * data);
+
+/**
+ * @brief
  * @param x
  */
 void char_free(void ** x);
@@ -58,15 +71,21 @@ void char_free(void ** x);
 void int_manifest(TypeDescriptor * type_descriptor);
 
 /**
- *
+ * @brief
  * @param x
  * @param y
  * @return
  */
 int int_cmp(const void * x, const void * y);
 
+int int_eq(const void * x, const void * y);
+int int_lt(const void * x, const void * y);
+int int_le(const void * x, const void * y);
+int int_gt(const void * x, const void * y);
+int int_ge(const void * x, const void * y);
+
 /**
- *
+ * @brief
  * @param x
  */
 void int_print(const void * x);
@@ -78,7 +97,14 @@ void int_print(const void * x);
 void int_fprint(FILE * file, const void * x);
 
 /**
- *
+ * Copy the given data to a new address
+ * @param data data considered as a int
+ * @return pointer to a new allocated copy of the given data
+ */
+void * int_copy(const void * data);
+
+/**
+ * @brief
  * @param x
  * @param file
  */
@@ -93,28 +119,41 @@ void int_free(void ** x);
 void float_manifest(TypeDescriptor * type_descriptor);
 
 /**
- *
+ * @brief
  * @param x
  * @param y
  * @return
  */
 int float_cmp(const void * x, const void * y);
 
+int float_eq(const void * x, const void * y);
+int float_lt(const void * x, const void * y);
+int float_le(const void * x, const void * y);
+int float_gt(const void * x, const void * y);
+int float_ge(const void * x, const void * y);
+
 /**
- *
+ * @brief
  * @param x
  */
 void float_print(const void * x);
 
 /**
- *
+ * @brief
  * @param x
   * @param file
  */
 void float_fprint(FILE * file, const void * x);
 
 /**
- *
+ * Copy the given data to a new address
+ * @param data data considered as a float
+ * @return pointer to a new allocated copy of the given data
+ */
+void * float_copy(const void * data);
+
+/**
+ * @brief
  * @param x
  */
 void float_free(void ** x);

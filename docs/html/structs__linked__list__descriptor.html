@@ -133,8 +133,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a25ca966cdb549f03ec2d134257741e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51f8fd5d49b93902e41f0bae9b81365c"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a51f8fd5d49b93902e41f0bae9b81365c">add_</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *, int(*cmp)(const void *, const void *))</td></tr>
 <tr class="separator:a51f8fd5d49b93902e41f0bae9b81365c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f057a51735cd6587274485e612dd54"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a86f057a51735cd6587274485e612dd54">add</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
-<tr class="separator:a86f057a51735cd6587274485e612dd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6805afdfd39f272186463fafa80de344"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a6805afdfd39f272186463fafa80de344">ordered_add</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
+<tr class="separator:a6805afdfd39f272186463fafa80de344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02423edbd98a813dce80c504c266413"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#af02423edbd98a813dce80c504c266413">reverse_ordered_add</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
+<tr class="separator:af02423edbd98a813dce80c504c266413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ceb52b5f46cad9d3e76e85c0fa2e84"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
 <tr class="separator:a53ceb52b5f46cad9d3e76e85c0fa2e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b388e256d97221aedd6894b23a6bd5"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">append</a> )(<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td></tr>
@@ -169,20 +171,6 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Descriptor of the linked list The list - the cells - refers to a linked list descriptor, gathering implemented functions of the LinkedList type, including a TypeDescriptor allowing manipulation of the data, and the list length. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a86f057a51735cd6587274485e612dd54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86f057a51735cd6587274485e612dd54">&#9670;&nbsp;</a></span>add</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int(* s_linked_list_descriptor::add) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a51f8fd5d49b93902e41f0bae9b81365c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51f8fd5d49b93902e41f0bae9b81365c">&#9670;&nbsp;</a></span>add_</h2>
 
@@ -323,6 +311,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6805afdfd39f272186463fafa80de344"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6805afdfd39f272186463fafa80de344">&#9670;&nbsp;</a></span>ordered_add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_linked_list_descriptor::ordered_add) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5d6d06f4b7ead88ae8292ee27eab7087"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d6d06f4b7ead88ae8292ee27eab7087">&#9670;&nbsp;</a></span>pop</h2>
 
@@ -373,6 +375,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int(* s_linked_list_descriptor::remove) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af02423edbd98a813dce80c504c266413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02423edbd98a813dce80c504c266413">&#9670;&nbsp;</a></span>reverse_ordered_add</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_linked_list_descriptor::reverse_ordered_add) (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *, const void *)</td>
         </tr>
       </table>
 </div><div class="memdoc">

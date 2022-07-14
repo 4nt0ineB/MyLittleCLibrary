@@ -24,6 +24,7 @@ CircularLinkedListDescriptor * circular_linked_list_descriptor(){
     CircularLinkedListDescriptor * cll_descriptor;
     if((cll_descriptor = linked_list_descriptor())){
         /* Override affected function */
+        cll_descriptor->add_ = circular_linked_list_add_;
         cll_descriptor->prepend = circular_linked_list_prepend;
         cll_descriptor->append = circular_linked_list_append;
         cll_descriptor->shift = circular_linked_list_shift;
@@ -45,6 +46,33 @@ CircularLinkedList new_circular_linked_list(const void * data, void (*type_manif
     return circular_linked_list_builder(data, cll_descriptor);
 }
 
+int circular_linked_list_add_(CircularLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
+    LinkedCell * new_cell;
+    LinkedCell * tmp;
+    if(!*cll) return 0;
+    /* Prepend */
+    if(cmp(data, (*cll)->data))
+        return (*cll)->d->prepend(cll, data);
+    /* Insert */
+    if(!(new_cell = linked_list_builder(data, (*cll)->d)))
+        return 0;
+    tmp = (*cll)->next;
+    while(tmp != *cll){
+        if(cmp(data, (*cll)->data)){
+            new_cell->next = tmp->next;
+            tmp->next = new_cell;
+            (*cll)->d->length++;
+            return 1;
+        }
+        tmp = tmp->next;
+    }
+    /* after "last" cell */
+    new_cell->next = tmp->next;
+    tmp->next = new_cell;
+    (*cll)->d->length++;
+    return 1;
+}
+
 CircularLinkedList circular_linked_list_search(CircularLinkedList ll, const void * data){
     CircularLinkedList tmp;
     if(!ll) return 0;
@@ -59,27 +87,40 @@ CircularLinkedList circular_linked_list_search(CircularLinkedList ll, const void
     return NULL;
 }
 
-int circular_linked_list_prepend(CircularLinkedList * ll, const void * data){
-    LinkedCell * cell;
+int circular_linked_list_prepend(CircularLinkedList * cll, const void * data){
+    /*LinkedCell * cell;
     void * data_tmp;
-    if(!*ll)
+    if(!*cll)
         return 0;
-    if(!(cell = linked_list_builder(data, (*ll)->d)))
+    if(!(cell = linked_list_builder(data, (*cll)->d)))
         return 0;
-    /*
+    *//*
       We have to switch the data of the cells
       because we don't want to mess with the pointer.
       As the last cell, from the point of view of the head, which we can't reach,
       still points to the head's address.
-     */
-    /* Add allocated cell next to the head */
-    cell->next = (*ll)->next;
-    (*ll)->next = cell;
-    /* Switch data */
+     *//*
+    *//* Add allocated cell next to the head *//*
+    cell->next = (*cll)->next;
+    (*cll)->next = cell;
+    *//* Switch data *//*
     data_tmp = cell->data;
-    cell->data = (*ll)->data;
-    (*ll)->data = data_tmp;
-    (*ll)->d->length++;
+    cell->data = (*cll)->data;
+    (*cll)->data = data_tmp;
+    (*cll)->d->length++;
+    return 1;*/
+    LinkedCell * cell;
+    LinkedCell * tmp;
+    if(!*cll) return 0;
+    tmp = (*cll)->next;
+    while(tmp->next != *cll)
+        tmp = tmp->next;
+    if(!(cell = linked_list_builder(data, (*cll)->d)))
+        return 0;
+    cell->next = tmp->next;
+    tmp->next = cell;
+    *cll = cell;
+    (*cll)->d->length++;
     return 1;
 }
 

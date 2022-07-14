@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['to_5fdot_394',['to_dot',['../structs__double__linked__list__descriptor.html#a5f54dd4a2a47db4200073182f7c993f9',1,'s_double_linked_list_descriptor::to_dot()'],['../structs__linked__list__descriptor.html#a458f8726953d33f29754930191827103',1,'s_linked_list_descriptor::to_dot()']]],
-  ['type_5fdescriptor_395',['type_descriptor',['../structs__double__linked__list__descriptor.html#a6966a9ec100d25f93964fb9610f045d4',1,'s_double_linked_list_descriptor::type_descriptor()'],['../structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f',1,'s_linked_list_descriptor::type_descriptor()']]]
+  ['remove_458',['remove',['../structs__double__linked__list__descriptor.html#add1c49393176a73c80184e5a78257616',1,'s_double_linked_list_descriptor::remove()'],['../structs__linked__list__descriptor.html#a2063759675a6db12c2bf6f51ab236288',1,'s_linked_list_descriptor::remove()']]],
+  ['reverse_5fordered_5fadd_459',['reverse_ordered_add',['../structs__double__linked__list__descriptor.html#a07b1fd96e1b5e16571cecf2d614787e9',1,'s_double_linked_list_descriptor::reverse_ordered_add()'],['../structs__linked__list__descriptor.html#af02423edbd98a813dce80c504c266413',1,'s_linked_list_descriptor::reverse_ordered_add()']]]
 ];

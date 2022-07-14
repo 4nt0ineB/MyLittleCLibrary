@@ -13,11 +13,40 @@
 
 int run_all_circular_double_linked_list_tests(){
     printf("▒▓ Running all CircularDoubleLinkedList tests\n");
+    MLCL_TEST(test_circular_double_linked_list_ordered_add)
     MLCL_TEST(test_circular_double_linked_list_prepend)
     MLCL_TEST(test_circular_double_linked_list_append)
     MLCL_TEST(test_circular_double_linked_list_search)
     MLCL_TEST(test_circular_double_linked_list_pop)
     MLCL_TEST(test_circular_double_linked_list_shift)
+    return 1;
+}
+
+int test_circular_double_linked_list_ordered_add(){
+    CircularDoubleLinkedList cdll;
+    int x;
+    printf("├ test_circular_linked_list_ordered_add:");
+    x = 5;
+    cdll = new_circular_double_linked_list(&x, int_manifest);
+    x = 6;
+    cdll->d->ordered_add(&cdll, &x);
+    x = 2;
+    cdll->d->ordered_add(&cdll, &x);
+    x = 3;
+    cdll->d->ordered_add(&cdll, &x);
+    x = 2;
+    if(cdll->d->type_descriptor->cmp(&x, cdll->data) != 0)
+        MLCL_ERR(1, MLCL_ERR_TRUE)
+    x = 3;
+    if(cdll->d->type_descriptor->cmp(&x, cdll->next->data) != 0)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    x = 5;
+    if(cdll->d->type_descriptor->cmp(&x, cdll->next->next->data) != 0)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    x = 6;
+    if(cdll->d->type_descriptor->cmp(&x, cdll->next->next->next->data) != 0)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+    cdll->d->free(&cdll);
     return 1;
 }
 
