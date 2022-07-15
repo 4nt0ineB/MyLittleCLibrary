@@ -1,7 +1,11 @@
 # MyLittleCLibrary
 A C library gathering things I learned in college. It's a C toolbox to implement things faster for my homework.
 
-![workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)
+[![workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![  -  Read the Docs](https://img.shields.io/badge/_-_Read_the_Docs-347deb?logo=Read+the+Docs)](https://cydaw6.github.io/MyLittleCLibrary/html/index.html)
+
+<a href="https://github.com/cydaw6/MyLittleCLibrary/actions"><img src="https://github.com/cydaw6/MyLittleCLibrary/workflows/C%2FC%2B%2B+CI/badge.svg?branch=master" alt="c-cpp"/></a>
 
 ## Motivation
 
