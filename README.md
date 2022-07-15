@@ -1,7 +1,7 @@
 # MyLittleCLibrary
 A C library gathering things I learned in college. It's a C toolbox to implement things faster for my homework.
 
-![example workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)
+![workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)
 
 ## Motivation
 
