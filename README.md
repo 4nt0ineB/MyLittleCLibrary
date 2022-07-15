@@ -5,8 +5,7 @@ A C library gathering things I learned in college. It's a C toolbox to implement
 
 ## Motivation
 
-The idea of this library is to have shorthand use of certain structures,
-but it is not meant to be a performance model. 
+The idea of this library is to have shorthand use of certain structures.
 It is a useful tool that allows me not to reinvent the wheel every time. 
 A custom structure fitted to your needs will be more efficient because unwanted 
 and heavy abstractions would be reduced, besides you'll know how it works. 
