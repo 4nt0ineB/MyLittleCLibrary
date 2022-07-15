@@ -255,6 +255,7 @@ void double_linked_list_cell_print(DoubleLinkedCell * dlc){
 }
 
 void double_linked_list_print(DoubleLinkedList dll){
+    /* @Todo  nope, use dll->d instead */
     double_linked_list_fprint(stdout, dll);
 }
 
