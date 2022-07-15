@@ -13,10 +13,11 @@ and heavy abstractions would be reduced, besides you'll know how it works.
 Word to the wise: it probably carries bugs and flaws.
 
 The way I have coded things don't allow to have different types in a list, for example. 
-You can have a list of int, a list of char, a list of whatever type you make, 
+~~You can have a list of int, a list of char, a list of whatever type you make, 
 but you can't have a list of int and float etc., like Python. I could have done that, 
-but I didn't think about it at the beginning. 
-However, I think it keeps things clean, more efficient, and the C spirit.
+but I didn't think about it at the beginning.-
+However, I think it keeps things clean, more efficient, and the C spirit.~~
+Edit: In fact, you can, by creating an abstract type for all types...
 
 The lib was made with those flags:
 ```bash
@@ -25,6 +26,3 @@ The lib was made with those flags:
 
 ## Credits
 doxygen-awesome-css - github.com/jothepro
-
-To me:
-https://franckh.developpez.com/tutoriels/outils/doxygen/
