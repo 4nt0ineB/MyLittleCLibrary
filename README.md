@@ -27,5 +27,5 @@ The lib was made with those flags:
 -ansi -pedantic -Wall -O2
 ```
 
-## Credits
+### Credits
 doxygen-awesome-css - github.com/jothepro
