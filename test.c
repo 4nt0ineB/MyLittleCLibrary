@@ -27,6 +27,9 @@ int main(){
         tmp->d->append(&tmp, &i);
     tmp->d->to_dot(tmp, "./test.dot");
     tmp->d->free(&tmp);*/
-    return !run_all_tests();
+    int x;
+    x = !run_all_tests();
+    printf("\n");
+    return x;
 
 }
