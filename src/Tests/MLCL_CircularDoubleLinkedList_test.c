@@ -38,7 +38,7 @@ int test_circular_double_linked_list_ordered_add(){
     if(cdll->d->type_descriptor->cmp(&x, cdll->data) != 0)
         MLCL_ERR(1, MLCL_ERR_TRUE)
     x = 3;
-    if(cdll->d->type_descriptor->cmp(&x, cdll->next->data) == 0)
+    if(cdll->d->type_descriptor->cmp(&x, cdll->next->data) != 0)
         MLCL_ERR(2, MLCL_ERR_TRUE)
     x = 5;
     if(cdll->d->type_descriptor->cmp(&x, cdll->next->next->data) != 0)
