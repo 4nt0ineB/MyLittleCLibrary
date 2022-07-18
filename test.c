@@ -7,21 +7,17 @@
  *   the MIT license.
  */
 
-#include <stdio.h>
-#include <time.h>
-
 #include "MLCL.h"
 
-int int_rand(int a, int b){
+/*int int_rand(int a, int b){
     return (rand() % (b + 1 - a)) + a;
 }
 
 float float_rand(float min, float max){
     return min + (rand() / (float) RAND_MAX) * (max - min);
-}
+}*/
 
 int main(){
-    run_all_tests();
     /*DoubleLinkedList tmp;
     int i, x;
     x = 5;
@@ -31,5 +27,6 @@ int main(){
         tmp->d->append(&tmp, &i);
     tmp->d->to_dot(tmp, "./test.dot");
     tmp->d->free(&tmp);*/
-    return 0;
+    return !run_all_tests();
+
 }
