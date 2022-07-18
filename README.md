@@ -28,4 +28,4 @@ The lib was made with those flags:
 ```
 
 ### Credits
-doxygen-awesome-css - github.com/jothepro
+doxygen-awesome-css - [github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
