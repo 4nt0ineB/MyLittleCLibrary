@@ -218,16 +218,15 @@ void linked_list_free(LinkedList * ll){
 }
 
 void linked_list_cell_print(LinkedCell * lc){
-    linked_list_cell_fprint(stdout, lc);
+    if(lc) lc->d->cell_fprint(stdout, lc);
 }
 
 void linked_list_print(LinkedList ll){
-    linked_list_fprint(stdout, ll);
+    if(ll) ll->d->fprint(stdout, ll);
 }
 
 void linked_list_cell_fprint(FILE * file, LinkedCell * lc){
-    if(!lc) return;
-    lc->d->type_descriptor->fprint(file, lc->data);
+    if(lc) lc->d->type_descriptor->fprint(file, lc->data);
 }
 
 void linked_list_fprint(FILE * file, LinkedList ll){

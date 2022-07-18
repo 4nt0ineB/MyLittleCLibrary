@@ -251,17 +251,15 @@ void double_linked_list_free(DoubleLinkedList * ll){
 }
 
 void double_linked_list_cell_print(DoubleLinkedCell * dlc){
-    double_linked_list_cell_fprint(stdout, dlc);
+    if(dlc) dlc->d->cell_fprint(stdout, dlc);
 }
 
 void double_linked_list_print(DoubleLinkedList dll){
-    /* @Todo  nope, use dll->d instead */
-    double_linked_list_fprint(stdout, dll);
+    if(dll) dll->d->fprint(stdout, dll);
 }
 
 void double_linked_list_cell_fprint(FILE * file, DoubleLinkedCell * dlc){
-    if(!dlc) return;
-    dlc->d->type_descriptor->fprint(file, dlc->data);
+    if(dlc) dlc->d->type_descriptor->fprint(file, dlc->data);
 }
 void double_linked_list_fprint(FILE * file, DoubleLinkedList dll){
     if(!dll) return;

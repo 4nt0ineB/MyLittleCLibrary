@@ -168,7 +168,7 @@ void circular_double_linked_list_free(CircularDoubleLinkedList * cdll){
 }
 
 void circular_double_linked_list_print(CircularDoubleLinkedList cdll){
-    circular_double_linked_list_fprint(stdout, cdll);
+    if(cdll) cdll->d->fprint(stdout, cdll);
 }
 
 void circular_double_linked_list_fprint(FILE * file, CircularDoubleLinkedList cdll){

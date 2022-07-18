@@ -204,16 +204,16 @@ void circular_linked_list_free(CircularLinkedList * cll){
 }
 
 void circular_linked_list_print(CircularLinkedList cll){
-    circular_linked_list_fprint(stdout, cll);
+    if(cll) cll->d->fprint(stdout, cll);
 }
 
 void circular_linked_list_fprint(FILE * file, CircularLinkedList cll){
     CircularLinkedList tmp;
     if(!cll) return;
     tmp = cll->next;
-    cll->d->cell_fprint(file, cll);printf(", ");
+    cll->d->cell_fprint(file, cll); printf(", ");
     while(tmp != cll){
-        tmp->d->cell_fprint(file, tmp);printf(", ");
+        tmp->d->cell_fprint(file, tmp); printf(", ");
         tmp = tmp->next;
     }
 }

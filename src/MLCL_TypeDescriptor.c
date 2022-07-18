@@ -16,6 +16,7 @@ TypeDescriptor * new_type_descriptor(void (* type_manifest) (TypeDescriptor * ty
     type_descriptor = (TypeDescriptor *) malloc(sizeof(TypeDescriptor));
     if(!type_descriptor) return NULL;
     type_manifest(type_descriptor);
+    /* @Todo: check if manifest gave all needed functions */
     return type_descriptor;
 }
 
