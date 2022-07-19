@@ -25,8 +25,9 @@
 var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
-    [ "Motivation", "index.html#autotoc_md9", null ],
-    [ "Credits", "index.html#autotoc_md10", null ],
+    [ "Motivation", "index.html#autotoc_md9", [
+      [ "Credits", "index.html#autotoc_md10", null ]
+    ] ],
     [ "Examples", "md_doxygen_awesome_docs_examples.html", [
       [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md1", null ],
       [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md2", null ],
@@ -60,8 +61,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_m_l_c_l___circular_double_linked_list_8c.html",
-"_m_l_c_l___linked_list__test_8h.html#ae339346be8459f1e2e521a74fd78154b"
+"_m_l_c_l___binary_tree_8c.html",
+"_m_l_c_l___linked_list_8c.html#a4408929b7cfadc382002c65333904f25",
+"structs__double__linked__list__descriptor.html#a5f54dd4a2a47db4200073182f7c993f9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

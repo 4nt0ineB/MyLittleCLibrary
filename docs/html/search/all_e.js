@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['s_5fdouble_5flinked_5fcell_196',['s_double_linked_cell',['../structs__double__linked__cell.html',1,'']]],
-  ['s_5fdouble_5flinked_5flist_5fdescriptor_197',['s_double_linked_list_descriptor',['../structs__double__linked__list__descriptor.html',1,'']]],
-  ['s_5flinked_5fcell_198',['s_linked_cell',['../structs__linked__cell.html',1,'']]],
-  ['s_5flinked_5flist_5fdescriptor_199',['s_linked_list_descriptor',['../structs__linked__list__descriptor.html',1,'']]],
-  ['s_5ftype_5fdescriptor_200',['s_type_descriptor',['../structs__type__descriptor.html',1,'']]],
-  ['search_201',['search',['../structs__double__linked__list__descriptor.html#acb3a03f756e564ed8b4b771feb9ec155',1,'s_double_linked_list_descriptor::search()'],['../structs__linked__list__descriptor.html#add595d9d5b9a7e39a5a029ca515417a6',1,'s_linked_list_descriptor::search()']]],
-  ['shift_202',['shift',['../structs__double__linked__list__descriptor.html#aaacba3efa52f30b822b31cad62c27883',1,'s_double_linked_list_descriptor::shift()'],['../structs__linked__list__descriptor.html#a140f475e93d59d6a52bc786dc5948133',1,'s_linked_list_descriptor::shift()']]]
+  ['pop_220',['pop',['../structs__double__linked__list__descriptor.html#ac5bfb1e243157c3ddc2a97d6d204045d',1,'s_double_linked_list_descriptor::pop()'],['../structs__linked__list__descriptor.html#a5d6d06f4b7ead88ae8292ee27eab7087',1,'s_linked_list_descriptor::pop()']]],
+  ['prepend_221',['prepend',['../structs__double__linked__list__descriptor.html#a814b812524a5ae9f1b3ab2a422237739',1,'s_double_linked_list_descriptor::prepend()'],['../structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84',1,'s_linked_list_descriptor::prepend()']]],
+  ['prev_222',['prev',['../structs__double__linked__cell.html#a8abb39dbfbe36e7ea0139123a69cf453',1,'s_double_linked_cell']]],
+  ['print_223',['print',['../structs__double__linked__list__descriptor.html#a481e51f8aaba9f75474f85689366461a',1,'s_double_linked_list_descriptor::print()'],['../structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7',1,'s_type_descriptor::print()'],['../structs__linked__list__descriptor.html#abd40347dbfaf6279e66413b073d96e55',1,'s_linked_list_descriptor::print()']]]
 ];
