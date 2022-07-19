@@ -70,7 +70,7 @@ int binary_tree_nb_leaves(BinaryTree t){
     return t->d->nb_leaves(t->left) + t->d->nb_leaves(t->right);
 }
 
-int binary_tree_internal_nodes(BinaryTree t){
+int binary_tree_nb_internal_nodes(BinaryTree t){
     if (!t) return 0;
     if (!t->left && !t->right) return 0;
     return 1 + t->d->nb_internal_nodes(t->left) + t->d->nb_internal_nodes(t->right);
@@ -91,6 +91,21 @@ int binary_tree_is_bt(BinaryTree t){
 
 int binary_tree_is_bst(BinaryTree t){
     /* @Todo: is bst */
+    return 0;
+}
+
+int binary_tree_insert(BinaryTree * t, const void * data){
+    /* @todo */
+    return 0;
+}
+
+int binary_tee_remove(BinaryTree * t, const void * data){
+    /* @todo */
+    return 0;
+}
+
+int binary_tee_search(BinaryTree * t, const void * data){
+    /* @todo */
     return 0;
 }
 

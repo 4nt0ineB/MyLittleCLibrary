@@ -15,6 +15,7 @@
 #include "MLCL_CircularLinkedList_test.h"
 #include "MLCL_DoubleLinkedList_test.h"
 #include "MLCL_CircularDoubleLinkedList_test.h"
+#include "MLCL_BinaryTree_test.h"
 
 int run_all_tests();
 

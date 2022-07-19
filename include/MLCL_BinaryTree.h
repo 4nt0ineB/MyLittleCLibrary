@@ -122,6 +122,30 @@ int binary_tree_is_bst(BinaryTree t);
 
 /**
  *
+ * @param t
+ * @param data
+ * @return
+ */
+int binary_tree_insert(BinaryTree * t, const void * data);
+
+/**
+ *
+ * @param t
+ * @param data
+ * @return
+ */
+int binary_tee_remove(BinaryTree * t, const void * data);
+
+/**
+ *
+ * @param t
+ * @param data
+ * @return
+ */
+int binary_tee_search(BinaryTree * t, const void * data);
+
+/**
+ *
  * @param n
  */
 void binary_tree_node_print (BinaryNode * n);
