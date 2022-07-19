@@ -37,6 +37,10 @@ typedef struct s_binary_tree_descriptor {
     int (*nb_leaves) (BinaryTree);
     int (*nb_internal_nodes) (BinaryTree);
     int (*nb_two_children) (BinaryTree);
+    int  (*binary_tree_is_bst) (BinaryTree t);
+    int  (*insert) (BinaryTree *, const void *);
+    int  (*remove) (BinaryTree *, const void *);
+    int  (*search) (BinaryTree *, const void *);
     int (*is_bt) (BinaryTree);
     int (*is_bst) (BinaryTree);
     void (*node_print) (BinaryNode *);
@@ -121,7 +125,7 @@ int binary_tree_is_bt(BinaryTree t);
 int binary_tree_is_bst(BinaryTree t);
 
 /**
- *
+ * Dummy insertion with rand
  * @param t
  * @param data
  * @return
@@ -134,7 +138,7 @@ int binary_tree_insert(BinaryTree * t, const void * data);
  * @param data
  * @return
  */
-int binary_tee_remove(BinaryTree * t, const void * data);
+int binary_tree_remove(BinaryTree * t, const void * data);
 
 /**
  *
@@ -142,7 +146,7 @@ int binary_tee_remove(BinaryTree * t, const void * data);
  * @param data
  * @return
  */
-int binary_tee_search(BinaryTree * t, const void * data);
+int binary_tree_search(BinaryTree * t, const void * data);
 
 /**
  *

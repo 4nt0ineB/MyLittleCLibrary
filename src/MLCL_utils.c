@@ -1,0 +1,18 @@
+/*
+ *   This file is part of the MLCL Library.
+ *   Antoine Bastos 2022
+ *
+ *   This Library is free software under the terms of
+ *   the MIT license.
+ */
+
+#include "../include/MLCL_utils.h"
+
+unsigned short lfsr = 0xACE1u;
+unsigned bit;
+
+
+unsigned mlcl_unsigned_rand(){
+    bit  = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5) ) & 1;
+    return lfsr =  (lfsr >> 1) | (bit << 15);
+}

@@ -7,6 +7,7 @@
  */
 
 #include "../include/MLCL_BinaryTree.h"
+#include "../include/MLCL_utils.h"
 #include <assert.h>
 
 BinaryTreeDescriptor * binary_tree_descriptor(){
@@ -21,6 +22,9 @@ BinaryTreeDescriptor * binary_tree_descriptor(){
     bt_descriptor->nb_two_children = binary_tree_nb_two_children;
     bt_descriptor->is_bt = binary_tree_is_bt;
     bt_descriptor->is_bst = binary_tree_is_bst;
+    bt_descriptor->insert = binary_tree_insert;
+    bt_descriptor->search = binary_tree_search;
+    bt_descriptor->remove = binary_tree_remove;
     bt_descriptor->node_print = binary_tree_node_print;
     bt_descriptor->node_fprint = binary_tree_node_fprint;
     bt_descriptor->fprint_preorder = binary_tree_fprint_preorder;
@@ -95,16 +99,35 @@ int binary_tree_is_bst(BinaryTree t){
 }
 
 int binary_tree_insert(BinaryTree * t, const void * data){
+    BinaryNode * n;
+    int x;
+    if(!t) return 0;
+    if(!(n = binary_tree_builder(data, (*t)->d))) {
+        return 0;
+    }
+    /* temporary solution before proper random int generator @Todo: random int generator */
+    x = (int) mlcl_unsigned_rand();
+    if( x % 2 == 0) {
+        if (!(*t)->left) {
+            (*t)->left = n;
+            return 1;
+        }
+        return (*t)->d->insert(&(*t)->left, data);
+    }
+
+    if (!(*t)->right) {
+        (*t)->right = n;
+        return 1;
+    }
+    return (*t)->d->insert(&(*t)->right, data);
+}
+
+int binary_tree_remove(BinaryTree * t, const void * data){
     /* @todo */
     return 0;
 }
 
-int binary_tee_remove(BinaryTree * t, const void * data){
-    /* @todo */
-    return 0;
-}
-
-int binary_tee_search(BinaryTree * t, const void * data){
+int binary_tree_search(BinaryTree * t, const void * data){
     /* @todo */
     return 0;
 }

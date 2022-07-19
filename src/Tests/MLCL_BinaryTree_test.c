@@ -28,6 +28,7 @@ int run_all_binary_tree_tests(){
 
 int test_new_binary_tree(){
     printf("├ test_new_binary_tree");
+
     return 1;
 }
 int test_binary_tree_height(){
@@ -55,7 +56,23 @@ int test_binary_tree_is_bt(){
     return 1;
 }
 int test_binary_tree_insert(){
+    BinaryTree t;
+    int x;
     printf("├ test_binary_tree_insert");
+    x = 1;
+    t = new_binary_tree(&x, int_manifest);
+    x = 2;
+    t->d->insert(&t, &x);
+    x = 3;
+    t->d->insert(&t, &x);
+    x = 4;
+    t->d->insert(&t, &x);
+    /* made with poor linear random generator =,
+     * tests might become false with new generator */
+    x = 3;
+    if(!(t->d->type_descriptor->eq(t->left->left->data, &x)))
+        MLCL_ERR(1, MLCL_ERR_TRUE)
+    t->d->fprint_preorder(stdout, t);printf("\n");
     return 1;
 }
 int test_binary_tee_remove(){
