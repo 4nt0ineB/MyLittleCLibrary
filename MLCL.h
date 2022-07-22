@@ -19,16 +19,26 @@
 
 #include "include/MLCL_TypeDescriptor.h"
 #include "include/MLCL_basic_types.h"
-#include "include/MLCL_LinkedList.h"
-#include "include/MLCL_CircularLinkedList.h"
-#include "include/MLCL_DoubleLinkedList.h"
-#include "include/MLCL_CircularDoubleLinkedList.h"
-/* Tests */
-#include "include/Tests/MLCL_all_tests.h"
-#include "include/Tests/MLCL_exceptions.h"
-#include "include/Tests/MLCL_TypeDescriptor_test.h"
-#include "include/Tests/MLCL_LinkedList_test.h"
-#include "include/Tests/MLCL_CircularLinkedList_test.h"
-#include "include/Tests/MLCL_CircularDoubleLinkedList_test.h"
+/* List */
+#include "include/List/MLCL_LinkedList.h"
+#include "include/List/MLCL_CircularLinkedList.h"
+#include "include/List/MLCL_DoubleLinkedList.h"
+#include "include/List/MLCL_CircularDoubleLinkedList.h"
+/* Tree */
+#include "include/Tree/MLCL_BinarySearchTree.h"
+
+/*****************
+    Tests
+*****************/
+#include "include/_Tests/MLCL_all_tests.h"
+#include "include/_Tests/MLCL_exceptions.h"
+#include "include/_Tests/MLCL_TypeDescriptor_test.h"
+/* List */
+#include "include/_Tests/List/MLCL_LinkedList_test.h"
+#include "include/_Tests/List/MLCL_CircularLinkedList_test.h"
+#include "include/_Tests/List/MLCL_DoubleLinkedList_test.h"
+#include "include/_Tests/List/MLCL_CircularDoubleLinkedList_test.h"
+/* Tree */
+#include "include/_Tests/Tree/MLCL_BinarySearchTree_test.h"
 
 #endif /* MYLITTLECLIBRARY_MLCL_H */

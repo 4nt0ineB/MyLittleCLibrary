@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['pop_552',['pop',['../structs__double__linked__list__descriptor.html#ac5bfb1e243157c3ddc2a97d6d204045d',1,'s_double_linked_list_descriptor::pop()'],['../structs__linked__list__descriptor.html#a5d6d06f4b7ead88ae8292ee27eab7087',1,'s_linked_list_descriptor::pop()']]],
-  ['prepend_553',['prepend',['../structs__double__linked__list__descriptor.html#a814b812524a5ae9f1b3ab2a422237739',1,'s_double_linked_list_descriptor::prepend()'],['../structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84',1,'s_linked_list_descriptor::prepend()']]],
-  ['prev_554',['prev',['../structs__double__linked__cell.html#a8abb39dbfbe36e7ea0139123a69cf453',1,'s_double_linked_cell']]],
-  ['print_555',['print',['../structs__double__linked__list__descriptor.html#a481e51f8aaba9f75474f85689366461a',1,'s_double_linked_list_descriptor::print()'],['../structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7',1,'s_type_descriptor::print()'],['../structs__linked__list__descriptor.html#abd40347dbfaf6279e66413b073d96e55',1,'s_linked_list_descriptor::print()']]]
+  ['n_582',['n',['../structs__binary__search__tree__descriptor.html#a994b4846c54bb6a936d4fef5a53ca984',1,'s_binary_search_tree_descriptor']]],
+  ['nb_5finternal_5fnodes_583',['nb_internal_nodes',['../structs__binary__search__tree__descriptor.html#a87e77007223c609a9797da51dfb1ff4c',1,'s_binary_search_tree_descriptor']]],
+  ['nb_5fleaves_584',['nb_leaves',['../structs__binary__search__tree__descriptor.html#a1f41e3d04e3a13d2e3f949398716d8e8',1,'s_binary_search_tree_descriptor']]],
+  ['nb_5fnodes_585',['nb_nodes',['../structs__binary__search__tree__descriptor.html#a0c67a1cc1ab5278fe0a6e1b06f560263',1,'s_binary_search_tree_descriptor']]],
+  ['nb_5ftwo_5fchildren_586',['nb_two_children',['../structs__binary__search__tree__descriptor.html#a852f7573ad002b9fd50589bdd704de41',1,'s_binary_search_tree_descriptor']]],
+  ['next_587',['next',['../structs__double__linked__cell.html#a4c59e460903ec3232cc58cb644d6f159',1,'s_double_linked_cell::next()'],['../structs__linked__cell.html#a60109e8627ba1c402c41f01b26406141',1,'s_linked_cell::next()']]],
+  ['node_5ffprint_588',['node_fprint',['../structs__binary__search__tree__descriptor.html#aad6a3ab91ccd31b01cf2dc5d2b44d219',1,'s_binary_search_tree_descriptor']]],
+  ['node_5fprint_589',['node_print',['../structs__binary__search__tree__descriptor.html#a372905779b0f0240def0db0956bd4de0',1,'s_binary_search_tree_descriptor']]]
 ];

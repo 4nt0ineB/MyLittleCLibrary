@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['height_535',['height',['../structs__binary__tree__descriptor.html#a6c823df324f4f6217e739c60497a4139',1,'s_binary_tree_descriptor']]]
+  ['ge_569',['ge',['../structs__type__descriptor.html#ae03ae289d00de53fd675c12d9c48afb3',1,'s_type_descriptor']]],
+  ['gt_570',['gt',['../structs__type__descriptor.html#a7ce72c0944a4b2727f19677b126b521f',1,'s_type_descriptor']]]
 ];

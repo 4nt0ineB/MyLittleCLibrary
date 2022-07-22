@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>MyLittleCLibrary: include/Tests/MLCL_BinaryTree_test.h Source File</title>
+<title>MyLittleCLibrary: include/Tests/MLCL_BinarySearchTree_test.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -93,7 +93,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_m_l_c_l___binary_tree__test_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_m_l_c_l___binary_search_tree__test_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -113,10 +113,10 @@ $(document).ready(function(){initNavTree('_m_l_c_l___binary_tree__test_8h_source
 
 <div class="header">
   <div class="headertitle">
-<div class="title">MLCL_BinaryTree_test.h</div>  </div>
+<div class="title">MLCL_BinarySearchTree_test.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_m_l_c_l___binary_tree__test_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_m_l_c_l___binary_search_tree__test_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   This file is part of the MLCL Library.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *   Antoine Bastos 2022</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
@@ -124,30 +124,30 @@ $(document).ready(function(){initNavTree('_m_l_c_l___binary_tree__test_8h_source
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   the MIT license.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BINARYTREE_TEST_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BINARYTREE_TEST_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../MLCL_BinaryTree.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../MLCL_BinarySearchTree.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a0a06a63e193cdf0b64e67d3c93a13b93">run_all_binary_tree_tests</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a569781181d7b60ae73334fa71c2fdbf2">test_new_binary_tree</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a25ef7af4bf580fe1e55513a512f07a73">test_binary_tree_height</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a23ee70e2e2514fa7b078befb00ca963e">test_binary_tree_nb_nodes</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a51686bb17cd92709ea5328079db75a72">test_binary_tree_nb_leaves</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a2ff59ea8eaa79df765f3a3302f8e5ea3">test_binary_tree_nb_internal_nodes</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#aab2a7677ac790716c29997558fec5fa3">test_binary_tree_nb_two_children</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a4513edd8d2877928cc2bdfa7ad1e2184">test_binary_tree_is_bt</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a38f65fdac5170f20c8923df44ce35e28">test_binary_tree_insert</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a8d3fec93215e44dd606a156f117f5268">test_binary_tee_remove</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_tree__test_8c.html#a2317a0cf546bfe5a6dc6774e29351041">test_binary_tee_search</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a0a06a63e193cdf0b64e67d3c93a13b93">run_all_binary_search_tree_tests</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a569781181d7b60ae73334fa71c2fdbf2">test_new_binary_search_tree</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a25ef7af4bf580fe1e55513a512f07a73">test_binary_search_tree_height</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a23ee70e2e2514fa7b078befb00ca963e">test_binary_search_tree_nb_nodes</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a51686bb17cd92709ea5328079db75a72">test_binary_search_tree_nb_leaves</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a2ff59ea8eaa79df765f3a3302f8e5ea3">test_binary_search_tree_nb_internal_nodes</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#aab2a7677ac790716c29997558fec5fa3">test_binary_search_tree_nb_two_children</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a4513edd8d2877928cc2bdfa7ad1e2184">test_binary_search_tree_is_bt</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a38f65fdac5170f20c8923df44ce35e28">test_binary_search_tree_insert</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a8d3fec93215e44dd606a156f117f5268">test_binary_tee_remove</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___binary_search_tree__test_8c.html#a2317a0cf546bfe5a6dc6774e29351041">test_binary_tee_search</a>();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_BINARYTREE_TEST_H */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_bddafe84967db6ee718ee607dc8b0eb8.html">Tests</a></li><li class="navelem"><a class="el" href="_m_l_c_l___binary_tree__test_8h.html">MLCL_BinaryTree_test.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_bddafe84967db6ee718ee607dc8b0eb8.html">Tests</a></li><li class="navelem"><a class="el" href="_m_l_c_l___binary_search_tree__test_8h.html">MLCL_BinarySearchTree_test.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

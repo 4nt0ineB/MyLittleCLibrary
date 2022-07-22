@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ordered_5fadd_551',['ordered_add',['../structs__double__linked__list__descriptor.html#a2c846b078f8bfd670014d03459c1dc34',1,'s_double_linked_list_descriptor::ordered_add()'],['../structs__linked__list__descriptor.html#a6805afdfd39f272186463fafa80de344',1,'s_linked_list_descriptor::ordered_add()']]]
+  ['max_580',['max',['../structs__binary__search__tree__descriptor.html#a3e0a3ef06a0134800943c1000f2e93ea',1,'s_binary_search_tree_descriptor']]],
+  ['min_581',['min',['../structs__binary__search__tree__descriptor.html#ab2e4d4e4d662c4070dd5fde096a3bf22',1,'s_binary_search_tree_descriptor']]]
 ];

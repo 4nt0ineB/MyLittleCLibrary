@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height_122',['height',['../structs__binary__tree__descriptor.html#a6c823df324f4f6217e739c60497a4139',1,'s_binary_tree_descriptor']]]
+  ['height_134',['height',['../structs__binary__search__tree__descriptor.html#ad923c1b69e6000a7276a232105d37f1d',1,'s_binary_search_tree_descriptor']]]
 ];

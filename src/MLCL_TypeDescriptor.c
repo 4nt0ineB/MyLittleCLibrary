@@ -21,7 +21,8 @@ TypeDescriptor * new_type_descriptor(void (* type_manifest) (TypeDescriptor * ty
 }
 
 void type_descriptor_free(TypeDescriptor ** td){
-    if(!*td) return;
-    free(*td);
-    *td = NULL;
+    if(*td){
+        free(*td);
+        *td = NULL;
+    }
 }

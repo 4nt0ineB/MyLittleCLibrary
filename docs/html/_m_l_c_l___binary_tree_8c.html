@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>MyLittleCLibrary: src/MLCL_BinaryTree.c File Reference</title>
+<title>MyLittleCLibrary: src/MLCL_BinarySearchTree.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -93,7 +93,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_m_l_c_l___binary_tree_8c.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_m_l_c_l___binary_search_tree_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -115,58 +115,58 @@ $(document).ready(function(){initNavTree('_m_l_c_l___binary_tree_8c.html',''); i
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">MLCL_BinaryTree.c File Reference</div>  </div>
+<div class="title">MLCL_BinarySearchTree.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_m_l_c_l___binary_tree_8h_source.html">../include/MLCL_BinaryTree.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_m_l_c_l___binary_search_tree_8h_source.html">../include/MLCL_BinarySearchTree.h</a>&quot;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for MLCL_BinaryTree.c:</div>
+Include dependency graph for MLCL_BinarySearchTree.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___binary_tree_8c__incl.svg" width="348" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___binary_search_tree_8c__incl.svg" width="348" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac46be2a0e4d082514e73c532de407245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinaryTreeDescriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#ac46be2a0e4d082514e73c532de407245">binary_tree_descriptor</a> ()</td></tr>
-<tr class="memdesc:ac46be2a0e4d082514e73c532de407245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and return a default binary tree descriptor. Type descriptor set to null.  <a href="_m_l_c_l___binary_tree_8c.html#ac46be2a0e4d082514e73c532de407245">More...</a><br /></td></tr>
+<tr class="memitem:ac46be2a0e4d082514e73c532de407245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinarySearchTreeDescriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#ac46be2a0e4d082514e73c532de407245">binary_search_tree_descriptor</a> ()</td></tr>
+<tr class="memdesc:ac46be2a0e4d082514e73c532de407245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and return a default binary tree descriptor. Type descriptor set to null.  <a href="_m_l_c_l___binary_search_tree_8c.html#ac46be2a0e4d082514e73c532de407245">More...</a><br /></td></tr>
 <tr class="separator:ac46be2a0e4d082514e73c532de407245"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addb92363f648fe420e695ca282ee5b1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#addb92363f648fe420e695ca282ee5b1f">binary_tree_builder</a> (const void *data, <a class="el" href="_m_l_c_l___binary_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinaryTreeDescriptor</a> *descriptor)</td></tr>
-<tr class="memdesc:addb92363f648fe420e695ca282ee5b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A detailed constructor for the nodes of a binary tree.  <a href="_m_l_c_l___binary_tree_8c.html#addb92363f648fe420e695ca282ee5b1f">More...</a><br /></td></tr>
+<tr class="memitem:addb92363f648fe420e695ca282ee5b1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#addb92363f648fe420e695ca282ee5b1f">binary_search_tree_builder</a> (const void *data, <a class="el" href="_m_l_c_l___binary_search_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinarySearchTreeDescriptor</a> *descriptor)</td></tr>
+<tr class="memdesc:addb92363f648fe420e695ca282ee5b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A detailed constructor for the nodes of a binary tree.  <a href="_m_l_c_l___binary_search_tree_8c.html#addb92363f648fe420e695ca282ee5b1f">More...</a><br /></td></tr>
 <tr class="separator:addb92363f648fe420e695ca282ee5b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79bc3476e79488981a55757948ffcaf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a79bc3476e79488981a55757948ffcaf6">new_binary_tree</a> (const void *data, void(*type_manifest)(<a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a> *))</td></tr>
+<tr class="memitem:a79bc3476e79488981a55757948ffcaf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a79bc3476e79488981a55757948ffcaf6">new_binary_search_tree</a> (const void *data, void(*type_manifest)(<a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a> *))</td></tr>
 <tr class="separator:a79bc3476e79488981a55757948ffcaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab98351aa580df2d16514584ebda388a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#ab98351aa580df2d16514584ebda388a1">binary_tree_height</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:ab98351aa580df2d16514584ebda388a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#ab98351aa580df2d16514584ebda388a1">binary_search_tree_height</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:ab98351aa580df2d16514584ebda388a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eb9e5b819f37e650ed2da0cd7272a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a6eb9e5b819f37e650ed2da0cd7272a4a">binary_tree_nb_nodes</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a6eb9e5b819f37e650ed2da0cd7272a4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a6eb9e5b819f37e650ed2da0cd7272a4a">binary_search_tree_nb_nodes</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a6eb9e5b819f37e650ed2da0cd7272a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5012777537fe6986ba5ecf20795a270a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a5012777537fe6986ba5ecf20795a270a">binary_tree_nb_leaves</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a5012777537fe6986ba5ecf20795a270a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a5012777537fe6986ba5ecf20795a270a">binary_search_tree_nb_leaves</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a5012777537fe6986ba5ecf20795a270a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a029fe0ecdcd407da615ab79f085ab882"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a029fe0ecdcd407da615ab79f085ab882">binary_tree_nb_internal_nodes</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a029fe0ecdcd407da615ab79f085ab882"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a029fe0ecdcd407da615ab79f085ab882">binary_search_tree_nb_internal_nodes</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a029fe0ecdcd407da615ab79f085ab882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95ef5f59e8c2c31f9604689e5e046a8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a95ef5f59e8c2c31f9604689e5e046a8d">binary_tree_nb_two_children</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a95ef5f59e8c2c31f9604689e5e046a8d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a95ef5f59e8c2c31f9604689e5e046a8d">binary_search_tree_nb_two_children</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a95ef5f59e8c2c31f9604689e5e046a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3961e092688ff3b7028aa9d22fd054d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#ac3961e092688ff3b7028aa9d22fd054d">binary_tree_is_bt</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:ac3961e092688ff3b7028aa9d22fd054d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#ac3961e092688ff3b7028aa9d22fd054d">binary_search_tree_is_bt</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:ac3961e092688ff3b7028aa9d22fd054d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbb553deb1c605fa9e4bafec857a4adb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#adbb553deb1c605fa9e4bafec857a4adb">binary_tree_is_bst</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
-<tr class="memdesc:adbb553deb1c605fa9e4bafec857a4adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return 1 if the binary tree is BST and without duplicate.  <a href="_m_l_c_l___binary_tree_8c.html#adbb553deb1c605fa9e4bafec857a4adb">More...</a><br /></td></tr>
+<tr class="memitem:adbb553deb1c605fa9e4bafec857a4adb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#adbb553deb1c605fa9e4bafec857a4adb">binary_search_tree_is_bst</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
+<tr class="memdesc:adbb553deb1c605fa9e4bafec857a4adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return 1 if the binary tree is BST and without duplicate.  <a href="_m_l_c_l___binary_search_tree_8c.html#adbb553deb1c605fa9e4bafec857a4adb">More...</a><br /></td></tr>
 <tr class="separator:adbb553deb1c605fa9e4bafec857a4adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac986b6e91b5d4b3e6cbb03cb82c7a6f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#ac986b6e91b5d4b3e6cbb03cb82c7a6f6">binary_tree_insert</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *t, const void *data)</td></tr>
+<tr class="memitem:ac986b6e91b5d4b3e6cbb03cb82c7a6f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#ac986b6e91b5d4b3e6cbb03cb82c7a6f6">binary_search_tree_insert</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *t, const void *data)</td></tr>
 <tr class="separator:ac986b6e91b5d4b3e6cbb03cb82c7a6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb07701391a3665ade722e319fb58680"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#aeb07701391a3665ade722e319fb58680">binary_tee_remove</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *t, const void *data)</td></tr>
+<tr class="memitem:aeb07701391a3665ade722e319fb58680"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#aeb07701391a3665ade722e319fb58680">binary_tee_remove</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *t, const void *data)</td></tr>
 <tr class="separator:aeb07701391a3665ade722e319fb58680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3357701dfdd27d6766a890a5db30eddf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a3357701dfdd27d6766a890a5db30eddf">binary_tee_search</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *t, const void *data)</td></tr>
+<tr class="memitem:a3357701dfdd27d6766a890a5db30eddf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a3357701dfdd27d6766a890a5db30eddf">binary_tee_search</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *t, const void *data)</td></tr>
 <tr class="separator:a3357701dfdd27d6766a890a5db30eddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc5417eeb00ec5f739d534710dc7f872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#afc5417eeb00ec5f739d534710dc7f872">binary_tree_node_print</a> (<a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *n)</td></tr>
+<tr class="memitem:afc5417eeb00ec5f739d534710dc7f872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#afc5417eeb00ec5f739d534710dc7f872">binary_search_tree_node_print</a> (<a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *n)</td></tr>
 <tr class="separator:afc5417eeb00ec5f739d534710dc7f872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1edc591933974355498811cdd9b5d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a4d1edc591933974355498811cdd9b5d9">binary_tree_node_fprint</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *n)</td></tr>
+<tr class="memitem:a4d1edc591933974355498811cdd9b5d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a4d1edc591933974355498811cdd9b5d9">binary_search_tree_node_fprint</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *n)</td></tr>
 <tr class="separator:a4d1edc591933974355498811cdd9b5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38e64a317e1292b6d40fff355baf1308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a38e64a317e1292b6d40fff355baf1308">binary_tree_fprint_preorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a38e64a317e1292b6d40fff355baf1308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a38e64a317e1292b6d40fff355baf1308">binary_search_tree_fprint_preorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a38e64a317e1292b6d40fff355baf1308"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4f540801d76711050b05d3c74f7d313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#ad4f540801d76711050b05d3c74f7d313">binary_tree_fprint_inorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:ad4f540801d76711050b05d3c74f7d313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#ad4f540801d76711050b05d3c74f7d313">binary_search_tree_fprint_inorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:ad4f540801d76711050b05d3c74f7d313"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f6573b003bdc1fca09f2c27afedf58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_tree_8c.html#a00f6573b003bdc1fca09f2c27afedf58">binary_tree_fprint_postorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> t)</td></tr>
+<tr class="memitem:a00f6573b003bdc1fca09f2c27afedf58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html#a00f6573b003bdc1fca09f2c27afedf58">binary_search_tree_fprint_postorder</a> (FILE *stream, <a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> t)</td></tr>
 <tr class="separator:a00f6573b003bdc1fca09f2c27afedf58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -179,7 +179,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int binary_tee_remove </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -215,7 +215,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int binary_tee_search </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -243,13 +243,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="addb92363f648fe420e695ca282ee5b1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addb92363f648fe420e695ca282ee5b1f">&#9670;&nbsp;</a></span>binary_tree_builder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#addb92363f648fe420e695ca282ee5b1f">&#9670;&nbsp;</a></span>binary_search_tree_builder()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a>* binary_tree_builder </td>
+          <td class="memname"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a>* binary_search_tree_builder </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -257,7 +257,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinaryTreeDescriptor</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinarySearchTreeDescriptor</a> *&#160;</td>
           <td class="paramname"><em>descriptor</em>&#160;</td>
         </tr>
         <tr>
@@ -281,13 +281,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac46be2a0e4d082514e73c532de407245"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac46be2a0e4d082514e73c532de407245">&#9670;&nbsp;</a></span>binary_tree_descriptor()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46be2a0e4d082514e73c532de407245">&#9670;&nbsp;</a></span>binary_search_tree_descriptor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_l_c_l___binary_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinaryTreeDescriptor</a>* binary_tree_descriptor </td>
+          <td class="memname"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc">BinarySearchTreeDescriptor</a>* binary_search_tree_descriptor </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -301,13 +301,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ad4f540801d76711050b05d3c74f7d313"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4f540801d76711050b05d3c74f7d313">&#9670;&nbsp;</a></span>binary_tree_fprint_inorder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f540801d76711050b05d3c74f7d313">&#9670;&nbsp;</a></span>binary_search_tree_fprint_inorder()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void binary_tree_fprint_inorder </td>
+          <td class="memname">void binary_search_tree_fprint_inorder </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
@@ -315,7 +315,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
@@ -329,13 +329,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a00f6573b003bdc1fca09f2c27afedf58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00f6573b003bdc1fca09f2c27afedf58">&#9670;&nbsp;</a></span>binary_tree_fprint_postorder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f6573b003bdc1fca09f2c27afedf58">&#9670;&nbsp;</a></span>binary_search_tree_fprint_postorder()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void binary_tree_fprint_postorder </td>
+          <td class="memname">void binary_search_tree_fprint_postorder </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
@@ -343,7 +343,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
@@ -357,13 +357,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a38e64a317e1292b6d40fff355baf1308"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38e64a317e1292b6d40fff355baf1308">&#9670;&nbsp;</a></span>binary_tree_fprint_preorder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a38e64a317e1292b6d40fff355baf1308">&#9670;&nbsp;</a></span>binary_search_tree_fprint_preorder()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void binary_tree_fprint_preorder </td>
+          <td class="memname">void binary_search_tree_fprint_preorder </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
@@ -371,7 +371,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
@@ -385,15 +385,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ab98351aa580df2d16514584ebda388a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab98351aa580df2d16514584ebda388a1">&#9670;&nbsp;</a></span>binary_tree_height()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab98351aa580df2d16514584ebda388a1">&#9670;&nbsp;</a></span>binary_search_tree_height()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_height </td>
+          <td class="memname">int binary_search_tree_height </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -410,15 +410,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac986b6e91b5d4b3e6cbb03cb82c7a6f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac986b6e91b5d4b3e6cbb03cb82c7a6f6">&#9670;&nbsp;</a></span>binary_tree_insert()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac986b6e91b5d4b3e6cbb03cb82c7a6f6">&#9670;&nbsp;</a></span>binary_search_tree_insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_insert </td>
+          <td class="memname">int binary_search_tree_insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> *&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -446,15 +446,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="adbb553deb1c605fa9e4bafec857a4adb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbb553deb1c605fa9e4bafec857a4adb">&#9670;&nbsp;</a></span>binary_tree_is_bst()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb553deb1c605fa9e4bafec857a4adb">&#9670;&nbsp;</a></span>binary_search_tree_is_bst()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_is_bst </td>
+          <td class="memname">int binary_search_tree_is_bst </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -473,15 +473,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac3961e092688ff3b7028aa9d22fd054d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3961e092688ff3b7028aa9d22fd054d">&#9670;&nbsp;</a></span>binary_tree_is_bt()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3961e092688ff3b7028aa9d22fd054d">&#9670;&nbsp;</a></span>binary_search_tree_is_bt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_is_bt </td>
+          <td class="memname">int binary_search_tree_is_bt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -498,15 +498,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a029fe0ecdcd407da615ab79f085ab882"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a029fe0ecdcd407da615ab79f085ab882">&#9670;&nbsp;</a></span>binary_tree_nb_internal_nodes()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a029fe0ecdcd407da615ab79f085ab882">&#9670;&nbsp;</a></span>binary_search_tree_nb_internal_nodes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_nb_internal_nodes </td>
+          <td class="memname">int binary_search_tree_nb_internal_nodes </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -523,15 +523,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a5012777537fe6986ba5ecf20795a270a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5012777537fe6986ba5ecf20795a270a">&#9670;&nbsp;</a></span>binary_tree_nb_leaves()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5012777537fe6986ba5ecf20795a270a">&#9670;&nbsp;</a></span>binary_search_tree_nb_leaves()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_nb_leaves </td>
+          <td class="memname">int binary_search_tree_nb_leaves </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -548,15 +548,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a6eb9e5b819f37e650ed2da0cd7272a4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6eb9e5b819f37e650ed2da0cd7272a4a">&#9670;&nbsp;</a></span>binary_tree_nb_nodes()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eb9e5b819f37e650ed2da0cd7272a4a">&#9670;&nbsp;</a></span>binary_search_tree_nb_nodes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_nb_nodes </td>
+          <td class="memname">int binary_search_tree_nb_nodes </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -573,15 +573,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a95ef5f59e8c2c31f9604689e5e046a8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95ef5f59e8c2c31f9604689e5e046a8d">&#9670;&nbsp;</a></span>binary_tree_nb_two_children()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a95ef5f59e8c2c31f9604689e5e046a8d">&#9670;&nbsp;</a></span>binary_search_tree_nb_two_children()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int binary_tree_nb_two_children </td>
+          <td class="memname">int binary_search_tree_nb_two_children </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -598,13 +598,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a4d1edc591933974355498811cdd9b5d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d1edc591933974355498811cdd9b5d9">&#9670;&nbsp;</a></span>binary_tree_node_fprint()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d1edc591933974355498811cdd9b5d9">&#9670;&nbsp;</a></span>binary_search_tree_node_fprint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void binary_tree_node_fprint </td>
+          <td class="memname">void binary_search_tree_node_fprint </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
           <td class="paramname"><em>stream</em>, </td>
@@ -612,7 +612,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td>
           <td class="paramname"><em>n</em>&#160;</td>
         </tr>
         <tr>
@@ -632,15 +632,15 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="afc5417eeb00ec5f739d534710dc7f872"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc5417eeb00ec5f739d534710dc7f872">&#9670;&nbsp;</a></span>binary_tree_node_print()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5417eeb00ec5f739d534710dc7f872">&#9670;&nbsp;</a></span>binary_search_tree_node_print()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void binary_tree_node_print </td>
+          <td class="memname">void binary_search_tree_node_print </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0">BinaryNode</a> *&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
           <td></td>
         </tr>
@@ -656,13 +656,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a79bc3476e79488981a55757948ffcaf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79bc3476e79488981a55757948ffcaf6">&#9670;&nbsp;</a></span>new_binary_tree()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a79bc3476e79488981a55757948ffcaf6">&#9670;&nbsp;</a></span>new_binary_search_tree()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_l_c_l___binary_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinaryTree</a> new_binary_tree </td>
+          <td class="memname"><a class="el" href="_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0">BinarySearchTree</a> new_binary_search_tree </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -695,7 +695,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_m_l_c_l___binary_tree_8c.html">MLCL_BinaryTree.c</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_m_l_c_l___binary_search_tree_8c.html">MLCL_BinarySearchTree.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

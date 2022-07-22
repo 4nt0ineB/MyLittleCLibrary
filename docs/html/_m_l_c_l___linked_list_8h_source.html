@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>MyLittleCLibrary: include/MLCL_LinkedList.h Source File</title>
+<title>MyLittleCLibrary: include/List/MLCL_LinkedList.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_LINKEDLIST_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_LINKEDLIST_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../include/MLCL_TypeDescriptor.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../MLCL_TypeDescriptor.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">stdlib</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">stdio</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * linked list descriptor. Type descriptor set to null.</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;LinkedListDescriptor * <a class="code" href="_m_l_c_l___linked_list_8c.html#ae67319e291285f56c0f9ca214ee30416">linked_list_descriptor</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;LinkedListDescriptor * <a class="code" href="_m_l_c_l___linked_list_8h.html#ae67319e291285f56c0f9ca214ee30416">linked_list_descriptor</a>();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @brief A detailed constructor for the cells of a linked list.</span></div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> * @param descriptor The linked list descriptor.</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;LinkedCell * <a class="code" href="_m_l_c_l___linked_list_8c.html#a1211cd0949a46e62353f2408884d9f6c">linked_list_builder</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data, LinkedListDescriptor * descriptor);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;LinkedCell * <a class="code" href="_m_l_c_l___linked_list_8h.html#a1211cd0949a46e62353f2408884d9f6c">linked_list_builder</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data, LinkedListDescriptor * descriptor);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> * @brief The linked list constructor.</span></div>
@@ -191,7 +191,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;LinkedCell * <a class="code" href="_m_l_c_l___linked_list_8c.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data, <span class="keywordtype">void</span> (*type_manifest) (TypeDescriptor *));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;LinkedCell * <a class="code" href="_m_l_c_l___linked_list_8h.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data, <span class="keywordtype">void</span> (*type_manifest) (TypeDescriptor *));</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @brief Add data to the list depending on the given comparison function. To have like an ordered list.</span></div>
@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> * @param cmp comparison function returning 1 or 0, to check if the have to be inserted</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a3a6238db2e4f84e01dde78d2adace73f">linked_list_add_</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a3a6238db2e4f84e01dde78d2adace73f">linked_list_add_</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * @brief Add item considering the list is sorted with an ascending order</span></div>
@@ -209,7 +209,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#ab19f1d0be662400b108341f3407e9387">linked_list_ordered_add</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#ab19f1d0be662400b108341f3407e9387">linked_list_ordered_add</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * @brief Add item considering the list is sorted with a descending order</span></div>
@@ -218,7 +218,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a4408929b7cfadc382002c65333904f25">linked_list_reverse_ordered_add</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a4408929b7cfadc382002c65333904f25">linked_list_reverse_ordered_add</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> * @brief Insert data to linked list head.</span></div>
@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a9c9b0423e58535d4022042bf00e1e72e">linked_list_prepend</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a9c9b0423e58535d4022042bf00e1e72e">linked_list_prepend</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment"> * @brief Insert data to linked list&#39;s tail.</span></div>
@@ -234,7 +234,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a185d6610f5f1be5566c48f747b34caac">linked_list_append</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a185d6610f5f1be5566c48f747b34caac">linked_list_append</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"> * Insert data in new cell just after the given cell (aka given LinkedList&#39;s head)</span></div>
@@ -242,7 +242,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#afe89256d981c61d8e4331e228600ba65">linked_list_insert</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#afe89256d981c61d8e4331e228600ba65">linked_list_insert</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment"> * @brief Short-hand search. Look for equality with TypeDescriptor comparison function.</span></div>
@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment"> * @return cell&#39;s address if found or NULL.</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;LinkedList <a class="code" href="_m_l_c_l___linked_list_8c.html#a88f48bb39e6254588800e204c785901a">linked_list_search</a>(LinkedList ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;LinkedList <a class="code" href="_m_l_c_l___linked_list_8h.html#a88f48bb39e6254588800e204c785901a">linked_list_search</a>(LinkedList ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment"> * @brief removeete the first occurrence of the cell containing equal data to the given one, from the linked list.</span></div>
@@ -259,7 +259,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment"> * @param data</span></div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a3dfe23bef4ac0278dafcfa523d022ce4">linked_list_remove</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a3dfe23bef4ac0278dafcfa523d022ce4">linked_list_remove</a>(LinkedList * ll, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment"> * @brief Create new linked list by filtering given linked list and filtering function.</span></div>
@@ -268,7 +268,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"> * @param filter filtering function.</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment"> * @return LinkedList of filtered cells.</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;LinkedList * <a class="code" href="_m_l_c_l___linked_list_8c.html#aa9d7c90a719425bcd0c324b7542cbe44">linked_list_filter</a>(LinkedList * ll, <span class="keywordtype">int</span> (* f) (<span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;LinkedList * <a class="code" href="_m_l_c_l___linked_list_8h.html#aa9d7c90a719425bcd0c324b7542cbe44">linked_list_filter</a>(LinkedList * ll, <span class="keywordtype">int</span> (* f) (<span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> * @brief Remove and return head&#39;s data. The Targeted cell will be freed not the data.</span></div>
@@ -276,7 +276,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"> * @param cell</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___linked_list_8c.html#a8b6128bb0cc13eb31855feb0b8d4bc0c">linked_list_shift</a>(LinkedList * ll);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___linked_list_8h.html#a8b6128bb0cc13eb31855feb0b8d4bc0c">linked_list_shift</a>(LinkedList * ll);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> * @brief Remove and return tail&#39;s data. The Targeted cell will be freed not the data.</span></div>
@@ -284,56 +284,56 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> * @param cell</span></div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"> * @return</span></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___linked_list_8c.html#abb818b941189a4225975e2c13fbf2e5b">linked_list_pop</a>(LinkedList *ll);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___linked_list_8h.html#abb818b941189a4225975e2c13fbf2e5b">linked_list_pop</a>(LinkedList *ll);</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a520927ae1799833531120e0985075232">linked_list_descriptor_free</a>(LinkedListDescriptor ** lld);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a520927ae1799833531120e0985075232">linked_list_descriptor_free</a>(LinkedListDescriptor ** lld);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment"> * @brief Just to free a unique cell.</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment"> * Does free its carried value trough the type descriptor.</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment"> * @param l</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a6cc64bc6a10c3b09ab09f9c9534dfacb">linked_list_cell_free</a>(LinkedCell ** ll);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a6cc64bc6a10c3b09ab09f9c9534dfacb">linked_list_cell_free</a>(LinkedCell ** ll);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment"> * @breif Recursive free of all cells (everything) in the list.</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment"> * free the descriptor at last cell removeetion.</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment"> * @param l</span></div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#abd711041d67eec55f0de2c7eeda070f8">linked_list_free</a>(LinkedList * ll);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#abd711041d67eec55f0de2c7eeda070f8">linked_list_free</a>(LinkedList * ll);</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment"> * @brief Print the data of the given linked cell</span></div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> * @param lc</span></div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a60717ff7982916920d4b4d5428ed4d97">linked_list_cell_print</a>(LinkedCell * lc);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a60717ff7982916920d4b4d5428ed4d97">linked_list_cell_print</a>(LinkedCell * lc);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"> * @brief Print the list on stdout</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment"> * @param l</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a482798bed47cc9740ce610f3df784525">linked_list_print</a>(LinkedList ll);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a482798bed47cc9740ce610f3df784525">linked_list_print</a>(LinkedList ll);</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment"> * @brief Print the data of the linked cell on given stream</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment"> * @param file</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment"> * @param lc</span></div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#ab9be0187523a80d33b2126e98fb91f39">linked_list_cell_fprint</a>(FILE * file, LinkedCell * lc);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#ab9be0187523a80d33b2126e98fb91f39">linked_list_cell_fprint</a>(FILE * file, LinkedCell * lc);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment"> * @brief Print the list on give stream</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment"> * @param file</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment"> * @param ll</span></div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#a8f3f6d006754feee91a0ac73e40f401d">linked_list_fprint</a>(FILE * file, LinkedList ll);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#a8f3f6d006754feee91a0ac73e40f401d">linked_list_fprint</a>(FILE * file, LinkedList ll);</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * @brief Produce a dot formatted file of a representation of the structure</span></div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * @param ll</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> * @param dest_path</span></div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8c.html#aa3d5c6b637b0fe6a431056e4598aede0">linked_list_to_dot</a>(LinkedList ll, <span class="keyword">const</span> <span class="keywordtype">char</span> * dest_path);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___linked_list_8h.html#aa3d5c6b637b0fe6a431056e4598aede0">linked_list_to_dot</a>(LinkedList ll, <span class="keyword">const</span> <span class="keywordtype">char</span> * dest_path);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_LINKEDLIST_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -341,7 +341,7 @@ $(document).ready(function(){initNavTree('_m_l_c_l___linked_list_8h_source.html'
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_m_l_c_l___linked_list_8h.html">MLCL_LinkedList.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_5a68ad6ff18c45a8a449203ae383088c.html">List</a></li><li class="navelem"><a class="el" href="_m_l_c_l___linked_list_8h.html">MLCL_LinkedList.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
