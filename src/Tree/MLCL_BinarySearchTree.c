@@ -40,9 +40,9 @@ BinarySearchTreeDescriptor * binary_search_tree_descriptor(){
     return bt_descriptor;
 }
 
-BinaryNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor){
-    BinaryNode * node;
-    node = (BinaryNode *) calloc(1, sizeof(BinaryNode));
+BinarySearchTreeNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor){
+    BinarySearchTreeNode * node;
+    node = (BinarySearchTreeNode *) calloc(1, sizeof(BinarySearchTreeNode));
     assert(descriptor);
     if(!node) return NULL;
     if(!(node->data = descriptor->type_descriptor->copy(data))
@@ -236,11 +236,11 @@ BinarySearchTree binary_search_tree_search(BinarySearchTree * t, const void * da
     return *t;
 }
 
-void binary_search_tree_node_print (BinaryNode * n){
+void binary_search_tree_node_print (BinarySearchTreeNode * n){
     if(n) n->d->node_fprint(stdout, n);
 }
 
-void binary_search_tree_node_fprint (FILE * stream, BinaryNode * n){
+void binary_search_tree_node_fprint (FILE * stream, BinarySearchTreeNode * n){
     if(n) n->d->type_descriptor->fprint(stream, n->data);
 }
 

@@ -18,6 +18,7 @@
  */
 typedef struct s_type_descriptor {
     size_t data_size;
+    void (*manifest) (struct s_type_descriptor*);
     int (*cmp) (const void *, const void *);
     void (*print) (const void *);
     void (*fprint) (FILE *, const void *);

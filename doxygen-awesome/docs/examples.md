@@ -6,7 +6,7 @@ int x;
 LinkedList l;
 
 x = 5.3f;
-l = new_linked_list(&x, float_manifest);
+l = new_linked_list(&x, float_m);
 
 l->d->append(&l, &x);
 l->d->free(&tmp);
@@ -19,7 +19,7 @@ int x;
 DoubleLinkedList l;
 
 x = 5;
-l = new_double_linked_list(&x, int_manifest);
+l = new_double_linked_list(&x, int_m);
 
 l->d->append(&l, &x);
 l->d->free(&tmp);
@@ -34,7 +34,7 @@ CircularDoubleLinkedList l_2;
 float x;
 
 x = 3.14f;
-l_2 = new_circular_double_linked_list(&x, float_manifest);
+l_2 = new_circular_double_linked_list(&x, float_m);
 l = new_double_linked_list(&l_2, circular_double_linked_list_manifest);
 l->d->append(&l, &x); 
 l->d->free(&tmp);
@@ -58,13 +58,13 @@ The TypeDescriptor gets this through a type_manifest which handle specific funct
 
 ### Writing your own TypeDescriptor
 
-Let's look at the char_manifest for example:
+Let's look at the char_m for example:
 
 ```c
 /* 
 	src/basic_types.c 
 */
-void char_manifest(TypeDescriptor * type_descriptor){
+void char_m(TypeDescriptor * type_descriptor){
 	assert(type_descriptor);
 	type_descriptor->data_size = sizeof(float);
 	type_descriptor->print = char_print;
@@ -136,7 +136,7 @@ int main(){
     /* Making a brand new TypeDescriptor */
 
 	TypeDescriptor td;
-	td = new_type_descriptor(char_manifest);
+	td = new_type_descriptor(char_m);
     
 	/* 
 	  Allocating a TypeDescriptor is done inside 
@@ -148,7 +148,7 @@ int main(){
 	CircularLinkedList l;
 
 	c = 'a';
-	l = new_circular_linked_list(&x, char_manifest);
+	l = new_circular_linked_list(&x, char_m);
     
     /* 
      Note: You can redefine the TypeDescriptor of a structure by its own descriptor.

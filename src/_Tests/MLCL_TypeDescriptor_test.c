@@ -22,7 +22,7 @@ int test_new_int_descriptor(){
     printf("├ test_new_int_descriptor: ");
     x = 1;
     y = 2;
-    td = new_type_descriptor(int_manifest);
+    td = new_type_descriptor(int_m);
     if(!td) MLCL_ERR(1, MLCL_ERR_ALLOC);
     if(!td->cmp(&x, &y)) MLCL_ERR(2, MLCL_ERR_EQ);
     type_descriptor_free(&td);

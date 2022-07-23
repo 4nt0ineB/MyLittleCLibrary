@@ -1,5 +1,5 @@
 # MyLittleCLibrary
-A C library gathering things I learned in college. It's a C toolbox to implement things faster for my homework.
+A C library gathering things I learned in college, allowing me to implement things faster for my homework.
 
 [![workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
@@ -15,10 +15,10 @@ A custom structure fitted to your needs will be more efficient because unwanted
 and heavy abstractions would be reduced, besides you'll know how it works. 
 Word to the wise: it probably carries bugs and flaws.
 
-The lib was made with those flags:
-```bash
--ansi -pedantic -Wall -O2
-```
+
+
+
 
 ### Credits
-doxygen-awesome-css - [github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
+
+Doxygen css from jothepro [doxygen-awesome-css]([github.com/jothepro/doxygen-awesome-css)

@@ -15,9 +15,10 @@
 
 /* ############## char ############## */
 
-void char_manifest(TypeDescriptor * type_descriptor){
+void char_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
+    type_descriptor->manifest = char_m;
     type_descriptor->cmp = char_cmp;
     type_descriptor->print = char_print;
     type_descriptor->fprint = char_fprint;
@@ -80,9 +81,10 @@ void char_free(void ** x){
 
 /* ############## int ############## */
 
-void int_manifest(TypeDescriptor * type_descriptor){
+void int_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(int);
+    type_descriptor->manifest = int_m;
     type_descriptor->cmp = int_cmp;
     type_descriptor->print = int_print;
     type_descriptor->fprint = int_fprint;
@@ -145,9 +147,10 @@ void int_free(void ** x){
 
 /* ############## float ############## */
 
-void float_manifest(TypeDescriptor * type_descriptor){
+void float_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
+    type_descriptor->manifest = float_m;
     type_descriptor->cmp = float_cmp;
     type_descriptor->print = float_print;
     type_descriptor->fprint = float_fprint;

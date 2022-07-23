@@ -19,7 +19,7 @@
  * to the required ones by the type interface TypeDescriptor
  * @param type_descriptor
  */
-void char_manifest(TypeDescriptor * type_descriptor);
+void char_m(TypeDescriptor * type_descriptor);
 
 /**
  * @brief
@@ -68,7 +68,7 @@ void char_free(void ** x);
  * to the required ones by the type interface TypeDescriptor
  * @param type_descriptor
  */
-void int_manifest(TypeDescriptor * type_descriptor);
+void int_m(TypeDescriptor * type_descriptor);
 
 /**
  * @brief
@@ -116,7 +116,7 @@ void int_free(void ** x);
  * to the required ones by the type interface TypeDescriptor
  * @param type_descriptor
  */
-void float_manifest(TypeDescriptor * type_descriptor);
+void float_m(TypeDescriptor * type_descriptor);
 
 /**
  * @brief

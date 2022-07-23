@@ -21,7 +21,7 @@ int main(){
     /*DoubleLinkedList tmp;
     int i, x;
     x = 5;
-    tmp = new_double_linked_list(&x, int_manifest);
+    tmp = new_double_linked_list(&x, int_m);
     x = 10;
     for(i = 0; i < 20; i++)
         tmp->d->append(&tmp, &i);

@@ -32,7 +32,7 @@ int test_new_binary_search_tree(){
     float x;
     printf("├ test_new_binary_search_tree");
     x = 1.2f;
-    t = new_binary_search_tree(&x, float_manifest);
+    t = new_binary_search_tree(&x, float_m);
     if(!t)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
     if(!t->d->type_descriptor->eq(t->data, &x))
@@ -45,7 +45,7 @@ int test_binary_search_tree_height(){
     int x;
     printf("├ test_binary_search_tree_height");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -66,7 +66,7 @@ int test_binary_search_tree_nb_nodes(){
     int x;
     printf("├ test_binary_search_tree_nb_nodes");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -87,7 +87,7 @@ int test_binary_search_tree_nb_leaves(){
     int x;
     printf("├ test_binary_search_tree_nb_leaves");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -108,7 +108,7 @@ int test_binary_search_tree_nb_internal_nodes(){
     int x;
     printf("├ test_binary_search_tree_nb_internal_nodes");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -129,7 +129,7 @@ int test_binary_search_tree_nb_two_children(){
     int x;
     printf("├ test_binary_search_tree_nb_two_children");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -150,7 +150,7 @@ int test_binary_search_tree_is_perfect_bt(){
     int x;
     printf("├ test_binary_search_tree_is_perfect_bt");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -175,7 +175,7 @@ int test_binary_search_tree_add(){
     int x;
     printf("├ test_binary_search_tree_add");
     x = 1;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 3;
@@ -194,7 +194,7 @@ int test_binary_tree_remove(){
     int x;
     printf("├ test_binary_tee_remove");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -218,7 +218,7 @@ int test_binary_tree_search(){
     int x;
     printf("├ test_binary_tee_search");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;
@@ -241,7 +241,7 @@ int test_binary_search_tree_is_bst(){
     int x;
     printf("├ test_binary_search_tree_is_bst");
     x = 7;
-    t = new_binary_search_tree(&x, int_manifest);
+    t = new_binary_search_tree(&x, int_m);
     x = 2;
     t->d->add(&t, &x);
     x = 14;

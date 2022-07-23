@@ -14,14 +14,14 @@
 #include <stdio.h>
 
 /**
- * @brief A generic binary tree
+ * @brief A generic binary search tree
  */
-typedef struct s_binary_node {
+typedef struct s_binary_search_tree_node {
     void * data;
-    struct s_binary_node * left; /* left child */
-    struct s_binary_node * right; /* right child */
-    struct s_binary_search_tree_descriptor * d; /*!< Descriptor of the LinkedList */
-} BinaryNode,  * BinarySearchTree;
+    struct s_binary_search_tree_node * left; /* left child */
+    struct s_binary_search_tree_node * right; /* right child */
+    struct s_binary_search_tree_descriptor * d; /*!< Descriptor of the binary search tree */
+} BinarySearchTreeNode,  * BinarySearchTree;
 
 /**
  * @brief Descriptor of the binary tree
@@ -47,8 +47,8 @@ typedef struct s_binary_search_tree_descriptor {
     BinarySearchTree  (*search) (BinarySearchTree *, const void *);
     int (*is_perfect_bt) (BinarySearchTree);
     int (*is_bst) (BinarySearchTree);
-    void (*node_print) (BinaryNode *);
-    void (*node_fprint) (FILE *, BinaryNode *);
+    void (*node_print) (BinarySearchTreeNode *);
+    void (*node_fprint) (FILE *, BinarySearchTreeNode *);
     void (*fprint_preorder) (FILE *, BinarySearchTree);
     void (*fprint_inorder) (FILE *, BinarySearchTree);
     void (*fprint_postorder) (FILE *, BinarySearchTree);
@@ -69,7 +69,7 @@ BinarySearchTreeDescriptor * binary_search_tree_descriptor();
  * @param descriptor The binary tree descriptor.
  * @return
  */
-BinaryNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor);
+BinarySearchTreeNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor);
 
 /**
  *
@@ -121,7 +121,6 @@ int binary_search_tree_nb_two_children(BinarySearchTree t);
  */
 int binary_search_tree_is_perfect_bt(BinarySearchTree t);
 
-
 BinarySearchTree binary_search_tree_min(BinarySearchTree t);
 
 BinarySearchTree binary_search_tree_max(BinarySearchTree t);
@@ -136,7 +135,7 @@ BinarySearchTree binary_search_tree_max(BinarySearchTree t);
 int binary_search_tree_is_bst(BinarySearchTree t);
 
 /**
- * Dummy insertion with rand
+ *
  * @param t
  * @param data
  * @return
@@ -167,13 +166,13 @@ BinarySearchTree binary_search_tree_search(BinarySearchTree * t, const void * da
  *
  * @param n
  */
-void binary_search_tree_node_print (BinaryNode * n);
+void binary_search_tree_node_print (BinarySearchTreeNode * n);
 
 /**
  *
  * @param n
  */
-void binary_search_tree_node_fprint (FILE * stream, BinaryNode * n);
+void binary_search_tree_node_fprint (FILE * stream, BinarySearchTreeNode * n);
 
 
 

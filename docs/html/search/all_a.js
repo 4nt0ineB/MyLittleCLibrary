@@ -1,7 +1,7 @@
 var searchData=
 [
   ['le_149',['le',['../structs__type__descriptor.html#aabe3ab9d13d2d05cddff5cac616d5f81',1,'s_type_descriptor']]],
-  ['left_150',['left',['../structs__binary__node.html#af037b0dbe102c511e3665dcde95deb69',1,'s_binary_node']]],
+  ['left_150',['left',['../structs__binary__node.html#af037b0dbe102c511e3665dcde95deb69',1,'s_binary_search_tree_node']]],
   ['length_151',['length',['../structs__double__linked__list__descriptor.html#acebcea778a042e083a588a9c24eea03d',1,'s_double_linked_list_descriptor::length()'],['../structs__linked__list__descriptor.html#a25ca966cdb549f03ec2d134257741e83',1,'s_linked_list_descriptor::length()']]],
   ['lfsr_152',['lfsr',['../_m_l_c_l__utils_8c.html#aca4947b2cf253e719201367aba813d8b',1,'MLCL_utils.c']]],
   ['linked_5flist_5fadd_5f_153',['linked_list_add_',['../_m_l_c_l___linked_list_8h.html#a3a6238db2e4f84e01dde78d2adace73f',1,'linked_list_add_(LinkedList *ll, const void *data, int(*cmp)(const void *, const void *)):&#160;MLCL_LinkedList.c'],['../_m_l_c_l___linked_list_8c.html#a3a6238db2e4f84e01dde78d2adace73f',1,'linked_list_add_(LinkedList *ll, const void *data, int(*cmp)(const void *, const void *)):&#160;MLCL_LinkedList.c']]],

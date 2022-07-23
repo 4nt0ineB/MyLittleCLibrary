@@ -1,8 +1,8 @@
 var _m_l_c_l___binary_search_tree_8h =
 [
-    [ "s_binary_node", "structs__binary__node.html", "structs__binary__node" ],
+    [ "s_binary_search_tree_node", "structs__binary__node.html", "structs__binary__node" ],
     [ "s_binary_search_tree_descriptor", "structs__binary__tree__descriptor.html", "structs__binary__tree__descriptor" ],
-    [ "BinaryNode", "_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0", null ],
+    [ "BinarySearchTreeNode", "_m_l_c_l___binary_search_tree_8h.html#ae05e180dcef778e08a7ec52df918fef0", null ],
     [ "BinarySearchTree", "_m_l_c_l___binary_search_tree_8h.html#ae3d01cf2f3ba43dd04e8a2a8b9cc2dd0", null ],
     [ "BinarySearchTreeDescriptor", "_m_l_c_l___binary_search_tree_8h.html#a2fed62d8c50a494d43241898bc9cdbdc", null ],
     [ "binary_tee_remove", "_m_l_c_l___binary_search_tree_8h.html#aeb07701391a3665ade722e319fb58680", null ],
