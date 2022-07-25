@@ -17,5 +17,9 @@
  */
 unsigned mlcl_unsigned_rand();
 
+int int_rand(int a, int b);
+
+float float_rand(float min, float max);
+
 
 #endif /* MYLITTLECLIBRARY_MLCL_UTILS_H_H */

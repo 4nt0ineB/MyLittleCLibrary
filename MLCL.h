@@ -26,6 +26,7 @@
 #include "include/List/MLCL_CircularDoubleLinkedList.h"
 /* Tree */
 #include "include/Tree/MLCL_BinarySearchTree.h"
+#include "include/Tree/MLCL_AVLTree.h"
 
 /*****************
     Tests

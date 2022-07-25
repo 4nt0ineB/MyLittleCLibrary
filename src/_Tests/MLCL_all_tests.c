@@ -23,7 +23,8 @@ int run_all_tests(){
         return 0;
     if(!run_all_binary_search_tree_tests())
         return 0;
-
+    if(!run_all_avl_tree_tests())
+        return 0;
     printf("└[All tests successfully passed]\n");
     return 1;
 }

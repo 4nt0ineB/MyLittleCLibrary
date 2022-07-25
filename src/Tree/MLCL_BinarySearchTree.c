@@ -155,8 +155,9 @@ void * binary_search_tree_extract_min(BinarySearchTree * t){
     if (!*t)
         return NULL;
     if (!(*t)->left) {
-        BinarySearchTree tmp = *t;
+        BinarySearchTree tmp;
         void * data;
+        tmp = *t;
         data = tmp->data;
         *t = tmp->right;
         tmp->d->n--;

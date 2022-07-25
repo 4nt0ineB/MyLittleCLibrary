@@ -158,7 +158,7 @@ int avl_tree_remove(AVLTree * t, const void * data);
  * @param data
  * @return
  */
-BinarySearchTree avl_tree_search(AVLTree * t, const void * data);
+AVLTree avl_tree_search(AVLTree * t, const void * data);
 
 /**
  *
