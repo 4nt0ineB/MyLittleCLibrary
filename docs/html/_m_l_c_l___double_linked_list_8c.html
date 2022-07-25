@@ -172,9 +172,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a901a20b34c22c22aa8055a09630fdeb3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8c.html#a901a20b34c22c22aa8055a09630fdeb3">double_linked_list_pop</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *ll)</td></tr>
 <tr class="memdesc:a901a20b34c22c22aa8055a09630fdeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove and return tail's data. The Targeted cell will be freed not the data.  <a href="_m_l_c_l___double_linked_list_8c.html#a901a20b34c22c22aa8055a09630fdeb3">More...</a><br /></td></tr>
 <tr class="separator:a901a20b34c22c22aa8055a09630fdeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9bd86dedf7bd557151f8c0d60e0bdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8c.html#a1f9bd86dedf7bd557151f8c0d60e0bdc">double_linked_list_filter</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *ll, int(*f)(const void *))</td></tr>
-<tr class="memdesc:a1f9bd86dedf7bd557151f8c0d60e0bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new linked list by filtering given linked list and filtering function. Do not alter given linked list.  <a href="_m_l_c_l___double_linked_list_8c.html#a1f9bd86dedf7bd557151f8c0d60e0bdc">More...</a><br /></td></tr>
-<tr class="separator:a1f9bd86dedf7bd557151f8c0d60e0bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d4732647ccb9c6b0cb21037c7bf4511"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8c.html#a2d4732647ccb9c6b0cb21037c7bf4511">double_linked_list_descriptor_free</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#a4dfd5edaaa08d73ea8f62ab7e2de3461">DoubleLinkedListDescriptor</a> **lld)</td></tr>
 <tr class="separator:a2d4732647ccb9c6b0cb21037c7bf4511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1bee743b3934466c5abe321975c0985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___double_linked_list_8c.html#af1bee743b3934466c5abe321975c0985">double_linked_list_cell_free</a> (<a class="el" href="_m_l_c_l___double_linked_list_8h.html#a738083643b75c96c228af3d14b09090b">DoubleLinkedCell</a> **ll)</td></tr>
@@ -510,44 +507,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a1f9bd86dedf7bd557151f8c0d60e0bdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f9bd86dedf7bd557151f8c0d60e0bdc">&#9670;&nbsp;</a></span>double_linked_list_filter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a>* double_linked_list_filter </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23">DoubleLinkedList</a> *&#160;</td>
-          <td class="paramname"><em>dll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int(*)(const void *)&#160;</td>
-          <td class="paramname"><em>f</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create new linked list by filtering given linked list and filtering function. Do not alter given linked list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">l</td><td></td></tr>
-    <tr><td class="paramname">filter</td><td>filtering function. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>LinkedList of filtered cells. </dd></dl>
 
 </div>
 </div>

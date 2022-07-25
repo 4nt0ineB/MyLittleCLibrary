@@ -14,7 +14,6 @@ var _m_l_c_l___double_linked_list_8h =
     [ "double_linked_list_descriptor", "_m_l_c_l___double_linked_list_8h.html#a319ec5a22a474d6778a60324eb7edcb4", null ],
     [ "double_linked_list_descriptor_free", "_m_l_c_l___double_linked_list_8h.html#a2d4732647ccb9c6b0cb21037c7bf4511", null ],
     [ "double_linked_list_extract", "_m_l_c_l___double_linked_list_8h.html#a8784077f8030255d68040a820203e3e2", null ],
-    [ "double_linked_list_filter", "_m_l_c_l___double_linked_list_8h.html#a86dc66ee7949bf49e2ab504bcc4b626c", null ],
     [ "double_linked_list_fprint", "_m_l_c_l___double_linked_list_8h.html#a02436790c2a6665d672be92ae84542d7", null ],
     [ "double_linked_list_free", "_m_l_c_l___double_linked_list_8h.html#a8c597deff023548f1cb28e610b937f44", null ],
     [ "double_linked_list_insert", "_m_l_c_l___double_linked_list_8h.html#ac648e79170b0cff6197d1b55480ac4d6", null ],

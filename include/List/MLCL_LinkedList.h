@@ -3,9 +3,19 @@
  *
  *   Copyright (C) 2022 Antoine Bastos
  *
- *   This Library is free software under the terms of
- *   the MIT license.
- */
+ *    This Library is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This Library is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+  */
 
 #ifndef MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
 #define MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
@@ -31,25 +41,26 @@ typedef struct s_linked_cell {
  */
 typedef struct s_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
-    int length; /*<! Linked list length */
-    int (*add_) (LinkedList *, const void *, int (*cmp) (const void *, const void *));
-    int (*ordered_add) (LinkedList *, const void *);
-    int (*reverse_ordered_add) (LinkedList *, const void *);
-    int (*prepend) (LinkedList *, const void *);
-    int (*append) (LinkedList *, const void *);
-    int (*insert) (LinkedList *, const void *);
-    LinkedList (*search) (LinkedList, const void *);
-    int (*remove) (LinkedList *, const void *);
-    void * (*shift) (LinkedList *);
-    void * (*pop) (LinkedList *);
-    LinkedList * (*filter) (LinkedList *, int (* f) (const void *));
-    void (*cell_free) (LinkedCell **);
-    void (*free) (LinkedList *);
-    void (*print) (LinkedList);
-    void (*cell_print) (LinkedCell *);
-    void (*fprint) (FILE *, LinkedList);
-    void (*cell_fprint) (FILE *, LinkedCell *);
-    void (*to_dot) (LinkedList, const char *);
+    int length; /**< Linked list length */
+    int (*add_) (LinkedList *, const void *, int (*cmp) (const void *, const void *)); /**< ordered add depending on given function Must return 1 or 0 */
+    int (*ordered_add) (LinkedList *, const void *); /**< Ascending add */
+    int (*reverse_ordered_add) (LinkedList *, const void *); /**< Descending add*/
+    int (*prepend) (LinkedList *, const void *); /**< Add data to the head */
+    int (*append) (LinkedList *, const void *); /**< Add data to the tail*/
+    int (*insert) (LinkedList *, const void *); /**< Insert given data right next to the given cell */
+    LinkedList (*search) (LinkedList, const void *); /**< Search and return a pointer to the first found occurrence of the given data */
+    int (*remove) (LinkedList *, const void *); /**< Search and remove first occurrence of the given data */
+    /* @Todo filter_remove */
+    /* @Todo cell_remove */
+    void * (*shift) (LinkedList *); /**< Remove head's cell and return the pointer to its data */
+    void * (*pop) (LinkedList *); /**< Remove tail's cell and return the pointer to its data */
+    void (*cell_free) (LinkedCell **); /**< Free the given cell */
+    void (*free) (LinkedList *); /**< Free the list */
+    void (*cell_print) (LinkedCell *); /**< Print the given cell on stdout */
+    void (*cell_fprint) (FILE *, LinkedCell *); /**< Print the given cell on given stream */
+    void (*print) (LinkedList); /**< Print the list on stdout */
+    void (*fprint) (FILE *, LinkedList); /**< Print the list on the given stream*/
+    void (*to_dot) (LinkedList, const char *); /**< Make a formatted dot file of the struct */
 } LinkedListDescriptor;
 
 /**
@@ -77,9 +88,10 @@ LinkedCell * new_linked_list(const void * data, void (*type_manifest) (TypeDescr
 
 /**
  * @brief Add data to the list depending on the given comparison function. To have like an ordered list.
- * @param ll
- * @param data
- * @param cmp comparison function returning 1 or 0, to check if the have to be inserted
+ * @param ll A linked list pointer
+ * @param data A pointer to a a data of the same carried by the list
+ * @param cmp A comparison function returning 1 or 0 (!),
+ * to check if the data have to be inserted or not before a value of the list
  * @return
  */
 int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *));
@@ -142,15 +154,6 @@ LinkedList linked_list_search(LinkedList ll, const void * data);
  * @return
  */
 int linked_list_remove(LinkedList * ll, const void * data);
-
-/**
- * @brief Create new linked list by filtering given linked list and filtering function.
- * Do not alter given linked list.
- * @param l
- * @param filter filtering function.
- * @return LinkedList of filtered cells.
- */
-LinkedList * linked_list_filter(LinkedList * ll, int (* f) (const void *));
 
 /**
  * @brief Remove and return head's data. The Targeted cell will be freed not the data.

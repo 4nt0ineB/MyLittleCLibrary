@@ -10,5 +10,6 @@ var structs__type__descriptor =
     [ "gt", "structs__type__descriptor.html#a7ce72c0944a4b2727f19677b126b521f", null ],
     [ "le", "structs__type__descriptor.html#aabe3ab9d13d2d05cddff5cac616d5f81", null ],
     [ "lt", "structs__type__descriptor.html#ab8bec7cda82878ce09a8a80445bd0aa4", null ],
+    [ "manifest", "structs__type__descriptor.html#ad2e016c55cf1ba9ab5f62a3ebbb2d31c", null ],
     [ "print", "structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7", null ]
 ];

@@ -2,9 +2,19 @@
  *   This file is part of the MLCL Library.
  *   Antoine Bastos 2022
  *
- *   This Library is free software under the terms of
- *   the MIT license.
- */
+ *    This Library is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This Library is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+  */
 
 #include "../../include/List/MLCL_DoubleLinkedList.h"
 #include <assert.h>
@@ -41,7 +51,6 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     ll_descriptor->remove = double_linked_list_remove;
     ll_descriptor->shift = double_linked_list_shift;
     ll_descriptor->pop = double_linked_list_pop;
-    ll_descriptor->filter = double_linked_list_filter;
     ll_descriptor->print = double_linked_list_print;
     ll_descriptor->cell_free = double_linked_list_cell_free;
     ll_descriptor->free = double_linked_list_free;
@@ -214,11 +223,6 @@ void * double_linked_list_pop(DoubleLinkedList * ll){
     }
     free(tmp);
     return data;
-}
-
-DoubleLinkedList * double_linked_list_filter(DoubleLinkedList * ll, int (* f) (const void *)){
-    /* @Todo dll_filter definition */
-    return NULL;
 }
 
 void double_linked_list_descriptor_free(DoubleLinkedListDescriptor ** lld){

@@ -9,7 +9,7 @@ var _m_l_c_l__basic__types_8h =
     [ "char_gt", "_m_l_c_l__basic__types_8h.html#ae7961cff284def9adce70d63aecb353b", null ],
     [ "char_le", "_m_l_c_l__basic__types_8h.html#a90b7c8d856d1bd514eec198e548c1c94", null ],
     [ "char_lt", "_m_l_c_l__basic__types_8h.html#a1e45c9e0d01f34e73b63312f46223c12", null ],
-    [ "char_m", "_m_l_c_l__basic__types_8h.html#a3d1b43406f4db3efeef421178d152d3b", null ],
+    [ "char_m", "_m_l_c_l__basic__types_8h.html#a571296fd48efc8804c03564930d4d898", null ],
     [ "char_print", "_m_l_c_l__basic__types_8h.html#aac1895a4866a738835221db6c4ab93f6", null ],
     [ "float_cmp", "_m_l_c_l__basic__types_8h.html#a622306e94a4fe82d57b9cbea08dedbdf", null ],
     [ "float_copy", "_m_l_c_l__basic__types_8h.html#ade289b0a5457a593d6799abc50308ec4", null ],
@@ -20,7 +20,7 @@ var _m_l_c_l__basic__types_8h =
     [ "float_gt", "_m_l_c_l__basic__types_8h.html#a7731800f4e1c0e708703165bba23e4f9", null ],
     [ "float_le", "_m_l_c_l__basic__types_8h.html#a16639201d10d8a14f231e57f42b65720", null ],
     [ "float_lt", "_m_l_c_l__basic__types_8h.html#ad64d77fd8ff091e3742f50df970f9677", null ],
-    [ "float_m", "_m_l_c_l__basic__types_8h.html#aa38a82d9d5c7fea34de55832c6fa9e95", null ],
+    [ "float_m", "_m_l_c_l__basic__types_8h.html#adb3e3c1775c881414fd300deef79267b", null ],
     [ "float_print", "_m_l_c_l__basic__types_8h.html#a6e6559b0b7d1f6c9ef2e3f84e2418a1e", null ],
     [ "int_cmp", "_m_l_c_l__basic__types_8h.html#a1a600b72347a869e84889977c6c6d0d4", null ],
     [ "int_copy", "_m_l_c_l__basic__types_8h.html#a065f95076de52bc072a042f49cdec068", null ],
@@ -31,6 +31,6 @@ var _m_l_c_l__basic__types_8h =
     [ "int_gt", "_m_l_c_l__basic__types_8h.html#a00004ef459cad751f59eaf6dd4ac6940", null ],
     [ "int_le", "_m_l_c_l__basic__types_8h.html#add28057d49a17505cdd727c03b0c6247", null ],
     [ "int_lt", "_m_l_c_l__basic__types_8h.html#ab95b19d7974a3501343cdb60394082d7", null ],
-    [ "int_m", "_m_l_c_l__basic__types_8h.html#a0b41206c9f6598fc3a2643094b28bed6", null ],
+    [ "int_m", "_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7", null ],
     [ "int_print", "_m_l_c_l__basic__types_8h.html#a60702c457b11f7d87e32e35bceaaafba", null ]
 ];

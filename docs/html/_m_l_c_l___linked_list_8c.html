@@ -170,9 +170,6 @@ Functions</h2></td></tr>
 <tr class="memitem:abb818b941189a4225975e2c13fbf2e5b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___linked_list_8c.html#abb818b941189a4225975e2c13fbf2e5b">linked_list_pop</a> (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *ll)</td></tr>
 <tr class="memdesc:abb818b941189a4225975e2c13fbf2e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove and return tail's data. The Targeted cell will be freed not the data.  <a href="_m_l_c_l___linked_list_8c.html#abb818b941189a4225975e2c13fbf2e5b">More...</a><br /></td></tr>
 <tr class="separator:abb818b941189a4225975e2c13fbf2e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9d7c90a719425bcd0c324b7542cbe44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___linked_list_8c.html#aa9d7c90a719425bcd0c324b7542cbe44">linked_list_filter</a> (<a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *ll, int(*f)(const void *))</td></tr>
-<tr class="memdesc:aa9d7c90a719425bcd0c324b7542cbe44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new linked list by filtering given linked list and filtering function. Do not alter given linked list.  <a href="_m_l_c_l___linked_list_8c.html#aa9d7c90a719425bcd0c324b7542cbe44">More...</a><br /></td></tr>
-<tr class="separator:aa9d7c90a719425bcd0c324b7542cbe44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a520927ae1799833531120e0985075232"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___linked_list_8c.html#a520927ae1799833531120e0985075232">linked_list_descriptor_free</a> (<a class="el" href="_m_l_c_l___linked_list_8h.html#ad8bb492332e5e6d50e05c03f0abd4024">LinkedListDescriptor</a> **lld)</td></tr>
 <tr class="separator:a520927ae1799833531120e0985075232"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cc64bc6a10c3b09ab09f9c9534dfacb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___linked_list_8c.html#a6cc64bc6a10c3b09ab09f9c9534dfacb">linked_list_cell_free</a> (<a class="el" href="_m_l_c_l___linked_list_8h.html#ab7600085c7fa714f35235f207208ac1f">LinkedCell</a> **ll)</td></tr>
@@ -270,9 +267,9 @@ Functions</h2></td></tr>
 <p>Add data to the list depending on the given comparison function. To have like an ordered list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ll</td><td></td></tr>
-    <tr><td class="paramname">data</td><td></td></tr>
-    <tr><td class="paramname">cmp</td><td>comparison function returning 1 or 0, to check if the have to be inserted </td></tr>
+    <tr><td class="paramname">ll</td><td>A linked list pointer </td></tr>
+    <tr><td class="paramname">data</td><td>A pointer to a a data of the same carried by the list </td></tr>
+    <tr><td class="paramname">cmp</td><td>A comparison function returning 1 or 0 (!), to check if the data have to be inserted or not before a value of the list </td></tr>
   </table>
   </dd>
 </dl>
@@ -480,44 +477,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9d7c90a719425bcd0c324b7542cbe44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9d7c90a719425bcd0c324b7542cbe44">&#9670;&nbsp;</a></span>linked_list_filter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a>* linked_list_filter </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab">LinkedList</a> *&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int(*)(const void *)&#160;</td>
-          <td class="paramname"><em>f</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create new linked list by filtering given linked list and filtering function. Do not alter given linked list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">l</td><td></td></tr>
-    <tr><td class="paramname">filter</td><td>filtering function. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>LinkedList of filtered cells. </dd></dl>
 
 </div>
 </div>

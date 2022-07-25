@@ -6,7 +6,6 @@ var structs__double__linked__list__descriptor =
     [ "cell_free", "structs__double__linked__list__descriptor.html#a84f5988446196dc8ba868b2528839c52", null ],
     [ "cell_print", "structs__double__linked__list__descriptor.html#a2a2236c76b4deab0409d65d01d2751a2", null ],
     [ "extract", "structs__double__linked__list__descriptor.html#a6f7e516e808daad75d7bbd8414439651", null ],
-    [ "filter", "structs__double__linked__list__descriptor.html#ab9a5bc6e28e7689d01c7d9f75b06836f", null ],
     [ "fprint", "structs__double__linked__list__descriptor.html#a0a52240b62a7513d81a161e633da53e7", null ],
     [ "free", "structs__double__linked__list__descriptor.html#aae58e105aa319966f357afe32f53313d", null ],
     [ "insert", "structs__double__linked__list__descriptor.html#a3a1797df2dde10865bcbfa92ffe20f81", null ],

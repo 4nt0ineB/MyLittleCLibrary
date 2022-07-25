@@ -10,7 +10,6 @@ var _m_l_c_l___double_linked_list_8c =
     [ "double_linked_list_descriptor", "_m_l_c_l___double_linked_list_8c.html#a319ec5a22a474d6778a60324eb7edcb4", null ],
     [ "double_linked_list_descriptor_free", "_m_l_c_l___double_linked_list_8c.html#a2d4732647ccb9c6b0cb21037c7bf4511", null ],
     [ "double_linked_list_extract", "_m_l_c_l___double_linked_list_8c.html#a8784077f8030255d68040a820203e3e2", null ],
-    [ "double_linked_list_filter", "_m_l_c_l___double_linked_list_8c.html#a1f9bd86dedf7bd557151f8c0d60e0bdc", null ],
     [ "double_linked_list_fprint", "_m_l_c_l___double_linked_list_8c.html#a02436790c2a6665d672be92ae84542d7", null ],
     [ "double_linked_list_free", "_m_l_c_l___double_linked_list_8c.html#aee2c8cd399c7dae59170ab896692cc40", null ],
     [ "double_linked_list_insert", "_m_l_c_l___double_linked_list_8c.html#a5abad073a282ca154ecd2077d79b9e55", null ],

@@ -2,9 +2,19 @@
  *   This file is part of the MLCL Library.
  *   Antoine Bastos 2022
  *
- *   This Library is free software under the terms of
- *   the MIT license.
- */
+ *    This Library is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This Library is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+  */
 
 #ifndef MYLITTLECLIBRARY_DOUBLELINKEDLIST_H
 #define MYLITTLECLIBRARY_DOUBLELINKEDLIST_H
@@ -24,32 +34,33 @@ typedef struct s_double_linked_cell {
 
 /**
  * @brief Descriptor of the linked list
- * The list - the cells - refers to a linked list descriptor,
+ * The list - the cells - refers to a double linked list descriptor,
  * gathering implemented functions of the DoubleLinkedList type, including
  * a TypeDescriptor allowing manipulation of the data, and the list length.
  */
 typedef struct s_double_linked_list_descriptor {
     TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
-    int (*add_) (DoubleLinkedList *, const void *, int (*cmp) (const void *, const void *));
-    int (*ordered_add) (DoubleLinkedList *, const void *);
-    int (*reverse_ordered_add) (DoubleLinkedList *, const void *);
-    int (*prepend) (DoubleLinkedList *, const void *);
-    int (*append) (DoubleLinkedList *, const void *);
-    int (*insert) (DoubleLinkedList *, const void *);
-    DoubleLinkedCell * (*search) (DoubleLinkedList, const void *);
+    int (*add_) (DoubleLinkedList *, const void *, int (*cmp) (const void *, const void *));  /**< ordered add depending on given function. Must return 1 or 0 */
+    int (*ordered_add) (DoubleLinkedList *, const void *); /**< Ascending add */
+    int (*reverse_ordered_add) (DoubleLinkedList *, const void *); /**< Descending add*/
+    int (*prepend) (DoubleLinkedList *, const void *); /**< Add data to the head */
+    int (*append) (DoubleLinkedList *, const void *); /**< Add data to the tail*/
+    int (*insert) (DoubleLinkedList *, const void *); /**< Insert given data right next to the given cell */
+    DoubleLinkedCell * (*search) (DoubleLinkedList, const void *); /**< Search and return a pointer to the first found occurrence of the given data */
     void * (*extract) (DoubleLinkedCell **);
-    int (*remove) (DoubleLinkedList *, const void *);
-    void * (*shift) (DoubleLinkedList *);
-    void * (*pop) (DoubleLinkedList *);
-    DoubleLinkedList * (*filter) (DoubleLinkedList *, int (* f) (const void *));
-    void (*cell_free) (DoubleLinkedCell **);
-    void (*free) (DoubleLinkedList *);
-    void (*cell_print) (DoubleLinkedList);
-    void (*print) (DoubleLinkedList);
-    void (*fprint) (FILE *, DoubleLinkedList);
-    void (*cell_fprint) (FILE *, DoubleLinkedCell *);
-    void (*to_dot) (DoubleLinkedList, const char * path);
+    int (*remove) (DoubleLinkedList *, const void *); /**< Search and remove first occurrence of the given data */
+    /* @Todo filter_remove */
+    /* @Todo cell_remove */
+    void * (*shift) (DoubleLinkedList *); /**< Remove head's cell and return the pointer to its data */
+    void * (*pop) (DoubleLinkedList *); /**< Remove tail's cell and return the pointer to its data */
+    void (*cell_free) (DoubleLinkedCell **); /**< Free the given cell */
+    void (*free) (DoubleLinkedList *); /**< Free the list */
+    void (*cell_print) (DoubleLinkedList); /**< Print the given cell on stdout */
+    void (*cell_fprint) (FILE *, DoubleLinkedCell *); /**< Print the given cell on given stream */
+    void (*print) (DoubleLinkedList); /**< Print the list on stdout */
+    void (*fprint) (FILE *, DoubleLinkedList); /**< Print the list on the given stream*/
+    void (*to_dot) (DoubleLinkedList, const char * path); /**< Make a formatted dot file of the struct */
 } DoubleLinkedListDescriptor;
 
 /**
@@ -150,15 +161,6 @@ void * double_linked_list_extract(DoubleLinkedCell ** dlc);
  * @return
  */
 int double_linked_list_remove(DoubleLinkedList * dll, const void * data);
-
-/**
- * @brief Create new linked list by filtering given linked list and filtering function.
- * Do not alter given linked list.
- * @param l
- * @param filter filtering function.
- * @return LinkedList of filtered cells.
- */
-DoubleLinkedList * double_linked_list_filter(DoubleLinkedList * dll, int (* f) (const void *));
 
 /**
  * @brief Remove and return head's data. The Targeted cell will be freed not the data.

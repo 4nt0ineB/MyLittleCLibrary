@@ -1,7 +1,6 @@
 var structs__binary__search__tree__descriptor =
 [
     [ "add", "structs__binary__search__tree__descriptor.html#ab679be342d275941769055e65aaeced0", null ],
-    [ "binary_search_tree_is_bst", "structs__binary__search__tree__descriptor.html#a9df4c2779b398d7a9dff33a693462237", null ],
     [ "extract_max", "structs__binary__search__tree__descriptor.html#a93db30e348ff9c6e393bf0ad1ca12a5b", null ],
     [ "extract_min", "structs__binary__search__tree__descriptor.html#ad16accca5f6ce9cb06aaf1e83a3c1f31", null ],
     [ "fprint_inorder", "structs__binary__search__tree__descriptor.html#a82346df1b37c49c7cee701e1a6ae797d", null ],
@@ -18,8 +17,8 @@ var structs__binary__search__tree__descriptor =
     [ "nb_leaves", "structs__binary__search__tree__descriptor.html#a1f41e3d04e3a13d2e3f949398716d8e8", null ],
     [ "nb_nodes", "structs__binary__search__tree__descriptor.html#a0c67a1cc1ab5278fe0a6e1b06f560263", null ],
     [ "nb_two_children", "structs__binary__search__tree__descriptor.html#a852f7573ad002b9fd50589bdd704de41", null ],
-    [ "node_fprint", "structs__binary__search__tree__descriptor.html#aad6a3ab91ccd31b01cf2dc5d2b44d219", null ],
-    [ "node_print", "structs__binary__search__tree__descriptor.html#a372905779b0f0240def0db0956bd4de0", null ],
+    [ "node_fprint", "structs__binary__search__tree__descriptor.html#a79a2e22b5f275b7faff1f921e95d5601", null ],
+    [ "node_print", "structs__binary__search__tree__descriptor.html#a58b3554f58d0be2c242c5bf6393e5be2", null ],
     [ "remove", "structs__binary__search__tree__descriptor.html#a99d193fbab52c70d9841a9087f82a230", null ],
     [ "search", "structs__binary__search__tree__descriptor.html#ad6cf02104c8038ea09232def06533bba", null ],
     [ "to_dot", "structs__binary__search__tree__descriptor.html#a20d4427c10cc20971e5d5afd5a4a106b", null ],

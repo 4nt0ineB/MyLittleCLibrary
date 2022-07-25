@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('structs__type__descriptor.html',''); i
 </div><!--header-->
 <div class="contents">
 
-<p>Interface for basic types and more complex structures of the lib.  
+<p>Interface for all types manipulated by the structs of the library.  
  <a href="structs__type__descriptor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_m_l_c_l___type_descriptor_8h_source.html">MLCL_TypeDescriptor.h</a>&gt;</code></p>
@@ -129,6 +129,8 @@ $(document).ready(function(){initNavTree('structs__type__descriptor.html',''); i
 Public Attributes</h2></td></tr>
 <tr class="memitem:a12e6642df2d6502155eeeff089a4ed79"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__type__descriptor.html#a12e6642df2d6502155eeeff089a4ed79">data_size</a></td></tr>
 <tr class="separator:a12e6642df2d6502155eeeff089a4ed79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e016c55cf1ba9ab5f62a3ebbb2d31c"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__type__descriptor.html#ad2e016c55cf1ba9ab5f62a3ebbb2d31c">manifest</a> )(struct <a class="el" href="structs__type__descriptor.html">s_type_descriptor</a> *)</td></tr>
+<tr class="separator:ad2e016c55cf1ba9ab5f62a3ebbb2d31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2257189f65546087c83fe737d5022bea"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__type__descriptor.html#a2257189f65546087c83fe737d5022bea">cmp</a> )(const void *, const void *)</td></tr>
 <tr class="separator:a2257189f65546087c83fe737d5022bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a097f32ac2668b07bf4f016a91136b9a7"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7">print</a> )(const void *)</td></tr>
@@ -151,7 +153,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae03ae289d00de53fd675c12d9c48afb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for basic types and more complex structures of the lib. </p>
+<div class="textblock"><p>Interface for all types manipulated by the structs of the library. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a2257189f65546087c83fe737d5022bea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2257189f65546087c83fe737d5022bea">&#9670;&nbsp;</a></span>cmp</h2>
@@ -164,6 +166,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Comparison function </p>
 
 </div>
 </div>
@@ -178,6 +181,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Function to allocate a copy of a data of the associated type </p>
 
 </div>
 </div>
@@ -206,6 +210,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>equal test </p>
 
 </div>
 </div>
@@ -220,6 +225,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Printing function on given stream </p>
 
 </div>
 </div>
@@ -234,6 +240,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Function to free the data </p>
 
 </div>
 </div>
@@ -248,6 +255,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>greater equal test </p>
 
 </div>
 </div>
@@ -262,6 +270,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>greater than test </p>
 
 </div>
 </div>
@@ -276,6 +285,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>less equal test </p>
 
 </div>
 </div>
@@ -290,6 +300,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>less than test </p>
+
+</div>
+</div>
+<a id="ad2e016c55cf1ba9ab5f62a3ebbb2d31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e016c55cf1ba9ab5f62a3ebbb2d31c">&#9670;&nbsp;</a></span>manifest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* s_type_descriptor::manifest) (struct <a class="el" href="structs__type__descriptor.html">s_type_descriptor</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>type_manifest used to make the type descriptor </p>
 
 </div>
 </div>
@@ -304,6 +330,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Printing function, shorthand to fprint </p>
 
 </div>
 </div>

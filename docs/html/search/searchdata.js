@@ -3,9 +3,9 @@ var indexSectionsWithContent =
   0: "_abcdefghilmnoprst",
   1: "s",
   2: "emrt",
-  3: "_bcdfilmnrt",
+  3: "_abcdfilmnrt",
   4: "abcdefghilmnoprst",
-  5: "bcdlt",
+  5: "abcdlt",
   6: "m",
   7: "em"
 };

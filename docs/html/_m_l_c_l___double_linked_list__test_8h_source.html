@@ -120,27 +120,37 @@ $(document).ready(function(){initNavTree('_m_l_c_l___double_linked_list__test_8h
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   This file is part of the MLCL Library.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *   Antoine Bastos 2022</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *   This Library is free software under the terms of</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   the MIT license.</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#af504948754298862b1cacc8d11750717">run_all_double_linked_list_tests</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a69aa31533e589270b3f2f7eb8ec61190">test_new_double_linked_list</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#ab8d1f4fc165dd9c718d83d5fef38d3b0">test_double_linked_list_ordered_add</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#aa72a5a0bf8f7c043beac3249a3127b03">test_double_linked_list_prepend</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a9a9a7f992b4199754833a9106329aff9">test_double_linked_list_append</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#ada580f0c6a356c3799b4fd7ad4a9aa98">test_double_linked_list_search</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#afbcf13a31d963d0904c45f9405e6ec99">test_double_linked_list_remove</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a3a7c0a0c0c8d9e6a87a07e4f7cf83868">test_double_linked_list_filter</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="_m_l_c_l___double_linked_list__test_8h.html#a815ddbfada262b8275f64c153ebfa412">   21</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8h.html#a815ddbfada262b8275f64c153ebfa412">test_double_linked_list_map</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a860c680ca6290f9a3e659057c43e91e8">test_double_linked_list_shift</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a4fb8a2ff51664fd708a9139a5323e819">test_double_linked_list_pop</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *    This Library is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *    it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *    the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *    (at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *    This Library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *    but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *    GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *    You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *    along with this Library.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#af504948754298862b1cacc8d11750717">run_all_double_linked_list_tests</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a69aa31533e589270b3f2f7eb8ec61190">test_new_double_linked_list</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#ab8d1f4fc165dd9c718d83d5fef38d3b0">test_double_linked_list_ordered_add</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#aa72a5a0bf8f7c043beac3249a3127b03">test_double_linked_list_prepend</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a9a9a7f992b4199754833a9106329aff9">test_double_linked_list_append</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#ada580f0c6a356c3799b4fd7ad4a9aa98">test_double_linked_list_search</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#afbcf13a31d963d0904c45f9405e6ec99">test_double_linked_list_remove</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a3a7c0a0c0c8d9e6a87a07e4f7cf83868">test_double_linked_list_filter</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="_m_l_c_l___double_linked_list__test_8h.html#a815ddbfada262b8275f64c153ebfa412">   31</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8h.html#a815ddbfada262b8275f64c153ebfa412">test_double_linked_list_map</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a860c680ca6290f9a3e659057c43e91e8">test_double_linked_list_shift</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___double_linked_list__test_8c.html#a4fb8a2ff51664fd708a9139a5323e819">test_double_linked_list_pop</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_DOUBLELINKEDLIST_TEST_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

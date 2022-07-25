@@ -121,162 +121,172 @@ $(document).ready(function(){initNavTree('_m_l_c_l__basic__types_8h_source.html'
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *   Copyright (C) 2022 Antoine Bastos</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   This Library is free software under the terms of</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *   the MIT license.</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___type_descriptor_8h.html">&quot;MLCL_TypeDescriptor.h&quot;</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">stdio</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* ############## char ############## */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * @brief The char manifest assign its respective functions according</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a3d1b43406f4db3efeef421178d152d3b">char_m</a>(TypeDescriptor * type_descriptor);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @param y</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a397529ee292f3eb85093aa6d616a42f9">char_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a48f8a1a80ddb718b51aa000ef6f6eb09">char_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1e45c9e0d01f34e73b63312f46223c12">char_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a90b7c8d856d1bd514eec198e548c1c94">char_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ae7961cff284def9adce70d63aecb353b">char_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a399a1eda097bc3976e2d3d0a0ce87d83">char_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aac1895a4866a738835221db6c4ab93f6">char_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * @param file</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aa7d1a7693f4998fc2e5aece11571458f">char_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @param data data considered as a char</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#a87a5548697cefd34ef01cf3e07d3e6af">char_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7363a18107d88c983f9ab80389985a94">char_free</a>(<span class="keywordtype">void</span> ** x);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* ############## int ############## */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> * @brief The int manifest assign its respective functions according</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a0b41206c9f6598fc3a2643094b28bed6">int_m</a>(TypeDescriptor * type_descriptor);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> * @param y</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1a600b72347a869e84889977c6c6d0d4">int_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7bb24e73e16bed35206e9a5c320a19ed">int_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab95b19d7974a3501343cdb60394082d7">int_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#add28057d49a17505cdd727c03b0c6247">int_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a00004ef459cad751f59eaf6dd4ac6940">int_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab06f7e91fde1ce98ce0b73f33cb7b1ed">int_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a60702c457b11f7d87e32e35bceaaafba">int_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aa21f12524d3376ccd8dfa5a548c2ae15">int_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * @param data data considered as a int</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#a065f95076de52bc072a042f49cdec068">int_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> * @param file</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a0995bc28d01a30580e7c41105669a51d">int_free</a>(<span class="keywordtype">void</span> ** x);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/* ############## float ############## */</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"> * @brief The float manifest assign its respective functions according</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aa38a82d9d5c7fea34de55832c6fa9e95">float_m</a>(TypeDescriptor * type_descriptor);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"> * @param y</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a622306e94a4fe82d57b9cbea08dedbdf">float_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1fb9f80c324b96b8eb753e4c142c896e">float_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ad64d77fd8ff091e3742f50df970f9677">float_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a16639201d10d8a14f231e57f42b65720">float_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7731800f4e1c0e708703165bba23e4f9">float_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a6c8bbc5ae19f0b0a29288d467159841f">float_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a6e6559b0b7d1f6c9ef2e3f84e2418a1e">float_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">  * @param file</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aac57ec658d938e1ae8506f8a6ee0cb1a">float_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"> * @param data data considered as a float</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#ade289b0a5457a593d6799abc50308ec4">float_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> * @brief</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment"> * @param x</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab3367827990c8966218d5d273005ea45">float_free</a>(<span class="keywordtype">void</span> ** x);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *    This Library is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *    it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *    the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *    (at your option) any later version.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *    This Library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *    but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *    GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *    You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *    along with this Library.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___type_descriptor_8h.html">&quot;MLCL_TypeDescriptor.h&quot;</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">stdio</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* ############## char ############## */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * @brief The char manifest assign its respective functions according</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a571296fd48efc8804c03564930d4d898">char_m</a>(TypeDescriptor * type_descriptor);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * @param y</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a397529ee292f3eb85093aa6d616a42f9">char_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a48f8a1a80ddb718b51aa000ef6f6eb09">char_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1e45c9e0d01f34e73b63312f46223c12">char_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a90b7c8d856d1bd514eec198e548c1c94">char_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ae7961cff284def9adce70d63aecb353b">char_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a399a1eda097bc3976e2d3d0a0ce87d83">char_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aac1895a4866a738835221db6c4ab93f6">char_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @param file</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aa7d1a7693f4998fc2e5aece11571458f">char_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @param data data considered as a char</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#a87a5548697cefd34ef01cf3e07d3e6af">char_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7363a18107d88c983f9ab80389985a94">char_free</a>(<span class="keywordtype">void</span> ** x);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/* ############## int ############## */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * @brief The int manifest assign its respective functions according</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a>(TypeDescriptor * type_descriptor);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * @param y</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1a600b72347a869e84889977c6c6d0d4">int_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7bb24e73e16bed35206e9a5c320a19ed">int_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab95b19d7974a3501343cdb60394082d7">int_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#add28057d49a17505cdd727c03b0c6247">int_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a00004ef459cad751f59eaf6dd4ac6940">int_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab06f7e91fde1ce98ce0b73f33cb7b1ed">int_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a60702c457b11f7d87e32e35bceaaafba">int_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aa21f12524d3376ccd8dfa5a548c2ae15">int_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment"> * @param data data considered as a int</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#a065f95076de52bc072a042f49cdec068">int_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment"> * @param file</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a0995bc28d01a30580e7c41105669a51d">int_free</a>(<span class="keywordtype">void</span> ** x);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/* ############## float ############## */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> * @brief The float manifest assign its respective functions according</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"> * to the required ones by the type interface TypeDescriptor</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"> * @param type_descriptor</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#adb3e3c1775c881414fd300deef79267b">float_m</a>(TypeDescriptor * type_descriptor);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"> * @param y</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a622306e94a4fe82d57b9cbea08dedbdf">float_cmp</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a1fb9f80c324b96b8eb753e4c142c896e">float_eq</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ad64d77fd8ff091e3742f50df970f9677">float_lt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a16639201d10d8a14f231e57f42b65720">float_le</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a7731800f4e1c0e708703165bba23e4f9">float_gt</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a6c8bbc5ae19f0b0a29288d467159841f">float_ge</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x, <span class="keyword">const</span> <span class="keywordtype">void</span> * y);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#a6e6559b0b7d1f6c9ef2e3f84e2418a1e">float_print</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">  * @param file</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#aac57ec658d938e1ae8506f8a6ee0cb1a">float_fprint</a>(FILE * file, <span class="keyword">const</span> <span class="keywordtype">void</span> * x);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment"> * Copy the given data to a new address</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> * @param data data considered as a float</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> * @return pointer to a new allocated copy of the given data</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l__basic__types_8h.html#ade289b0a5457a593d6799abc50308ec4">float_copy</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"> * @param x</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l__basic__types_8h.html#ab3367827990c8966218d5d273005ea45">float_free</a>(<span class="keywordtype">void</span> ** x);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_BASIC_TYPES_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

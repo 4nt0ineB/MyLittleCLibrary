@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['linkedcell_612',['LinkedCell',['../_m_l_c_l___linked_list_8h.html#ab7600085c7fa714f35235f207208ac1f',1,'MLCL_LinkedList.h']]],
-  ['linkedlist_613',['LinkedList',['../_m_l_c_l___linked_list_8h.html#aa5b42fdfbcb22d0199869e3d36fef3ab',1,'MLCL_LinkedList.h']]],
-  ['linkedlistdescriptor_614',['LinkedListDescriptor',['../_m_l_c_l___linked_list_8h.html#ad8bb492332e5e6d50e05c03f0abd4024',1,'MLCL_LinkedList.h']]]
+  ['doublelinkedcell_715',['DoubleLinkedCell',['../_m_l_c_l___double_linked_list_8h.html#a738083643b75c96c228af3d14b09090b',1,'MLCL_DoubleLinkedList.h']]],
+  ['doublelinkedlist_716',['DoubleLinkedList',['../_m_l_c_l___double_linked_list_8h.html#afa26c58fcc037bd8a2b5b01677eebf23',1,'MLCL_DoubleLinkedList.h']]],
+  ['doublelinkedlistdescriptor_717',['DoubleLinkedListDescriptor',['../_m_l_c_l___double_linked_list_8h.html#a4dfd5edaaa08d73ea8f62ab7e2de3461',1,'MLCL_DoubleLinkedList.h']]]
 ];

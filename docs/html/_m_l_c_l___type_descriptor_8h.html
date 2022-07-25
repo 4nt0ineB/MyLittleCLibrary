@@ -125,12 +125,13 @@ $(document).ready(function(){initNavTree('_m_l_c_l___type_descriptor_8h.html',''
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MLCL_TypeDescriptor.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___type_descriptor_8h__incl.svg" width="234" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___type_descriptor_8h__incl.svg" width="234" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___type_descriptor_8h__dep__incl.svg" width="2334" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___type_descriptor_8h__dep__incl.svg" width="2732" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -139,13 +140,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__type__descriptor.html">s_type_descriptor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for basic types and more complex structures of the lib.  <a href="structs__type__descriptor.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for all types manipulated by the structs of the library.  <a href="structs__type__descriptor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a724da73b2a38d7c368a003cd41d3b54a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structs__type__descriptor.html">s_type_descriptor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">TypeDescriptor</a></td></tr>
-<tr class="memdesc:a724da73b2a38d7c368a003cd41d3b54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for basic types and more complex structures of the lib.  <a href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">More...</a><br /></td></tr>
+<tr class="memdesc:a724da73b2a38d7c368a003cd41d3b54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for all types manipulated by the structs of the library.  <a href="_m_l_c_l___type_descriptor_8h.html#a724da73b2a38d7c368a003cd41d3b54a">More...</a><br /></td></tr>
 <tr class="separator:a724da73b2a38d7c368a003cd41d3b54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -169,7 +170,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interface for basic types and more complex structures of the lib. </p>
+<p>Interface for all types manipulated by the structs of the library. </p>
 
 </div>
 </div>
@@ -193,7 +194,7 @@ Functions</h2></td></tr>
 <p>Allocate a type descriptor for a given type manifest. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type_manifest</td><td></td></tr>
+    <tr><td class="paramname">type_manifest</td><td>is a function that assign the function allowing the manipulation of the type to the type descriptor interface </td></tr>
   </table>
   </dd>
 </dl>
@@ -218,7 +219,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Free a type descriptor </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">td</td><td></td></tr>
+    <tr><td class="paramname">td</td><td>type descriptor </td></tr>
   </table>
   </dd>
 </dl>
