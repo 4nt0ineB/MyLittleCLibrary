@@ -64,7 +64,7 @@ var NAVTREEINDEX =
 [
 "_m_l_c_l___a_v_l_tree_8c.html",
 "_m_l_c_l___circular_linked_list__test_8h.html#a8839d8a949a91e33d76a942e92d08512",
-"_m_l_c_l__exceptions_8h.html"
+"_m_l_c_l__basic__types_8h.html#a6e6559b0b7d1f6c9ef2e3f84e2418a1e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
