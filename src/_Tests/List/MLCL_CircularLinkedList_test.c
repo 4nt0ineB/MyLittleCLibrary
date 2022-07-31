@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 int run_all_circular_linked_list_tests(){
-    printf("▒▓ Running all CircularLinkedList tests\n");
+    printf("▒▒▒ Running all CircularLinkedList tests ▒▒▒\n");
     MLCL_TEST(test_circular_linked_list_ordered_add)
     MLCL_TEST(test_circular_linked_list_prepend)
     MLCL_TEST(test_circular_linked_list_append)

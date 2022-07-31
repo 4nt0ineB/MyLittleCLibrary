@@ -30,6 +30,7 @@
 #include "include/MLCL_TypeDescriptor.h"
 #include "include/MLCL_basic_types.h"
 /* List */
+#include "include/List/MLCL_ArrayList.h"
 #include "include/List/MLCL_LinkedList.h"
 #include "include/List/MLCL_CircularLinkedList.h"
 #include "include/List/MLCL_DoubleLinkedList.h"

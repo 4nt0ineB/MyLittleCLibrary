@@ -23,7 +23,7 @@
 
 
 int run_all_circular_double_linked_list_tests(){
-    printf("▒▓ Running all CircularDoubleLinkedList tests\n");
+    printf("▒▒▒ Running all CircularDoubleLinkedList tests ▒▒▒\n");
     MLCL_TEST(test_circular_double_linked_list_ordered_add)
     MLCL_TEST(test_circular_double_linked_list_prepend)
     MLCL_TEST(test_circular_double_linked_list_append)

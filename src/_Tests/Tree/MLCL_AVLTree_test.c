@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 int run_all_avl_tree_tests(){
-    printf("▒▓ Running all AVLTree tests\n");
+    printf("▒▒▒ Running all AVLTree tests ▒▒▒\n");
     MLCL_TEST(test_new_avl_tree)
     MLCL_TEST(test_avl_tree_add)
     MLCL_TEST(test_avl_remove)

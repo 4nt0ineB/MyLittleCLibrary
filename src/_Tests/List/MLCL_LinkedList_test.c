@@ -7,7 +7,7 @@
 
 
 int run_all_linked_list_tests(){
-    printf("▒▓ Running all LinkedList tests\n");
+    printf("▒▒▒ Running all LinkedList tests ▒▒▒\n");
     MLCL_TEST(test_new_linked_list)
     MLCL_TEST(test_linked_list_ordered_add)
     MLCL_TEST(test_linked_list_prepend)

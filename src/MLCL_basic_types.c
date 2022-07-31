@@ -70,6 +70,8 @@ void char_print(const void * x){
 }
 
 void char_fprint(FILE * file, const void * x){
+    if(!x)
+        fprintf(file, "Null");
     fprintf(file, "%c",  *(char *) x);
 }
 
@@ -136,6 +138,8 @@ void int_print(const void * x){
 }
 
 void int_fprint(FILE * file, const void * x){
+    if(!x)
+        fprintf(file, "Null");
     fprintf(file, "%d",  *(int *) x);
 }
 
@@ -202,6 +206,8 @@ void float_print(const void * x){
 }
 
 void float_fprint(FILE * file, const void * x){
+    if(!x)
+        fprintf(file, "Null");
     fprintf(file, "%.2f",  *(float *) x);
 }
 

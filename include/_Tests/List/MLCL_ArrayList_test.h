@@ -14,23 +14,19 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ */
 
-#ifndef MYLITTLECLIBRARY_MLCL_ALL_TESTS_H
-#define MYLITTLECLIBRARY_MLCL_ALL_TESTS_H
+#ifndef MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H
+#define MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H
 
-#include "MLCL_TypeDescriptor_test.h"
-/* List */
-#include "List/MLCL_ArrayList_test.h"
-#include "List/MLCL_LinkedList_test.h"
-#include "List/MLCL_LinkedList_test.h"
-#include "List/MLCL_CircularLinkedList_test.h"
-#include "List/MLCL_DoubleLinkedList_test.h"
-#include "List/MLCL_CircularDoubleLinkedList_test.h"
-/* Tree */
-#include "Tree/MLCL_BinarySearchTree_test.h"
-#include "Tree/MLCL_AVLTree_test.h"
+int run_all_array_list_tests();
+int test_new_array_list();
+int test_array_list_append();
+/*int test_array_list_search();
+int test_array_list_remove();
+int test_array_list_filter();
+int test_array_list_map();
+int test_array_list_shift();
+int test_array_list_pop();*/
 
-int run_all_tests();
-
-#endif /* MYLITTLECLIBRARY_MLCL_ALL_TESTS_H */
+#endif /* MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H */

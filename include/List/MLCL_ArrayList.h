@@ -22,6 +22,7 @@
 #include "../MLCL_TypeDescriptor.h"
 
 #define ARRAY_LIST_BLOCK_SIZE 10
+#define ARRAY_LIST_MAX_EMPTY_BLOCKS 2
 
 /**
  * @brief A generic Array List
@@ -32,7 +33,7 @@ typedef struct s_array_list {
     void ** array; /**< the array */
     int count; /**< Number of elements, the length */
     int size; /**< Total available space allocated */
-    ArrayListDescriptor * d;
+    struct s_array_list_descriptor * d;
 } ArrayList;
 
 /**
@@ -41,11 +42,11 @@ typedef struct s_array_list {
 typedef struct s_array_list_descriptor {
     TypeDescriptor * type_descriptor;
     int (*append) (ArrayList *, const void *);
-    void (*print_at) (ArrayList, int);
-    void (*fprint_at) (ArrayList, int);
-    void (*print) (ArrayList);
-    void (*fprint) (FILE *, ArrayList);
-    void (*free) (ArrayList *);
+    void (*print_at) (const ArrayList *, int);
+    void (*fprint_at) (FILE *, const ArrayList *, int);
+    void (*print) (const ArrayList *);
+    void (*fprint) (FILE *, const ArrayList *);
+    void (*free) (ArrayList **);
 
 } ArrayListDescriptor;
 
@@ -67,28 +68,28 @@ ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
  * @param data
  * @return
  */
-int array_list_apppend(ArrayList * l, const void * data);
+int array_list_append(ArrayList *l, const void * data);
 
 /**
  * @brief
  * @param l
  * @param i
  */
-void array_list_print_at(ArrayList l, int i);
+void array_list_print_at(const ArrayList *l, int i);
 
 /**
  * @brief
  * @param l
  * @param i
  */
-void array_list_fprint_at(ArrayList l, int i);
+void array_list_fprint_at(FILE * file, const ArrayList *l, int i);
 
 /**
  * @brief Print the list on stdout
  * @param l
  * @return
  */
-void array_list_print(ArrayList l);
+void array_list_print(const ArrayList *l);
 
 /**
  * @brief Print the list on the given stream
@@ -96,7 +97,7 @@ void array_list_print(ArrayList l);
  * @param l
  * @return
  */
-void array_list_fprint(FILE * file, ArrayList l);
+void array_list_fprint(FILE * file, const ArrayList *l);
 
 /**
  * @brief

@@ -22,7 +22,7 @@
 
 
 int run_all_binary_search_tree_tests(){
-    printf("▒▓ Running all BinarySearchTree tests\n");
+    printf("▒▒▒ Running all BinarySearchTree tests ▒▒▒\n");
     MLCL_TEST(test_new_binary_search_tree)
     MLCL_TEST(test_binary_search_tree_add)
     MLCL_TEST(test_binary_tree_search)
