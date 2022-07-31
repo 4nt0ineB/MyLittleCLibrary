@@ -19,7 +19,6 @@
 #ifndef MYLITTLECLIBRARY_MLCL_UTILS_H_H
 #define MYLITTLECLIBRARY_MLCL_UTILS_H_H
 
-
 /**
  * Linear random unsigned int generator
  * see: https://en.wikipedia.org/wiki/Linear-feedback_shift_register

@@ -120,7 +120,7 @@ void circular_linked_list_print(CircularLinkedList cll);
  * @param file
  * @param ll
  */
-void circular_linked_list_fprint(FILE * file, CircularLinkedList ll);
+void circular_linked_list_fprint(FILE * stream, CircularLinkedList ll);
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

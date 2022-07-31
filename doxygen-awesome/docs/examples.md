@@ -107,8 +107,8 @@ void char_print(const void * x){
 	char_fprint(stdout, x);
 }
 
-void char_fprint(FILE * file, const void * x){
-	fprintf(file, "%c",  *(char *) x);
+void char_fprint(FILE * stream, const void * x){
+	fprintf(stream, "%c",  *(char *) x);
 }
 
 void * char_copy(const void * data){

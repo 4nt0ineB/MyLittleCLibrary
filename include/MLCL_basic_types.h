@@ -56,7 +56,7 @@ void char_print(const void * x);
  * @param x
  * @param file
  */
-void char_fprint(FILE * file, const void * x);
+void char_fprint(FILE * stream, const void * x);
 
 /**
  * Copy the given data to a new address
@@ -104,7 +104,7 @@ void int_print(const void * x);
  *
  * @param x
  */
-void int_fprint(FILE * file, const void * x);
+void int_fprint(FILE * stream, const void * x);
 
 /**
  * Copy the given data to a new address
@@ -153,7 +153,7 @@ void float_print(const void * x);
  * @param x
   * @param file
  */
-void float_fprint(FILE * file, const void * x);
+void float_fprint(FILE * stream, const void * x);
 
 /**
  * Copy the given data to a new address

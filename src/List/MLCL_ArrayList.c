@@ -31,12 +31,17 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->insert = linked_list_insert;
     ald->search = linked_list_search;
     ald->remove = linked_list_remove;
-    ald->shift = linked_list_shift;
-    ald->pop = linked_list_pop;*/
+    */
+
     ald->append = array_list_append;
-    ald->print_at = array_list_print_at;
+    ald->pop = array_list_pop;
+    ald->pop_i = array_list_pop_i;
+    ald->is_sorted = array_list_is_sorted;
+    ald->bublle_sort = array_list_bublle_sort;
+    ald->selection_sort = array_list_selection_sort;
+    ald->print_i = array_list_print_i;
     ald->print = array_list_print;
-    ald->fprint_at = array_list_fprint_at;
+    ald->fprint_i = array_list_fprint_i;
     ald->fprint = array_list_fprint;
     ald->free = array_list_free;
     /*al_d->cell_free = linked_list_cell_free;
@@ -82,7 +87,7 @@ static int array_list_make_space(ArrayList *l){
     return 1;
 }
 
-/*static int array_list_update_space(ArrayList *l){
+static int array_list_update_space(ArrayList *l){
     int n_blocks;
     if(!l) return 0;
     n_blocks = l->count / ARRAY_LIST_BLOCK_SIZE;
@@ -97,7 +102,7 @@ static int array_list_make_space(ArrayList *l){
         l->array = tmp;
     }
     return 1;
-}*/
+}
 
 int array_list_append(ArrayList *l, const void * data){
     if(!l) return 0;
@@ -110,28 +115,103 @@ int array_list_append(ArrayList *l, const void * data){
     return 1;
 }
 
-void array_list_print_at(const ArrayList  *l, int i) {
-    l->d->fprint_at(stdout, l, i);
+void * array_list_pop_i(ArrayList *l, int index){
+    int i;
+    void * tmp;
+    if(!l) return NULL;
+    if(l->count <= 0) return NULL;
+    tmp = l->array[index];
+    for(i = index; i < l->count - 1; i++){
+        l->array[i] = l->array[i + 1];
+    }
+    l->count--;
+    array_list_update_space(l);
+    return tmp;
 }
 
-void array_list_fprint_at(FILE * file, const ArrayList  *l, int i) {
+void * array_list_pop(ArrayList *l){
+    void * tmp;
+    if(!l) return NULL;
+    if(l->count <= 0) return NULL;
+    tmp = l->array[l->count - 1];
+    l->array[l->count - 1] = NULL;
+    l->count--;
+    array_list_update_space(l);
+    return tmp;
+}
+
+int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *)){
+    int i;
+    if(!l) return 1;
+    if(l->count <= 1) return 1;
+    for(i = 0; i < l->count - 1; i++)
+        if(cmp(l->array[i], l->array[i + 1]) != 1)
+            return 0;
+    return 1;
+}
+
+void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+    int i, j;
+    void * tmp;
+    if(!l) return;
+    for(i = 0; i < l->count - 1; i++){
+        for(j = l->count - 1; j > i; j--){
+            if(cmp(l->array[j - 1], l->array[j]) != 1){
+                tmp = l->array[j - 1];
+                l->array[j - 1] = l->array[j];
+                l->array[j] = tmp;
+            }
+        }
+    }
+}
+
+void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+    int i, i_min;
+    int pos, min, j;
+    void * tmp;
+    if(!l) return;
+    for(i = 0; i < l->count - 1; i++){
+        pos = min = i;
+        for(j = pos; j < l->count; j++){
+            if(cmp(l->array[j], l->array[min]) == 1){
+                min = j;
+                pos = j;
+            }
+        }
+        i_min = pos;
+        tmp = l->array[i];
+        l->array[i] = l->array[i_min];
+        l->array[i_min] = tmp;
+    }
+}
+
+/*void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *));*/
+/*void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));*/
+
+void array_list_print_i(const ArrayList  *l, int i) {
+    l->d->fprint_i(stdout, l, i);
+}
+
+void array_list_fprint_i(FILE * stream, const ArrayList  *l, int i) {
     if(i < 0 || i >= l->count)
         return;
-    l->d->type_descriptor->fprint(file, l->array[i]);
+    l->d->type_descriptor->fprint(stream, l->array[i]);
 }
 
 void array_list_print(const ArrayList  *l){
     l->d->fprint(stdout, l);
 }
 
-void array_list_fprint(FILE * file, const ArrayList * l){
+void array_list_fprint(FILE * stream, const ArrayList * l){
     int i;
-    fprintf(file, "[");
+    if(!l) return;
+    if(l->count <= 0) return;
+    fprintf(stream, "[");
     for(i = 0; i < l->count - 1; i++){
-        l->d->type_descriptor->fprint(file, l->array[i]);fprintf(file, ", ");
+        l->d->type_descriptor->fprint(stream, l->array[i]);fprintf(stream, ", ");
     }
-    l->d->type_descriptor->fprint(file, l->array[i]);
-    fprintf(file, "]");
+    l->d->type_descriptor->fprint(stream, l->array[i]);
+    fprintf(stream, "]");
 }
 
 void array_list_free_descriptor(ArrayListDescriptor ** ald){

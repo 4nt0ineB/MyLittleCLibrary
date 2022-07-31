@@ -277,31 +277,31 @@ void binary_search_tree_fprint_postorder(FILE * stream, BinarySearchTree t){
     t->d->node_fprint(stream, t);
 }
 
-static void _binary_search_tree_to_dot(BinarySearchTree t, FILE * file){
+static void _binary_search_tree_to_dot(BinarySearchTree t, FILE * stream){
     if(!t) return;
-    fprintf(file, "  n%p [label=\"<left> | <valeur> ", (void *) &*t);
-    t->d->node_fprint(file, t);
-    fprintf(file, " | <right>\", color=\"#918d8d\"]\n");
+    fprintf(stream, "  n%p [label=\"<left> | <valeur> ", (void *) &*t);
+    t->d->node_fprint(stream, t);
+    fprintf(stream, " | <right>\", color=\"#918d8d\"]\n");
     if(t->left)
-        fprintf(file, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*t, (void *) t->left);
-    _binary_search_tree_to_dot(t->left, file);
+        fprintf(stream, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*t, (void *) t->left);
+    _binary_search_tree_to_dot(t->left, stream);
     if(t->right)
-        fprintf(file, "  n%p:right:c -> n%p:valeur [color=blue];\n", (void *) &*t, (void *) t->right);
-    _binary_search_tree_to_dot(t->right, file);
+        fprintf(stream, "  n%p:right:c -> n%p:valeur [color=blue];\n", (void *) &*t, (void *) t->right);
+    _binary_search_tree_to_dot(t->right, stream);
 }
 
 void binary_search_tree_to_dot(BinarySearchTree t, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!t) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph arbre {\n"
+    fprintf(stream, "digraph arbre {\n"
                "  node [shape=record , height=.1 ]\n"
                "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
-    _binary_search_tree_to_dot(t, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _binary_search_tree_to_dot(t, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }
 
 void binary_search_tree_descriptor_free(BinarySearchTreeDescriptor ** bstd) {

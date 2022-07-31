@@ -22,13 +22,13 @@
 int run_all_tests(){
     printf("┌[▓▒ MLCL ▒▓]\n");
     if(!run_all_type_descriptor_tests()) return 0;
-    if(!run_all_array_list_tests()) return 0;
     if(!run_all_linked_list_tests()) return 0;
     if(!run_all_circular_linked_list_tests()) return 0;
     if(!run_all_double_linked_list_tests()) return 0;
     if(!run_all_circular_double_linked_list_tests()) return 0;
     if(!run_all_binary_search_tree_tests()) return 0;
     if(!run_all_avl_tree_tests()) return 0;
+    if(!run_all_array_list_tests()) return 0;
     printf("└[▓▒ All tests successfully passed]▒▓]\n");
     return 1;
 }

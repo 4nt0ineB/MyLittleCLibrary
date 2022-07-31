@@ -24,31 +24,176 @@
 
 int run_all_array_list_tests(){
     printf("▒▒▒ Running all ArrayList tests ▒▒▒\n");
-    MLCL_TEST(test_new_array_list)
     MLCL_TEST(test_array_list_append)
-    return 1;
-}
-
-int test_new_array_list(){
-    ArrayList * l;
-    int i;
-    printf("├ test_new_array_list:");
-
-    l = new_array_list(int_m);
-
-    for(i = 0; i < 10; i++)
-        l->d->append(l, &i);
-/*
-    printf("Count: %d\n", l->count);
-*/
-
-    l->d->print(l);
-    l->d->free(&l);
+    MLCL_TEST(test_array_list_pop)
+    MLCL_TEST(test_array_list_pop_i)
+    MLCL_TEST(test_array_list_is_sorted)
+    MLCL_TEST(test_array_list_bubble_sort)
+    MLCL_TEST(test_array_list_selection_sort)
     return 1;
 }
 
 int test_array_list_append(){
+    ArrayList * l;
+    int i;
     printf("├ test_array_list_append:");
 
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    for(i = 0; i < 10; i++)
+        l->d->append(l, &i);
+
+    if(*(int *) l->array[5] != 5)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    if(l->count != 10)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+
+    if(l->size != 10)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
     return 1;
 }
+
+int test_array_list_pop(){
+    ArrayList * l;
+    int i;
+    void * x;
+    printf("├ test_array_list_pop:");
+
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    for(i = 0; i < 5; i++)
+        l->d->append(l, &i);
+
+    x = l->d->pop(l);
+
+    if(*(int *) x != 4)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    free(x);
+    free(l->d->pop(l));
+    free(l->d->pop(l));
+    free(l->d->pop(l));
+    free(l->d->pop(l));
+
+    if(l->count != 0)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    if(l->size != 10)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+
+int test_array_list_pop_i(){
+    ArrayList * l;
+    int i;
+    void * x;
+    printf("├ test_array_list_pop_i:");
+
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    for(i = 0; i < 5; i++)
+        l->d->append(l, &i);
+
+    x = l->d->pop_i(l, 0);
+    if(*(int *) x != 0)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    free(x);
+
+    x = l->d->pop_i(l, 1);
+    if(*(int *) x != 2)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+    free(x);
+
+    if(l->count != 3)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+    if(l->size != 10)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+
+int test_array_list_is_sorted(){
+    ArrayList * l;
+    int i;
+    printf("├ test_array_list_is_sorted:");
+
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    for(i = 0; i < 5; i++)
+        l->d->append(l, &i);
+
+    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+
+int test_array_list_bubble_sort(){
+    ArrayList * l;
+    int x;
+    printf("├ test_array_list_bubble_sort:");
+
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    x = 6;
+    l->d->append(l, &x);
+    x = 3;
+    l->d->append(l, &x);
+    x = 2;
+    l->d->append(l, &x);
+    x = 1;
+    l->d->append(l, &x);
+
+    l->d->bublle_sort(l, l->d->type_descriptor->le);
+
+    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+
+int test_array_list_selection_sort(){
+    ArrayList * l;
+    int x;
+    printf("├ test_array_list_selection_sort:");
+
+    l = new_array_list(int_m);
+    if(!l)
+    MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    x = 6;
+    l->d->append(l, &x);
+    x = 3;
+    l->d->append(l, &x);
+    x = 28;
+    l->d->append(l, &x);
+    x = 2;
+    l->d->append(l, &x);
+    x = 1;
+    l->d->append(l, &x);
+
+    l->d->selection_sort(l, l->d->type_descriptor->le);
+
+    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+

@@ -27,7 +27,7 @@
 /**
  * @brief A generic Array List
  * Compared to others structures of the lib
- * this one is not freed when empty.
+ * this one is not freed when empty. \n
  */
 typedef struct s_array_list {
     void ** array; /**< the array */
@@ -37,13 +37,24 @@ typedef struct s_array_list {
 } ArrayList;
 
 /**
- * @brief
+ * @brief Descriptor of the array list
+ * Even if not required for this type of struct
+ * we keep the general syntax for mnemonic purpose mystruct->d(escriptor)->myfunction
  */
 typedef struct s_array_list_descriptor {
     TypeDescriptor * type_descriptor;
     int (*append) (ArrayList *, const void *);
-    void (*print_at) (const ArrayList *, int);
-    void (*fprint_at) (FILE *, const ArrayList *, int);
+    void * (*pop) (ArrayList *);
+    void * (*pop_i) (ArrayList *, int i);
+    int (*is_sorted) (const ArrayList *, int (*cmp) (const void *, const void *));
+    /* Sorting */
+    void (*bublle_sort) (ArrayList *, int (*cmp) (const void *, const void *));
+    void (*selection_sort) (ArrayList *, int (*cmp) (const void *, const void *));
+    void (*quick_sort) (ArrayList *, int (*cmp) (const void *, const void *));
+    void (*merge_sort) (ArrayList *, int (*cmp) (const void *, const void *));
+    /* Print */
+    void (*print_i) (const ArrayList *, int);
+    void (*fprint_i) (FILE *, const ArrayList *, int);
     void (*print) (const ArrayList *);
     void (*fprint) (FILE *, const ArrayList *);
     void (*free) (ArrayList **);
@@ -63,7 +74,7 @@ ArrayList * array_list_builder(ArrayListDescriptor * descriptor);
 ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
 
 /**
- * @brief
+ * @brief Append allocated copy of the data to the end of the list
  * @param l
  * @param data
  * @return
@@ -71,18 +82,46 @@ ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
 int array_list_append(ArrayList *l, const void * data);
 
 /**
- * @brief
+ * @brief Remove and return last value of the list
  * @param l
- * @param i
+ * @return
  */
-void array_list_print_at(const ArrayList *l, int i);
+void * array_list_pop(ArrayList *l);
 
 /**
- * @brief
+ * @brief Remove and return data at given index of the list.
+ * bad complexity, it has to shift all data to the left
+ * @param l
+ * @return
+ */
+void * array_list_pop_i(ArrayList *l, int i);
+
+/**
+ * Return Check if list is sorted
+ * @param l
+ * @param cmp comparison function
+ * @return 1 or 0
+ */
+int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *));
+
+void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+
+/**
+ * @brief print data at a given index
  * @param l
  * @param i
  */
-void array_list_fprint_at(FILE * file, const ArrayList *l, int i);
+void array_list_print_i(const ArrayList *l, int i);
+
+/**
+ * @brief Print on given stream the data at a given index
+ * @param l
+ * @param i
+ */
+void array_list_fprint_i(FILE * stream, const ArrayList *l, int i);
 
 /**
  * @brief Print the list on stdout
@@ -97,16 +136,16 @@ void array_list_print(const ArrayList *l);
  * @param l
  * @return
  */
-void array_list_fprint(FILE * file, const ArrayList *l);
+void array_list_fprint(FILE * stream, const ArrayList *l);
 
 /**
- * @brief
+ * @brief free the descriptor of the array list
  * @param ald
  */
 void array_list_free_descriptor(ArrayListDescriptor ** ald);
 
 /**
- * @brief
+ * @brief Free the array list
  * @param l
  */
 void array_list_free(ArrayList ** l);

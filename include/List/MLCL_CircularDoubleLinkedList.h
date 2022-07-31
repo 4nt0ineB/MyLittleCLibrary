@@ -120,7 +120,7 @@ void circular_double_linked_list_print(CircularDoubleLinkedList cdll);
  * @param file
  * @param cdll
  */
-void circular_double_linked_list_fprint(FILE * file, CircularDoubleLinkedList cdll);
+void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList cdll);
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

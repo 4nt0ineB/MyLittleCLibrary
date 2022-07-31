@@ -229,40 +229,40 @@ void linked_list_print(LinkedList ll){
     if(ll) ll->d->fprint(stdout, ll);
 }
 
-void linked_list_cell_fprint(FILE * file, LinkedCell * lc){
-    if(lc) lc->d->type_descriptor->fprint(file, lc->data);
+void linked_list_cell_fprint(FILE * stream, LinkedCell * lc){
+    if(lc) lc->d->type_descriptor->fprint(stream, lc->data);
 }
 
-void linked_list_fprint(FILE * file, LinkedList ll){
+void linked_list_fprint(FILE * stream, LinkedList ll){
     if(!ll) return;
-    ll->d->cell_fprint(file, ll);
+    ll->d->cell_fprint(stream, ll);
     printf(", ");
-    ll->d->fprint(file, ll->next);
+    ll->d->fprint(stream, ll->next);
 }
 
-static void _linked_list_to_dot(LinkedList ll, FILE * file){
+static void _linked_list_to_dot(LinkedList ll, FILE * stream){
     while(ll){
-        fprintf(file, "  n%p [label=\"", (void *) ll);
-        ll->d->cell_fprint(file, ll);
-        fprintf(file, "\" color=\"#918d8d\"]\n");
+        fprintf(stream, "  n%p [label=\"", (void *) ll);
+        ll->d->cell_fprint(stream, ll);
+        fprintf(stream, "\" color=\"#918d8d\"]\n");
         if(ll->next)
-            fprintf(file, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
+            fprintf(stream, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
         ll = ll->next;
     }
 }
 
 void linked_list_to_dot(LinkedList ll, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!ll) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph {\n"
+    fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same]\n"
     );
-    _linked_list_to_dot(ll, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _linked_list_to_dot(ll, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }

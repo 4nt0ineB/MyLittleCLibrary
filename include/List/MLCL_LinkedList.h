@@ -204,14 +204,14 @@ void linked_list_print(LinkedList ll);
  * @param file
  * @param lc
  */
-void linked_list_cell_fprint(FILE * file, LinkedCell * lc);
+void linked_list_cell_fprint(FILE * stream, LinkedCell * lc);
 
 /**
  * @brief Print the list on give stream
  * @param file
  * @param ll
  */
-void linked_list_fprint(FILE * file, LinkedList ll);
+void linked_list_fprint(FILE * stream, LinkedList ll);
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

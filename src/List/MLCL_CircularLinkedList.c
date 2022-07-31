@@ -217,44 +217,44 @@ void circular_linked_list_print(CircularLinkedList cll){
     if(cll) cll->d->fprint(stdout, cll);
 }
 
-void circular_linked_list_fprint(FILE * file, CircularLinkedList cll){
+void circular_linked_list_fprint(FILE * stream, CircularLinkedList cll){
     CircularLinkedList tmp;
     if(!cll) return;
     tmp = cll->next;
-    cll->d->cell_fprint(file, cll); printf(", ");
+    cll->d->cell_fprint(stream, cll); printf(", ");
     while(tmp != cll){
-        tmp->d->cell_fprint(file, tmp); printf(", ");
+        tmp->d->cell_fprint(stream, tmp); printf(", ");
         tmp = tmp->next;
     }
 }
 
-static void _circular_linked_list_to_dot(CircularLinkedList ll, FILE * file){
+static void _circular_linked_list_to_dot(CircularLinkedList ll, FILE * stream){
     CircularLinkedList tmp;
     tmp = ll;
     while(tmp->next != ll){
-        fprintf(file, "  n%p [label=\"", (void *) tmp);
-        tmp->d->cell_fprint(file, tmp);
-        fprintf(file, "\"]\n");
-        fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+        fprintf(stream, "  n%p [label=\"", (void *) tmp);
+        tmp->d->cell_fprint(stream, tmp);
+        fprintf(stream, "\"]\n");
+        fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
         tmp = tmp->next;
     }
-    fprintf(file, "  n%p [label=\"", (void *) tmp);
-    tmp->d->cell_fprint(file, tmp);
-    fprintf(file, "\"]\n");
-    fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+    fprintf(stream, "  n%p [label=\"", (void *) tmp);
+    tmp->d->cell_fprint(stream, tmp);
+    fprintf(stream, "\"]\n");
+    fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
 }
 
 void circular_linked_list_to_dot(CircularLinkedList ll, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!ll) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph {\n"
+    fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _circular_linked_list_to_dot(ll, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _circular_linked_list_to_dot(ll, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }

@@ -262,42 +262,42 @@ void double_linked_list_print(DoubleLinkedList dll){
     if(dll) dll->d->fprint(stdout, dll);
 }
 
-void double_linked_list_cell_fprint(FILE * file, DoubleLinkedCell * dlc){
-    if(dlc) dlc->d->type_descriptor->fprint(file, dlc->data);
+void double_linked_list_cell_fprint(FILE * stream, DoubleLinkedCell * dlc){
+    if(dlc) dlc->d->type_descriptor->fprint(stream, dlc->data);
 }
-void double_linked_list_fprint(FILE * file, DoubleLinkedList dll){
+void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll){
     if(!dll) return;
-    dll->d->cell_fprint(file, dll);
+    dll->d->cell_fprint(stream, dll);
     printf(", ");
-    dll->d->fprint(file, dll->next);
+    dll->d->fprint(stream, dll->next);
 }
 
-static void _double_linked_list_to_dot(DoubleLinkedList ll, FILE * file){
+static void _double_linked_list_to_dot(DoubleLinkedList ll, FILE * stream){
     while(ll){
-        fprintf(file, "  n%p [label=\"", (void *) ll);
-        ll->d->cell_fprint(file, ll);
-        fprintf(file, "\"]\n");
+        fprintf(stream, "  n%p [label=\"", (void *) ll);
+        ll->d->cell_fprint(stream, ll);
+        fprintf(stream, "\"]\n");
         if(ll->next){
-            fprintf(file, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
-            fprintf(file, " n%p -> n%p\n", (void *) ll->next, (void *) ll);
+            fprintf(stream, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
+            fprintf(stream, " n%p -> n%p\n", (void *) ll->next, (void *) ll);
         }
         ll = ll->next;
     }
 }
 
 void double_linked_list_to_dot(DoubleLinkedList ll, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!ll) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph {\n"
+    fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _double_linked_list_to_dot(ll, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _double_linked_list_to_dot(ll, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }
 

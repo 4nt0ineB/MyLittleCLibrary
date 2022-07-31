@@ -215,14 +215,14 @@ void double_linked_list_print(DoubleLinkedList dll);
  * @param file
  * @param dlc
  */
-void double_linked_list_cell_fprint(FILE * file, DoubleLinkedCell * dlc);
+void double_linked_list_cell_fprint(FILE * stream, DoubleLinkedCell * dlc);
 
 /**
  * @brief Print the list on give stream
  * @param file
  * @param dll
  */
-void double_linked_list_fprint(FILE * file, DoubleLinkedList dll);
+void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll);
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

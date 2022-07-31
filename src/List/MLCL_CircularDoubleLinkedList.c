@@ -181,47 +181,47 @@ void circular_double_linked_list_print(CircularDoubleLinkedList cdll){
     if(cdll) cdll->d->fprint(stdout, cdll);
 }
 
-void circular_double_linked_list_fprint(FILE * file, CircularDoubleLinkedList cdll){
+void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList cdll){
     CircularDoubleLinkedList tmp;
     if(!cdll) return;
     tmp = cdll->next;
-    cdll->d->cell_fprint(file, cdll);printf(", ");
+    cdll->d->cell_fprint(stream, cdll);printf(", ");
     while(tmp != cdll){
-        tmp->d->cell_fprint(file, tmp);printf(", ");
+        tmp->d->cell_fprint(stream, tmp);printf(", ");
         tmp = tmp->next;
     }
 }
 
-static void _circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, FILE * file){
+static void _circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, FILE * stream){
     CircularDoubleLinkedList tmp;
     tmp = cdll;
     while(tmp->next != cdll){
-        fprintf(file, "  n%p [label=\"", (void *) tmp);
-        tmp->d->cell_fprint(file, tmp);
-        fprintf(file, "\"]\n");
-        fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
-        fprintf(file, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
+        fprintf(stream, "  n%p [label=\"", (void *) tmp);
+        tmp->d->cell_fprint(stream, tmp);
+        fprintf(stream, "\"]\n");
+        fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+        fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
         tmp = tmp->next;
     }
-    fprintf(file, "  n%p [label=\"", (void *) tmp);
-    tmp->d->cell_fprint(file, tmp);
-    fprintf(file, "\"]\n");
-    fprintf(file, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
-    fprintf(file, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
+    fprintf(stream, "  n%p [label=\"", (void *) tmp);
+    tmp->d->cell_fprint(stream, tmp);
+    fprintf(stream, "\"]\n");
+    fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+    fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
 }
 
 void circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!cdll) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph {\n"
+    fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _circular_double_linked_list_to_dot(cdll, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _circular_double_linked_list_to_dot(cdll, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }

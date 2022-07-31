@@ -429,33 +429,33 @@ void avl_tree_fprint_postorder(FILE * stream, AVLTree t){
     t->d->node_fprint(stream, t);
 }
 
-static void _avl_tree_to_dot(AVLTree avl, FILE * file){
+static void _avl_tree_to_dot(AVLTree avl, FILE * stream){
     if(!avl) return;
-    fprintf(file, "  n%p [label=\"<gauche>|{%d  | ", (void *) &*avl, avl->balance);
-    avl->d->node_fprint(file, avl);
-    fprintf(file, "}|<droit>\"]\n");
+    fprintf(stream, "  n%p [label=\"<gauche>|{%d  | ", (void *) &*avl, avl->balance);
+    avl->d->node_fprint(stream, avl);
+    fprintf(stream, "}|<droit>\"]\n");
     if(avl->left){
-        fprintf(file, "  n%p:gauche -> n%p:n [color=\"#ab2222\"]\n", (void *) &*avl, (void *) avl->left);
-        _avl_tree_to_dot(avl->left, file);
+        fprintf(stream, "  n%p:gauche -> n%p:n [color=\"#ab2222\"]\n", (void *) &*avl, (void *) avl->left);
+        _avl_tree_to_dot(avl->left, stream);
     }
     if(avl->right){
-        fprintf(file, "  n%p:droit -> n%p:n [color=\"#2257ab\"]\n", (void *) &*avl, (void *) avl->right);
-        _avl_tree_to_dot(avl->right, file);
+        fprintf(stream, "  n%p:droit -> n%p:n [color=\"#2257ab\"]\n", (void *) &*avl, (void *) avl->right);
+        _avl_tree_to_dot(avl->right, stream);
     }
 }
 
 void avl_tree_to_dot(AVLTree avl, const char * dest_path){
-    FILE * file;
+    FILE * stream;
     if(!avl) return;
-    file = fopen(dest_path, "w");
-    if(!file)
+    stream =fopen(dest_path, "w");
+    if(!stream)
         printf("File can't be opened\n");
-    fprintf(file, "digraph arbre {\n"
+    fprintf(stream, "digraph arbre {\n"
                   "  node [shape=record , height=.1 ]\n"
                   "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
-    _avl_tree_to_dot(avl, file);
-    fprintf(file, "}\n");
-    fclose(file);
+    _avl_tree_to_dot(avl, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
 }
 
 void avl_tree_descriptor_free(AVLTreeDescriptor ** bstd) {

@@ -69,10 +69,10 @@ void char_print(const void * x){
     char_fprint(stdout, x);
 }
 
-void char_fprint(FILE * file, const void * x){
+void char_fprint(FILE * stream, const void * x){
     if(!x)
-        fprintf(file, "Null");
-    fprintf(file, "%c",  *(char *) x);
+        fprintf(stream, "Null");
+    fprintf(stream, "%c",  *(char *) x);
 }
 
 void * char_copy(const void * data){
@@ -137,10 +137,10 @@ void int_print(const void * x){
     int_fprint(stdout, x);
 }
 
-void int_fprint(FILE * file, const void * x){
+void int_fprint(FILE * stream, const void * x){
     if(!x)
-        fprintf(file, "Null");
-    fprintf(file, "%d",  *(int *) x);
+        fprintf(stream, "Null");
+    fprintf(stream, "%d",  *(int *) x);
 }
 
 void * int_copy(const void * data){
@@ -205,10 +205,10 @@ void float_print(const void * x){
     float_fprint(stdout, x);
 }
 
-void float_fprint(FILE * file, const void * x){
+void float_fprint(FILE * stream, const void * x){
     if(!x)
-        fprintf(file, "Null");
-    fprintf(file, "%.2f",  *(float *) x);
+        fprintf(stream, "Null");
+    fprintf(stream, "%.2f",  *(float *) x);
 }
 
 void * float_copy(const void * data){
