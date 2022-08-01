@@ -25,18 +25,24 @@
 var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
-    [ "Examples", "md_doxygen_awesome_docs_examples.html", [
-      [ "Credits", "index.html#autotoc_md9", null ],
-      [ "Linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md1", null ],
-      [ "Double linked list", "md_doxygen_awesome_docs_examples.html#autotoc_md2", null ],
-      [ "Extended Examples", "md_doxygen_awesome_docs_examples.html#autotoc_md3", [
-        [ "DoubleLinkedList of CircularDoubleLinkedLists", "md_doxygen_awesome_docs_examples.html#autotoc_md4", null ],
-        [ "Type_manifest", "md_doxygen_awesome_docs_examples.html#autotoc_md5", [
-          [ "What's that", "md_doxygen_awesome_docs_examples.html#autotoc_md6", null ]
-        ] ],
-        [ "Writing your own TypeDescriptor", "md_doxygen_awesome_docs_examples.html#autotoc_md7", null ]
+    [ "Examples", "index.html#autotoc_md1", [
+      [ "Trees", "index.html#autotoc_md7", [
+        [ "Array list", "index.html#autotoc_md2", null ],
+        [ "Linked list", "index.html#autotoc_md3", null ],
+        [ "Circular linked list", "index.html#autotoc_md4", null ],
+        [ "Double linked list", "index.html#autotoc_md5", null ],
+        [ "Circular double linked list", "index.html#autotoc_md6", null ],
+        [ "Binary search tree", "index.html#autotoc_md8", null ]
+      ] ],
+      [ "Type manifest", "index.html#autotoc_md9", [
+        [ "What's that", "index.html#autotoc_md10", null ],
+        [ "Writing your own TypeDescriptor", "index.html#autotoc_md11", null ]
+      ] ],
+      [ "Extended Examples", "index.html#autotoc_md12", [
+        [ "Double Linked List of Circular double linked lists", "index.html#autotoc_md13", null ]
       ] ]
     ] ],
+    [ "Credits", "index.html#autotoc_md14", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -63,7 +69,7 @@ var NAVTREEINDEX =
 "_m_l_c_l___a_v_l_tree_8c.html",
 "_m_l_c_l___circular_double_linked_list_8h.html#a8cd6e569554ac0883bf4fdf101d8bbe5",
 "_m_l_c_l__basic__types_8c.html#a1fb9f80c324b96b8eb753e4c142c896e",
-"structs__double__linked__list__descriptor.html#add1c49393176a73c80184e5a78257616"
+"structs__double__linked__list__descriptor.html#ac5bfb1e243157c3ddc2a97d6d204045d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

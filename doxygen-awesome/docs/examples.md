@@ -42,7 +42,7 @@ l->d->free(&tmp);
 ```
 
 
-### Type_manifest
+### Type manifest
 
 #### What's that
 
