@@ -50,6 +50,7 @@ typedef struct s_array_list_descriptor {
     /* Sorting */
     void (*bublle_sort) (ArrayList *, int (*cmp) (const void *, const void *));
     void (*selection_sort) (ArrayList *, int (*cmp) (const void *, const void *));
+    void (*insertion_sort) (ArrayList *, int (*cmp) (const void *, const void *));
     void (*quick_sort) (ArrayList *, int (*cmp) (const void *, const void *));
     void (*merge_sort) (ArrayList *, int (*cmp) (const void *, const void *));
     /* Print */
@@ -106,6 +107,7 @@ int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const voi
 
 void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *));
 void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+void array_list_insertion_sort(ArrayList *l, int (*cmp) (const void *, const void *));
 void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *));
 void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));
 

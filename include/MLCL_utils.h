@@ -30,5 +30,6 @@ int int_rand(int a, int b);
 
 float float_rand(float min, float max);
 
+int proper_modulo(int a, int b);
 
 #endif /* MYLITTLECLIBRARY_MLCL_UTILS_H_H */

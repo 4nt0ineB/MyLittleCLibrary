@@ -5,6 +5,7 @@ var structs__array__list__descriptor =
     [ "fprint", "structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083", null ],
     [ "fprint_i", "structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37", null ],
     [ "free", "structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2", null ],
+    [ "insertion_sort", "structs__array__list__descriptor.html#a044e1436fa337e32261dbdcf89c56f19", null ],
     [ "is_sorted", "structs__array__list__descriptor.html#a9836a03307d0b2da270e4cc470a3e7aa", null ],
     [ "merge_sort", "structs__array__list__descriptor.html#aacde114985e9630eae8e187bfbc86c2b", null ],
     [ "pop", "structs__array__list__descriptor.html#a6e7a86ad5faebd45b34e0c41da010609", null ],

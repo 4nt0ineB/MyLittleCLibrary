@@ -26,6 +26,7 @@ int test_array_list_pop_i();
 int test_array_list_is_sorted();
 int test_array_list_bubble_sort();
 int test_array_list_selection_sort();
+int test_array_list_insertion_sort();
 int test_array_list_quick_sort();
 int test_array_list_merge_sort();
 /*int test_array_list_search();

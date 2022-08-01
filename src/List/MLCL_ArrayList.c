@@ -39,6 +39,8 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->is_sorted = array_list_is_sorted;
     ald->bublle_sort = array_list_bublle_sort;
     ald->selection_sort = array_list_selection_sort;
+    ald->insertion_sort = array_list_insertion_sort;
+    ald->quick_sort = array_list_quick_sort;
     ald->print_i = array_list_print_i;
     ald->print = array_list_print;
     ald->fprint_i = array_list_fprint_i;
@@ -156,7 +158,7 @@ void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *
     if(!l) return;
     for(i = 0; i < l->count - 1; i++){
         for(j = l->count - 1; j > i; j--){
-            if(cmp(l->array[j - 1], l->array[j]) != 1){
+            if(cmp(l->array[j], l->array[j - 1]) == 1){
                 tmp = l->array[j - 1];
                 l->array[j - 1] = l->array[j];
                 l->array[j] = tmp;
@@ -165,27 +167,85 @@ void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *
     }
 }
 
+void array_list_insertion_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+    int i, j;
+    void * tmp;
+    if(!l) return;
+    for(i = 0; i < l->count; i++){
+        tmp = l->array[i];
+        j = i;
+        while(j > 0 && cmp(tmp, l->array[j - 1]) == 1){
+            l->array[j] = l->array[j - 1];
+            j--;
+        }
+        l->array[j] = tmp;
+    }
+}
+
 void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
     int i, i_min;
-    int pos, min, j;
+    int min, j;
     void * tmp;
     if(!l) return;
     for(i = 0; i < l->count - 1; i++){
-        pos = min = i;
-        for(j = pos; j < l->count; j++){
-            if(cmp(l->array[j], l->array[min]) == 1){
-                min = j;
-                pos = j;
-            }
-        }
-        i_min = pos;
+        i_min = min = i;
+        /* Find the index of the min */
+        for(j = i_min; j < l->count; j++)
+            if(cmp(l->array[j], l->array[min]) == 1)
+                i_min = min = j;
+        /* Switch values */
         tmp = l->array[i];
         l->array[i] = l->array[i_min];
         l->array[i_min] = tmp;
     }
 }
 
-/*void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *));*/
+static int partition(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+    int head1, head2;
+    void * tmp;
+
+    head1 = start + 1;
+    head2 = end;
+
+    while (head1 <= head2){
+
+        while (head1 <= head2 && cmp(l[start], l[head1]) != 1)
+            head1++;
+
+        while (cmp(l[start], l[head2]) == 1)
+            head2--;
+
+        if(head1 < head2){
+            tmp = l[head1];
+            l[head1] = l[head2];
+            l[head2] = tmp;
+            head1 ++;
+            head2 --;
+        }
+    }
+    tmp = l[start];
+    l[start] = l[head2];
+    l[head2] = tmp;
+    return head2;
+}
+
+void _array_list_quick_sort(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+    int pivot;
+    if(!l) return;
+    if(start >= end) return;
+    /* partition between start and end*/
+    pivot = partition(l, start, end, cmp);
+    /* Sort between start and pivot */
+    _array_list_quick_sort(l, start, pivot - 1, cmp);
+    /* Sort between pivot and end */
+    _array_list_quick_sort(l, pivot + 1, end, cmp);
+}
+
+void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+    if(!l) return;
+    _array_list_quick_sort(l->array, 0, l->count - 1, cmp);
+}
+
 /*void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));*/
 
 void array_list_print_i(const ArrayList  *l, int i) {

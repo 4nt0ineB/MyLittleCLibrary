@@ -13,6 +13,7 @@ var _m_l_c_l___array_list_8h =
     [ "array_list_fprint_i", "_m_l_c_l___array_list_8h.html#a1274193fad8c388c57de69831a503f9b", null ],
     [ "array_list_free", "_m_l_c_l___array_list_8h.html#ab55f2ec424a5748e3ad6881472dfa0e0", null ],
     [ "array_list_free_descriptor", "_m_l_c_l___array_list_8h.html#a275e1b4d61ed53a5f3b99d78e8443463", null ],
+    [ "array_list_insertion_sort", "_m_l_c_l___array_list_8h.html#a4cb2c220de85d86fce7004e70e8a1daf", null ],
     [ "array_list_is_sorted", "_m_l_c_l___array_list_8h.html#a7d00f27f1e2760002228ddaed985bc11", null ],
     [ "array_list_merge_sort", "_m_l_c_l___array_list_8h.html#ac16711274a43ced4fce32456ee028aa4", null ],
     [ "array_list_pop", "_m_l_c_l___array_list_8h.html#a0cb8a0de4798aea1f538c7b74a45373e", null ],

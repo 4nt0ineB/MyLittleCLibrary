@@ -18,6 +18,7 @@
 
 #include "../include/MLCL_utils.h"
 #include <stdlib.h>
+#include <assert.h>
 
 unsigned short lfsr = 0xACE1u;
 unsigned bit;
@@ -34,4 +35,11 @@ int int_rand(int a, int b){
 
 float float_rand(float min, float max){
     return min + (rand() / (float) RAND_MAX) * (max - min);
+}
+
+int proper_modulo(int a, int b) {
+    int mod;
+    assert(b != 0);
+    mod = a % b;
+    return mod >= 0 ? mod : mod + b;
 }
