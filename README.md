@@ -23,10 +23,8 @@ An ANSI C library gathering things I learned in college, to implement things fas
 ## Introduction
 
 All the structures are linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the [type descriptor](##Type-manifest), allowing to manipulate the data independently of the *effective* type they are carrying.  You specify the data carried by the structure at creation.
-For example the linked list is implemented like this : [see annex](#Linked-list-implementation)
 
-
-Each cell is linked to the linked list descriptor, when adding new data to the list, a cell (the last, the first, depending on the function) is passing his 'd' pointer to the cell builder. The type descriptor is freed when the last remaining cell is removed.
+For example the linked list is implemented like this : [see annex](#Linked-list-implementation). Each cell is linked to the linked list descriptor, when adding new data to the list, a cell (the last, the first, depending on the function) is passing his 'd' pointer to the cell builder. The type descriptor is freed when the last remaining cell is removed.
 You use the linked list this way:
 ```c
 LinkedList l;
