@@ -261,7 +261,7 @@ void array_list_merge(ArrayList *into, ArrayList *from){
 
 static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end, int (*cmp) (const void *, const void *)){
     void ** tmp_array;
-    int head1, head2, i_tmp, j;
+    int head1, head2, i_tmp;
 
     if(!*l) return;
 
@@ -298,10 +298,6 @@ static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end,
             i_tmp++;
         }
     }
-
-   /* for(j = 0; j < (end - start + 1); j++){
-        l[start + j] = tmp_array[j];
-    }*/
 
     memcpy(l + start, tmp_array, sizeof(void *) * (end - start + 1));
     free(tmp_array);
