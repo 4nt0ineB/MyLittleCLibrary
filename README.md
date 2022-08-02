@@ -75,7 +75,7 @@ l->d->type_descriptor->fprint = custom_fprint_for_the_data_of_my_linked_list;
 
 ### Array list
 
-**[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]**
+
 
 ```c  
 int x;  
@@ -89,16 +89,10 @@ l->d->free(&tmp);
   
 ```  
 
+**[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]**
 
 ### Linked list
 
-```mermaid
-flowchart  LR
-  1
-	--> 2
-	--> 3
-	--> e( )
-```
 ```c  
 float x;  
 LinkedList l;  
@@ -110,16 +104,16 @@ l->d->append(&l, &x);
 l->d->free(&tmp);  
   
 ```  
-
-### Circular linked list
 ```mermaid
 flowchart  LR
-  0 --> 1
-	1 --> 2
-	2 --> 3
-	3 --> 4
-	4 --> 0
+  1
+	--> 2
+	--> 3
+	--> e( )
 ```
+
+### Circular linked list
+
 ```c  
 int x;  
 CircularLinkedList l;  
@@ -131,17 +125,17 @@ l->d->append(&l, &x);
 l->d->free(&tmp);  
   
 ```  
-
-### Double linked list
 ```mermaid
 flowchart  LR
-	0 --> s( )
-  0 <--> 1
-	1 <--> 2
-	2 <--> 3
-	3 <--> 4
-	4 --> e( )
+  0 --> 1
+	1 --> 2
+	2 --> 3
+	3 --> 4
+	4 --> 0
 ```
+
+### Double linked list
+
 ```c  
 int x;  
 DoubleLinkedList l;  
@@ -152,17 +146,19 @@ l = new_double_linked_list(&x, int_m);
 l->d->append(&l, &x);  
 l->d->free(&tmp);  
 ```  
-
-### Circular double linked list
-
 ```mermaid
 flowchart  LR
+	0 --> s( )
   0 <--> 1
 	1 <--> 2
 	2 <--> 3
 	3 <--> 4
-	4 <--> 0
+	4 --> e( )
 ```
+
+### Circular double linked list
+
+
 ```c  
 int x;  
 CircularDoubleLinkedList l;  
@@ -173,23 +169,22 @@ l = new_circular_double_linked_list(&x, int_m);
 l->d->append(&l, &x);  
 l->d->free(&tmp);  
 ```  
-
+```mermaid
+flowchart  LR
+  0 <--> 1
+	1 <--> 2
+	2 <--> 3
+	3 <--> 4
+	4 <--> 0
+```
 ## Trees
 
 ### Binary search tree
 
-```mermaid
-flowchart TB
-  4 --> 2
-  2 --> e0( )
-	2 --> e1( )
-	4 --> 8
-	8 --> 5
-	8 --> e2( )
-```
+
 ```c  
 int x;  
-CircularDoubleLinkedList l;  
+BinarySearchTree l;  
   
 x = 4;  
 l = new_binary_search_tree(&x, int_m);
@@ -200,6 +195,42 @@ x = 5; l->d->add(&l, &x);
 
 l->d->free(&tmp);  
 ```  
+```mermaid
+flowchart TB
+  4 --> 2
+  2 --> e0( )
+	2 --> e1( )
+	4 --> 8
+	8 --> 5
+	8 --> e2( )
+```
+
+### AVL tree
+
+
+```c  
+int x;  
+AVLTree l;  
+  
+x = 4;  
+l = new_avl_tree(&x, int_m);
+  
+x = 8; l->d->add(&l, &x);  
+x = 2; l->d->add(&l, &x);
+x = 5; l->d->add(&l, &x);
+
+l->d->free(&tmp);  
+```  
+```mermaid
+flowchart TB
+  4 --> 2
+  2 --> e0( )
+	2 --> e1( )
+	4 --> 8
+	8 --> 5
+	8 --> e2( )
+```
+
 
 ##  Type manifest
 
