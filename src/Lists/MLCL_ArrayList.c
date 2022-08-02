@@ -18,6 +18,7 @@
 
 #include "../../include/Lists/MLCL_ArrayList.h"
 #include <assert.h>
+#include <string.h>
 
 ArrayListDescriptor * array_list_descriptor(){
     ArrayListDescriptor * ald;
@@ -41,6 +42,7 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->selection_sort = array_list_selection_sort;
     ald->insertion_sort = array_list_insertion_sort;
     ald->quick_sort = array_list_quick_sort;
+    ald->merge_sort = array_list_merge_sort;
     ald->print_i = array_list_print_i;
     ald->print = array_list_print;
     ald->fprint_i = array_list_fprint_i;
@@ -250,24 +252,70 @@ void array_list_merge(ArrayList *into, ArrayList *from){
     int i;
     if(!into || !from) return;
     for(i = 0; i < from->count; i++){
-        array_list_make_space(l);
+        array_list_make_space(into);
         into->array[into->count] = into->d->type_descriptor->copy(from->array[i]);
         into->count++;
     }
 }
 
-static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end, int (*cmp) (const void *, const void *)){
 
+static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end, int (*cmp) (const void *, const void *)){
+    void ** tmp_array;
+    int head1, head2, i_tmp, j;
+
+    if(!*l) return;
+
+    tmp_array = (void **) malloc((end - start + 1) * sizeof(void *));
+    if(!tmp_array) return;
+    head1 = start;
+    head2 = mid + 1;
+    i_tmp = 0;
+
+
+    /* Sorted copy while no part is empty */
+    while(head1 <= mid && head2 <= end){
+        if(cmp(l[head1], l[head2])){
+            tmp_array[i_tmp] = l[head1];
+            head1++;
+        }else{
+            tmp_array[i_tmp] = l[head2];
+            head2++;
+        }
+        i_tmp++;
+    }
+
+    /* Copy remaining values */
+    if(head1 > mid){
+        while(head2 <= end){
+           tmp_array[i_tmp] = l[head2];
+           head2++;
+           i_tmp++;
+        }
+    }else{
+        while(head1 <= mid){
+            tmp_array[i_tmp] = l[head1];
+            head1++;
+            i_tmp++;
+        }
+    }
+
+   /* for(j = 0; j < (end - start + 1); j++){
+        l[start + j] = tmp_array[j];
+    }*/
+
+    memcpy(l + start, tmp_array, sizeof(void *) * (end - start + 1));
+    free(tmp_array);
 }
 
-
 static void _array_list_merge_sort(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+    int mid;
     if(!l) return;
     if(start >= end) return;
-    int mid = (start + end) / 2;
-    _array_list_merge_sort(l->array, start, mid - 1, cmp);
-    _array_list_merge_sort(l->array, mid + 1, end, cmp);
-    merge(l, start, mid, end);
+    mid = (start + end) / 2;
+    printf("Mid %d, ", mid);
+    _array_list_merge_sort(l, start, mid - 1, cmp);
+    _array_list_merge_sort(l, mid + 1, end, cmp);
+    _array_list_merge_sort_merge(l, start, mid, end, cmp);
 }
 
 void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
