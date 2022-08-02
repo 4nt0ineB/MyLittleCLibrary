@@ -40,7 +40,7 @@ l = new_linked_list(&x, int_m);
 x = 2;
 l->d->append(&l, &x);
 
-/* Or by using the global name function */
+/* Or by using the global function name */
 x = 3;
 linked_list_append(&l, &x);
 ```
