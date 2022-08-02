@@ -18,7 +18,7 @@ An ANSI C library gathering things I learned in college, to implement things fas
 | | [Circular double linked list](#Circular-double-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.c) 	|
 | Trees
 | | [Binary search tree ](#Binary-search-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_BinarySearchTree_test.c) 	|
-| | [AVL tree](#AVL-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_BinarySearchTree_test.c) 	|
+| | [AVL tree](#AVL-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_AVLTree_test.c) 	|
 
 ## Introduction
 
