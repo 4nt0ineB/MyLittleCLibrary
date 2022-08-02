@@ -353,7 +353,7 @@ int main(){
 
 # Credits
 
-Doxygen css from jothepro [doxygen-awesome-css]([[github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
+Doxygen css from jothepro [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
 
 # Annex
 
