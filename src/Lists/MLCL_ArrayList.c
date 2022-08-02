@@ -246,7 +246,33 @@ void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *)
     _array_list_quick_sort(l->array, 0, l->count - 1, cmp);
 }
 
-/*void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));*/
+void array_list_merge(ArrayList *into, ArrayList *from){
+    int i;
+    if(!into || !from) return;
+    for(i = 0; i < from->count; i++){
+        array_list_make_space(l);
+        into->array[into->count] = into->d->type_descriptor->copy(from->array[i]);
+        into->count++;
+    }
+}
+
+static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end, int (*cmp) (const void *, const void *)){
+
+}
+
+
+static void _array_list_merge_sort(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+    if(!l) return;
+    if(start >= end) return;
+    int mid = (start + end) / 2;
+    _array_list_merge_sort(l->array, start, mid - 1, cmp);
+    _array_list_merge_sort(l->array, mid + 1, end, cmp);
+    merge(l, start, mid, end);
+}
+
+void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+    _array_list_merge_sort(l->array, 0, l->count - 1, cmp);
+}
 
 void array_list_print_i(const ArrayList  *l, int i) {
     l->d->fprint_i(stdout, l, i);
