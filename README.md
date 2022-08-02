@@ -351,8 +351,14 @@ int main(){
 }
 ```
 
+# Credits
+
+Doxygen css from jothepro [doxygen-awesome-css]([[github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
+
 # Annex
+
 ### Linked list implementation
+
 ```mermaid
 flowchart  LR
 	d0 --> lld
@@ -387,6 +393,4 @@ flowchart  LR
 	
 ```
 
-# Credits
 
-Doxygen css from jothepro [doxygen-awesome-css]([[github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
