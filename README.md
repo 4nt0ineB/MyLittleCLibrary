@@ -23,41 +23,8 @@ An ANSI C library gathering things I learned in college, to implement things fas
 ## Introduction
 
 All the structures are linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the [type descriptor](##Type-manifest), allowing to manipulate the data independently of the *effective* type they are carrying.  You specify the data carried by the structure at creation.
-For example the linked list is implemented like this :
+For example the linked list is implemented like this : [see annex](#Linked-list-implementation)
 
-```mermaid
-flowchart  LR
-	d0 --> lld
-	d1 --> lld
-	d2 --> lld
-	subgraph  lld[LinkedListDescriptor]
-		TypeDescriptor
-		f0("append()")
-		f1("remove()")
-		...
-	end
-	next0 --> next1
-	next1 --> next2
-	subgraph '' linked list ''
-		subgraph  Cell 0
-			v0(data)
-			next0(next)
-			d0(d)
-			end
-		subgraph  Cell 1
-			v1(data)
-			next1(next)
-			d1(d)
-		end
-		subgraph  Cell 2
-			v2(data)
-			next2(next)
-			d2(d)
-		end
-		next2 --> e( )
-	end
-	
-```
 
 Each cell is linked to the linked list descriptor, when adding new data to the list, a cell (the last, the first, depending on the function) is passing his 'd' pointer to the cell builder. The type descriptor is freed when the last remaining cell is removed.
 You use the linked list this way:
@@ -384,8 +351,42 @@ int main(){
 }
 ```
 
-
+# Annex
+### Linked list implementation
+```mermaid
+flowchart  LR
+	d0 --> lld
+	d1 --> lld
+	d2 --> lld
+	subgraph  lld[LinkedListDescriptor]
+		TypeDescriptor
+		f0("append()")
+		f1("remove()")
+		...
+	end
+	next0 --> next1
+	next1 --> next2
+	subgraph '' linked list ''
+		subgraph  Cell 0
+			v0(data)
+			next0(next)
+			d0(d)
+			end
+		subgraph  Cell 1
+			v1(data)
+			next1(next)
+			d1(d)
+		end
+		subgraph  Cell 2
+			v2(data)
+			next2(next)
+			d2(d)
+		end
+		next2 --> e( )
+	end
+	
+```
 
 # Credits
 
-Doxygen css from jothepro [doxygen-awesome-css]([github.com/jothepro/doxygen-awesome-css)
+Doxygen css from jothepro [doxygen-awesome-css]([[github.com/jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css)
