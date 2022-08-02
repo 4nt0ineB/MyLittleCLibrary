@@ -11,14 +11,14 @@ An ANSI C library gathering things I learned in college, to implement things fas
 |  	| Data struct overview	| Examples               	|
 |--------	|-------------	|------------------------	|
 | Lists
-| | [Array list](#Array-list)   | [:file_folder:](#Linked-list) 	|
-| | [Linked list](#Linked-list)   | [:file_folder:](#Linked-list) 	|
-| | [Circular linked list](#Circular-linked-list)  | [:file_folder:](#Circular-linked-list) |
-| | [Double linked list](#Double-linked-list)  | [:file_folder:](#Double-linked-list) |
-| | [Circular double linked list](#Circular-double-linked-list)  | [:file_folder:](#Circular-double-linked-list) 	|
+| | [Array list](#Array-list)   | [:file_folder:](src/_Tests/Lists/MLCL_ArrayList_test.c) 	|
+| | [Linked list](#Linked-list)   | [:file_folder:](src/_Tests/Lists/MLCL_LinkedList_test.c) 	|
+| | [Circular linked list](#Circular-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_CircularLinkedList_test.c) |
+| | [Double linked list](#Double-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_DoubleLinkedList_test.c) |
+| | [Circular double linked list](#Circular-double-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.c) 	|
 | Trees
-| | [Binary search tree ](#Binary-search-tree)   | [:file_folder:](#Binary-search-tree) 	|
-| | [AVL tree](#AVL-tree)   | [:file_folder:](#AVL-tree) 	|
+| | [Binary search tree ](#Binary-search-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_BinarySearchTree_test.c) 	|
+| | [AVL tree](#AVL-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_BinarySearchTree_test.c) 	|
 
 ## Introduction
 
