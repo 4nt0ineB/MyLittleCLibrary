@@ -8,7 +8,7 @@ An ANSI C library gathering things I learned in college, to implement things fas
 
 ## Index
 
-|  	| Data struct 	| Examples               	|
+|  	| Data struct overview	| Examples               	|
 |--------	|-------------	|------------------------	|
 | Lists
 | | [Array list](#Array-list)   | [:file_folder:](#Linked-list) 	|
