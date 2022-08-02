@@ -1,3 +1,4 @@
+
 # MyLittleCLibrary
 An ANSI C library gathering things I learned in college, to implement things faster for my homework and projects.
 
@@ -7,18 +8,17 @@ An ANSI C library gathering things I learned in college, to implement things fas
 
 ## Index
 
-[Usage](#Usage)
-
-### Lists
--	[Array list](#Array-list)
--	[Linked list](#Linked-list)
--	[Circular linked list](#Circular-linked-list)
--	[Double linked list](#Double-linked-list)
--	[Circular double linked list](#Circular-double-linked-list)
-
-### Trees
--	[Binary search tree](#Binary-search-tree)
--	[AVL tree](#AVL-tree)
+|  	| Data struct 	| Overview 	| Examples               	|
+|--------	|-------------	|----------	|------------------------	|
+| Lists
+| | Array list	|      [:clipboard:](#Array-list)   | [:file_folder:](#Linked-list) 	|
+| | Linked list 	|      [:clipboard:](#Linked-list)   | [:file_folder:](#Linked-list) 	|
+| | Circular linked list 	|  [:clipboard:](#Circular-linked-list)  | [:file_folder:](#Circular-linked-list) |
+| | Double linked list 	|  [:clipboard:](#Double-linked-list)  | [:file_folder:](#Double-linked-list) |
+| | Circular double linked list 	|  [:clipboard:](#Circular-double-linked-list)  | [:file_folder:](#Circular-double-linked-list) 	|
+| Trees
+| | Binary search tree |    [:clipboard:](#Binary-search-tree)   | [:file_folder:](#Binary-search-tree) 	|
+| | AVL tree	|    [:clipboard:](#AVL-tree)   | [:file_folder:](#AVL-tree) 	|
 
 ## Introduction
 
