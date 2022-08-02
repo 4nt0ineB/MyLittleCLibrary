@@ -25,24 +25,29 @@
 var NAVTREE =
 [
   [ "MyLittleCLibrary", "index.html", [
-    [ "Examples", "index.html#autotoc_md1", [
-      [ "Trees", "index.html#autotoc_md7", [
-        [ "Array list", "index.html#autotoc_md2", null ],
-        [ "Linked list", "index.html#autotoc_md3", null ],
-        [ "Circular linked list", "index.html#autotoc_md4", null ],
-        [ "Double linked list", "index.html#autotoc_md5", null ],
-        [ "Circular double linked list", "index.html#autotoc_md6", null ],
-        [ "Binary search tree", "index.html#autotoc_md8", null ]
-      ] ],
-      [ "Type manifest", "index.html#autotoc_md9", [
-        [ "What's that", "index.html#autotoc_md10", null ],
-        [ "Writing your own TypeDescriptor", "index.html#autotoc_md11", null ]
-      ] ],
-      [ "Extended Examples", "index.html#autotoc_md12", [
-        [ "Double Linked List of Circular double linked lists", "index.html#autotoc_md13", null ]
-      ] ]
+    [ "Index", "index.html#autotoc_md1", [
+      [ "Lists", "index.html#autotoc_md2", null ],
+      [ "Trees", "index.html#autotoc_md3", null ]
     ] ],
-    [ "Credits", "index.html#autotoc_md14", null ],
+    [ "Introduction", "index.html#autotoc_md4", null ],
+    [ "Lists", "index.html#autotoc_md5", [
+      [ "Array list", "index.html#autotoc_md6", null ],
+      [ "Linked list", "index.html#autotoc_md7", null ],
+      [ "Circular linked list", "index.html#autotoc_md8", null ],
+      [ "Double linked list", "index.html#autotoc_md9", null ],
+      [ "Circular double linked list", "index.html#autotoc_md10", null ]
+    ] ],
+    [ "Trees", "index.html#autotoc_md11", [
+      [ "Binary search tree", "index.html#autotoc_md12", null ]
+    ] ],
+    [ "Type manifest", "index.html#autotoc_md13", [
+      [ "What's that", "index.html#autotoc_md14", null ],
+      [ "Define your own type", "index.html#autotoc_md15", null ]
+    ] ],
+    [ "Extended Examples", "index.html#autotoc_md16", [
+      [ "Double Linked List of Circular double linked lists", "index.html#autotoc_md17", null ]
+    ] ],
+    [ "Credits", "index.html#autotoc_md18", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -69,7 +74,7 @@ var NAVTREEINDEX =
 "_m_l_c_l___a_v_l_tree_8c.html",
 "_m_l_c_l___circular_double_linked_list_8h.html#a8cd6e569554ac0883bf4fdf101d8bbe5",
 "_m_l_c_l__basic__types_8c.html#a1fb9f80c324b96b8eb753e4c142c896e",
-"structs__double__linked__list__descriptor.html#ac5bfb1e243157c3ddc2a97d6d204045d"
+"structs__double__linked__list__descriptor.html#a84f5988446196dc8ba868b2528839c52"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

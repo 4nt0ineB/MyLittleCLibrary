@@ -20,16 +20,16 @@
 #define MYLITTLECLIBRARY_MLCL_ALL_TESTS_H
 
 #include "MLCL_TypeDescriptor_test.h"
-/* List */
-#include "List/MLCL_ArrayList_test.h"
-#include "List/MLCL_LinkedList_test.h"
-#include "List/MLCL_LinkedList_test.h"
-#include "List/MLCL_CircularLinkedList_test.h"
-#include "List/MLCL_DoubleLinkedList_test.h"
-#include "List/MLCL_CircularDoubleLinkedList_test.h"
-/* Tree */
-#include "Tree/MLCL_BinarySearchTree_test.h"
-#include "Tree/MLCL_AVLTree_test.h"
+/* Lists */
+#include "Lists/MLCL_ArrayList_test.h"
+#include "Lists/MLCL_LinkedList_test.h"
+#include "Lists/MLCL_LinkedList_test.h"
+#include "Lists/MLCL_CircularLinkedList_test.h"
+#include "Lists/MLCL_DoubleLinkedList_test.h"
+#include "Lists/MLCL_CircularDoubleLinkedList_test.h"
+/* Trees */
+#include "Trees/MLCL_BinarySearchTree_test.h"
+#include "Trees/MLCL_AVLTree_test.h"
 
 int run_all_tests();
 
