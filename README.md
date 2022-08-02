@@ -64,9 +64,6 @@ l = new_linked_list(&x, int_m);
 l->d->type_descriptor->fprint = custom_fprint_for_the_data_of_my_linked_list;
 ```
 
-
-> Feel free to explore the test module to see more examples of use.
-
 ## Lists
 
 ### Array list
