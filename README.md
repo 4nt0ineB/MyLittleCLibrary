@@ -244,7 +244,7 @@ It requires (for now), few things:
 - a function to free the data and another one to copy the data  (deep or not, you decide if you make your own)
 - some comparison functions
 
-The *TypeDescriptor* gets this through a type manifest which handle specific functions of the type to be manipulated.  
+The *TypeDescriptor* gets those through a type manifest which handle specific functions of the type to be manipulated.  
 Its like defining you own type in Python (\_\_str__, \_\_eq__, \_\_lt__, etc...).
 
 When making new structures you passes the manifest of the type you want they carry :
