@@ -33,11 +33,9 @@ int x;
 x = 1;
 l = new_linked_list(&x, int_m);
 
-/* You have to way of using the struct functions */
-
 /* 
-	By using the descriptor
-	(Never forget that the list can't be empty to access the descriptor, so l != NULL)
+   You have to way of using the struct functions
+   By using the descriptor 
 */
 x = 2;
 l->d->append(&l, &x);
