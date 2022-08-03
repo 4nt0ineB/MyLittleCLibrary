@@ -23,6 +23,7 @@ int run_all_array_list_tests();
 int test_array_list_append();
 int test_array_list_pop();
 int test_array_list_pop_i();
+int test_array_list_search();
 int test_array_list_is_sorted();
 int test_array_list_bubble_sort();
 int test_array_list_selection_sort();

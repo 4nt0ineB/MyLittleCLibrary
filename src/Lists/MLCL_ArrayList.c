@@ -37,12 +37,14 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->append = array_list_append;
     ald->pop = array_list_pop;
     ald->pop_i = array_list_pop_i;
+    ald->search = array_list_search;
     ald->is_sorted = array_list_is_sorted;
     ald->bublle_sort = array_list_bublle_sort;
     ald->selection_sort = array_list_selection_sort;
     ald->insertion_sort = array_list_insertion_sort;
     ald->quick_sort = array_list_quick_sort;
     ald->merge_sort = array_list_merge_sort;
+
     ald->print_i = array_list_print_i;
     ald->print = array_list_print;
     ald->fprint_i = array_list_fprint_i;
@@ -142,6 +144,45 @@ void * array_list_pop(ArrayList *l){
     l->count--;
     array_list_update_space(l);
     return tmp;
+}
+
+/**
+ * @brief
+ * @param l
+ * @param length
+ * @param data
+ * @param cmp must return 1, 0, -1
+ * @return
+ */
+static int array_list_dichotomic_search(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
+    int i, mid, head1, head2, test;
+    if(!*l) return 0;
+    head1 = 0;
+    head2 = length;
+    while(head1 < head2){
+        mid = (head2 - head1) / 2;
+        printf("VAl: %d\n", *(int *) l[mid]);
+        test = cmp(l[mid], data);
+        if(test == 1){
+            head1 = mid++;
+        }else if(test == -1){
+            head2 = mid--;
+        }else{
+            printf("HOY\n");
+            if(res) *res = mid;
+            return 1;
+        }
+    }
+    if(cmp(l[head1], data) == 0){
+        if(res) *res = head1;
+        return 1;
+    }
+    return 0;
+}
+
+int array_list_search(ArrayList *l, const void *data, int * res){
+    if(!l) return -1;
+    array_list_dichotomic_search(l->array, l->count - 1, data, l->d->type_descriptor->cmp, res);
 }
 
 int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *)){
@@ -308,7 +349,6 @@ static void _array_list_merge_sort(void ** l, int start, int end, int (*cmp) (co
     if(!l) return;
     if(start >= end) return;
     mid = (start + end) / 2;
-    printf("Mid %d, ", mid);
     _array_list_merge_sort(l, start, mid - 1, cmp);
     _array_list_merge_sort(l, mid + 1, end, cmp);
     _array_list_merge_sort_merge(l, start, mid, end, cmp);

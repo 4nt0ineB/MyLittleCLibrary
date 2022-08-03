@@ -33,6 +33,7 @@ int run_all_array_list_tests(){
     MLCL_TEST(test_array_list_insertion_sort)
     MLCL_TEST(test_array_list_quick_sort)
     MLCL_TEST(test_array_list_merge_sort)
+    MLCL_TEST(test_array_list_search)
     return 1;
 }
 
@@ -278,11 +279,40 @@ int test_array_list_merge_sort(){
     x = 1;
     l->d->append(l, &x);
 
-    printf("\n");l->d->print(l);
     l->d->merge_sort(l, l->d->type_descriptor->le);
-    printf("\n");l->d->print(l);
 
     if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    l->d->free(&l);
+    return 1;
+}
+
+int test_array_list_search(){
+    ArrayList * l;
+    int x, index;
+    printf("├ test_array_list_search:");
+
+    l = new_array_list(int_m);
+    if(!l)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    x = 6;
+    l->d->append(l, &x);
+    x = 3;
+    l->d->append(l, &x);
+    x = 28;
+    l->d->append(l, &x);
+    x = 2;
+    l->d->append(l, &x);
+    x = 1;
+    l->d->append(l, &x);
+
+    x = 28;
+    if(!l->d->search(l, &x, &index))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    if(index != 2)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     l->d->free(&l);
