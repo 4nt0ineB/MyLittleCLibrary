@@ -37,7 +37,7 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->append = array_list_append;
     ald->pop = array_list_pop;
     ald->pop_i = array_list_pop_i;
-    ald->search = array_list_search;
+    ald->binary_search = array_list_binary_search;
     ald->is_sorted = array_list_is_sorted;
     ald->bublle_sort = array_list_bublle_sort;
     ald->selection_sort = array_list_selection_sort;
@@ -154,8 +154,8 @@ void * array_list_pop(ArrayList *l){
  * @param cmp must return 1, 0, -1
  * @return
  */
-static int array_list_dichotomic_search(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
-    int i, mid, head1, head2, test;
+static int array_list_binary_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
+    int mid, head1, head2, test;
     if(!*l) return 0;
     head1 = 0;
     head2 = length;
@@ -164,9 +164,9 @@ static int array_list_dichotomic_search(void **l, int length, const void *data, 
         printf("VAl: %d\n", *(int *) l[mid]);
         test = cmp(l[mid], data);
         if(test == 1){
-            head1 = mid++;
+            head1 = mid--;
         }else if(test == -1){
-            head2 = mid--;
+            head2 = mid++;
         }else{
             printf("HOY\n");
             if(res) *res = mid;
@@ -180,9 +180,9 @@ static int array_list_dichotomic_search(void **l, int length, const void *data, 
     return 0;
 }
 
-int array_list_search(ArrayList *l, const void *data, int * res){
+int array_list_binary_search(ArrayList *l, const void *data, int * res){
     if(!l) return -1;
-    array_list_dichotomic_search(l->array, l->count - 1, data, l->d->type_descriptor->cmp, res);
+    return array_list_binary_search_(l->array, l->count - 1, data, l->d->type_descriptor->cmp, res);
 }
 
 int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *)){

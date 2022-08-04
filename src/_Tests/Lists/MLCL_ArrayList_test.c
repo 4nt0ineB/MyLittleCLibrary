@@ -33,7 +33,7 @@ int run_all_array_list_tests(){
     MLCL_TEST(test_array_list_insertion_sort)
     MLCL_TEST(test_array_list_quick_sort)
     MLCL_TEST(test_array_list_merge_sort)
-    MLCL_TEST(test_array_list_search)
+    MLCL_TEST(test_array_list_binary_search)
     return 1;
 }
 
@@ -288,10 +288,10 @@ int test_array_list_merge_sort(){
     return 1;
 }
 
-int test_array_list_search(){
+int test_array_list_binary_search(){
     ArrayList * l;
     int x, index;
-    printf("├ test_array_list_search:");
+    printf("├ test_array_list_binary_search:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -308,8 +308,11 @@ int test_array_list_search(){
     x = 1;
     l->d->append(l, &x);
 
+    l->d->quick_sort(l, l->d->type_descriptor->le);
+    printf("\n");l->d->print(l);
+
     x = 28;
-    if(!l->d->search(l, &x, &index))
+    if(!l->d->binary_search(l, &x, &index))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     if(index != 2)
