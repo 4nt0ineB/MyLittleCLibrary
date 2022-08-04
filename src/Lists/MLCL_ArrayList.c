@@ -37,6 +37,7 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->append = array_list_append;
     ald->pop = array_list_pop;
     ald->pop_i = array_list_pop_i;
+    ald->search = array_list_search;
     ald->binary_search = array_list_binary_search;
     ald->is_sorted = array_list_is_sorted;
     ald->bublle_sort = array_list_bublle_sort;
@@ -147,31 +148,58 @@ void * array_list_pop(ArrayList *l){
 }
 
 /**
+ *
+ * @param l
+ * @param length
+ * @param data
+ * @param cmp must return -1, 0, 1
+ * @param res
+ * @return
+ */
+static int array_list_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
+    int i;
+    if(!*l) return 0;
+    for(i = 0; i < length; i++){
+        if(cmp(data, l[i]) == 0){
+            if(res) *res = i;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int array_list_search(ArrayList *l, const void *data, int * res){
+    if(!l) return -1;
+    return array_list_search_(l->array, l->count, data, l->d->type_descriptor->cmp, res);
+}
+
+
+/**
  * @brief
  * @param l
  * @param length
  * @param data
- * @param cmp must return 1, 0, -1
+ * @param cmp must return -1, 0, 1
  * @return
  */
 static int array_list_binary_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
-    int mid, head1, head2, test;
+    int mid, head1, head2, test, i;
     if(!*l) return 0;
     head1 = 0;
-    head2 = length;
-    while(head1 < head2){
-        mid = (head2 - head1) / 2;
-        printf("VAl: %d\n", *(int *) l[mid]);
-        test = cmp(l[mid], data);
+    head2 = length - 1;
+    i = 0;
+    while(i != 5 && head1 <= head2){
+        mid = (head1 + head2) / 2;
+        test = cmp(data, l[mid]);
         if(test == 1){
-            head1 = mid--;
+            head1 = mid + 1;
         }else if(test == -1){
-            head2 = mid++;
+            head2 = mid - 1;
         }else{
-            printf("HOY\n");
             if(res) *res = mid;
             return 1;
         }
+        i++;
     }
     if(cmp(l[head1], data) == 0){
         if(res) *res = head1;

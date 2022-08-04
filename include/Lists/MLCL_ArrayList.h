@@ -46,6 +46,7 @@ typedef struct s_array_list_descriptor {
     int (*append) (ArrayList *, const void *);
     void * (*pop) (ArrayList *);
     void * (*pop_i) (ArrayList *, int i);
+    int (*search) (ArrayList *, const void *, int *);
     int (*binary_search) (ArrayList *, const void *, int *);
     int (*is_sorted) (const ArrayList *, int (*cmp) (const void *, const void *));
     /* Sorting */
@@ -99,9 +100,19 @@ void * array_list_pop(ArrayList *l);
 void * array_list_pop_i(ArrayList *l, int i);
 
 /**
+ * @brief Naive search
+ * @param l
+ * @param data
+ * @param res (pass NULL if unwanted)
+ * @return 1 if exists, 0 else
+ */
+int array_list_search(ArrayList *l, const void *data, int * res);
+
+/**
  * @brief
  * @param data
- * @return
+ * @param res the index of the value will be return (pass NULL if unwanted)
+ * @return 1 if exists, 0 else
  */
 int array_list_binary_search(ArrayList *l, const void *data, int * res);
 

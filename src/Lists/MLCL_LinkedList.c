@@ -42,6 +42,7 @@ LinkedListDescriptor * linked_list_descriptor(){
     ll_descriptor->add_ = linked_list_add_;
     ll_descriptor->ordered_add = linked_list_ordered_add;
     ll_descriptor->reverse_ordered_add = linked_list_reverse_ordered_add;
+    ll_descriptor->merge_sort = linked_list_merge_sort;
     ll_descriptor->append = linked_list_append;
     ll_descriptor->prepend = linked_list_prepend;
     ll_descriptor->append = linked_list_append;
