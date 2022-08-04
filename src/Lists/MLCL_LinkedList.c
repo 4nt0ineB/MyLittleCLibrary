@@ -105,6 +105,55 @@ int linked_list_reverse_ordered_add(LinkedList * ll, const void * data){
     return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->ge);
 }
 
+static LinkedList linked_list_merge_(LinkedList *l, LinkedList *r, int (*cmp) (const void *, const void *)){
+    LinkedList head_r, head_l, tmp;
+    if(!*l) return *r;
+    if(!*r) return *l;
+
+    head_r = *r;
+    head_l = *l;
+
+    tmp =
+
+    while(head_l && head_r){
+        if(cmp(head_l->data, head_r->data) == 1){
+            head_l = head_l->next;
+
+        }else{
+            head_r = head_r->next;
+        }
+    }
+
+    return NULL;
+}
+
+LinkedList linked_list_merge_sort(LinkedList *l, int (*cmp) (const void *, const void *)){
+    LinkedList mid;
+    LinkedList left;
+    LinkedList right;
+
+    LinkedList slow, fast;
+    if(!*l && !(*l)->next) return NULL;
+
+    /* find the mid cell */
+    slow = *l;
+    fast = (*l)->next;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    mid = slow;
+
+    left = *l;
+    right = mid->next;
+    mid->next = NULL;
+
+    left = linked_list_merge_sort(&left, cmp);
+    right = linked_list_merge_sort(&right, cmp);
+
+    return linked_list_merge_(&left, &right, cmp);
+}
+
 int linked_list_prepend(LinkedList * ll, const void * data){
     LinkedCell * cell;
     if(!*ll) return 0;

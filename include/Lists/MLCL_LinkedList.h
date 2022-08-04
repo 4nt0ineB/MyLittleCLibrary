@@ -45,6 +45,7 @@ typedef struct s_linked_list_descriptor {
     int (*add_) (LinkedList *, const void *, int (*cmp) (const void *, const void *)); /**< ordered add depending on given function Must return 1 or 0 */
     int (*ordered_add) (LinkedList *, const void *); /**< Ascending add */
     int (*reverse_ordered_add) (LinkedList *, const void *); /**< Descending add*/
+    LinkedList (*merge_sort) (LinkedList *, int (*cmp) (const void *, const void *));
     int (*prepend) (LinkedList *, const void *); /**< Add data to the head */
     int (*append) (LinkedList *, const void *); /**< Add data to the tail*/
     int (*insert) (LinkedList *, const void *); /**< Insert given data right next to the given cell */
@@ -113,6 +114,12 @@ int linked_list_ordered_add(LinkedList * ll, const void * data);
  * @return
  */
 int linked_list_reverse_ordered_add(LinkedList * ll, const void * data);
+
+/**
+ * @brief
+ * @param l
+ */
+LinkedList linked_list_merge_sort(LinkedList *l, int (*cmp) (const void *, const void *));
 
 /**
  * @brief Insert data to linked list head.
