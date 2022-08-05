@@ -105,37 +105,64 @@ int linked_list_reverse_ordered_add(LinkedList * ll, const void * data){
     return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->ge);
 }
 
-static LinkedList linked_list_merge_(LinkedList *l, LinkedList *r, int (*cmp) (const void *, const void *)){
-    LinkedList head_r, head_l, tmp;
-    if(!*l) return *r;
-    if(!*r) return *l;
+static void linked_list_merge_(LinkedList *l, LinkedList *r, int (*cmp) (const void *, const void *)){
+    LinkedList head_r, head_l, merged, tmp;
+
+    if(!*l){
+        *l = *r;
+        return;
+    }
+
+    if(!*r) return;
 
     head_r = *r;
     head_l = *l;
 
-    tmp =
+    if(cmp(head_l->data, head_r->data) == 1){
+        merged = head_l;
+        head_l = head_l->next;
+    }else{
+        merged = head_r;
+        head_r = head_r->next;
+    }
+
+    tmp = merged;
 
     while(head_l && head_r){
         if(cmp(head_l->data, head_r->data) == 1){
+            tmp->next = head_l;
             head_l = head_l->next;
-
         }else{
+            tmp->next = head_r;
             head_r = head_r->next;
         }
+        tmp = tmp->next;
     }
 
-    return NULL;
+    while(head_l){
+        tmp->next = head_l;
+        head_l = head_l->next;
+        tmp = tmp->next;
+    }
+
+    while(head_r){
+        tmp->next = head_r;
+        head_r = head_r->next;
+        tmp = tmp->next;
+    }
+
+    *l = merged;
 }
 
-LinkedList linked_list_merge_sort(LinkedList *l, int (*cmp) (const void *, const void *)){
+void linked_list_merge_sort(LinkedList *l, int (*cmp) (const void *, const void *)){
     LinkedList mid;
     LinkedList left;
     LinkedList right;
 
     LinkedList slow, fast;
-    if(!*l && !(*l)->next) return NULL;
 
-    /* find the mid cell */
+    if(!*l || !(*l)->next) return;
+
     slow = *l;
     fast = (*l)->next;
     while(fast && fast->next){
@@ -148,10 +175,11 @@ LinkedList linked_list_merge_sort(LinkedList *l, int (*cmp) (const void *, const
     right = mid->next;
     mid->next = NULL;
 
-    left = linked_list_merge_sort(&left, cmp);
-    right = linked_list_merge_sort(&right, cmp);
+    linked_list_merge_sort(&left, cmp);
+    linked_list_merge_sort(&right, cmp);
 
-    return linked_list_merge_(&left, &right, cmp);
+    linked_list_merge_(&left, &right, cmp);
+    *l = left;
 }
 
 int linked_list_prepend(LinkedList * ll, const void * data){

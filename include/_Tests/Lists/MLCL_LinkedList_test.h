@@ -22,6 +22,7 @@
 int run_all_linked_list_tests();
 int test_new_linked_list();
 int test_linked_list_ordered_add();
+int test_linked_list_merge_sort();
 int test_linked_list_prepend();
 int test_linked_list_append();
 int test_linked_list_search();

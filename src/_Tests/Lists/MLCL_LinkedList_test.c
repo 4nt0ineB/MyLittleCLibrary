@@ -17,6 +17,7 @@ int run_all_linked_list_tests(){
     MLCL_TEST(test_linked_list_shift)
     MLCL_TEST(test_linked_list_pop)
     MLCL_TEST(test_linked_list_filter)
+    MLCL_TEST(test_linked_list_merge_sort)
     return 1;
 }
 
@@ -192,6 +193,27 @@ int test_linked_list_pop(){
         MLCL_ERR(3, MLCL_ERR_FALSE)
     ll->d->free(&ll);
     free(data);
+    return 1;
+}
+
+int test_linked_list_merge_sort(){
+    LinkedList l;
+    int x;
+    printf("├ test_linked_list_merge_sort:");
+
+    x = 501;
+    l = new_linked_list(&x, int_m);
+
+    x = 12;
+    l->d->append(&l, &x);
+    x = 500;
+    l->d->append(&l, &x);
+    x = 6;
+    l->d->append(&l, &x);
+
+    l->d->merge_sort(&l, l->d->type_descriptor->le);
+
+    l->d->free(&l);
     return 1;
 }
 
