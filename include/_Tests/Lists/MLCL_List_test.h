@@ -20,7 +20,6 @@
 #define MYLITTLECLIBRARY_MLCL_LIST_TEST_H
 
 int run_all_list_tests();
-int test_new_list();
 int test_list_append();
 
 #endif /* MYLITTLECLIBRARY_MLCL_LIST_TEST_H */

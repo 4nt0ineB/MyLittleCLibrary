@@ -24,24 +24,23 @@
 
 int run_all_array_list_tests(){
     printf("▒▒▒ Running all ArrayList tests ▒▒▒\n");
-    MLCL_TEST(test_array_list_append)
-    MLCL_TEST(test_array_list_pop)
-    MLCL_TEST(test_array_list_pop_i)
-    MLCL_TEST(test_array_list_is_sorted)
-    MLCL_TEST(test_array_list_bubble_sort)
-    MLCL_TEST(test_array_list_selection_sort)
-    MLCL_TEST(test_array_list_insertion_sort)
-    MLCL_TEST(test_array_list_quick_sort)
-    MLCL_TEST(test_array_list_merge_sort)
-    MLCL_TEST(test_array_list_search)
-    MLCL_TEST(test_array_list_binary_search)
+    MLCL_TEST(test_array_list_append, "test_array_list_append")
+    MLCL_TEST(test_array_list_pop, "test_array_list_pop")
+    MLCL_TEST(test_array_list_pop_i, "test_array_list_pop_i")
+    MLCL_TEST(test_array_list_is_sorted, "test_array_list_is_sorted")
+    MLCL_TEST(test_array_list_bubble_sort, "test_array_list_bubble_sort")
+    MLCL_TEST(test_array_list_selection_sort, "test_array_list_selection_sort")
+    MLCL_TEST(test_array_list_insertion_sort, "test_array_list_insertion_sort")
+    MLCL_TEST(test_array_list_quick_sort, "test_array_list_quick_sort")
+    MLCL_TEST(test_array_list_merge_sort, "test_array_list_merge_sort")
+    MLCL_TEST(test_array_list_search, "test_array_list_search")
+    MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")
     return 1;
 }
 
 int test_array_list_append(){
     ArrayList * l;
     int i;
-    printf("├ test_array_list_append:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -67,7 +66,6 @@ int test_array_list_pop(){
     ArrayList * l;
     int i;
     void * x;
-    printf("├ test_array_list_pop:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -99,7 +97,6 @@ int test_array_list_pop_i(){
     ArrayList * l;
     int i;
     void * x;
-    printf("├ test_array_list_pop_i:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -130,7 +127,6 @@ int test_array_list_pop_i(){
 int test_array_list_is_sorted(){
     ArrayList * l;
     int i;
-    printf("├ test_array_list_is_sorted:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -149,7 +145,6 @@ int test_array_list_is_sorted(){
 int test_array_list_bubble_sort(){
     ArrayList * l;
     int x;
-    printf("├ test_array_list_bubble_sort:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -176,7 +171,6 @@ int test_array_list_bubble_sort(){
 int test_array_list_selection_sort(){
     ArrayList * l;
     int x;
-    printf("├ test_array_list_selection_sort:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -205,7 +199,6 @@ int test_array_list_selection_sort(){
 int test_array_list_insertion_sort(){
     ArrayList * l;
     int x;
-    printf("├ test_array_list_insertion_sort:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -234,7 +227,6 @@ int test_array_list_insertion_sort(){
 int test_array_list_quick_sort(){
     ArrayList * l;
     int x;
-    printf("├ test_array_list_quick_sort:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -263,7 +255,6 @@ int test_array_list_quick_sort(){
 int test_array_list_merge_sort(){
     ArrayList * l;
     int x;
-    printf("├ test_array_list_merge_sort:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -292,7 +283,6 @@ int test_array_list_merge_sort(){
 int test_array_list_search(){
     ArrayList * l;
     int x, index;
-    printf("├ test_array_list_search:");
 
     l = new_array_list(int_m);
     if(!l)
@@ -325,7 +315,6 @@ int test_array_list_search(){
 int test_array_list_binary_search(){
     ArrayList * l;
     int x, index;
-    printf("├ test_array_list_binary_search:");
 
     l = new_array_list(int_m);
     if(!l)

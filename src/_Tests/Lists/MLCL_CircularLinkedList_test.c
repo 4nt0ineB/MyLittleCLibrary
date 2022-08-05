@@ -26,19 +26,18 @@
 
 int run_all_circular_linked_list_tests(){
     printf("▒▒▒ Running all CircularLinkedList tests ▒▒▒\n");
-    MLCL_TEST(test_circular_linked_list_ordered_add)
-    MLCL_TEST(test_circular_linked_list_prepend)
-    MLCL_TEST(test_circular_linked_list_append)
-    MLCL_TEST(test_circular_linked_list_search)
-    MLCL_TEST(test_circular_linked_list_pop)
-    MLCL_TEST(test_circular_linked_list_shift)
+    MLCL_TEST(test_circular_linked_list_ordered_add, "test_circular_linked_list_ordered_add")
+    MLCL_TEST(test_circular_linked_list_prepend, "test_circular_linked_list_prepend")
+    MLCL_TEST(test_circular_linked_list_append, "test_circular_linked_list_append")
+    MLCL_TEST(test_circular_linked_list_search, "test_circular_linked_list_search")
+    MLCL_TEST(test_circular_linked_list_pop, "test_circular_linked_list_pop")
+    MLCL_TEST(test_circular_linked_list_shift, "test_circular_linked_list_shift")
     return 1;
 }
 
 int test_circular_linked_list_ordered_add(){
     CircularLinkedList cll;
     int x;
-    printf("├ test_circular_linked_list_ordered_add:");
     x = 5;
     cll = new_circular_linked_list(&x, int_m);
     x = 6;
@@ -66,7 +65,6 @@ int test_circular_linked_list_ordered_add(){
 int test_circular_linked_list_append(){
     CircularLinkedList ll;
     float x;
-    printf("├ test_cll_append:");
     x = 5.4f;
     ll = new_circular_linked_list(&x, float_m);
     if(!ll)
@@ -85,7 +83,6 @@ int test_circular_linked_list_append(){
 int test_circular_linked_list_search(){
     CircularLinkedList ll;
     int x;
-    printf("├ test_search:");
     x = 5;
     ll = new_circular_linked_list(&x, int_m);
     if(!ll)
@@ -105,7 +102,6 @@ int test_circular_linked_list_search(){
 int test_circular_linked_list_prepend(){
     CircularLinkedList ll;
     float x;
-    printf("├ test_cell_prepend:");
     x = 5.4f;
     ll = new_circular_linked_list(&x, float_m);
     if(!ll)
@@ -122,7 +118,6 @@ int test_circular_linked_list_pop(){
     CircularLinkedList ll;
     int x;
     void * data;
-    printf("├ test_ll_pop:");
     x = 5;
     ll = new_circular_linked_list(&x, int_m);
     if(!ll)
@@ -140,7 +135,6 @@ int test_circular_linked_list_pop(){
 int test_circular_linked_list_shift(){
     CircularLinkedList cll;
     float x;
-    printf("├ test_cll_shift:");
     x = 5.4f;
     cll = new_circular_linked_list(&x, float_m);
     x = 5.5f;

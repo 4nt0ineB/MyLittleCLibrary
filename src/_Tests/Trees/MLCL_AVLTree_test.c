@@ -26,16 +26,15 @@
 
 int run_all_avl_tree_tests(){
     printf("▒▒▒ Running all AVLTree tests ▒▒▒\n");
-    MLCL_TEST(test_new_avl_tree)
-    MLCL_TEST(test_avl_tree_add)
-    MLCL_TEST(test_avl_remove)
+    MLCL_TEST(test_new_avl_tree, "test_new_avl_tree")
+    MLCL_TEST(test_avl_tree_add, "test_avl_tree_add")
+    MLCL_TEST(test_avl_remove, "test_avl_remove")
     return 1;
 }
 
 int test_new_avl_tree(){
     AVLTree avl;
     int x;
-    printf("├ test_new_avl_tree:");
     x = 8;
     avl = new_avl_tree(&x,  int_m);
     if(!avl)
@@ -47,7 +46,6 @@ int test_new_avl_tree(){
 int test_avl_tree_add(){
     AVLTree avl;
     int x;
-    printf("├ test_avl_tree_add:");
     x = 8;
     avl = new_avl_tree(&x,  int_m);
     x = 7;
@@ -68,7 +66,6 @@ int test_avl_tree_add(){
 int test_avl_remove(){
     AVLTree avl;
     int x;
-    printf("├ test_avl_remove:");
     x = 8;
     avl = new_avl_tree(&x,  int_m);
     x = 7;
@@ -81,7 +78,6 @@ int test_avl_remove(){
     avl->d->add(&avl, &x);
     x = 8;
     avl->d->remove(&avl, &x);
-    avl->d->to_dot(avl, "test.dot");
     x = 6;
     if(!avl->d->type_descriptor->eq(avl->right->left->data, &x))
         MLCL_ERR(1, MLCL_ERR_TRUE)

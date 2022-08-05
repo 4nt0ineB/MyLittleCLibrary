@@ -16,30 +16,28 @@
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../../include/_Tests/Lists/MLCL_List_test.h"
+#ifndef MYLITTLECLIBRARY_MLCL_TIMER_H
+#define MYLITTLECLIBRARY_MLCL_TIMER_H
 
-#include "../../../include/Lists/MLCL_List.h"
-#include "../../../include/_Tests/MLCL_exceptions.h"
-#include "../../../include/MLCL_basic_types.h"
+#include <stdio.h>
+#include <sys/time.h>
 
-int run_all_list_tests(){
-    printf("▒▒▒ Running all List tests ▒▒▒\n");
-    MLCL_TEST(test_list_append, "test_list_append")
+typedef struct {
+  unsigned int state: 1;
+  struct timeval start;
+  struct timeval end;
+} Timer;
 
-    return 1;
-}
+int timer_diff_time(struct timeval start, struct timeval end);
+int timer_ms_to_ss(int ms);
+int timer_ms_to_s(int ms);
+int timer_ms_to_m(int ms);
+int timer_ms_to_h(int ms);
+void timer_start(Timer *t);
+void timer_update(Timer *t);
+int timer_get_delta(Timer t);
+void timer_fprint(FILE * stream, Timer t);
+void timer_print(Timer t);
 
-int test_list_append(){
-    List *l;
-    int x;
-    l = new_list(ARRAY_LIST, int_m);
-    if(!l)
-        MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 1;
-    l->append(l, &x);
-    if(l->s.array_list->d->type_descriptor->eq(l->s.array_list->array[0], &x) != 1)
-        MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->free(&l);
-    return 1;
-}
+#endif /* MYLITTLECLIBRARY_MLCL_TIMER_H */

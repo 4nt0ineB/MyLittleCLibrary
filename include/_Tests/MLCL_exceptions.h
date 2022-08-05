@@ -21,7 +21,7 @@
 
 #include <stdio.h>
 
-#define MLCL_TEST(result) {if(result()){printf(" ok\n");}else{return 0;}}
+#define MLCL_TEST(result, str) {printf("├ %s :", str);if(result()){printf(" ok\n");}else{return 0;}}
 #define MLCL_ERR(id, msg) {printf("\n\t[%d]: " msg "\n", id); return 0;}
 #define MLCL_OK() {printf("\tok\n");}
 #define MLCL_ERR_ALLOC "Allocation failed."

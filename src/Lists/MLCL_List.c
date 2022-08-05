@@ -169,6 +169,42 @@ int list_append(List *l, const void *data){
     return 0;
 }
 
+void * list_pop(List *l){
+    if(!list_is_empty(l)) return NULL;
+    switch (l->type) {
+        case ARRAY_LIST:
+            return l->s.array_list->d->pop(l->s.array_list);
+        case LINKED_LIST:
+            return l->s.linked_list->d->pop(&l->s.linked_list);
+        case CIRCULAR_LINKED_LIST:
+            return l->s.circular_linked_list->d->pop(&l->s.circular_linked_list);
+        case DOUBLE_LINKED_LIST:
+            return l->s.double_linked_list->d->pop(&l->s.double_linked_list);
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return l->s.circular_double_linked_list->d->pop(&l->s.circular_double_linked_list);
+        default:
+            return NULL;
+    }
+}
+
+void * list_shift(List *l){
+    if(!list_is_empty(l)) return NULL;
+    switch (l->type) {
+        case ARRAY_LIST:
+            return l->s.array_list->d->pop_i(l->s.array_list, 0);
+        case LINKED_LIST:
+            return l->s.linked_list->d->shift(&l->s.linked_list);
+        case CIRCULAR_LINKED_LIST:
+            return l->s.circular_linked_list->d->shift(&l->s.circular_linked_list);
+        case DOUBLE_LINKED_LIST:
+            return l->s.double_linked_list->d->shift(&l->s.double_linked_list);
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return l->s.circular_double_linked_list->d->shift(&l->s.circular_double_linked_list);
+        default:
+            return NULL;
+    }
+}
+
 void list_free(List **l){
     if(!*l) return;
     if((*l)->is_empty(*l)) {
@@ -229,26 +265,26 @@ void list_fprint (FILE * stream, const List *l){
 /*
 
 
-switch (list_type) {
-        case ARRAY_LIST:
+switch (type) {
+    case ARRAY_LIST:
 
-            break;
-        case LINKED_LIST:
+        break;
+    case LINKED_LIST:
 
-            break;
-        case CIRCULAR_LINKED_LIST:
+        break;
+    case CIRCULAR_LINKED_LIST:
 
-            break;
-        case DOUBLE_LINKED_LIST:
+        break;
+    case DOUBLE_LINKED_LIST:
 
-            break;
-        case CIRCULAR_DOUBLE_LINKED_LIST:
+        break;
+    case CIRCULAR_DOUBLE_LINKED_LIST:
 
-            break;
+        break;
 
-        default:
-            return NULL;
-    }
+    default:
+        return NULL;
+}
 
 
 

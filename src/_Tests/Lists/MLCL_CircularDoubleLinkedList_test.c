@@ -24,19 +24,19 @@
 
 int run_all_circular_double_linked_list_tests(){
     printf("▒▒▒ Running all CircularDoubleLinkedList tests ▒▒▒\n");
-    MLCL_TEST(test_circular_double_linked_list_ordered_add)
-    MLCL_TEST(test_circular_double_linked_list_prepend)
-    MLCL_TEST(test_circular_double_linked_list_append)
-    MLCL_TEST(test_circular_double_linked_list_search)
-    MLCL_TEST(test_circular_double_linked_list_pop)
-    MLCL_TEST(test_circular_double_linked_list_shift)
+    MLCL_TEST(test_circular_double_linked_list_ordered_add, "test_circular_double_linked_list_ordered_add")
+    MLCL_TEST(test_circular_double_linked_list_prepend, "test_circular_double_linked_list_prepend")
+    MLCL_TEST(test_circular_double_linked_list_append, "test_circular_double_linked_list_append")
+    MLCL_TEST(test_circular_double_linked_list_search, "test_circular_double_linked_list_search")
+    MLCL_TEST(test_circular_double_linked_list_pop, "test_circular_double_linked_list_pop")
+    MLCL_TEST(test_circular_double_linked_list_shift, "test_circular_double_linked_list_shift")
     return 1;
 }
 
 int test_circular_double_linked_list_ordered_add(){
     CircularDoubleLinkedList cdll;
     int x;
-    printf("├ test_circular_linked_list_ordered_add:");
+
     x = 5;
     cdll = new_circular_double_linked_list(&x, int_m);
     x = 6;
@@ -64,7 +64,6 @@ int test_circular_double_linked_list_ordered_add(){
 int test_circular_double_linked_list_prepend(){
     CircularDoubleLinkedList ll;
     float x;
-    printf("├ test_circular_double_linked_list_prepend:");
     x = 5.4f;
     ll = new_circular_double_linked_list(&x, float_m);
     if(!ll)
@@ -80,7 +79,6 @@ int test_circular_double_linked_list_prepend(){
 int test_circular_double_linked_list_append(){
     CircularDoubleLinkedList ll;
     float x;
-    printf("├ test_circular_double_linked_list_append:");
     x = 5.4f;
     ll = new_circular_double_linked_list(&x, float_m);
     if(!ll)
@@ -99,7 +97,6 @@ int test_circular_double_linked_list_append(){
 int test_circular_double_linked_list_search(){
     CircularDoubleLinkedList ll;
     int x;
-    printf("├ test_circular_double_linked_list_search:");
     x = 5;
     ll = new_circular_double_linked_list(&x, int_m);
     if(!ll)
@@ -120,7 +117,6 @@ int test_circular_double_linked_list_pop(){
     CircularDoubleLinkedList cdll;
     int x;
     void * data;
-    printf("├ test_circular_double_linked_list_pop:");
     x = 5;
     cdll = new_circular_double_linked_list(&x, int_m);
     if(!cdll)
@@ -138,7 +134,6 @@ int test_circular_double_linked_list_pop(){
 int test_circular_double_linked_list_shift(){
     CircularDoubleLinkedList cdll;
     float x;
-    printf("├ test_circular_double_linked_list_shift:");
     x = 5.4f;
     cdll = new_circular_double_linked_list(&x, float_m);
     x = 5.5f;

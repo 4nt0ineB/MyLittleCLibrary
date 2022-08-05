@@ -20,7 +20,9 @@
 #include <stdio.h>
 
 int run_all_tests(){
+    Timer t;
     printf("┌[▓▒ MLCL ▒▓]\n");
+    timer_start(&t);
     if(!run_all_type_descriptor_tests()) return 0;
     if(!run_all_linked_list_tests()) return 0;
     if(!run_all_circular_linked_list_tests()) return 0;
@@ -30,6 +32,9 @@ int run_all_tests(){
     if(!run_all_avl_tree_tests()) return 0;
     if(!run_all_array_list_tests()) return 0;
     if(!run_all_list_tests()) return 0;
-    printf("└[▓▒ All tests successfully passed]▒▓]\n");
+    timer_update(&t);
+    printf("└[▓▒ All tests successfully passed in ");
+    timer_print(t);
+    printf("]▒▓]\n");
     return 1;
 }

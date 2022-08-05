@@ -24,22 +24,21 @@
 
 int run_all_double_linked_list_tests(){
     printf("▒▒▒ Running all DoubleLinkedList tests ▒▒▒\n");
-    MLCL_TEST(test_new_double_linked_list)
-    MLCL_TEST(test_double_linked_list_ordered_add)
-    MLCL_TEST(test_double_linked_list_prepend)
-    MLCL_TEST(test_double_linked_list_append)
-    MLCL_TEST(test_double_linked_list_search)
-    MLCL_TEST(test_double_linked_list_remove)
-    MLCL_TEST(test_double_linked_list_shift)
-    MLCL_TEST(test_double_linked_list_pop)
-    MLCL_TEST(test_double_linked_list_filter)
+    MLCL_TEST(test_new_double_linked_list, "test_new_double_linked_list")
+    MLCL_TEST(test_double_linked_list_ordered_add, "test_double_linked_list_ordered_add")
+    MLCL_TEST(test_double_linked_list_prepend, "test_double_linked_list_prepend")
+    MLCL_TEST(test_double_linked_list_append, "test_double_linked_list_append")
+    MLCL_TEST(test_double_linked_list_search, "test_double_linked_list_search")
+    MLCL_TEST(test_double_linked_list_remove, "test_double_linked_list_remove")
+    MLCL_TEST(test_double_linked_list_shift, "test_double_linked_list_shift")
+    MLCL_TEST(test_double_linked_list_pop, "test_double_linked_list_pop")
+    MLCL_TEST(test_double_linked_list_filter, "test_double_linked_list_filter")
     return 1;
 }
 
 int test_new_double_linked_list(){
     DoubleLinkedList ll;
     int x;
-    printf("├ test_new_double_linked_list:");
     x = 5;
     ll = new_double_linked_list(&x, int_m);
     if(!ll)
@@ -53,7 +52,6 @@ int test_new_double_linked_list(){
 int test_double_linked_list_ordered_add(){
     DoubleLinkedList dll;
     int x;
-    printf("├ test_new_linked_add:");
     x = 5;
     dll = new_double_linked_list(&x, int_m);
     x = 6;
@@ -82,7 +80,6 @@ int test_double_linked_list_ordered_add(){
 int test_double_linked_list_prepend(){
     DoubleLinkedList ll;
     float x;
-    printf("├ test_double_linked_list_prepend:");
     x = 5.2f;
     ll = new_double_linked_list(&x, float_m);
     if(!ll)
@@ -104,7 +101,6 @@ int test_double_linked_list_prepend(){
 int test_double_linked_list_append(){
     DoubleLinkedList ll;
     float x;
-    printf("├ test_double_linked_list_append:");
     x = 5.2f;
     ll = new_double_linked_list(&x, float_m);
     if(!ll)
@@ -131,7 +127,6 @@ int test_double_linked_list_insert(){
 int test_double_linked_list_search(){
     DoubleLinkedList ll;
     int x;
-    printf("├ test_double_linked_list_search:");
     x = 5;
     ll = new_double_linked_list(&x, int_m);
     if(!ll)
@@ -151,7 +146,6 @@ int test_double_linked_list_search(){
 int test_double_linked_list_remove(){
     DoubleLinkedList ll;
     int x;
-    printf("├ test_double_linked_list_remove:");
     x = 5;
     ll = new_double_linked_list(&x, int_m);
     if(!ll)
@@ -174,7 +168,6 @@ int test_double_linked_list_shift(){
     DoubleLinkedList ll;
     int x;
     void * data;
-    printf("├ test_double_linked_list_shift:");
     x = 5;
     ll = new_double_linked_list(&x, int_m);
     if(!ll)
@@ -195,7 +188,6 @@ int test_double_linked_list_pop(){
     DoubleLinkedList ll;
     int x;
     void * data;
-    printf("├ test_double_linked_list_pop:");
     x = 5;
     ll = new_double_linked_list(&x, int_m);
     if(!ll)
@@ -213,7 +205,6 @@ int test_double_linked_list_pop(){
 }
 
 int test_double_linked_list_filter(){
-    printf("├ test_double_linked_list_filter:");
     /* @Todo filter test */
     return 1;
 }

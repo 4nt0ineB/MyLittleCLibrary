@@ -40,6 +40,8 @@
 /* Trees */
 #include "include/Trees/MLCL_BinarySearchTree.h"
 #include "include/Trees/MLCL_AVLTree.h"
+/* Timer */
+#include "include/MLCL_Timer.h"
 
 /*****************
     Tests

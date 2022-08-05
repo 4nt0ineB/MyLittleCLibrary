@@ -30,6 +30,8 @@
 /* Trees */
 #include "Trees/MLCL_BinarySearchTree_test.h"
 #include "Trees/MLCL_AVLTree_test.h"
+/* Timer */
+#include "../MLCL_Timer.h"
 
 int run_all_tests();
 

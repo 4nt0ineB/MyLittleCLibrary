@@ -8,23 +8,22 @@
 
 int run_all_linked_list_tests(){
     printf("▒▒▒ Running all LinkedList tests ▒▒▒\n");
-    MLCL_TEST(test_new_linked_list)
-    MLCL_TEST(test_linked_list_ordered_add)
-    MLCL_TEST(test_linked_list_prepend)
-    MLCL_TEST(test_linked_list_append)
-    MLCL_TEST(test_linked_list_search)
-    MLCL_TEST(test_linked_list_remove)
-    MLCL_TEST(test_linked_list_shift)
-    MLCL_TEST(test_linked_list_pop)
-    MLCL_TEST(test_linked_list_filter)
-    MLCL_TEST(test_linked_list_merge_sort)
+    MLCL_TEST(test_new_linked_list, "test_new_linked_list")
+    MLCL_TEST(test_linked_list_ordered_add, "test_linked_list_ordered_add")
+    MLCL_TEST(test_linked_list_prepend, "test_linked_list_prepend")
+    MLCL_TEST(test_linked_list_append, "test_linked_list_append")
+    MLCL_TEST(test_linked_list_search, "test_linked_list_search")
+    MLCL_TEST(test_linked_list_remove, "test_linked_list_remove")
+    MLCL_TEST(test_linked_list_shift, "test_linked_list_shift")
+    MLCL_TEST(test_linked_list_pop, "test_linked_list_pop")
+    MLCL_TEST(test_linked_list_filter, "test_linked_list_filter")
+    MLCL_TEST(test_linked_list_merge_sort, "test_linked_list_merge_sort")
     return 1;
 }
 
 int test_new_linked_list(){
     LinkedList ll;
     int x;
-    printf("├ test_new_linked_list:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     if(!ll)
@@ -38,7 +37,6 @@ int test_new_linked_list(){
 int test_linked_list_ordered_add(){
     LinkedList ll;
     int x;
-    printf("├ test_linked_list_ordered_add:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     x = 6;
@@ -66,7 +64,6 @@ int test_linked_list_ordered_add(){
 int test_linked_list_prepend(){
     LinkedList ll;
     float x;
-    printf("├ test_linked_list_prepend:");
     x = 5.2f;
     ll = new_linked_list(&x, float_m);
     if(!ll)
@@ -88,7 +85,6 @@ int test_linked_list_prepend(){
 int test_linked_list_append(){
     LinkedList ll;
     float x;
-    printf("├ test_linked_list_append:");
     x = 5.2f;
     ll = new_linked_list(&x, float_m);
     if(!ll)
@@ -115,7 +111,6 @@ int test_linked_list_insert(){
 int test_linked_list_search(){
     LinkedList ll;
     int x;
-    printf("├ test_linked_list_search:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     if(!ll)
@@ -135,7 +130,6 @@ int test_linked_list_search(){
 int test_linked_list_remove(){
     LinkedList ll;
     int x;
-    printf("├ test_linked_list_remove:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     if(!ll)
@@ -158,7 +152,6 @@ int test_linked_list_shift(){
     LinkedList ll;
     int x;
     void * data;
-    printf("├ test_linked_list_shift:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     if(!ll)
@@ -179,7 +172,6 @@ int test_linked_list_pop(){
     LinkedList ll;
     int x;
     void * data;
-    printf("├ test_linked_list_pop:");
     x = 5;
     ll = new_linked_list(&x, int_m);
     if(!ll)
@@ -199,7 +191,6 @@ int test_linked_list_pop(){
 int test_linked_list_merge_sort(){
     LinkedList l;
     int x;
-    printf("├ test_linked_list_merge_sort:");
 
     x = 501;
     l = new_linked_list(&x, int_m);
@@ -218,7 +209,6 @@ int test_linked_list_merge_sort(){
 }
 
 int test_linked_list_filter(){
-    printf("├ test_linked_list_filter:");
     /* @Todo filter test */
     return 1;
 }
