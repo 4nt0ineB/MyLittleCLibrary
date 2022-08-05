@@ -1,6 +1,7 @@
 var structs__array__list__descriptor =
 [
     [ "append", "structs__array__list__descriptor.html#aa524a65be4e61718b441f3fa78e1b637", null ],
+    [ "binary_search", "structs__array__list__descriptor.html#ad41842e9c63882011ab9c71bcb2a0271", null ],
     [ "bublle_sort", "structs__array__list__descriptor.html#ae419f94b29876ce2560431574214b69b", null ],
     [ "fprint", "structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083", null ],
     [ "fprint_i", "structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37", null ],
@@ -13,6 +14,7 @@ var structs__array__list__descriptor =
     [ "print", "structs__array__list__descriptor.html#af45c08a6390eeaf7e8abf7298642634d", null ],
     [ "print_i", "structs__array__list__descriptor.html#a6f087a4f9faed77b063a65849b7d0ee5", null ],
     [ "quick_sort", "structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e", null ],
+    [ "search", "structs__array__list__descriptor.html#a475cadd808834e1b77a8e25f6bbc8416", null ],
     [ "selection_sort", "structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73", null ],
     [ "type_descriptor", "structs__array__list__descriptor.html#ad819509e8c4ad36b53764e04df61e099", null ]
 ];

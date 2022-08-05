@@ -9,6 +9,7 @@ var structs__linked__list__descriptor =
     [ "free", "structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616", null ],
     [ "insert", "structs__linked__list__descriptor.html#a3a7956d76de75158ff574f8f29974249", null ],
     [ "length", "structs__linked__list__descriptor.html#a25ca966cdb549f03ec2d134257741e83", null ],
+    [ "merge_sort", "structs__linked__list__descriptor.html#ac3d4fea146ab45dc589cbed480e05e88", null ],
     [ "ordered_add", "structs__linked__list__descriptor.html#a6805afdfd39f272186463fafa80de344", null ],
     [ "pop", "structs__linked__list__descriptor.html#a5d6d06f4b7ead88ae8292ee27eab7087", null ],
     [ "prepend", "structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84", null ],

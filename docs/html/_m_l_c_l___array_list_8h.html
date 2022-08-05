@@ -125,14 +125,12 @@ $(document).ready(function(){initNavTree('_m_l_c_l___array_list_8h.html',''); in
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MLCL_ArrayList.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___array_list_8h__incl.svg" width="195" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___array_list_8h__incl.svg" width="195" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___array_list_8h__dep__incl.svg" width="384" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___array_list_8h__dep__incl.svg" width="551" height="231"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_m_l_c_l___array_list_8h_source.html">Go to the source code of this file.</a></p>
@@ -181,6 +179,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a6a537a6c637238ce0ebc0c5961e90fa2"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___array_list_8h.html#a6a537a6c637238ce0ebc0c5961e90fa2">array_list_pop_i</a> (<a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *l, int i)</td></tr>
 <tr class="memdesc:a6a537a6c637238ce0ebc0c5961e90fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove and return data at given index of the list. bad complexity, it has to shift all data to the left.  <a href="_m_l_c_l___array_list_8h.html#a6a537a6c637238ce0ebc0c5961e90fa2">More...</a><br /></td></tr>
 <tr class="separator:a6a537a6c637238ce0ebc0c5961e90fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a335d53cbf7c976f82b1ba0359df98ca1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___array_list_8h.html#a335d53cbf7c976f82b1ba0359df98ca1">array_list_search</a> (<a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *l, const void *data, int *res)</td></tr>
+<tr class="memdesc:a335d53cbf7c976f82b1ba0359df98ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Naive search.  <a href="_m_l_c_l___array_list_8h.html#a335d53cbf7c976f82b1ba0359df98ca1">More...</a><br /></td></tr>
+<tr class="separator:a335d53cbf7c976f82b1ba0359df98ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d39e617bc27a19487f1b0fba63c15a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___array_list_8h.html#a06d39e617bc27a19487f1b0fba63c15a">array_list_binary_search</a> (<a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *l, const void *data, int *res)</td></tr>
+<tr class="separator:a06d39e617bc27a19487f1b0fba63c15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d00f27f1e2760002228ddaed985bc11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___array_list_8h.html#a7d00f27f1e2760002228ddaed985bc11">array_list_is_sorted</a> (const <a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *l, int(*cmp)(const void *, const void *))</td></tr>
 <tr class="separator:a7d00f27f1e2760002228ddaed985bc11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4c08078f8b747e783a991d7ab0b0e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___array_list_8h.html#a1a4c08078f8b747e783a991d7ab0b0e9">array_list_bublle_sort</a> (<a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *l, int(*cmp)(const void *, const void *))</td></tr>
@@ -311,6 +314,48 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a06d39e617bc27a19487f1b0fba63c15a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d39e617bc27a19487f1b0fba63c15a">&#9670;&nbsp;</a></span>array_list_binary_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int array_list_binary_search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">res</td><td>the index of the value will be return (pass NULL if unwanted) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if exists, 0 else </dd></dl>
 
 </div>
 </div>
@@ -740,6 +785,51 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a335d53cbf7c976f82b1ba0359df98ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a335d53cbf7c976f82b1ba0359df98ca1">&#9670;&nbsp;</a></span>array_list_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int array_list_search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___array_list_8h.html#a6abfaceb6574c11c8b70e3678b9bda45">ArrayList</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Naive search. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td></td></tr>
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">res</td><td>(pass NULL if unwanted) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if exists, 0 else </dd></dl>
 
 </div>
 </div>

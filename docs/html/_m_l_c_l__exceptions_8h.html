@@ -127,16 +127,15 @@ Include dependency graph for MLCL_exceptions.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l__exceptions_8h__dep__incl.svg" width="1635" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l__exceptions_8h__dep__incl.svg" width="1818" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_m_l_c_l__exceptions_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:af47e28f9844cafd46170c0a7e9fe589c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l__exceptions_8h.html#af47e28f9844cafd46170c0a7e9fe589c">MLCL_TEST</a>(result)&#160;&#160;&#160;{if(result()){printf(&quot; ok\n&quot;);}else{return 0;}}</td></tr>
-<tr class="separator:af47e28f9844cafd46170c0a7e9fe589c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96abdeb96e0437b3ae489774db2f88d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l__exceptions_8h.html#a96abdeb96e0437b3ae489774db2f88d6">MLCL_TEST</a>(result,  str)&#160;&#160;&#160;{printf(&quot;├ %s :&quot;, str);if(result()){printf(&quot; ok\n&quot;);}else{return 0;}}</td></tr>
+<tr class="separator:a96abdeb96e0437b3ae489774db2f88d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a17be9f1edb8ec118cf2c6889ea5506"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l__exceptions_8h.html#a6a17be9f1edb8ec118cf2c6889ea5506">MLCL_ERR</a>(id,  msg)&#160;&#160;&#160;{printf(&quot;\n\t[%d]: &quot; msg &quot;\n&quot;, id); return 0;}</td></tr>
 <tr class="separator:a6a17be9f1edb8ec118cf2c6889ea5506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83dd47f4ad799c991f196a26a6fe483a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l__exceptions_8h.html#a83dd47f4ad799c991f196a26a6fe483a">MLCL_OK</a>()&#160;&#160;&#160;{printf(&quot;\tok\n&quot;);}</td></tr>
@@ -284,8 +283,8 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a id="af47e28f9844cafd46170c0a7e9fe589c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af47e28f9844cafd46170c0a7e9fe589c">&#9670;&nbsp;</a></span>MLCL_TEST</h2>
+<a id="a96abdeb96e0437b3ae489774db2f88d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96abdeb96e0437b3ae489774db2f88d6">&#9670;&nbsp;</a></span>MLCL_TEST</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,8 +293,18 @@ Macros</h2></td></tr>
           <td class="memname">#define MLCL_TEST</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">result</td><td>)</td>
-          <td>&#160;&#160;&#160;{if(result()){printf(&quot; ok\n&quot;);}else{return 0;}}</td>
+          <td class="paramname">result, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{printf(&quot;├ %s :&quot;, str);if(result()){printf(&quot; ok\n&quot;);}else{return 0;}}</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -16,6 +16,7 @@ var _m_l_c_l___linked_list_8h =
     [ "linked_list_fprint", "_m_l_c_l___linked_list_8h.html#aeafa600b3cdf95aecb98bff78a602d54", null ],
     [ "linked_list_free", "_m_l_c_l___linked_list_8h.html#abd711041d67eec55f0de2c7eeda070f8", null ],
     [ "linked_list_insert", "_m_l_c_l___linked_list_8h.html#afe89256d981c61d8e4331e228600ba65", null ],
+    [ "linked_list_merge_sort", "_m_l_c_l___linked_list_8h.html#abf05e7f9e42c95e3364bae8ad9a66990", null ],
     [ "linked_list_ordered_add", "_m_l_c_l___linked_list_8h.html#ab19f1d0be662400b108341f3407e9387", null ],
     [ "linked_list_pop", "_m_l_c_l___linked_list_8h.html#abb818b941189a4225975e2c13fbf2e5b", null ],
     [ "linked_list_prepend", "_m_l_c_l___linked_list_8h.html#a9c9b0423e58535d4022042bf00e1e72e", null ],

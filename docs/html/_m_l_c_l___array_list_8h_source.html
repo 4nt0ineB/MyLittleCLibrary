@@ -164,114 +164,133 @@ $(document).ready(function(){initNavTree('_m_l_c_l___array_list_8h_source.html',
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aa524a65be4e61718b441f3fa78e1b637">   46</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__array__list__descriptor.html#aa524a65be4e61718b441f3fa78e1b637">append</a>) (ArrayList *, <span class="keyword">const</span> <span class="keywordtype">void</span> *);</div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a6e7a86ad5faebd45b34e0c41da010609">   47</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__array__list__descriptor.html#a6e7a86ad5faebd45b34e0c41da010609">pop</a>) (ArrayList *);</div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a13e2d70223225deaf58117c2f46865d1">   48</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__array__list__descriptor.html#a13e2d70223225deaf58117c2f46865d1">pop_i</a>) (ArrayList *, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a9836a03307d0b2da270e4cc470a3e7aa">   49</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__array__list__descriptor.html#a9836a03307d0b2da270e4cc470a3e7aa">is_sorted</a>) (<span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">/* Sorting */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#ae419f94b29876ce2560431574214b69b">   51</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#ae419f94b29876ce2560431574214b69b">bublle_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73">   52</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73">selection_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a044e1436fa337e32261dbdcf89c56f19">   53</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a044e1436fa337e32261dbdcf89c56f19">insertion_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e">   54</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e">quick_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aacde114985e9630eae8e187bfbc86c2b">   55</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aacde114985e9630eae8e187bfbc86c2b">merge_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">/* Print */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a6f087a4f9faed77b063a65849b7d0ee5">   57</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a6f087a4f9faed77b063a65849b7d0ee5">print_i</a>) (<span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37">   58</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37">fprint_i</a>) (FILE *, <span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#af45c08a6390eeaf7e8abf7298642634d">   59</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#af45c08a6390eeaf7e8abf7298642634d">print</a>) (<span class="keyword">const</span> ArrayList *);</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083">   60</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083">fprint</a>) (FILE *, <span class="keyword">const</span> ArrayList *);</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">   61</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">free</a>) (ArrayList **);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="_m_l_c_l___array_list_8h.html#af632e8b91e18409ff16bbfdc2a1bbae7">   63</a></span>&#160;} ArrayListDescriptor;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a475cadd808834e1b77a8e25f6bbc8416">   49</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__array__list__descriptor.html#a475cadd808834e1b77a8e25f6bbc8416">search</a>) (ArrayList *, <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keywordtype">int</span> *);</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#ad41842e9c63882011ab9c71bcb2a0271">   50</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__array__list__descriptor.html#ad41842e9c63882011ab9c71bcb2a0271">binary_search</a>) (ArrayList *, <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keywordtype">int</span> *);</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a9836a03307d0b2da270e4cc470a3e7aa">   51</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__array__list__descriptor.html#a9836a03307d0b2da270e4cc470a3e7aa">is_sorted</a>) (<span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">/* Sorting */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#ae419f94b29876ce2560431574214b69b">   53</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#ae419f94b29876ce2560431574214b69b">bublle_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73">   54</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73">selection_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a044e1436fa337e32261dbdcf89c56f19">   55</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a044e1436fa337e32261dbdcf89c56f19">insertion_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e">   56</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e">quick_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aacde114985e9630eae8e187bfbc86c2b">   57</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aacde114985e9630eae8e187bfbc86c2b">merge_sort</a>) (ArrayList *, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">/* Print */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a6f087a4f9faed77b063a65849b7d0ee5">   59</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a6f087a4f9faed77b063a65849b7d0ee5">print_i</a>) (<span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37">   60</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a4734b8d8d09bb6ccd07cd21d3f0a3f37">fprint_i</a>) (FILE *, <span class="keyword">const</span> ArrayList *, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#af45c08a6390eeaf7e8abf7298642634d">   61</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#af45c08a6390eeaf7e8abf7298642634d">print</a>) (<span class="keyword">const</span> ArrayList *);</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083">   62</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#aaf2428e1c8d319c96db92afafe216083">fprint</a>) (FILE *, <span class="keyword">const</span> ArrayList *);</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">   63</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">free</a>) (ArrayList **);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> * @brief Return a new allocated array list pointer for a given array list descriptor</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;ArrayList * <a class="code" href="_m_l_c_l___array_list_8h.html#a15c730bcf9eca83c7e3229679c8fdda5">array_list_builder</a>(ArrayListDescriptor * descriptor);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> * @brief The array list constructor</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * @param type_manifest</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;ArrayList * <a class="code" href="_m_l_c_l___array_list_8h.html#a025cc069888cc7c1d951c77e08bb18da">new_array_list</a>(<span class="keywordtype">void</span> (*type_manifest) (TypeDescriptor *));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * @brief Append allocated copy of the data to the end of the list</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * @param data</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ac8d615044728bceb55be9423bf8c6faf">array_list_append</a>(ArrayList *l, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * @brief Remove and return last value of the list</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___array_list_8h.html#a0cb8a0de4798aea1f538c7b74a45373e">array_list_pop</a>(ArrayList *l);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * @brief Remove and return data at given index of the list.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * bad complexity, it has to shift all data to the left</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___array_list_8h.html#a6a537a6c637238ce0ebc0c5961e90fa2">array_list_pop_i</a>(ArrayList *l, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * Return Check if list is sorted</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * @param cmp comparison function</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * @return 1 or 0</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a7d00f27f1e2760002228ddaed985bc11">array_list_is_sorted</a>(<span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1a4c08078f8b747e783a991d7ab0b0e9">array_list_bublle_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1b72a3931aa076c109f32464c943203f">array_list_selection_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a4cb2c220de85d86fce7004e70e8a1daf">array_list_insertion_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#af49fc8b86707f080c782fd72ff24dc00">array_list_quick_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="_m_l_c_l___array_list_8h.html#ac16711274a43ced4fce32456ee028aa4">  112</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ac16711274a43ced4fce32456ee028aa4">array_list_merge_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"> * @brief print data at a given index</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment"> * @param i</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a3853322cd4fc3cd2148cc87016466043">array_list_print_i</a>(<span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"> * @brief Print on given stream the data at a given index</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"> * @param i</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1274193fad8c388c57de69831a503f9b">array_list_fprint_i</a>(FILE * stream, <span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"> * @brief Print the list on stdout</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a98be61ab1f2ae0cf5656ca1371055f20">array_list_print</a>(<span class="keyword">const</span> ArrayList *l);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment"> * @brief Print the list on the given stream</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment"> * @param file</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment"> * @return</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1f1b0ef8ba352237ea2032e698fc7f18">array_list_fprint</a>(FILE * stream, <span class="keyword">const</span> ArrayList *l);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment"> * @brief free the descriptor of the array list</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment"> * @param ald</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a275e1b4d61ed53a5f3b99d78e8443463">array_list_free_descriptor</a>(ArrayListDescriptor ** ald);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"> * @brief Free the array list</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment"> * @param l</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ab55f2ec424a5748e3ad6881472dfa0e0">array_list_free</a>(ArrayList ** l);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="_m_l_c_l___array_list_8h.html#af632e8b91e18409ff16bbfdc2a1bbae7">   65</a></span>&#160;} ArrayListDescriptor;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> * @brief Return a new allocated array list pointer for a given array list descriptor</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;ArrayList * <a class="code" href="_m_l_c_l___array_list_8h.html#a15c730bcf9eca83c7e3229679c8fdda5">array_list_builder</a>(ArrayListDescriptor * descriptor);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @brief The array list constructor</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * @param type_manifest</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;ArrayList * <a class="code" href="_m_l_c_l___array_list_8h.html#a025cc069888cc7c1d951c77e08bb18da">new_array_list</a>(<span class="keywordtype">void</span> (*type_manifest) (TypeDescriptor *));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * @brief Append allocated copy of the data to the end of the list</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> * @param data</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ac8d615044728bceb55be9423bf8c6faf">array_list_append</a>(ArrayList *l, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * @brief Remove and return last value of the list</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___array_list_8h.html#a0cb8a0de4798aea1f538c7b74a45373e">array_list_pop</a>(ArrayList *l);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @brief Remove and return data at given index of the list.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * bad complexity, it has to shift all data to the left</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___array_list_8h.html#a6a537a6c637238ce0ebc0c5961e90fa2">array_list_pop_i</a>(ArrayList *l, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * @brief Naive search</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> * @param data</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> * @param res (pass NULL if unwanted)</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * @return 1 if exists, 0 else</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a335d53cbf7c976f82b1ba0359df98ca1">array_list_search</a>(ArrayList *l, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> * res);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"> * @brief</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"> * @param data</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment"> * @param res the index of the value will be return (pass NULL if unwanted)</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"> * @return 1 if exists, 0 else</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a06d39e617bc27a19487f1b0fba63c15a">array_list_binary_search</a>(ArrayList *l, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">int</span> * res);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"> * Return Check if list is sorted</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"> * @param cmp comparison function</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"> * @return 1 or 0</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a7d00f27f1e2760002228ddaed985bc11">array_list_is_sorted</a>(<span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1a4c08078f8b747e783a991d7ab0b0e9">array_list_bublle_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1b72a3931aa076c109f32464c943203f">array_list_selection_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a4cb2c220de85d86fce7004e70e8a1daf">array_list_insertion_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#af49fc8b86707f080c782fd72ff24dc00">array_list_quick_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ac16711274a43ced4fce32456ee028aa4">array_list_merge_sort</a>(ArrayList *l, <span class="keywordtype">int</span> (*cmp) (<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"> * @brief print data at a given index</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment"> * @param i</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a3853322cd4fc3cd2148cc87016466043">array_list_print_i</a>(<span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment"> * @brief Print on given stream the data at a given index</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment"> * @param i</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1274193fad8c388c57de69831a503f9b">array_list_fprint_i</a>(FILE * stream, <span class="keyword">const</span> ArrayList *l, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment"> * @brief Print the list on stdout</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a98be61ab1f2ae0cf5656ca1371055f20">array_list_print</a>(<span class="keyword">const</span> ArrayList *l);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"> * @brief Print the list on the given stream</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> * @param file</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a1f1b0ef8ba352237ea2032e698fc7f18">array_list_fprint</a>(FILE * stream, <span class="keyword">const</span> ArrayList *l);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> * @brief free the descriptor of the array list</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> * @param ald</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#a275e1b4d61ed53a5f3b99d78e8443463">array_list_free_descriptor</a>(ArrayListDescriptor ** ald);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment"> * @brief Free the array list</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___array_list_8h.html#ab55f2ec424a5748e3ad6881472dfa0e0">array_list_free</a>(ArrayList ** l);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
