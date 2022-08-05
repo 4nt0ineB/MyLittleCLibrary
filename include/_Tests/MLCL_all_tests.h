@@ -21,8 +21,8 @@
 
 #include "MLCL_TypeDescriptor_test.h"
 /* Lists */
+#include "Lists/MLCL_List_test.h"
 #include "Lists/MLCL_ArrayList_test.h"
-#include "Lists/MLCL_LinkedList_test.h"
 #include "Lists/MLCL_LinkedList_test.h"
 #include "Lists/MLCL_CircularLinkedList_test.h"
 #include "Lists/MLCL_DoubleLinkedList_test.h"

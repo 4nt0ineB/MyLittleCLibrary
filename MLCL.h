@@ -35,6 +35,8 @@
 #include "include/Lists/MLCL_CircularLinkedList.h"
 #include "include/Lists/MLCL_DoubleLinkedList.h"
 #include "include/Lists/MLCL_CircularDoubleLinkedList.h"
+
+#include "include/Lists/MLCL_List.h"
 /* Trees */
 #include "include/Trees/MLCL_BinarySearchTree.h"
 #include "include/Trees/MLCL_AVLTree.h"
@@ -42,15 +44,17 @@
 /*****************
     Tests
 *****************/
-#include "include/_Tests/MLCL_all_tests.h"
 #include "include/_Tests/MLCL_exceptions.h"
+#include "include/_Tests/MLCL_all_tests.h"
 #include "include/_Tests/MLCL_TypeDescriptor_test.h"
 /* Lists */
+#include "include/_Tests/Lists/MLCL_ArrayList_test.h"
 #include "include/_Tests/Lists/MLCL_LinkedList_test.h"
 #include "include/_Tests/Lists/MLCL_CircularLinkedList_test.h"
 #include "include/_Tests/Lists/MLCL_DoubleLinkedList_test.h"
 #include "include/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.h"
 /* Trees */
 #include "include/_Tests/Trees/MLCL_BinarySearchTree_test.h"
+#include "include/_Tests/Trees/MLCL_AVLTree_test.h"
 
 #endif /* MYLITTLECLIBRARY_MLCL_H */

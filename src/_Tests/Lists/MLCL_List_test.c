@@ -14,22 +14,34 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ */
 
-#include "../../include/_Tests/MLCL_all_tests.h"
-#include <stdio.h>
+#include "../../../include/_Tests/Lists/MLCL_List_test.h"
 
-int run_all_tests(){
-    printf("┌[▓▒ MLCL ▒▓]\n");
-    if(!run_all_type_descriptor_tests()) return 0;
-    if(!run_all_linked_list_tests()) return 0;
-    if(!run_all_circular_linked_list_tests()) return 0;
-    if(!run_all_double_linked_list_tests()) return 0;
-    if(!run_all_circular_double_linked_list_tests()) return 0;
-    if(!run_all_binary_search_tree_tests()) return 0;
-    if(!run_all_avl_tree_tests()) return 0;
-    if(!run_all_array_list_tests()) return 0;
-    if(!run_all_list_tests()) return 0;
-    printf("└[▓▒ All tests successfully passed]▒▓]\n");
+#include "../../../include/Lists/MLCL_List.h"
+#include "../../../include/_Tests/MLCL_exceptions.h"
+#include "../../../include/MLCL_basic_types.h"
+
+int run_all_list_tests(){
+    printf("▒▒▒ Running all List tests ▒▒▒\n");
+    MLCL_TEST(test_new_list)
+    MLCL_TEST(test_list_append)
+
+    return 1;
+}
+int test_new_list(){
+    List *l;
+    int x;
+    printf("├ test_new_list:");
+    l = new_list(ARRAY_LIST, int_m);
+    x = 1;
+    l->append(l, &x);
+    l->print(l);
+    l->free(&l);
+    return 1;
+}
+int test_list_append(){
+    printf("├ test_list_append:");
+
     return 1;
 }

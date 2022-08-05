@@ -14,22 +14,13 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ */
 
-#include "../../include/_Tests/MLCL_all_tests.h"
-#include <stdio.h>
+#ifndef MYLITTLECLIBRARY_MLCL_LIST_TEST_H
+#define MYLITTLECLIBRARY_MLCL_LIST_TEST_H
 
-int run_all_tests(){
-    printf("┌[▓▒ MLCL ▒▓]\n");
-    if(!run_all_type_descriptor_tests()) return 0;
-    if(!run_all_linked_list_tests()) return 0;
-    if(!run_all_circular_linked_list_tests()) return 0;
-    if(!run_all_double_linked_list_tests()) return 0;
-    if(!run_all_circular_double_linked_list_tests()) return 0;
-    if(!run_all_binary_search_tree_tests()) return 0;
-    if(!run_all_avl_tree_tests()) return 0;
-    if(!run_all_array_list_tests()) return 0;
-    if(!run_all_list_tests()) return 0;
-    printf("└[▓▒ All tests successfully passed]▒▓]\n");
-    return 1;
-}
+int run_all_list_tests();
+int test_new_list();
+int test_list_append();
+
+#endif /* MYLITTLECLIBRARY_MLCL_LIST_TEST_H */
