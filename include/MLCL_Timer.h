@@ -37,9 +37,9 @@ int timer_ms_to_h(int ms);
 Timer * new_timer();
 void timer_start(Timer *t);
 void timer_update(Timer *t);
-int timer_get_delta(Timer t);
-void timer_fprint(FILE * stream, Timer t);
-void timer_print(Timer t);
+int timer_get_delta(const Timer *t);
+void timer_fprint(FILE * stream, const Timer *t);
+void timer_print(const Timer *t);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_TIMER_H */

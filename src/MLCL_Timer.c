@@ -40,16 +40,6 @@ int timer_ms_to_h(int ms) {
     return proper_modulo(ms / (3.6 * 1000000), 100);
 }
 
-void timer_fprint(FILE * stream, Timer t){
-    int ss, s, m, h, ms;
-    ms = timer_get_delta(t);
-    ss = timer_ms_to_ss(ms);
-    s = timer_ms_to_s(ms);
-    m = timer_ms_to_m(ms);
-    h = timer_ms_to_h(ms);
-    fprintf(stream, "%02d:%02d:%02d:%02d", h, m, s, ss);
-}
-
 Timer * new_timer(){
     return (Timer *) calloc(1, sizeof(Timer));
 }
@@ -64,11 +54,21 @@ void timer_update(Timer *t){
     gettimeofday(&t->end, NULL);
 }
 
-int timer_get_delta(Timer t){
-    return timer_diff_time(t.start, t.end);
+int timer_get_delta(const Timer *t){
+    return timer_diff_time(t->start, t->end);
 }
 
-void timer_print(Timer t){
+void timer_fprint(FILE * stream, const Timer *t){
+    int ss, s, m, h, ms;
+    ms = timer_get_delta(t);
+    ss = timer_ms_to_ss(ms);
+    s = timer_ms_to_s(ms);
+    m = timer_ms_to_m(ms);
+    h = timer_ms_to_h(ms);
+    fprintf(stream, "%02d:%02d:%02d:%02d", h, m, s, ss);
+}
+
+void timer_print(const Timer *t){
     timer_fprint(stdout, t);
 }
 

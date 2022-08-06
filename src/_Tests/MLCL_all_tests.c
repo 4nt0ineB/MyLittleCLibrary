@@ -21,10 +21,12 @@
 
 int run_all_tests(){
     Timer *timer;
-    printf("┌[▓▒ MLCL ▒▓]\n");
 
     timer = new_timer();
     timer_start(timer);
+
+    printf("┌[▓▒ MLCL ▒▓]\n");
+
     if(!run_all_type_descriptor_tests())
         return 0;
     if(!run_all_linked_list_tests())
@@ -45,10 +47,14 @@ int run_all_tests(){
         return 0;
     if(!run_all_binary_heap_tests())
         return 0;
-    timer_update(timer);
+
     printf("└[▓▒ All tests successfully passed in ");
-    timer_print(*timer);
+
+    timer_update(timer);
+    timer_print(timer);
     printf("]▒▓]\n");
+
     free(timer);
+
     return 1;
 }
