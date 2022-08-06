@@ -14,6 +14,7 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+ *
   */
 
 #include "../../include/Trees/MLCL_AVLTree.h"
@@ -146,6 +147,7 @@ static void avl_tree_rl_rotation(AVLTree *r){
     avl_tree_l_rotation(r);
 }
 
+
 static void avl_tree_balance(AVLTree *r){
     if((*r)->balance == 2){
         if((*r)->right->balance >= 0)
@@ -159,6 +161,7 @@ static void avl_tree_balance(AVLTree *r){
         else
             avl_tree_lr_rotation(r);
     }
+
 }
 
 int avl_tree_add(AVLTree *r, const void * data){
@@ -478,3 +481,4 @@ void avl_tree_free(AVLTree * t){
     free(*t);
     *t = NULL;
 }
+

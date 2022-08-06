@@ -44,8 +44,6 @@ int test_binary_heap_add(){
     binary_heap_add(h, &x);
     x = 0;
     binary_heap_add(h, &x);
-    printf("\n");
-    h->l->d->print(h->l);
 
     h->d->free(&h);
     return 1;

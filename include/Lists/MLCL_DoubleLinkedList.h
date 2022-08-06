@@ -39,8 +39,8 @@ typedef struct s_double_linked_cell {
  * a TypeDescriptor allowing manipulation of the data, and the list length.
  */
 typedef struct s_double_linked_list_descriptor {
-    TypeDescriptor * type_descriptor;
     int length; /*<! Linked list length */
+    TypeDescriptor * type_descriptor;
     int (*add_) (DoubleLinkedList *, const void *, int (*cmp) (const void *, const void *));  /**< ordered add depending on given function. Must return 1 or 0 */
     int (*ordered_add) (DoubleLinkedList *, const void *); /**< Ascending add */
     int (*reverse_ordered_add) (DoubleLinkedList *, const void *); /**< Descending add*/
@@ -61,6 +61,7 @@ typedef struct s_double_linked_list_descriptor {
     void (*print) (DoubleLinkedList); /**< Print the list on stdout */
     void (*fprint) (FILE *, DoubleLinkedList); /**< Print the list on the given stream*/
     void (*to_dot) (DoubleLinkedList, const char * path); /**< Make a formatted dot file of the struct */
+    /* .- -. - --- .. -. . / -... .- ... - --- ... */
 } DoubleLinkedListDescriptor;
 
 /**
