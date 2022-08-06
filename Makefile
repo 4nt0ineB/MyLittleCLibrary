@@ -27,7 +27,7 @@ test: all
 
 valtest: all
 	gcc test.c -o ./$(OUT_DIR)/MLCLTests -L. -lMLCL
-	valgrind --track-origins=yes --leak-check=full -s ./$(OUT_DIR)/MLCLTests
+	valgrind --track-origins=yes --leak-check=yes -s ./$(OUT_DIR)/MLCLTests
 
 $(LIB_PATH): $(OBJ)
 	ar r $(LIB_NAME).a $^

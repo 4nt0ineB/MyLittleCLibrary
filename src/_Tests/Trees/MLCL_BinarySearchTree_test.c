@@ -23,17 +23,28 @@
 
 int run_all_binary_search_tree_tests(){
     printf("▒▒▒ Running all BinarySearchTree tests ▒▒▒\n");
-    MLCL_TEST(test_new_binary_search_tree, "test_new_binary_search_tree")
-    MLCL_TEST(test_binary_search_tree_add, "test_binary_search_tree_add")
-    MLCL_TEST(test_binary_tree_search, "test_binary_tree_search")
-    MLCL_TEST(test_binary_tree_remove, "test_binary_tree_remove")
-    MLCL_TEST(test_binary_search_tree_height, "test_binary_search_tree_height")
-    MLCL_TEST(test_binary_search_tree_nb_nodes, "test_binary_search_tree_nb_nodes")
-    MLCL_TEST(test_binary_search_tree_nb_leaves, "test_binary_search_tree_nb_leaves")
-    MLCL_TEST(test_binary_search_tree_nb_internal_nodes, "test_binary_search_tree_nb_internal_nodes")
-    MLCL_TEST(test_binary_search_tree_nb_two_children, "test_binary_search_tree_nb_two_children")
-    MLCL_TEST(test_binary_search_tree_is_perfect_bt, "test_binary_search_tree_is_perfect_bt")
-    MLCL_TEST(test_binary_search_tree_is_bst, "test_binary_search_tree_is_bst")
+    MLCL_TEST(test_new_binary_search_tree,
+              "test_new_binary_search_tree")
+    MLCL_TEST(test_binary_search_tree_add,
+              "test_binary_search_tree_add")
+    MLCL_TEST(test_binary_tree_search,
+              "test_binary_tree_search")
+    MLCL_TEST(test_binary_tree_remove,
+              "test_binary_tree_remove")
+    MLCL_TEST(test_binary_search_tree_height,
+              "test_binary_search_tree_height")
+    MLCL_TEST(test_binary_search_tree_nb_nodes,
+              "test_binary_search_tree_nb_nodes")
+    MLCL_TEST(test_binary_search_tree_nb_leaves,
+              "test_binary_search_tree_nb_leaves")
+    MLCL_TEST(test_binary_search_tree_nb_internal_nodes,
+              "test_binary_search_tree_nb_internal_nodes")
+    MLCL_TEST(test_binary_search_tree_nb_two_children,
+              "test_binary_search_tree_nb_two_children")
+    MLCL_TEST(test_binary_search_tree_is_perfect_bt,
+              "test_binary_search_tree_is_perfect_bt")
+    MLCL_TEST(test_binary_search_tree_is_bst,
+              "test_binary_search_tree_is_bst")
     return 1;
 }
 

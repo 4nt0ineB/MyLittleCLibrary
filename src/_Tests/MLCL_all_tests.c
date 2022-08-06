@@ -20,21 +20,35 @@
 #include <stdio.h>
 
 int run_all_tests(){
-    Timer t;
+    Timer *timer;
     printf("┌[▓▒ MLCL ▒▓]\n");
-    timer_start(&t);
-    if(!run_all_type_descriptor_tests()) return 0;
-    if(!run_all_linked_list_tests()) return 0;
-    if(!run_all_circular_linked_list_tests()) return 0;
-    if(!run_all_double_linked_list_tests()) return 0;
-    if(!run_all_circular_double_linked_list_tests()) return 0;
-    if(!run_all_binary_search_tree_tests()) return 0;
-    if(!run_all_avl_tree_tests()) return 0;
-    if(!run_all_array_list_tests()) return 0;
-    if(!run_all_list_tests()) return 0;
-    timer_update(&t);
+
+    timer = new_timer();
+    timer_start(timer);
+    if(!run_all_type_descriptor_tests())
+        return 0;
+    if(!run_all_linked_list_tests())
+        return 0;
+    if(!run_all_circular_linked_list_tests())
+        return 0;
+    if(!run_all_double_linked_list_tests())
+        return 0;
+    if(!run_all_circular_double_linked_list_tests())
+        return 0;
+    if(!run_all_binary_search_tree_tests())
+        return 0;
+    if(!run_all_avl_tree_tests())
+        return 0;
+    if(!run_all_array_list_tests())
+        return 0;
+    if(!run_all_list_tests())
+        return 0;
+    if(!run_all_binary_heap_tests())
+        return 0;
+    timer_update(timer);
     printf("└[▓▒ All tests successfully passed in ");
-    timer_print(t);
+    timer_print(*timer);
     printf("]▒▓]\n");
+    free(timer);
     return 1;
 }

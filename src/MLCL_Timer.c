@@ -18,6 +18,7 @@
 
 #include "../include/MLCL_Timer.h"
 #include "../include/MLCL_utils.h"
+#include <stdlib.h>
 
 int timer_diff_time(struct timeval start, struct timeval end){
     return (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000;
@@ -47,6 +48,10 @@ void timer_fprint(FILE * stream, Timer t){
     m = timer_ms_to_m(ms);
     h = timer_ms_to_h(ms);
     fprintf(stream, "%02d:%02d:%02d:%02d", h, m, s, ss);
+}
+
+Timer * new_timer(){
+    return (Timer *) calloc(1, sizeof(Timer));
 }
 
 void timer_start(Timer *t){

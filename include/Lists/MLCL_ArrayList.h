@@ -43,7 +43,10 @@ typedef struct s_array_list {
  */
 typedef struct s_array_list_descriptor {
     TypeDescriptor * type_descriptor;
+    int (*make_space) (ArrayList *l);
+    int (*update_space) (ArrayList *l);
     int (*append) (ArrayList *, const void *);
+    int (*assign_i) (ArrayList *, int i, const void *);
     void * (*pop) (ArrayList *);
     void * (*pop_i) (ArrayList *, int i);
     int (*search) (ArrayList *, const void *, int *);
@@ -76,6 +79,10 @@ ArrayList * array_list_builder(ArrayListDescriptor * descriptor);
  */
 ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
 
+int array_list_make_space(ArrayList *l);
+
+int array_list_update_space(ArrayList *l);
+
 /**
  * @brief Append allocated copy of the data to the end of the list
  * @param l
@@ -83,6 +90,15 @@ ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
  * @return
  */
 int array_list_append(ArrayList *l, const void * data);
+
+/**
+ * @brief At a given index, free and assign new data
+ * @param l
+ * @param i
+ * @param data
+ * @return
+ */
+int array_list_assign_i(ArrayList *l, int i, const void * data);
 
 /**
  * @brief Remove and return last value of the list
