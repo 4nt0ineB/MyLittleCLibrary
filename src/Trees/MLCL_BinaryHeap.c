@@ -85,41 +85,44 @@ int binary_heap_get_child_index(const BinaryHeap *h, int i){
     return (2 * i + 1);
 }
 
-/**
- * @brief change current index data by the given one
- * @param h
- * @param i
- * @param data
- */
-void binary_heap_swap(BinaryHeap *h, int i, const void * data){
+int binary_heap_swap(BinaryHeap *h, int i, const void * data, char shallow_copy){
     int child;
-    if(!h || i > h->l->count) return;
+    if(!h || i > h->l->count) return 0;
 
     if(i > 0 && !h->d->cmp_data(h, h->l->array[(i - 1) / 2], data)) {
         h->l->array[i] = h->l->array[(i - 1) / 2];
-        binary_heap_swap(h, (i - 1) / 2, data);
-        return;
+        return binary_heap_swap(h, (i - 1) / 2, data, shallow_copy);
     }else{
         child = binary_heap_get_child_index(h, i);
         if(child > -1 && !h->d->cmp_data(h, data, h->l->array[child])){
             h->l->array[i] = h->l->array[child];
-            binary_heap_swap(h, child, data);
-            return;
+            return binary_heap_swap(h, child, data, shallow_copy);
         }
     }
 
     /* We make sure there is enough space */
     if(!h->l->d->make_space(h->l))
-        return;
+        return 0;
     /* we overwrite the data at index */
     h->l->array[i] = h->l->d->type_descriptor->copy(data);
-    /* increase length */
-    h->l->count++;
+    return 1;
 }
 
 void binary_heap_add(BinaryHeap *h, const void * data){
     if(!h) return;
-    binary_heap_swap(h, h->l->count, data);
+    if(binary_heap_swap(h, h->l->count, data, 0))
+        h->l->count++; /* increase length */
+}
+
+void * binary_heap_pop(BinaryHeap *h){
+    void * tmp;
+    if(!h) return;
+    tmp = h->l->array[0];
+    if(binary_heap_swap(h, 0, h->l->array[h->l->count-1], 1)){
+        h->l->count--;
+        h->l->d->update_space(h->l);
+    }
+    return tmp;
 }
 
 void binary_heap_free_descriptor(BinaryHeapDescriptor **bhd){

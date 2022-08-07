@@ -16,14 +16,16 @@
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MYLITTLECLIBRARY_MLCL_BINARYHEAP_TEST_H
-#define MYLITTLECLIBRARY_MLCL_BINARYHEAP_TEST_H
+#ifndef MYLITTLECLIBRARY_MLCL_UNIONFIND_H
+#define MYLITTLECLIBRARY_MLCL_UNIONFIND_H
 
+/*#include "Lists/MLCL_ArrayList.h"
 
-#include "../../Trees/MLCL_BinaryHeap.h"
+typedef struct unionfind {
+    int taille;
+    int *pere;
+    int *rang;
+    unsigned int nb_appels;
+} unionfind_t;*/
 
-int run_all_binary_heap_tests();
-int test_binary_heap_add();
-int test_binary_heap_pop();
-
-#endif /* MYLITTLECLIBRARY_MLCL_BINARYHEAP_TEST_H */
+#endif /* MYLITTLECLIBRARY_MLCL_UNIONFIND_H */

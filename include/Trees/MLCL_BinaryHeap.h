@@ -43,14 +43,22 @@ int binary_heap_cmp_data(const BinaryHeap *h, const void * x, const void * y);
 int binary_heap_get_child_index(const BinaryHeap *h, int i);
 
 /**
- * @brief change current index data by the given one
+ * @brief change the given index data by the given one, while respecting the structures ordering
  * @param h
  * @param i
  * @param data
+ * @param shallow_copy 1 just copy the address, 0 deep copy of the data
  */
-void binary_heap_swap(BinaryHeap *h, int i, const void * data);
+int binary_heap_swap(BinaryHeap *h, int i, const void * data, char shallow_copy);
 
 void binary_heap_add(BinaryHeap *h, const void * data);
+
+/**
+ * @brief Return the pointer to the data with highest priority. Depends on heap type (MIN_HEAP / MAX_HEAP).
+ * @param h
+ * @return
+ */
+void * binary_heap_pop(BinaryHeap *h);
 
 void binary_heap_free(BinaryHeap **h);
 #endif /* MYLITTLECLIBRARY_MLCL_BINARYHEAP_H */
