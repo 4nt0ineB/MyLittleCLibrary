@@ -55,6 +55,9 @@ typedef struct s_list{
     int (*length) (const struct s_list *);
     int (*is_empty) (const struct s_list *);
     int (*append) (struct s_list *, const void *);
+    int (*prepend) (struct s_list *, const void *);
+    void * (*head_peek) (const struct s_list *);
+    void * (*tail_peek) (const struct s_list *);
     void * (*pop) (struct s_list *);
     void * (*shift) (struct  s_list *);
     void (*print) (const struct s_list *);
@@ -67,6 +70,9 @@ typedef struct s_list{
 
 List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *));
 int list_append(List *l, const void *data);
+int list_prepend(List *l, const void *data);
+void * list_head_peek(const List *l);
+void * list_tail_peek(const List *l);
 void * list_pop(List *l);
 void * list_shift(List *l);
 int list_is_empty(const List *l);

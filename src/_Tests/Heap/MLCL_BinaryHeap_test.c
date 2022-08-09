@@ -16,7 +16,7 @@
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../../include/_Tests/Trees/MLCL_BinaryHeap_test.h"
+#include "../../../include/_Tests/Heap/MLCL_BinaryHeap_test.h"
 #include "../../../include/_Tests/MLCL_exceptions.h"
 #include "../../../include/MLCL_TypeDescriptor.h"
 #include "../../../include/MLCL_basic_types.h"

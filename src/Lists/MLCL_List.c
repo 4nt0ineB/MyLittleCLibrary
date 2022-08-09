@@ -32,10 +32,14 @@ List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *)){
     l->length = list_length;
     l->is_empty = list_is_empty;
     l->append = list_append;
+    l->head_peek = list_head_peek;
+    l->tail_peek = list_tail_peek;
     l->print = list_print;
     l->fprint = list_fprint;
     l->free = list_free;
     l->check_init_ = list_check_init_;
+    l->pop = list_pop;
+    l->shift = list_shift;
 
     switch (list_type) {
         case ARRAY_LIST:
@@ -169,20 +173,96 @@ int list_append(List *l, const void *data){
     return 0;
 }
 
+void * list_head_peek(const List *l){
+    if(!l) return 0;
+    switch (l->type) {
+        case ARRAY_LIST:
+            if(l->s.array_list->count)
+            return l->s.array_list->array[0];
+
+        case LINKED_LIST:
+            return l->s.linked_list;
+
+        case CIRCULAR_LINKED_LIST:
+            return l->s.circular_linked_list;
+
+        case DOUBLE_LINKED_LIST:
+            return l->s.double_linked_list;
+
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return l->s.circular_double_linked_list;
+    }
+    return NULL;
+}
+
+void * list_tail_peek(const List *l){
+    if(!l) return 0;
+    switch (l->type) {
+        case ARRAY_LIST:
+            if(l->s.array_list->count)
+                return l->s.array_list->array[l->s.array_list->count - 1];
+
+        case LINKED_LIST:
+            assert(1 == 0);
+            return l->s.linked_list;
+
+        case CIRCULAR_LINKED_LIST:
+            assert(1 == 0);
+            return l->s.circular_linked_list;
+
+        case DOUBLE_LINKED_LIST:
+            assert(1 == 0);
+            return l->s.double_linked_list;
+
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return l->s.circular_double_linked_list->prev;
+    }
+    return NULL;
+}
+
+
+int list_prepend(List *l, const void *data){
+    if(!l) return 0;
+    if(l->check_init_(l, data))
+        return 1;
+    switch (l->type) {
+        case ARRAY_LIST:
+            return l->s.array_list->d->insert(l->s.array_list, 0, data);
+
+        case LINKED_LIST:
+            return l->s.linked_list->d->prepend(&l->s.linked_list, data);
+
+        case CIRCULAR_LINKED_LIST:
+            return l->s.circular_linked_list->d->prepend(&l->s.circular_linked_list, data);
+
+        case DOUBLE_LINKED_LIST:
+            return l->s.double_linked_list->d->prepend(&l->s.double_linked_list, data);
+
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return l->s.circular_double_linked_list->d->prepend(&l->s.circular_double_linked_list, data);
+    }
+    return 0;
+}
+
 void * list_pop(List *l){
     if(!list_is_empty(l)) return NULL;
     switch (l->type) {
         case ARRAY_LIST:
             return l->s.array_list->d->pop(l->s.array_list);
+
         case LINKED_LIST:
             return l->s.linked_list->d->pop(&l->s.linked_list);
+
         case CIRCULAR_LINKED_LIST:
             return l->s.circular_linked_list->d->pop(&l->s.circular_linked_list);
+
         case DOUBLE_LINKED_LIST:
             return l->s.double_linked_list->d->pop(&l->s.double_linked_list);
+
         case CIRCULAR_DOUBLE_LINKED_LIST:
             return l->s.circular_double_linked_list->d->pop(&l->s.circular_double_linked_list);
-        default:
+
+            default:
             return NULL;
     }
 }
@@ -192,14 +272,19 @@ void * list_shift(List *l){
     switch (l->type) {
         case ARRAY_LIST:
             return l->s.array_list->d->pop_i(l->s.array_list, 0);
+
         case LINKED_LIST:
             return l->s.linked_list->d->shift(&l->s.linked_list);
+
         case CIRCULAR_LINKED_LIST:
             return l->s.circular_linked_list->d->shift(&l->s.circular_linked_list);
+
         case DOUBLE_LINKED_LIST:
             return l->s.double_linked_list->d->shift(&l->s.double_linked_list);
+
         case CIRCULAR_DOUBLE_LINKED_LIST:
             return l->s.circular_double_linked_list->d->shift(&l->s.circular_double_linked_list);
+
         default:
             return NULL;
     }
@@ -216,15 +301,19 @@ void list_free(List **l){
         case ARRAY_LIST:
             (*l)->s.array_list->d->free(&(*l)->s.array_list);
             break;
+
         case LINKED_LIST:
             (*l)->s.linked_list->d->free(&(*l)->s.linked_list);
             break;
+
         case CIRCULAR_LINKED_LIST:
             (*l)->s.circular_linked_list->d->free(&(*l)->s.circular_linked_list);
             break;
+
         case DOUBLE_LINKED_LIST:
             (*l)->s.double_linked_list->d->free(&(*l)->s.double_linked_list);
             break;
+
         case CIRCULAR_DOUBLE_LINKED_LIST:
             (*l)->s.circular_double_linked_list->d->free(&(*l)->s.circular_double_linked_list);
             break;
@@ -244,15 +333,19 @@ void list_fprint (FILE * stream, const List *l){
         case ARRAY_LIST:
             l->s.array_list->d->fprint(stream, l->s.array_list);
             break;
+
         case LINKED_LIST:
             l->s.linked_list->d->fprint(stream, l->s.linked_list);
             break;
+
         case CIRCULAR_LINKED_LIST:
             l->s.circular_linked_list->d->fprint(stream, l->s.circular_linked_list);
             break;
+
         case DOUBLE_LINKED_LIST:
             l->s.double_linked_list->d->fprint(stream, l->s.double_linked_list);
             break;
+
         case CIRCULAR_DOUBLE_LINKED_LIST:
             l->s.circular_double_linked_list->d->fprint(stream, l->s.circular_double_linked_list);
             break;

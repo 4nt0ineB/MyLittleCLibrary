@@ -4,6 +4,7 @@ var _m_l_c_l___array_list_8c =
     [ "_array_list_merge_sort_merge", "_m_l_c_l___array_list_8c.html#aadaae82bacf2700e747354b68bd61037", null ],
     [ "_array_list_quick_sort", "_m_l_c_l___array_list_8c.html#a3655037e805fa290798a32fed3f0089d", null ],
     [ "array_list_append", "_m_l_c_l___array_list_8c.html#ac8d615044728bceb55be9423bf8c6faf", null ],
+    [ "array_list_assign_i", "_m_l_c_l___array_list_8c.html#a1f1ce931d1e84c9e7b58a939b79c0ff5", null ],
     [ "array_list_binary_search", "_m_l_c_l___array_list_8c.html#a06d39e617bc27a19487f1b0fba63c15a", null ],
     [ "array_list_binary_search_", "_m_l_c_l___array_list_8c.html#aa2fa939b07a28422fe7271b7a996380f", null ],
     [ "array_list_bublle_sort", "_m_l_c_l___array_list_8c.html#a1a4c08078f8b747e783a991d7ab0b0e9", null ],
@@ -13,9 +14,10 @@ var _m_l_c_l___array_list_8c =
     [ "array_list_fprint_i", "_m_l_c_l___array_list_8c.html#a1274193fad8c388c57de69831a503f9b", null ],
     [ "array_list_free", "_m_l_c_l___array_list_8c.html#ab55f2ec424a5748e3ad6881472dfa0e0", null ],
     [ "array_list_free_descriptor", "_m_l_c_l___array_list_8c.html#a275e1b4d61ed53a5f3b99d78e8443463", null ],
+    [ "array_list_insert", "_m_l_c_l___array_list_8c.html#a29ebbd85638e1293e4fe32efa1b1d061", null ],
     [ "array_list_insertion_sort", "_m_l_c_l___array_list_8c.html#a4cb2c220de85d86fce7004e70e8a1daf", null ],
     [ "array_list_is_sorted", "_m_l_c_l___array_list_8c.html#a7d00f27f1e2760002228ddaed985bc11", null ],
-    [ "array_list_make_space", "_m_l_c_l___array_list_8c.html#a48799646e82a97964fa7a6e64a2c393d", null ],
+    [ "array_list_make_space", "_m_l_c_l___array_list_8c.html#aeda1172cde0f224dc0bce30e0a2ae42c", null ],
     [ "array_list_merge", "_m_l_c_l___array_list_8c.html#afd95ea2b603e9c6293383bc7cac77dbe", null ],
     [ "array_list_merge_sort", "_m_l_c_l___array_list_8c.html#ac16711274a43ced4fce32456ee028aa4", null ],
     [ "array_list_pop", "_m_l_c_l___array_list_8c.html#a0cb8a0de4798aea1f538c7b74a45373e", null ],
@@ -26,7 +28,7 @@ var _m_l_c_l___array_list_8c =
     [ "array_list_search", "_m_l_c_l___array_list_8c.html#a335d53cbf7c976f82b1ba0359df98ca1", null ],
     [ "array_list_search_", "_m_l_c_l___array_list_8c.html#a41978964b714e4384be46ed97a820cf6", null ],
     [ "array_list_selection_sort", "_m_l_c_l___array_list_8c.html#a1b72a3931aa076c109f32464c943203f", null ],
-    [ "array_list_update_space", "_m_l_c_l___array_list_8c.html#ac87b948c8563c10faa7590a12e480f0a", null ],
+    [ "array_list_update_space", "_m_l_c_l___array_list_8c.html#aa25bed939e3d917706034e6e53213344", null ],
     [ "new_array_list", "_m_l_c_l___array_list_8c.html#a025cc069888cc7c1d951c77e08bb18da", null ],
     [ "partition", "_m_l_c_l___array_list_8c.html#ac07d36c20f8c2dfd457f5fffb052f334", null ]
 ];

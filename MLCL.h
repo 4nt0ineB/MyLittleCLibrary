@@ -41,7 +41,7 @@
 /* Trees */
 #include "include/Trees/MLCL_BinarySearchTree.h"
 #include "include/Trees/MLCL_AVLTree.h"
-#include "include/Trees/MLCL_BinaryHeap.h"
+#include "include/Heap/MLCL_BinaryHeap.h"
 /* Timer */
 #include "include/MLCL_Timer.h"
 

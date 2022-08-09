@@ -16,7 +16,7 @@
  *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../include/Trees/MLCL_BinaryHeap.h"
+#include "../../include/Heap/MLCL_BinaryHeap.h"
 #include <assert.h>
 
 BinaryHeap * binary_heap_builder(BINARY_HEAP_ORDER order, BinaryHeapDescriptor * descriptor){
@@ -116,7 +116,7 @@ void binary_heap_add(BinaryHeap *h, const void * data){
 
 void * binary_heap_pop(BinaryHeap *h){
     void * tmp;
-    if(!h) return;
+    if(!h) return NULL;
     tmp = h->l->array[0];
     if(binary_heap_swap(h, 0, h->l->array[h->l->count-1], 1)){
         h->l->count--;

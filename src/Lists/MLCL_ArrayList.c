@@ -35,11 +35,13 @@ ArrayListDescriptor * array_list_descriptor(){
     */
 
     ald->append = array_list_append;
+    ald->insert = array_list_insert;
     ald->assign_i = array_list_assign_i;
     ald->pop = array_list_pop;
     ald->pop_i = array_list_pop_i;
     ald->search = array_list_search;
     ald->binary_search = array_list_binary_search;
+    /* Sort */
     ald->is_sorted = array_list_is_sorted;
     ald->bublle_sort = array_list_bublle_sort;
     ald->selection_sort = array_list_selection_sort;
@@ -48,15 +50,14 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->merge_sort = array_list_merge_sort;
     ald->make_space = array_list_make_space;
     ald->update_space = array_list_update_space;
-
+    /* Print */
     ald->print_i = array_list_print_i;
     ald->print = array_list_print;
     ald->fprint_i = array_list_fprint_i;
     ald->fprint = array_list_fprint;
     ald->free = array_list_free;
-    /*al_d->cell_free = linked_list_cell_free;
 
-    al_d->to_dot = linked_list_to_dot;*/
+    /* al_d->to_dot = linked_list_to_dot; */
     /* Held type */
     ald->type_descriptor = NULL;
     return ald;
@@ -122,6 +123,18 @@ int array_list_append(ArrayList *l, const void * data){
     l->array[l->count] = l->d->type_descriptor->copy(data);
     l->count++;
     if(!data && !l->array[l->count]) return 0;
+    return 1;
+}
+
+int array_list_insert(ArrayList *l, int i, const void * data){
+    int j;
+    if(!l) return 0;
+    l->d->make_space(l);
+    l->count++;
+    for(j = l->count; j > i; j--){
+        l->array[j] = l->array[j - 1];
+    }
+    l->array[i] = l->d->type_descriptor->copy(data);
     return 1;
 }
 

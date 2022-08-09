@@ -129,12 +129,14 @@ $(document).ready(function(){initNavTree('_m_l_c_l___list_8h.html',''); initResi
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MLCL_List.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___list_8h__incl.svg" width="628" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___list_8h__incl.svg" width="628" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___list_8h__dep__incl.svg" width="350" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_m_l_c_l___list_8h__dep__incl.svg" width="735" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="_m_l_c_l___list_8h_source.html">Go to the source code of this file.</a></p>
@@ -168,6 +170,12 @@ Functions</h2></td></tr>
 <tr class="separator:a5dead506c16d5a0432baa155ab33b47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ea2dfe7d55a3e04f2188ff0a360bca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#a70ea2dfe7d55a3e04f2188ff0a360bca">list_append</a> (<a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l, const void *data)</td></tr>
 <tr class="separator:a70ea2dfe7d55a3e04f2188ff0a360bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1703540d768a9888e0c94161e4cd38b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#a1703540d768a9888e0c94161e4cd38b0">list_prepend</a> (<a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l, const void *data)</td></tr>
+<tr class="separator:a1703540d768a9888e0c94161e4cd38b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b4eece1e99f47bd0907736350ef090"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#a41b4eece1e99f47bd0907736350ef090">list_head_peek</a> (const <a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l)</td></tr>
+<tr class="separator:a41b4eece1e99f47bd0907736350ef090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5bcb2e10a4fc7c92b4fdd223ff406e3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#ab5bcb2e10a4fc7c92b4fdd223ff406e3">list_tail_peek</a> (const <a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l)</td></tr>
+<tr class="separator:ab5bcb2e10a4fc7c92b4fdd223ff406e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac274ad06f724089ab399f1dbc0644148"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#ac274ad06f724089ab399f1dbc0644148">list_pop</a> (<a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l)</td></tr>
 <tr class="separator:ac274ad06f724089ab399f1dbc0644148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac658f9cb3097a248d8209f11afea7ce5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_l_c_l___list_8h.html#ac658f9cb3097a248d8209f11afea7ce5">list_shift</a> (<a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *l)</td></tr>
@@ -337,6 +345,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a41b4eece1e99f47bd0907736350ef090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b4eece1e99f47bd0907736350ef090">&#9670;&nbsp;</a></span>list_head_peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* list_head_peek </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6028e677c98513f6e722a9057057cbe1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6028e677c98513f6e722a9057057cbe1">&#9670;&nbsp;</a></span>list_is_empty()</h2>
 
@@ -391,6 +417,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1703540d768a9888e0c94161e4cd38b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1703540d768a9888e0c94161e4cd38b0">&#9670;&nbsp;</a></span>list_prepend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_prepend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4fb46bf3c9af425a85b72d37df9f3432"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fb46bf3c9af425a85b72d37df9f3432">&#9670;&nbsp;</a></span>list_print()</h2>
 
@@ -419,6 +473,24 @@ Functions</h2></td></tr>
           <td class="memname">void* list_shift </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5bcb2e10a4fc7c92b4fdd223ff406e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5bcb2e10a4fc7c92b4fdd223ff406e3">&#9670;&nbsp;</a></span>list_tail_peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* list_tail_peek </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">List</a> *&#160;</td>
           <td class="paramname"><em>l</em></td><td>)</td>
           <td></td>
         </tr>

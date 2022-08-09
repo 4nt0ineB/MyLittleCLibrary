@@ -147,6 +147,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a4f03d335a104a88c247de54373192331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05971c9c60f07345bdb43990e82c4904"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">append</a> )(struct <a class="el" href="structs__list.html">s_list</a> *, const void *)</td></tr>
 <tr class="separator:a05971c9c60f07345bdb43990e82c4904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21f19e17e6c061dd913844ce8d017bf1"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#a21f19e17e6c061dd913844ce8d017bf1">prepend</a> )(struct <a class="el" href="structs__list.html">s_list</a> *, const void *)</td></tr>
+<tr class="separator:a21f19e17e6c061dd913844ce8d017bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b3e0e67e4b06a4ef5c2a945da1fd93"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#ac2b3e0e67e4b06a4ef5c2a945da1fd93">head_peek</a> )(const struct <a class="el" href="structs__list.html">s_list</a> *)</td></tr>
+<tr class="separator:ac2b3e0e67e4b06a4ef5c2a945da1fd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d7f023dc811c2bb709f9f34c6f315d"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#a65d7f023dc811c2bb709f9f34c6f315d">tail_peek</a> )(const struct <a class="el" href="structs__list.html">s_list</a> *)</td></tr>
+<tr class="separator:a65d7f023dc811c2bb709f9f34c6f315d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ff5f66222a4226e7a5ad0e13783b8d"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#af6ff5f66222a4226e7a5ad0e13783b8d">pop</a> )(struct <a class="el" href="structs__list.html">s_list</a> *)</td></tr>
 <tr class="separator:af6ff5f66222a4226e7a5ad0e13783b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cdda930f210eb295b93c3717e7ce7fc"><td class="memItemLeft" align="right" valign="top">void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__list.html#a7cdda930f210eb295b93c3717e7ce7fc">shift</a> )(struct <a class="el" href="structs__list.html">s_list</a> *)</td></tr>
@@ -275,6 +281,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac2b3e0e67e4b06a4ef5c2a945da1fd93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2b3e0e67e4b06a4ef5c2a945da1fd93">&#9670;&nbsp;</a></span>head_peek</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void*(* s_list::head_peek) (const struct <a class="el" href="structs__list.html">s_list</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4f03d335a104a88c247de54373192331"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f03d335a104a88c247de54373192331">&#9670;&nbsp;</a></span>is_empty</h2>
 
@@ -331,6 +351,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a21f19e17e6c061dd913844ce8d017bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f19e17e6c061dd913844ce8d017bf1">&#9670;&nbsp;</a></span>prepend</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* s_list::prepend) (struct <a class="el" href="structs__list.html">s_list</a> *, const void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4977232340f51eadfadb30945815dcc6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4977232340f51eadfadb30945815dcc6">&#9670;&nbsp;</a></span>print</h2>
 
@@ -368,6 +402,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void*(* s_list::shift) (struct <a class="el" href="structs__list.html">s_list</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65d7f023dc811c2bb709f9f34c6f315d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d7f023dc811c2bb709f9f34c6f315d">&#9670;&nbsp;</a></span>tail_peek</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void*(* s_list::tail_peek) (const struct <a class="el" href="structs__list.html">s_list</a> *)</td>
         </tr>
       </table>
 </div><div class="memdoc">

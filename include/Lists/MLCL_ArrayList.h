@@ -46,6 +46,7 @@ typedef struct s_array_list_descriptor {
     int (*make_space) (ArrayList *l);
     int (*update_space) (ArrayList *l);
     int (*append) (ArrayList *, const void *);
+    int (*insert) (ArrayList *, int i, const void *);
     int (*assign_i) (ArrayList *, int i, const void *);
     void * (*pop) (ArrayList *);
     void * (*pop_i) (ArrayList *, int i);
@@ -90,6 +91,15 @@ int array_list_update_space(ArrayList *l);
  * @return
  */
 int array_list_append(ArrayList *l, const void * data);
+
+/**
+ * @brief Insert data at index
+ * @param l
+ * @param i
+ * @param data
+ * @return
+ */
+int array_list_insert(ArrayList *l, int i, const void * data);
 
 /**
  * @brief At a given index, free and assign new data

@@ -20,7 +20,7 @@
 #define MYLITTLECLIBRARY_MLCL_BINARYHEAP_TEST_H
 
 
-#include "../../Trees/MLCL_BinaryHeap.h"
+#include "../../Heap/MLCL_BinaryHeap.h"
 
 int run_all_binary_heap_tests();
 int test_binary_heap_add();
