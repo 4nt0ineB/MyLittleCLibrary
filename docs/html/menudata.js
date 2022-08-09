@@ -101,6 +101,7 @@ var menudata={children:[
 {text:"p",url:"globals_func_p.html#index_p"},
 {text:"q",url:"globals_func_q.html#index_q"},
 {text:"r",url:"globals_func_r.html#index_r"},
+{text:"s",url:"globals_func_s.html#index_s"},
 {text:"t",url:"globals_func_t.html#index_t"}]},
 {text:"Variables",url:"globals_vars.html"},
 {text:"Typedefs",url:"globals_type.html"},

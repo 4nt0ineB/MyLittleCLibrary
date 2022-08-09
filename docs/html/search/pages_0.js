@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mylittleclibrary_1057',['MyLittleCLibrary',['../index.html',1,'']]]
+  ['mylittleclibrary_1079',['MyLittleCLibrary',['../index.html',1,'']]]
 ];

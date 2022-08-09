@@ -21,32 +21,31 @@
 
 int run_all_tests(){
     Timer *timer;
+    int i;
+    int (*tests[])() =
+            {
+            run_all_type_descriptor_tests,
+            run_all_linked_list_tests,
+            run_all_circular_linked_list_tests,
+            run_all_double_linked_list_tests,
+            run_all_circular_double_linked_list_tests,
+            run_all_binary_search_tree_tests,
+            run_all_avl_tree_tests,
+            run_all_array_list_tests,
+            run_all_list_tests,
+            run_all_binary_heap_tests,
+            run_all_queue_tests,
+            NULL
+    };
 
     timer = new_timer();
     timer_start(timer);
 
     printf("┌[▓▒ MLCL ▒▓]\n");
 
-    if(!run_all_type_descriptor_tests())
-        return 0;
-    if(!run_all_linked_list_tests())
-        return 0;
-    if(!run_all_circular_linked_list_tests())
-        return 0;
-    if(!run_all_double_linked_list_tests())
-        return 0;
-    if(!run_all_circular_double_linked_list_tests())
-        return 0;
-    if(!run_all_binary_search_tree_tests())
-        return 0;
-    if(!run_all_avl_tree_tests())
-        return 0;
-    if(!run_all_array_list_tests())
-        return 0;
-    if(!run_all_list_tests())
-        return 0;
-    if(!run_all_binary_heap_tests())
-        return 0;
+    for(i = 0; tests[i]; i++)
+        if(!(*tests[i])())
+            return 0;
 
     printf("└[▓▒ All tests successfully passed in ");
 

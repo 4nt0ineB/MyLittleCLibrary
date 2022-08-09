@@ -33,7 +33,14 @@
 #include "Heap/MLCL_BinaryHeap_test.h"
 /* Timer */
 #include "../MLCL_Timer.h"
-
+/* Stack */
+/*
+#include "include/_Tests/Stack/MLCL_Stack.h"
+*/
+/* Queue */
+#include "../_Tests/Queue/MLCL_Queue_test.h"
+/* Heap */
+#include "../_Tests/Heap/MLCL_BinaryHeap_test.h"
 int run_all_tests();
 
 #endif /* MYLITTLECLIBRARY_MLCL_ALL_TESTS_H */

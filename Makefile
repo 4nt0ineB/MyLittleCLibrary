@@ -54,5 +54,7 @@ clean:
 mrproper: clean
 	rm -f $(LIB_NAME).a
 	rm -f $(OUT_DIR)/MLCLTests
+	rm -Rf docs/html/*
+	rm -Rf docs/html/search/*
 	rmdir $(OUT_DIR)
 

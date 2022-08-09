@@ -38,10 +38,15 @@
 #include "include/Lists/MLCL_CircularDoubleLinkedList.h"
 
 #include "include/Lists/MLCL_List.h"
+/* Stack */
+/*#include "include/Stack/MLCL_Stack.h"*/
+/* Queue */
+#include "include/Queue/MLCL_Queue.h"
+/* Heap */
+#include "include/Heap/MLCL_BinaryHeap.h"
 /* Trees */
 #include "include/Trees/MLCL_BinarySearchTree.h"
 #include "include/Trees/MLCL_AVLTree.h"
-#include "include/Heap/MLCL_BinaryHeap.h"
 /* Timer */
 #include "include/MLCL_Timer.h"
 
@@ -60,5 +65,12 @@
 /* Trees */
 #include "include/_Tests/Trees/MLCL_BinarySearchTree_test.h"
 #include "include/_Tests/Trees/MLCL_AVLTree_test.h"
-
+/* Stack */
+/*
+#include "include/_Tests/Stack/MLCL_Stack.h"
+*/
+/* Queue */
+#include "include/_Tests/Queue/MLCL_Queue_test.h"
+/* Heap */
+#include "include/_Tests/Heap/MLCL_BinaryHeap_test.h"
 #endif /* MYLITTLECLIBRARY_MLCL_H */

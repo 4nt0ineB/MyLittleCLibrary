@@ -100,17 +100,20 @@ int binary_heap_swap(BinaryHeap *h, int i, const void * data, char shallow_copy)
         }
     }
 
-    /* We make sure there is enough space */
-    if(!h->l->d->make_space(h->l))
-        return 0;
     /* we overwrite the data at index */
-    h->l->array[i] = h->l->d->type_descriptor->copy(data);
+    if(!shallow_copy)
+        h->l->array[i] = h->l->d->type_descriptor->copy(data);
+    else
+        h->l->array[i] = (void *) data;
     return 1;
 }
 
 void binary_heap_add(BinaryHeap *h, const void * data){
     if(!h) return;
-    if(binary_heap_swap(h, h->l->count, data, 0))
+    /* We make sure there is enough space */
+    if(!h->l->d->make_space(h->l))
+        return;
+    if(binary_heap_swap(h, h->l->count, (void *) data, 0))
         h->l->count++; /* increase length */
 }
 
@@ -120,6 +123,7 @@ void * binary_heap_pop(BinaryHeap *h){
     tmp = h->l->array[0];
     if(binary_heap_swap(h, 0, h->l->array[h->l->count-1], 1)){
         h->l->count--;
+        h->l->array[h->l->count] = NULL;
         h->l->d->update_space(h->l);
     }
     return tmp;

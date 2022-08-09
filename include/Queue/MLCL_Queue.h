@@ -21,7 +21,7 @@ typedef struct s_queue {
 } Queue;
 
 Queue * new_queue(void (*type_manifest) (TypeDescriptor *));
-int queue_add(Queue * q, const void * data);
+int queue_add(Queue *q, const void * data);
 void * queue_peek(const Queue *q);
 void * queue_pop(Queue * q);
 int queue_is_empty(const Queue *q);

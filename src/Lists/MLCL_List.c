@@ -181,16 +181,16 @@ void * list_head_peek(const List *l){
             return l->s.array_list->array[0];
 
         case LINKED_LIST:
-            return l->s.linked_list;
+            return l->s.linked_list->data;
 
         case CIRCULAR_LINKED_LIST:
-            return l->s.circular_linked_list;
+            return l->s.circular_linked_list->data;
 
         case DOUBLE_LINKED_LIST:
-            return l->s.double_linked_list;
+            return l->s.double_linked_list->data;
 
         case CIRCULAR_DOUBLE_LINKED_LIST:
-            return l->s.circular_double_linked_list;
+            return l->s.circular_double_linked_list->data;
     }
     return NULL;
 }

@@ -21,10 +21,10 @@ typedef struct s_stack {
 } Stack;
 
 Stack * new_queue(void (*type_manifest) (TypeDescriptor *));
-int queue_add(Stack *s, const void * data);
-void * queue_peek(const Stack *s);
-void * queue_pop(Stack * s);
-int queue_is_empty(const Stack *s);
-void queue_free(Stack **s);
+int stack_add(Stack *s, const void * data);
+void * stack_peek(const Stack *s);
+void * stack_pop(Stack * s);
+int stack_is_empty(const Stack *s);
+void stack_free(Stack **s);
 
 #endif /* MYLITTLECLIBRARY_MLCL_STACK_H */
