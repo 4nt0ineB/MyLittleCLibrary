@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>MyLittleCLibrary: include/Lists/MLCL_List.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://cydaw6.github.io/MyLittleCLibrary/html/index.html" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MyLittleCLibrary
+   </div>
+   <div id="projectbrief">A small C lib to stop reinvent the wheel</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_m_l_c_l___list_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MLCL_List.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_m_l_c_l___list_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *   This file is part of the MLCL Library.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *   Antoine Bastos 2022</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *    This Library is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *    it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *    the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *    (at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *    This Library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *    but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *    GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *    You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *    along with this Library.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_LIST_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MYLITTLECLIBRARY_MLCL_LIST_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___array_list_8h.html">&quot;MLCL_ArrayList.h&quot;</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___linked_list_8h.html">&quot;MLCL_LinkedList.h&quot;</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___circular_linked_list_8h.html">&quot;MLCL_CircularLinkedList.h&quot;</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___double_linked_list_8h.html">&quot;MLCL_DoubleLinkedList.h&quot;</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_m_l_c_l___circular_double_linked_list_8h.html">&quot;MLCL_CircularDoubleLinkedList.h&quot;</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * @enum Available list types</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36">   31</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36aa8f02eba78186a5bba4418927eec6bee">   32</a></span>&#160;    <a class="code" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36aa8f02eba78186a5bba4418927eec6bee">ARRAY_LIST</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36aeb7a864e65dbdfa0e7e9c7569d2f46ed">   33</a></span>&#160;    <a class="code" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36aeb7a864e65dbdfa0e7e9c7569d2f46ed">LINKED_LIST</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a020fb9028036ebe9d0eb5384a1d6d2c5">   34</a></span>&#160;    <a class="code" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a020fb9028036ebe9d0eb5384a1d6d2c5">CIRCULAR_LINKED_LIST</a>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a082c781d090f2afcb1c93a024a36e597">   35</a></span>&#160;    <a class="code" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a082c781d090f2afcb1c93a024a36e597">DOUBLE_LINKED_LIST</a>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a29b7ea4e4e259f099ff9ed769f06f15f">CIRCULAR_DOUBLE_LINKED_LIST</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36a29b7ea4e4e259f099ff9ed769f06f15f">   37</a></span>&#160;} LIST_TYPE;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * Interface of lists for basic usage</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structs__list.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a>{</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structs__list.html#ae3a4e7ba34d2c0321dfec324f3f57d28">   44</a></span>&#160;    LIST_TYPE <a class="code" href="structs__list.html#ae3a4e7ba34d2c0321dfec324f3f57d28">type</a>; <span class="comment">/**&lt; Type of list implementation of the list */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structs__list.html#afa4076c4074d3ce4a2738cc8bed421f3">   45</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__list.html#afa4076c4074d3ce4a2738cc8bed421f3">type_manifest</a>) (TypeDescriptor *); <span class="comment">/**&lt; type_manifest stored to be able to realloc a list struct of the same type*/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">union</span> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structs__list.html#a1a9acacf551c1bd01db9efa331bba2e7">   48</a></span>&#160;        ArrayList * <a class="code" href="structs__list.html#a1a9acacf551c1bd01db9efa331bba2e7">array_list</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structs__list.html#a6ac5553652f1c7dcdc75d3fe74269dd0">   49</a></span>&#160;        LinkedList <a class="code" href="structs__list.html#a6ac5553652f1c7dcdc75d3fe74269dd0">linked_list</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structs__list.html#a9eb7012b1cc8eeef482a005cce0680bf">   50</a></span>&#160;        <a class="code" href="_m_l_c_l___circular_linked_list_8h.html#acbb208209388a0e7cb8c37a80c9cac67">CircularLinkedList</a> <a class="code" href="structs__list.html#a9eb7012b1cc8eeef482a005cce0680bf">circular_linked_list</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structs__list.html#a5ad776240f14788500fce5a729607488">   51</a></span>&#160;        DoubleLinkedList <a class="code" href="structs__list.html#a5ad776240f14788500fce5a729607488">double_linked_list</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structs__list.html#af670bb28de01f8294b3781f1027ec0f7">   52</a></span>&#160;        <a class="code" href="_m_l_c_l___circular_double_linked_list_8h.html#a28759e8c0cb666bedefd19f4a02e9a18">CircularDoubleLinkedList</a> <a class="code" href="structs__list.html#af670bb28de01f8294b3781f1027ec0f7">circular_double_linked_list</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__list.html#a00873ee18f63d1388955d683ab7932ef">   53</a></span>&#160;    } s; <span class="comment">/**&lt; The pointer to the list structure implementation */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__list.html#a7fe6055c46db9c92f15e0846c8dce019">   55</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__list.html#a7fe6055c46db9c92f15e0846c8dce019">length</a>) (<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structs__list.html#a4f03d335a104a88c247de54373192331">   56</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__list.html#a4f03d335a104a88c247de54373192331">is_empty</a>) (<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">   57</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">append</a>) (<span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *);</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structs__list.html#a21f19e17e6c061dd913844ce8d017bf1">   58</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__list.html#a21f19e17e6c061dd913844ce8d017bf1">prepend</a>) (<span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *);</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structs__list.html#ac2b3e0e67e4b06a4ef5c2a945da1fd93">   59</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__list.html#ac2b3e0e67e4b06a4ef5c2a945da1fd93">head_peek</a>) (<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structs__list.html#a65d7f023dc811c2bb709f9f34c6f315d">   60</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__list.html#a65d7f023dc811c2bb709f9f34c6f315d">tail_peek</a>) (<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__list.html#af6ff5f66222a4226e7a5ad0e13783b8d">   61</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__list.html#af6ff5f66222a4226e7a5ad0e13783b8d">pop</a>) (<span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structs__list.html#a7cdda930f210eb295b93c3717e7ce7fc">   62</a></span>&#160;    <span class="keywordtype">void</span> * (*<a class="code" href="structs__list.html#a7cdda930f210eb295b93c3717e7ce7fc">shift</a>) (<span class="keyword">struct</span>  <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structs__list.html#a4977232340f51eadfadb30945815dcc6">   63</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__list.html#a4977232340f51eadfadb30945815dcc6">print</a>) (<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structs__list.html#a7a2056dfa1d08e4d244f9d6b888e5779">   64</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__list.html#a7a2056dfa1d08e4d244f9d6b888e5779">fprint</a>) (FILE *, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structs__list.html#a732eeb8cfe0a73af837fa9cc15b64584">   66</a></span>&#160;    <span class="keywordtype">void</span> (*<a class="code" href="structs__list.html#a732eeb8cfe0a73af837fa9cc15b64584">free</a>) (<span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> **);</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structs__list.html#aff6448a6144b69b6b3a14f29df27f5b6">   67</a></span>&#160;    <span class="keywordtype">int</span> (*<a class="code" href="structs__list.html#aff6448a6144b69b6b3a14f29df27f5b6">check_init_</a>) (<span class="keyword">struct</span> <a class="code" href="structs__list.html">s_list</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="_m_l_c_l___list_8h.html#aae40d62082ae76b595acf3f8ad94f794">   69</a></span>&#160;} List;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;List * <a class="code" href="_m_l_c_l___list_8h.html#a5dead506c16d5a0432baa155ab33b47d">new_list</a>(LIST_TYPE list_type, <span class="keywordtype">void</span> (*type_manifest) (TypeDescriptor *));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___list_8h.html#a70ea2dfe7d55a3e04f2188ff0a360bca">list_append</a>(List *l, <span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___list_8h.html#a1703540d768a9888e0c94161e4cd38b0">list_prepend</a>(List *l, <span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___list_8h.html#a41b4eece1e99f47bd0907736350ef090">list_head_peek</a>(<span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___list_8h.html#ab5bcb2e10a4fc7c92b4fdd223ff406e3">list_tail_peek</a>(<span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___list_8h.html#ac274ad06f724089ab399f1dbc0644148">list_pop</a>(List *l);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> * <a class="code" href="_m_l_c_l___list_8h.html#ac658f9cb3097a248d8209f11afea7ce5">list_shift</a>(List *l);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___list_8h.html#a6028e677c98513f6e722a9057057cbe1">list_is_empty</a>(<span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___list_8h.html#acd4bfcc024aedfb25e795b767a62a8de">list_length</a>(<span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___list_8h.html#a305d0a394083ca061af3a15191326869">list_free</a>(List **l);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___list_8h.html#a4fb46bf3c9af425a85b72d37df9f3432">list_print</a> (<span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_l_c_l___list_8h.html#aa9aa2ae159fad85df966429eb1882d4e">list_fprint</a> (FILE * stream, <span class="keyword">const</span> List *l);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * @brief Init the list with data if empty and return 1, else return 0.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * @param l</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * @param data</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l___list_8h.html#ac6b57743264e6e54c0b6a13daf597fb1">list_check_init_</a>(List *l, <span class="keyword">const</span> <span class="keywordtype">void</span> * data);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_LIST_H */</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_29806fc413ce322725a63a32078703a5.html">Lists</a></li><li class="navelem"><a class="el" href="_m_l_c_l___list_8h.html">MLCL_List.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
