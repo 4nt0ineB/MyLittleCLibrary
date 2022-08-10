@@ -10,19 +10,22 @@ An ANSI C library gathering things I learned in college, to implement things fas
 
 |  	| Data struct overview	| Examples               	|
 |--------	|-------------	|------------------------	|
-| Lists
+| Lists | [List](#List) |  [:file_folder:](src/_Tests/Lists/MLCL_List_test.c) 
 | | [Array list](#Array-list)   | [:file_folder:](src/_Tests/Lists/MLCL_ArrayList_test.c) 	|
 | | [Linked list](#Linked-list)   | [:file_folder:](src/_Tests/Lists/MLCL_LinkedList_test.c) 	|
 | | [Circular linked list](#Circular-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_CircularLinkedList_test.c) |
 | | [Double linked list](#Double-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_DoubleLinkedList_test.c) |
 | | [Circular double linked list](#Circular-double-linked-list)  | [:file_folder:](src/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.c) 	|
-| Trees
+| Trees | [Tree](#Tree)
 | | [Binary search tree ](#Binary-search-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_BinarySearchTree_test.c) 	|
 | | [AVL tree](#AVL-tree)   | [:file_folder:](src/_Tests/Trees/MLCL_AVLTree_test.c) 	|
+| Heap  | [Heap](#Heap)
+| Stack | [Stack](#Stack)
+| Queue | [Queue](#Queue)
 
 ## Introduction
 
-All the structures are linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the [type descriptor](##Type-manifest), allowing to manipulate the data independently of the *effective* type they are carrying.  You specify the data carried by the structure at creation.
+The basic structures  the linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the [type descriptor](##Type-manifest), allowing to manipulate the data independently of the *effective* type they are carrying.  You specify the data carried by the structure at creation.
 
 For example the linked list is implemented like this : [see annex](#Linked-list-implementation). Each cell is linked to the linked list descriptor, when adding new data to the list, a cell (the last, the first, depending on the function) is passing his 'd' pointer to the cell builder. The type descriptor is freed when the last remaining cell is removed.
 You use the linked list this way:
@@ -66,20 +69,61 @@ l->d->type_descriptor->fprint = custom_fprint_for_the_data_of_my_linked_list;
 
 ## Lists
 
+### List
+The list interface provide a small and easy interface for the different list implementation
+
+A circular linked list of char:
+```c
+List *l;
+char c;
+
+l = new_list(CIRCULAR_LINKED_LIST, char_m);
+
+/* add some values */
+c = 'a'; 
+l->append(l, &c);
+c = 'b'; 
+l->append(l, &c);
+c = 'b'; 
+l->append(l, &c);
+
+/* Print the list */
+l->print(l);
+
+l->free(&l);
+```
+
+|  Methods  |
+| --- |
+| length |
+| append |
+| prepend 
+| is_empty |
+| to_dot |
+
+
+#### Extended use of lists implementation
+Some of the list implementation have specific methods, other don't. So you will have to understand how structs are shaped. For example if you want to benefit of the sorting methods of the ArrayList trough a list you would do:
+```c
+l = new_list(ARRAY_LIST, int_m);
+...
+l->s.array_list->d->merge_sort(&l->s.array_list);
+```
+
 ### Array list
 
 
 
 ```c  
-int x;  
-LinkedList l;  
+int i;  
+ArrayList *l;  
   
-x = 5f;  
 l = new_array_list(int_m);
-  
-l->d->append(&l, &x);  
-l->d->free(&tmp);  
-  
+
+for(i = 0; i < 5; i++)
+	l->d->append(l, &i);
+
+l->d->free(&l);
 ```  
 
 **[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]**
@@ -88,20 +132,33 @@ l->d->free(&tmp);
 
 ```c  
 float x;  
-LinkedList l;  
+LinkedList l;
+float *tmp;
   
-x = 5.3f;  
+x = 3.8f;  
 l = new_linked_list(&x, float_m);  
   
-l->d->append(&l, &x);  
-l->d->free(&tmp);  
-  
+x = 3.8f;
+l->d->prepend(&l, &x);  
+x = 2.5f;
+l->d->prepend(&l, &x);
+x = 1.5f;
+l->d->prepend(&l, &x);
+x = 3.8f;
+l->d->prepend(&l, &x);  
+x = 3.8f;
+l->d->prepend(&l, &x);  
+tmp = (float *) l->d->shift(&l);
+
+free(tmp);
+l->d->free(&l);  
 ```  
+
 ```mermaid
 flowchart  LR
-  1
-	--> 2
-	--> 3
+  1.2
+	--> 2.5
+	--> 3.8
 	--> e( )
 ```
 
@@ -381,6 +438,32 @@ Doxygen css from jothepro [doxygen-awesome-css](https://github.com/jothepro/doxy
 
 # Annex
 
+
+### Structs inheritance
+
+```mermaid
+flowchart  TB
+	 
+	ArrayList --> TypeDescriptor
+	LinkedList --> TypeDescriptor
+	DoubleLinkedList --> TypeDescriptor
+	
+	List --> ArrayList
+	List --> LinkedList 
+	List --> CircularLinkedList --> LinkedList
+	List --> DoubleLinkedList 
+	List --> CircularDoubleLinkedList --> DoubleLinkedList
+	
+	BinaryHeap --> ArrayList
+	Queue --> List
+	Stack --> List
+	
+	AVLTree --> BinarySearchTree --> TypeDescriptor
+	LexicalTree --> TypeDescriptor
+	BKTree --> TypeDescriptor
+	
+```
+
 ### Linked list implementation
 
 ```mermaid
@@ -416,5 +499,6 @@ flowchart  LR
 	end
 	
 ```
+
 
 
