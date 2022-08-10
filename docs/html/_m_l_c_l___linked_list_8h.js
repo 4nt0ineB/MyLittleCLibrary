@@ -26,5 +26,6 @@ var _m_l_c_l___linked_list_8h =
     [ "linked_list_search", "_m_l_c_l___linked_list_8h.html#a88f48bb39e6254588800e204c785901a", null ],
     [ "linked_list_shift", "_m_l_c_l___linked_list_8h.html#a8b6128bb0cc13eb31855feb0b8d4bc0c", null ],
     [ "linked_list_to_dot", "_m_l_c_l___linked_list_8h.html#aa3d5c6b637b0fe6a431056e4598aede0", null ],
+    [ "linked_list_to_dot_", "_m_l_c_l___linked_list_8h.html#abb2f73e01c9caa5cdbf0ece0bbd79c6e", null ],
     [ "new_linked_list", "_m_l_c_l___linked_list_8h.html#a18fa0f4b189e1774ec3394c2bb729f30", null ]
 ];

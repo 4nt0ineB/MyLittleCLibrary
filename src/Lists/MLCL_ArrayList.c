@@ -55,6 +55,8 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->print = array_list_print;
     ald->fprint_i = array_list_fprint_i;
     ald->fprint = array_list_fprint;
+    ald->to_dot_ = array_list_to_dot_;
+    ald->to_dot = array_list_to_dot;
     ald->free = array_list_free;
 
     /* al_d->to_dot = linked_list_to_dot; */
@@ -332,31 +334,21 @@ static int partition(void ** l, int start, int end, int (*cmp) (const void *, co
     return head2;
 }
 
-void _array_list_quick_sort(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+void array_list_quick_sort_(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
     int pivot;
     if(!l) return;
     if(start >= end) return;
     /* partition between start and end*/
     pivot = partition(l, start, end, cmp);
     /* Sort between start and pivot */
-    _array_list_quick_sort(l, start, pivot - 1, cmp);
+    array_list_quick_sort_(l, start, pivot - 1, cmp);
     /* Sort between pivot and end */
-    _array_list_quick_sort(l, pivot + 1, end, cmp);
+    array_list_quick_sort_(l, pivot + 1, end, cmp);
 }
 
 void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
     if(!l) return;
-    _array_list_quick_sort(l->array, 0, l->count - 1, cmp);
-}
-
-void array_list_merge(ArrayList *into, ArrayList *from){
-    int i;
-    if(!into || !from) return;
-    for(i = 0; i < from->count; i++){
-        array_list_make_space(into);
-        into->array[into->count] = into->d->type_descriptor->copy(from->array[i]);
-        into->count++;
-    }
+    array_list_quick_sort_(l->array, 0, l->count - 1, cmp);
 }
 
 
@@ -466,4 +458,29 @@ void array_list_free(ArrayList ** l){
         array_list_free_descriptor(&(*l)->d);
     free(*l);
     *l = NULL;
+}
+
+
+void array_list_to_dot_(const ArrayList *l, FILE * stream){
+    int i;
+    if(!stream || !l) return;
+    fprintf(stream, "digraph {\n"
+            "\n"
+            "    node [shape=record, fontcolor=black, fontsize=14, width=4.75, fixedsize=true];\n");
+    fprintf(stream, "  values [label=\"");
+    for(i = 0; i < l->count - 1; i++){
+        array_list_fprint_i(stream, l, i);
+        fprintf(stream, " | ");
+    }
+    array_list_fprint_i(stream, l, l->count - 1);
+    fprintf(stream, "\"];\n}");
+}
+
+void array_list_to_dot(const ArrayList *l, const char * path){
+    FILE * file;
+    if(!path) return;
+    if(!(file = fopen(path, "w")))
+        return;
+    array_list_to_dot_(l, file);
+    fclose(file);
 }

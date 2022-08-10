@@ -192,7 +192,7 @@ void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList 
     }
 }
 
-static void _circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, FILE * stream){
+void circular_double_linked_list_to_dot_(CircularDoubleLinkedList cdll, FILE * stream){
     CircularDoubleLinkedList tmp;
     tmp = cdll;
     while(tmp->next != cdll){
@@ -218,10 +218,9 @@ void circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, const cha
         printf("File can't be opened\n");
     fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
-                  "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _circular_double_linked_list_to_dot(cdll, stream);
+    circular_double_linked_list_to_dot_(cdll, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }

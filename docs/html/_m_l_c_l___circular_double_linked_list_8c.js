@@ -1,6 +1,5 @@
 var _m_l_c_l___circular_double_linked_list_8c =
 [
-    [ "_circular_double_linked_list_to_dot", "_m_l_c_l___circular_double_linked_list_8c.html#a5c63e5fd98411441d4f563048fa2f5ad", null ],
     [ "circular_double_linked_list_add_", "_m_l_c_l___circular_double_linked_list_8c.html#ae7257dca5ed37a13fff4ac364d176e48", null ],
     [ "circular_double_linked_list_append", "_m_l_c_l___circular_double_linked_list_8c.html#a9e2cb576a05e2cd2fb743bd6600fc0db", null ],
     [ "circular_double_linked_list_builder", "_m_l_c_l___circular_double_linked_list_8c.html#a3ba3b5eeae5b7a79fef9bc17a8e1f013", null ],
@@ -13,5 +12,6 @@ var _m_l_c_l___circular_double_linked_list_8c =
     [ "circular_double_linked_list_search", "_m_l_c_l___circular_double_linked_list_8c.html#ad969adaf58b19b7ba5cf0048185c7546", null ],
     [ "circular_double_linked_list_shift", "_m_l_c_l___circular_double_linked_list_8c.html#a8b07a1370c367b888e4b4ff7dbbb8094", null ],
     [ "circular_double_linked_list_to_dot", "_m_l_c_l___circular_double_linked_list_8c.html#a5017b928f7d372f50ebebd2f3c648314", null ],
+    [ "circular_double_linked_list_to_dot_", "_m_l_c_l___circular_double_linked_list_8c.html#aa604d223b8d4fd66233536a11f8e00e9", null ],
     [ "new_circular_double_linked_list", "_m_l_c_l___circular_double_linked_list_8c.html#a8cd6e569554ac0883bf4fdf101d8bbe5", null ]
 ];

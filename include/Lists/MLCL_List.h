@@ -62,6 +62,7 @@ typedef struct s_list{
     void * (*shift) (struct  s_list *);
     void (*print) (const struct s_list *);
     void (*fprint) (FILE *, const struct s_list *);
+    void (*to_dot) (const struct s_list *, const char *);
 
     void (*free) (struct s_list **);
     int (*check_init_) (struct s_list *, const void *);
@@ -80,6 +81,7 @@ int list_length(const List *l);
 void list_free(List **l);
 void list_print (const List *l);
 void list_fprint (FILE * stream, const List *l);
+void list_to_dot(const List *l, const char * path);
 
 /**
  * @brief Init the list with data if empty and return 1, else return 0.

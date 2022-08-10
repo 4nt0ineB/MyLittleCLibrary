@@ -54,6 +54,7 @@ DoubleLinkedListDescriptor * double_linked_list_descriptor(){
     ll_descriptor->print = double_linked_list_print;
     ll_descriptor->cell_free = double_linked_list_cell_free;
     ll_descriptor->free = double_linked_list_free;
+    ll_descriptor->to_dot_ = double_linked_list_to_dot_;
     ll_descriptor->to_dot = double_linked_list_to_dot;
     ll_descriptor->cell_print = double_linked_list_cell_print;
     ll_descriptor->print = double_linked_list_print;
@@ -272,7 +273,7 @@ void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll){
     dll->d->fprint(stream, dll->next);
 }
 
-static void _double_linked_list_to_dot(DoubleLinkedList ll, FILE * stream){
+void double_linked_list_to_dot_(DoubleLinkedList ll, FILE * stream){
     while(ll){
         fprintf(stream, "  n%p [label=\"", (void *) ll);
         ll->d->cell_fprint(stream, ll);
@@ -296,7 +297,7 @@ void double_linked_list_to_dot(DoubleLinkedList ll, const char * dest_path){
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _double_linked_list_to_dot(ll, stream);
+    double_linked_list_to_dot_(ll, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }

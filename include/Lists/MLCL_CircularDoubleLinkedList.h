@@ -122,6 +122,8 @@ void circular_double_linked_list_print(CircularDoubleLinkedList cdll);
  */
 void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList cdll);
 
+void circular_double_linked_list_to_dot_(CircularDoubleLinkedList cdll, FILE * stream);
+
 /**
  * @brief Produce a dot formatted file of a representation of the structure
  * @param cdll

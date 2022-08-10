@@ -27,7 +27,6 @@ Stack * new_stack(void (*type_manifest) (TypeDescriptor *)){
 int stack_add(Stack * s, const void * data){
     if(!s) return 0;
     if(!s->l) return 0;
-
     s->l->prepend(s->l, data);
     return 1;
 }

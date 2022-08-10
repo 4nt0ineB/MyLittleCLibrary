@@ -57,6 +57,7 @@ LinkedListDescriptor * linked_list_descriptor(){
     ll_descriptor->fprint = linked_list_fprint;
     ll_descriptor->cell_free = linked_list_cell_free;
     ll_descriptor->free = linked_list_free;
+    ll_descriptor->to_dot_ = linked_list_to_dot_;
     ll_descriptor->to_dot = linked_list_to_dot;
     /* Held type */
     ll_descriptor->type_descriptor = NULL;
@@ -318,7 +319,7 @@ void linked_list_fprint(FILE * stream, LinkedList ll){
     ll->d->fprint(stream, ll->next);
 }
 
-static void _linked_list_to_dot(LinkedList ll, FILE * stream){
+void linked_list_to_dot_(LinkedList ll, FILE * stream){
     while(ll){
         fprintf(stream, "  n%p [label=\"", (void *) ll);
         ll->d->cell_fprint(stream, ll);
@@ -340,7 +341,7 @@ void linked_list_to_dot(LinkedList ll, const char * dest_path){
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same]\n"
     );
-    _linked_list_to_dot(ll, stream);
+    linked_list_to_dot_(ll, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }

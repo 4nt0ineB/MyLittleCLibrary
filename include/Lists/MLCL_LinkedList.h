@@ -61,6 +61,7 @@ typedef struct s_linked_list_descriptor {
     void (*cell_fprint) (FILE *, LinkedCell *); /**< Print the given cell on given stream */
     void (*print) (LinkedList); /**< Print the list on stdout */
     void (*fprint) (FILE *, LinkedList); /**< Print the list on the given stream*/
+    void (*to_dot_) (LinkedList, FILE *stream);
     void (*to_dot) (LinkedList, const char *); /**< Make a formatted dot file of the struct */
 } LinkedListDescriptor;
 
@@ -219,6 +220,8 @@ void linked_list_cell_fprint(FILE * stream, LinkedCell * lc);
  * @param ll
  */
 void linked_list_fprint(FILE * stream, LinkedList ll);
+
+void linked_list_to_dot_(LinkedList ll, FILE * stream);
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

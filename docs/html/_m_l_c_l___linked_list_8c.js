@@ -1,6 +1,5 @@
 var _m_l_c_l___linked_list_8c =
 [
-    [ "_linked_list_to_dot", "_m_l_c_l___linked_list_8c.html#a4f35c6d37c4a6b767b107b7160762179", null ],
     [ "linked_list_add_", "_m_l_c_l___linked_list_8c.html#a3a6238db2e4f84e01dde78d2adace73f", null ],
     [ "linked_list_append", "_m_l_c_l___linked_list_8c.html#a185d6610f5f1be5566c48f747b34caac", null ],
     [ "linked_list_builder", "_m_l_c_l___linked_list_8c.html#a1211cd0949a46e62353f2408884d9f6c", null ],
@@ -23,5 +22,6 @@ var _m_l_c_l___linked_list_8c =
     [ "linked_list_search", "_m_l_c_l___linked_list_8c.html#a88f48bb39e6254588800e204c785901a", null ],
     [ "linked_list_shift", "_m_l_c_l___linked_list_8c.html#a8b6128bb0cc13eb31855feb0b8d4bc0c", null ],
     [ "linked_list_to_dot", "_m_l_c_l___linked_list_8c.html#aa3d5c6b637b0fe6a431056e4598aede0", null ],
+    [ "linked_list_to_dot_", "_m_l_c_l___linked_list_8c.html#abb2f73e01c9caa5cdbf0ece0bbd79c6e", null ],
     [ "new_linked_list", "_m_l_c_l___linked_list_8c.html#a18fa0f4b189e1774ec3394c2bb729f30", null ]
 ];

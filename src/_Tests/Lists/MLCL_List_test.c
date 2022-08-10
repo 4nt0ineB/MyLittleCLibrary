@@ -25,7 +25,6 @@
 int run_all_list_tests(){
     printf("▒▒▒ Running all List tests ▒▒▒\n");
     MLCL_TEST(test_list_append, "test_list_append")
-
     return 1;
 }
 
@@ -33,12 +32,24 @@ int test_list_append(){
     List *l;
     int x;
     l = new_list(ARRAY_LIST, int_m);
+
     if(!l)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
+
     x = 1;
     l->append(l, &x);
+    x = 5;
+    l->append(l, &x);
+    x = 8;
+    l->append(l, &x);
+    x = -4;
+    l->append(l, &x);
+
+   /* x = 1;
     if(l->s.array_list->d->type_descriptor->eq(l->s.array_list->array[0], &x) != 1)
-        MLCL_ERR(2, MLCL_ERR_TRUE)
+        MLCL_ERR(2, MLCL_ERR_TRUE)*/
+
+    l->to_dot(l, "test.dot");
 
     l->free(&l);
     return 1;

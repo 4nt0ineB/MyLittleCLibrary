@@ -60,6 +60,7 @@ typedef struct s_double_linked_list_descriptor {
     void (*cell_fprint) (FILE *, DoubleLinkedCell *); /**< Print the given cell on given stream */
     void (*print) (DoubleLinkedList); /**< Print the list on stdout */
     void (*fprint) (FILE *, DoubleLinkedList); /**< Print the list on the given stream*/
+    void (*to_dot_) (DoubleLinkedList, FILE *stream);
     void (*to_dot) (DoubleLinkedList, const char * path); /**< Make a formatted dot file of the struct */
     /* .- -. - --- .. -. . / -... .- ... - --- ... */
 } DoubleLinkedListDescriptor;
@@ -224,6 +225,9 @@ void double_linked_list_cell_fprint(FILE * stream, DoubleLinkedCell * dlc);
  * @param dll
  */
 void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll);
+
+void double_linked_list_to_dot_(DoubleLinkedList ll, FILE * stream);
+
 
 /**
  * @brief Produce a dot formatted file of a representation of the structure

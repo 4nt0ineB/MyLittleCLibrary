@@ -64,6 +64,8 @@ typedef struct s_array_list_descriptor {
     void (*fprint_i) (FILE *, const ArrayList *, int);
     void (*print) (const ArrayList *);
     void (*fprint) (FILE *, const ArrayList *);
+    void (*to_dot_) (const ArrayList *, FILE *);
+    void (*to_dot) (const ArrayList *, const char *);
     void (*free) (ArrayList **);
 
 } ArrayListDescriptor;
@@ -196,6 +198,9 @@ void array_list_free_descriptor(ArrayListDescriptor ** ald);
  * @param l
  */
 void array_list_free(ArrayList ** l);
+
+void array_list_to_dot_(const ArrayList *l, FILE * stream);
+void array_list_to_dot(const ArrayList *l, const char * path);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */

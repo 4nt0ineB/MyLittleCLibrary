@@ -18,6 +18,7 @@ var structs__list =
     [ "s", "structs__list.html#a00873ee18f63d1388955d683ab7932ef", null ],
     [ "shift", "structs__list.html#a7cdda930f210eb295b93c3717e7ce7fc", null ],
     [ "tail_peek", "structs__list.html#a65d7f023dc811c2bb709f9f34c6f315d", null ],
+    [ "to_dot", "structs__list.html#adc98b2860993b658028095684dcc4f37", null ],
     [ "type", "structs__list.html#ae3a4e7ba34d2c0321dfec324f3f57d28", null ],
     [ "type_manifest", "structs__list.html#afa4076c4074d3ce4a2738cc8bed421f3", null ]
 ];

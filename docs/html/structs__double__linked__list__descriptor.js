@@ -19,5 +19,6 @@ var structs__double__linked__list__descriptor =
     [ "search", "structs__double__linked__list__descriptor.html#acb3a03f756e564ed8b4b771feb9ec155", null ],
     [ "shift", "structs__double__linked__list__descriptor.html#aaacba3efa52f30b822b31cad62c27883", null ],
     [ "to_dot", "structs__double__linked__list__descriptor.html#a5f54dd4a2a47db4200073182f7c993f9", null ],
+    [ "to_dot_", "structs__double__linked__list__descriptor.html#ae1218d41763432e816e27eeeee273dfc", null ],
     [ "type_descriptor", "structs__double__linked__list__descriptor.html#a6966a9ec100d25f93964fb9610f045d4", null ]
 ];

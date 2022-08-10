@@ -43,6 +43,7 @@ CircularLinkedListDescriptor * circular_linked_list_descriptor(){
         cll_descriptor->free = circular_linked_list_free;
         cll_descriptor->print = circular_linked_list_print;
         cll_descriptor->fprint = circular_linked_list_fprint;
+        cll_descriptor->to_dot_ = circular_linked_list_to_dot_;
         cll_descriptor->to_dot = circular_linked_list_to_dot;
     }
     return cll_descriptor;
@@ -228,7 +229,7 @@ void circular_linked_list_fprint(FILE * stream, CircularLinkedList cll){
     }
 }
 
-static void _circular_linked_list_to_dot(CircularLinkedList ll, FILE * stream){
+void circular_linked_list_to_dot_(CircularLinkedList ll, FILE * stream){
     CircularLinkedList tmp;
     tmp = ll;
     while(tmp->next != ll){
@@ -254,7 +255,7 @@ void circular_linked_list_to_dot(CircularLinkedList ll, const char * dest_path){
                   "rankdir=\"LR\";\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    _circular_linked_list_to_dot(ll, stream);
+    circular_linked_list_to_dot_(ll, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }

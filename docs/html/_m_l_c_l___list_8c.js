@@ -12,5 +12,6 @@ var _m_l_c_l___list_8c =
     [ "list_print", "_m_l_c_l___list_8c.html#a4fb46bf3c9af425a85b72d37df9f3432", null ],
     [ "list_shift", "_m_l_c_l___list_8c.html#ac658f9cb3097a248d8209f11afea7ce5", null ],
     [ "list_tail_peek", "_m_l_c_l___list_8c.html#ab5bcb2e10a4fc7c92b4fdd223ff406e3", null ],
+    [ "list_to_dot", "_m_l_c_l___list_8c.html#a20bb185d3a13fdd805b55044c3e43a23", null ],
     [ "new_list", "_m_l_c_l___list_8c.html#a5dead506c16d5a0432baa155ab33b47d", null ]
 ];

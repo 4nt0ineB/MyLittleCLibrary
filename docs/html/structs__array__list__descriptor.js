@@ -19,6 +19,8 @@ var structs__array__list__descriptor =
     [ "quick_sort", "structs__array__list__descriptor.html#adfdbeec6d1cafcec77f42d2d00eaf74e", null ],
     [ "search", "structs__array__list__descriptor.html#a475cadd808834e1b77a8e25f6bbc8416", null ],
     [ "selection_sort", "structs__array__list__descriptor.html#aa0eea5ebafeec6529e304eda4b4afb73", null ],
+    [ "to_dot", "structs__array__list__descriptor.html#a24a46974ee09c9531bd2fbafe699e9b8", null ],
+    [ "to_dot_", "structs__array__list__descriptor.html#a9d8f5e1bc6e97b6f97299b2cf86112df", null ],
     [ "type_descriptor", "structs__array__list__descriptor.html#ad819509e8c4ad36b53764e04df61e099", null ],
     [ "update_space", "structs__array__list__descriptor.html#af62287d8065dabb51086b614f63313c9", null ]
 ];
