@@ -13,7 +13,7 @@ Stack * new_stack(void (*type_manifest) (TypeDescriptor *)){
     if(!type_manifest) return NULL;
     s = (Stack *) malloc(sizeof(Stack));
     if(!s) return NULL;
-    s->l = (List *) new_list(CIRCULAR_DOUBLE_LINKED_LIST, type_manifest);
+    s->l = (List *) new_list(DOUBLE_LINKED_LIST, type_manifest);
     if(!s->l) return NULL;
     /* Methods */
     s->add = stack_add;
@@ -27,6 +27,7 @@ Stack * new_stack(void (*type_manifest) (TypeDescriptor *)){
 int stack_add(Stack * s, const void * data){
     if(!s) return 0;
     if(!s->l) return 0;
+
     s->l->prepend(s->l, data);
     return 1;
 }

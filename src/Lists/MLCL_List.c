@@ -32,6 +32,7 @@ List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *)){
     l->length = list_length;
     l->is_empty = list_is_empty;
     l->append = list_append;
+    l->prepend = list_prepend;
     l->head_peek = list_head_peek;
     l->tail_peek = list_tail_peek;
     l->print = list_print;
@@ -94,7 +95,6 @@ int list_length(const List *l){
 int list_check_init_(List *l, const void * data){
     if(!l) return 0;
     if(l->is_empty(l)){
-
         switch (l->type) {
             case ARRAY_LIST:
                 l->s.array_list = new_array_list(l->type_manifest);
@@ -245,7 +245,7 @@ int list_prepend(List *l, const void *data){
 }
 
 void * list_pop(List *l){
-    if(!list_is_empty(l)) return NULL;
+    if(l->is_empty(l)) return NULL;
     switch (l->type) {
         case ARRAY_LIST:
             return l->s.array_list->d->pop(l->s.array_list);
@@ -257,6 +257,7 @@ void * list_pop(List *l){
             return l->s.circular_linked_list->d->pop(&l->s.circular_linked_list);
 
         case DOUBLE_LINKED_LIST:
+
             return l->s.double_linked_list->d->pop(&l->s.double_linked_list);
 
         case CIRCULAR_DOUBLE_LINKED_LIST:
@@ -268,7 +269,7 @@ void * list_pop(List *l){
 }
 
 void * list_shift(List *l){
-    if(!list_is_empty(l)) return NULL;
+    if(l->is_empty(l)) return NULL;
     switch (l->type) {
         case ARRAY_LIST:
             return l->s.array_list->d->pop_i(l->s.array_list, 0);

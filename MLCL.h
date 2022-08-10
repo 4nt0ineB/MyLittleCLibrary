@@ -39,7 +39,7 @@
 
 #include "include/Lists/MLCL_List.h"
 /* Stack */
-/*#include "include/Stack/MLCL_Stack.h"*/
+#include "include/Stack/MLCL_Stack.h"
 /* Queue */
 #include "include/Queue/MLCL_Queue.h"
 /* Heap */
@@ -66,9 +66,7 @@
 #include "include/_Tests/Trees/MLCL_BinarySearchTree_test.h"
 #include "include/_Tests/Trees/MLCL_AVLTree_test.h"
 /* Stack */
-/*
-#include "include/_Tests/Stack/MLCL_Stack.h"
-*/
+#include "include/_Tests/Stack/MLCL_Stack_test.h"
 /* Queue */
 #include "include/_Tests/Queue/MLCL_Queue_test.h"
 /* Heap */

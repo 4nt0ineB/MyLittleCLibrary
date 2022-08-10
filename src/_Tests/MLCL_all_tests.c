@@ -35,6 +35,7 @@ int run_all_tests(){
             run_all_list_tests,
             run_all_binary_heap_tests,
             run_all_queue_tests,
+            run_all_stack_tests,
             NULL
     };
 

@@ -6,24 +6,23 @@
  *   the MIT license.
  */
 
-#include "../../../include/_Tests/Queue/MLCL_Queue_test.h"
-#include "../../../include/Queue/MLCL_Queue.h"
+#include "../../../include/_Tests/Stack/MLCL_Stack_test.h"
+#include "../../../include/Stack/MLCL_Stack.h"
 #include "../../../include/_Tests/MLCL_exceptions.h"
 #include "../../../include/MLCL_basic_types.h"
 
-
-int run_all_queue_tests(){
-    printf("▒▒▒ Running all Queue tests ▒▒▒\n");
-    MLCL_TEST(test_queue_add, "test_queue_add")
-    MLCL_TEST(test_queue_pop, "test_queue_pop")
+int run_all_stack_tests(){
+    printf("▒▒▒ Running all Stack tests ▒▒▒\n");
+    MLCL_TEST(test_stack_add, "test_queue_add")
+    MLCL_TEST(test_stack_pop, "test_queue_pop")
     return 1;
 }
 
-int test_queue_add(){
-    Queue *q;
+int test_stack_add(){
+    Stack *q;
     int x;
 
-    q = new_queue(int_m);
+    q = new_stack(int_m);
 
     if(!q)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
@@ -35,19 +34,19 @@ int test_queue_add(){
     x = 3;
     q->add(q, &x);
 
-    if((* (int *) q->l->s.circular_double_linked_list->data) != 1)
+    if((* (int *) q->l->s.circular_double_linked_list->data) != 3)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     q->free(&q);
     return 1;
 }
 
-int test_queue_pop(){
-    Queue *q;
+int test_stack_pop(){
+    Stack *q;
     int x;
     void * tmp;
 
-    q = new_queue(int_m);
+    q = new_stack(int_m);
 
     if(!q)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
@@ -61,7 +60,7 @@ int test_queue_pop(){
 
     tmp = q->pop(q);
 
-    if((* (int *) tmp) != 1)
+    if((* (int *) tmp) != 3)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     free(tmp);

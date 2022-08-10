@@ -20,7 +20,7 @@ typedef struct s_stack {
     void (*free) (struct s_stack **);
 } Stack;
 
-Stack * new_queue(void (*type_manifest) (TypeDescriptor *));
+Stack * new_stack(void (*type_manifest) (TypeDescriptor *));
 int stack_add(Stack *s, const void * data);
 void * stack_peek(const Stack *s);
 void * stack_pop(Stack * s);
