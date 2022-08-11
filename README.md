@@ -461,6 +461,10 @@ flowchart  TB
 	AVLTree --> BinarySearchTree --> TypeDescriptor
 	LexicalTree --> TypeDescriptor
 	BKTree --> TypeDescriptor
+	Tree --> BinarySearchTree
+	Tree --> AVLTree
+	Tree --> LexicalTree
+	Tree --> BKTree
 	
 ```
 
