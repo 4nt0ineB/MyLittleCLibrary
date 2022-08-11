@@ -185,11 +185,12 @@ void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList 
     CircularDoubleLinkedList tmp;
     if(!cdll) return;
     tmp = cdll->next;
-    cdll->d->cell_fprint(stream, cdll);printf(", ");
-    while(tmp != cdll){
-        tmp->d->cell_fprint(stream, tmp);printf(", ");
+    while(tmp->next != cdll){
+        tmp->d->cell_fprint(stream, tmp); fprintf(stream, "%s", cdll->d->type_descriptor->separator);
         tmp = tmp->next;
     }
+    cdll->d->cell_fprint(stream, tmp);
+
 }
 
 void circular_double_linked_list_to_dot_(CircularDoubleLinkedList cdll, FILE * stream){

@@ -32,5 +32,16 @@ var _m_l_c_l__basic__types_8c =
     [ "int_le", "_m_l_c_l__basic__types_8c.html#add28057d49a17505cdd727c03b0c6247", null ],
     [ "int_lt", "_m_l_c_l__basic__types_8c.html#ab95b19d7974a3501343cdb60394082d7", null ],
     [ "int_m", "_m_l_c_l__basic__types_8c.html#a619b21f6c2ccf78339dcc3fd266c9dc7", null ],
-    [ "int_print", "_m_l_c_l__basic__types_8c.html#a60702c457b11f7d87e32e35bceaaafba", null ]
+    [ "int_print", "_m_l_c_l__basic__types_8c.html#a60702c457b11f7d87e32e35bceaaafba", null ],
+    [ "str_cmp", "_m_l_c_l__basic__types_8c.html#a1c7ccd9b52447189af13b85288a10ecc", null ],
+    [ "str_copy", "_m_l_c_l__basic__types_8c.html#a7e32daa3650b9342bd603bc9e2534c87", null ],
+    [ "str_eq", "_m_l_c_l__basic__types_8c.html#acd485567a072761a6bfa026202f792f3", null ],
+    [ "str_fprint", "_m_l_c_l__basic__types_8c.html#aca3b710a216f6e4011f80dad5991c05f", null ],
+    [ "str_free", "_m_l_c_l__basic__types_8c.html#a47066a190b19c2054b5490ee6285a580", null ],
+    [ "str_ge", "_m_l_c_l__basic__types_8c.html#af0b1148e514a79feb26a4db2cc9bda74", null ],
+    [ "str_gt", "_m_l_c_l__basic__types_8c.html#a758b327cd6ca59c5918e355133df274d", null ],
+    [ "str_le", "_m_l_c_l__basic__types_8c.html#add8f29f41a359a5b344fe32e524f5b5a", null ],
+    [ "str_lt", "_m_l_c_l__basic__types_8c.html#a1e814f29e06326b7e045435dd630001c", null ],
+    [ "str_m", "_m_l_c_l__basic__types_8c.html#a278cd4d265a6f0b863f664a80eaa5429", null ],
+    [ "str_print", "_m_l_c_l__basic__types_8c.html#ab7caf216212af47eba33d04a2ecc36c3", null ]
 ];

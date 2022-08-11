@@ -23,11 +23,89 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* ############## str (char *) ############## */
+
+void str_m(TypeDescriptor * type_descriptor){
+    assert(type_descriptor);
+    type_descriptor->data_size = sizeof(float);
+    type_descriptor->separator[0] = ',';
+    type_descriptor->separator[1] = ' ';
+    type_descriptor->separator[2] = '\0';
+
+    type_descriptor->manifest = str_m;
+    type_descriptor->cmp = str_cmp;
+    type_descriptor->print = str_print;
+    type_descriptor->fprint = str_fprint;
+    type_descriptor->copy = str_copy;
+    type_descriptor->free_data = str_free;
+    type_descriptor->eq = str_eq;
+    type_descriptor->lt = str_lt;
+    type_descriptor->le = str_le;
+    type_descriptor->gt = str_gt;
+    type_descriptor->ge = str_ge;
+}
+
+int str_cmp(const void * x, const void * y){
+    return strcmp((const char *) x, (const char *) y);
+}
+
+int str_eq(const void * x, const void * y){
+    return str_cmp(x, y) == 0;
+}
+
+int str_lt(const void * x, const void * y){
+    return str_cmp(x, y) == -1;
+}
+
+int str_le(const void * x, const void * y){
+    return str_cmp(x, y) <= 0;
+}
+
+int str_gt(const void * x, const void * y){
+    return str_cmp(x, y) == 1;
+}
+
+int str_ge(const void * x, const void * y){
+    return str_cmp(x, y) >= 0;
+}
+
+void str_print(const void * x){
+    char_fprint(stdout, x);
+}
+
+void str_fprint(FILE * stream, const void * x){
+    if(!x)
+        fprintf(stream, "Null");
+    fprintf(stream, "%s",  (char *) x);
+}
+
+void * str_copy(const void * data){
+    void * alloc_data;
+    size_t data_size;
+    data_size = sizeof(char) * (strlen((char *) data) + 1);
+    alloc_data = (char *) calloc(1, data_size);
+    if(!alloc_data) return NULL;
+    memcpy(alloc_data, data, data_size);
+    return alloc_data;
+}
+
+void str_free(void ** x){
+    if(!*x) return;
+    /*free((char *)(*x));*/
+    free(*x);
+    *x = NULL;
+}
+
+
 /* ############## char ############## */
 
 void char_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
+    type_descriptor->separator[0] = ',';
+    type_descriptor->separator[1] = ' ';
+    type_descriptor->separator[2] = '\0';
+
     type_descriptor->manifest = char_m;
     type_descriptor->cmp = char_cmp;
     type_descriptor->print = char_print;
@@ -96,6 +174,10 @@ void char_free(void ** x){
 void int_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(int);
+    type_descriptor->separator[0] = ',';
+    type_descriptor->separator[1] = ' ';
+    type_descriptor->separator[2] = '\0';
+
     type_descriptor->manifest = int_m;
     type_descriptor->cmp = int_cmp;
     type_descriptor->print = int_print;
@@ -164,6 +246,10 @@ void int_free(void ** x){
 void float_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
+    type_descriptor->separator[0] = ',';
+    type_descriptor->separator[1] = ' ';
+    type_descriptor->separator[2] = '\0';
+
     type_descriptor->manifest = float_m;
     type_descriptor->cmp = float_cmp;
     type_descriptor->print = float_print;

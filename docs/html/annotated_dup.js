@@ -1,6 +1,7 @@
 var annotated_dup =
 [
-    [ "Linked list implementation", "index.html#autotoc_md19", null ],
+    [ "Structs inheritance", "index.html#autotoc_md21", null ],
+    [ "Linked list implementation", "index.html#autotoc_md22", null ],
     [ "s_array_list", "structs__array__list.html", "structs__array__list" ],
     [ "s_array_list_descriptor", "structs__array__list__descriptor.html", "structs__array__list__descriptor" ],
     [ "s_avl_node_", "structs__avl__node__.html", "structs__avl__node__" ],

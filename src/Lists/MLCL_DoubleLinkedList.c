@@ -269,8 +269,10 @@ void double_linked_list_cell_fprint(FILE * stream, DoubleLinkedCell * dlc){
 void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll){
     if(!dll) return;
     dll->d->cell_fprint(stream, dll);
-    printf(", ");
-    dll->d->fprint(stream, dll->next);
+    if(dll->next){
+        fprintf(stream, "%s", dll->d->type_descriptor->separator);
+        dll->d->fprint(stream, dll->next);
+    }
 }
 
 void double_linked_list_to_dot_(DoubleLinkedList ll, FILE * stream){

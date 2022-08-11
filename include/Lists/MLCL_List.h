@@ -28,7 +28,7 @@
 /**
  * @enum Available list types
  */
-typedef enum {
+typedef enum e_list_type {
     ARRAY_LIST,
     LINKED_LIST,
     CIRCULAR_LINKED_LIST,
@@ -63,6 +63,9 @@ typedef struct s_list{
     void (*print) (const struct s_list *);
     void (*fprint) (FILE *, const struct s_list *);
     void (*to_dot) (const struct s_list *, const char *);
+
+    char prefix;
+    char suffix;
 
     void (*free) (struct s_list **);
     int (*check_init_) (struct s_list *, const void *);

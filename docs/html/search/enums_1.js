@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list_5ftype_1076',['LIST_TYPE',['../_m_l_c_l___list_8h.html#a7d0fb3872000b6176386e0f78ae94d36',1,'MLCL_List.h']]]
+  ['e_5flist_5ftype_1106',['e_list_type',['../_m_l_c_l___list_8h.html#a1b8bc93f0e5c702e2a8ff0f202b96115',1,'MLCL_List.h']]]
 ];

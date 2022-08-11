@@ -29,27 +29,24 @@ int run_all_list_tests(){
 }
 
 int test_list_append(){
-    List *l;
-    int x;
-    l = new_list(ARRAY_LIST, int_m);
+
+    List * l;
+
+    l = new_list(LINKED_LIST, str_m);
 
     if(!l)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 1;
-    l->append(l, &x);
-    x = 5;
-    l->append(l, &x);
-    x = 8;
-    l->append(l, &x);
-    x = -4;
-    l->append(l, &x);
+    printf("\n");
+    l->append(l, "hell");
+    l->append(l, "shell");
+    l->append(l, "Foo");
+    l->append(l, "bar");
+    l->append(l, "Bubble");
+    l->s.linked_list->d->merge_sort(&l->s.linked_list, l->s.linked_list->d->type_descriptor->lt);
 
-   /* x = 1;
-    if(l->s.array_list->d->type_descriptor->eq(l->s.array_list->array[0], &x) != 1)
-        MLCL_ERR(2, MLCL_ERR_TRUE)*/
-
-    l->to_dot(l, "test.dot");
+    if(l->s.linked_list->d->type_descriptor->eq(l->s.linked_list->data, "Bubble") != 1)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
 
     l->free(&l);
     return 1;

@@ -28,6 +28,7 @@
  */
 typedef struct s_type_descriptor {
     size_t data_size;
+    char separator[6];
     void (*manifest) (struct s_type_descriptor*); /**<  type_manifest used to make the type descriptor */
     int (*cmp) (const void *, const void *); /**< Comparison function */
     void (*print) (const void *); /**< Printing function, shorthand to fprint */

@@ -23,6 +23,20 @@
 #include "MLCL_TypeDescriptor.h"
 #include <stdio.h>
 
+/* ############## str (char *) ############## */
+
+void str_m(TypeDescriptor * type_descriptor);
+int str_cmp(const void * x, const void * y);
+int str_eq(const void * x, const void * y);
+int str_lt(const void * x, const void * y);
+int str_le(const void * x, const void * y);
+int str_gt(const void * x, const void * y);
+int str_ge(const void * x, const void * y);
+void str_print(const void * x);
+void str_fprint(FILE * stream, const void * x);
+void * str_copy(const void * data);
+void str_free(void ** x);
+
 /* ############## char ############## */
 /**
  * @brief The char manifest assign its respective functions according

@@ -122,10 +122,26 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
  <a href="https://cydaw6.github.io/MyLittleCLibrary/html/index.html"><img src="https://img.shields.io/badge/MLCL_-_Read_the_Docs-347deb?logo=Read+the+Docs" alt="MLCL - Read the Docs" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Index</h1>
-<p>| | Data struct overview | Examples | |-----&mdash; |----------&mdash; |---------------------&mdash; | | Lists | | <a href="#Array-list">Array list</a> | <a href="src/_Tests/Lists/MLCL_ArrayList_test.c">:file_folder:</a> | | | <a href="#Linked-list">Linked list</a> | <a href="src/_Tests/Lists/MLCL_LinkedList_test.c">:file_folder:</a> | | | <a href="#Circular-linked-list">Circular linked list</a> | <a href="src/_Tests/Lists/MLCL_CircularLinkedList_test.c">:file_folder:</a> | | | <a href="#Double-linked-list">Double linked list</a> | <a href="src/_Tests/Lists/MLCL_DoubleLinkedList_test.c">:file_folder:</a> | | | <a href="#Circular-double-linked-list">Circular double linked list</a> | <a href="src/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.c">:file_folder:</a> | | Trees | | <a href="#Binary-search-tree">Binary search tree</a> | <a href="src/_Tests/Trees/MLCL_BinarySearchTree_test.c">:file_folder:</a> | | | <a href="#AVL-tree">AVL tree</a> | <a href="src/_Tests/Trees/MLCL_AVLTree_test.c">:file_folder:</a> |</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone">Data struct overview   </th><th class="markdownTableHeadNone">Examples    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Lists   </td><td class="markdownTableBodyNone"><a href="#List">List</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_List_test.c">:file_folder:</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a href="#Array-list">Array list</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_ArrayList_test.c">:file_folder:</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a href="#Linked-list">Linked list</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_LinkedList_test.c">:file_folder:</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a href="#Circular-linked-list">Circular linked list</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_CircularLinkedList_test.c">:file_folder:</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a href="#Double-linked-list">Double linked list</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_DoubleLinkedList_test.c">:file_folder:</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a href="#Circular-double-linked-list">Circular double linked list</a>   </td><td class="markdownTableBodyNone"><a href="src/_Tests/Lists/MLCL_CircularDoubleLinkedList_test.c">:file_folder:</a>   </td></tr>
+</table>
+<p>| Trees | <a href="#Tree">Tree</a> | | <a href="#Binary-search-tree">Binary search tree</a> | <a href="src/_Tests/Trees/MLCL_BinarySearchTree_test.c">:file_folder:</a> | | | <a href="#AVL-tree">AVL tree</a> | <a href="src/_Tests/Trees/MLCL_AVLTree_test.c">:file_folder:</a> | | Heap | <a href="#Heap">Heap</a> | Stack | <a href="#Stack">Stack</a> | Queue | <a href="#Queue">Queue</a></p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Introduction</h1>
-<p>All the structures are linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the <a href="##Type-manifest">type descriptor</a>, allowing to manipulate the data independently of the <em>effective</em> type they are carrying. You specify the data carried by the structure at creation.</p>
+<p>The basic structures the linked to a descriptor (called 'd') trough which they pass to use the associated functions, and the <a href="##Type-manifest">type descriptor</a>, allowing to manipulate the data independently of the <em>effective</em> type they are carrying. You specify the data carried by the structure at creation.</p>
 <p>For example the linked list is implemented like this : <a href="#Linked-list-implementation">see annex</a>. Each cell is linked to the linked list descriptor, when adding new data to the list, a cell (the last, the first, depending on the function) is passing his 'd' pointer to the cell builder. The type descriptor is freed when the last remaining cell is removed. You use the linked list this way: </p><div class="fragment"><div class="line"><a class="code" href="structs__linked__cell.html">LinkedList</a> l;</div>
 <div class="line"><span class="keywordtype">int</span> x;</div>
 <div class="line"> </div>
@@ -144,7 +160,7 @@ Introduction</h1>
 <div class="line"><a class="code" href="_m_l_c_l___linked_list_8h.html#a185d6610f5f1be5566c48f747b34caac">linked_list_append</a>(&amp;l, &amp;x);</div>
 <div class="ttc" id="a_m_l_c_l___linked_list_8h_html_a185d6610f5f1be5566c48f747b34caac"><div class="ttname"><a href="_m_l_c_l___linked_list_8h.html#a185d6610f5f1be5566c48f747b34caac">linked_list_append</a></div><div class="ttdeci">int linked_list_append(LinkedList *ll, const void *data)</div><div class="ttdoc">Insert data to linked list's tail.</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.c:196</div></div>
 <div class="ttc" id="a_m_l_c_l___linked_list_8h_html_a18fa0f4b189e1774ec3394c2bb729f30"><div class="ttname"><a href="_m_l_c_l___linked_list_8h.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a></div><div class="ttdeci">LinkedCell * new_linked_list(const void *data, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The linked list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.c:69</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a619b21f6c2ccf78339dcc3fd266c9dc7"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a></div><div class="ttdeci">void int_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The int manifest assign its respective functions according to the required ones by the type interface...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:96</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a619b21f6c2ccf78339dcc3fd266c9dc7"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a></div><div class="ttdeci">void int_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The int manifest assign its respective functions according to the required ones by the type interface...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:174</div></div>
 <div class="ttc" id="astructs__linked__cell_html"><div class="ttname"><a href="structs__linked__cell.html">s_linked_cell</a></div><div class="ttdoc">A generic linked list  .</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:30</div></div>
 <div class="ttc" id="astructs__linked__cell_html_a2ced86f7cf585f7e56f1ffb6b8c0d452"><div class="ttname"><a href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">s_linked_cell::d</a></div><div class="ttdeci">struct s_linked_list_descriptor * d</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:32</div></div>
 <div class="ttc" id="astructs__linked__list__descriptor_html_aa8b388e256d97221aedd6894b23a6bd5"><div class="ttname"><a href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">s_linked_list_descriptor::append</a></div><div class="ttdeci">int(* append)(LinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:50</div></div>
@@ -162,39 +178,103 @@ Introduction</h1>
 <div class="line">l = <a class="code" href="_m_l_c_l___linked_list_8h.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a>(&amp;x, <a class="code" href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a>);</div>
 <div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">type_descriptor</a>-&gt;<a class="code" href="structs__type__descriptor.html#af730ecbac2aed7f1a7ab52d35178b064">fprint</a> = custom_fprint_for_the_data_of_my_linked_list;</div>
 <div class="ttc" id="astructs__linked__list__descriptor_html_a9f2d5c514c7c3ac0d228697ce9246b1f"><div class="ttname"><a href="structs__linked__list__descriptor.html#a9f2d5c514c7c3ac0d228697ce9246b1f">s_linked_list_descriptor::type_descriptor</a></div><div class="ttdeci">TypeDescriptor * type_descriptor</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:43</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_af730ecbac2aed7f1a7ab52d35178b064"><div class="ttname"><a href="structs__type__descriptor.html#af730ecbac2aed7f1a7ab52d35178b064">s_type_descriptor::fprint</a></div><div class="ttdeci">void(* fprint)(FILE *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:34</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_af730ecbac2aed7f1a7ab52d35178b064"><div class="ttname"><a href="structs__type__descriptor.html#af730ecbac2aed7f1a7ab52d35178b064">s_type_descriptor::fprint</a></div><div class="ttdeci">void(* fprint)(FILE *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:35</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
 Lists</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
+List</h2>
+<p>The list interface provide a small and easy interface for the different list implementation</p>
+<p>A circular linked list of char: </p><div class="fragment"><div class="line"><a class="code" href="structs__list.html">List</a> *l;</div>
+<div class="line"><span class="keywordtype">char</span> c;</div>
+<div class="line"> </div>
+<div class="line">l = <a class="code" href="_m_l_c_l___list_8h.html#a5dead506c16d5a0432baa155ab33b47d">new_list</a>(<a class="code" href="_m_l_c_l___list_8h.html#a1b8bc93f0e5c702e2a8ff0f202b96115a020fb9028036ebe9d0eb5384a1d6d2c5">CIRCULAR_LINKED_LIST</a>, <a class="code" href="_m_l_c_l__basic__types_8h.html#a571296fd48efc8804c03564930d4d898">char_m</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* add some values */</span></div>
+<div class="line">c = <span class="charliteral">&#39;a&#39;</span>; </div>
+<div class="line">l-&gt;<a class="code" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">append</a>(l, &amp;c);</div>
+<div class="line">c = <span class="charliteral">&#39;b&#39;</span>; </div>
+<div class="line">l-&gt;<a class="code" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">append</a>(l, &amp;c);</div>
+<div class="line">c = <span class="charliteral">&#39;b&#39;</span>; </div>
+<div class="line">l-&gt;<a class="code" href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">append</a>(l, &amp;c);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* Print the list */</span></div>
+<div class="line">l-&gt;<a class="code" href="structs__list.html#a4977232340f51eadfadb30945815dcc6">print</a>(l);</div>
+<div class="line"> </div>
+<div class="line">l-&gt;<a class="code" href="structs__list.html#a732eeb8cfe0a73af837fa9cc15b64584">free</a>(&amp;l);</div>
+<div class="ttc" id="a_m_l_c_l___list_8h_html_a1b8bc93f0e5c702e2a8ff0f202b96115a020fb9028036ebe9d0eb5384a1d6d2c5"><div class="ttname"><a href="_m_l_c_l___list_8h.html#a1b8bc93f0e5c702e2a8ff0f202b96115a020fb9028036ebe9d0eb5384a1d6d2c5">CIRCULAR_LINKED_LIST</a></div><div class="ttdeci">@ CIRCULAR_LINKED_LIST</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:34</div></div>
+<div class="ttc" id="a_m_l_c_l___list_8h_html_a5dead506c16d5a0432baa155ab33b47d"><div class="ttname"><a href="_m_l_c_l___list_8h.html#a5dead506c16d5a0432baa155ab33b47d">new_list</a></div><div class="ttdeci">List * new_list(LIST_TYPE list_type, void(*type_manifest)(TypeDescriptor *))</div><div class="ttdef"><b>Definition:</b> MLCL_List.c:22</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a571296fd48efc8804c03564930d4d898"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a571296fd48efc8804c03564930d4d898">char_m</a></div><div class="ttdeci">void char_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The char manifest assign its respective functions according to the required ones by the type interfac...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:102</div></div>
+<div class="ttc" id="astructs__list_html"><div class="ttname"><a href="structs__list.html">s_list</a></div><div class="ttdef"><b>Definition:</b> MLCL_List.h:43</div></div>
+<div class="ttc" id="astructs__list_html_a05971c9c60f07345bdb43990e82c4904"><div class="ttname"><a href="structs__list.html#a05971c9c60f07345bdb43990e82c4904">s_list::append</a></div><div class="ttdeci">int(* append)(struct s_list *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:57</div></div>
+<div class="ttc" id="astructs__list_html_a4977232340f51eadfadb30945815dcc6"><div class="ttname"><a href="structs__list.html#a4977232340f51eadfadb30945815dcc6">s_list::print</a></div><div class="ttdeci">void(* print)(const struct s_list *)</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:63</div></div>
+<div class="ttc" id="astructs__list_html_a732eeb8cfe0a73af837fa9cc15b64584"><div class="ttname"><a href="structs__list.html#a732eeb8cfe0a73af837fa9cc15b64584">s_list::free</a></div><div class="ttdeci">void(* free)(struct s_list **)</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:70</div></div>
+</div><!-- fragment --><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Methods    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">length    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">append   </td></tr>
+</table>
+<p>| prepend | is_empty | | to_dot |</p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Extended use of lists implementation</h3>
+<p>Some of the list implementation have specific methods, other don't. So you will have to understand how structs are shaped. For example if you want to benefit of the sorting methods of the ArrayList trough a list you would do: </p><div class="fragment"><div class="line">l = <a class="code" href="_m_l_c_l___list_8h.html#a5dead506c16d5a0432baa155ab33b47d">new_list</a>(<a class="code" href="_m_l_c_l___list_8h.html#a1b8bc93f0e5c702e2a8ff0f202b96115aa8f02eba78186a5bba4418927eec6bee">ARRAY_LIST</a>, <a class="code" href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a>);</div>
+<div class="line">...</div>
+<div class="line">l-&gt;s.array_list-&gt;d-&gt;merge_sort(&amp;l-&gt;<a class="code" href="structs__list.html#a00873ee18f63d1388955d683ab7932ef">s</a>.<a class="code" href="structs__list.html#a1a9acacf551c1bd01db9efa331bba2e7">array_list</a>);</div>
+<div class="ttc" id="a_m_l_c_l___list_8h_html_a1b8bc93f0e5c702e2a8ff0f202b96115aa8f02eba78186a5bba4418927eec6bee"><div class="ttname"><a href="_m_l_c_l___list_8h.html#a1b8bc93f0e5c702e2a8ff0f202b96115aa8f02eba78186a5bba4418927eec6bee">ARRAY_LIST</a></div><div class="ttdeci">@ ARRAY_LIST</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:32</div></div>
+<div class="ttc" id="astructs__list_html_a00873ee18f63d1388955d683ab7932ef"><div class="ttname"><a href="structs__list.html#a00873ee18f63d1388955d683ab7932ef">s_list::s</a></div><div class="ttdeci">union s_list::@0 s</div></div>
+<div class="ttc" id="astructs__list_html_a1a9acacf551c1bd01db9efa331bba2e7"><div class="ttname"><a href="structs__list.html#a1a9acacf551c1bd01db9efa331bba2e7">s_list::array_list</a></div><div class="ttdeci">ArrayList * array_list</div><div class="ttdef"><b>Definition:</b> MLCL_List.h:48</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 Array list</h2>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
-<div class="line"><a class="code" href="structs__linked__cell.html">LinkedList</a> l;  </div>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> i;  </div>
+<div class="line"><a class="code" href="structs__array__list.html">ArrayList</a> *l;  </div>
 <div class="line">  </div>
-<div class="line">x = 5f;  </div>
 <div class="line">l = <a class="code" href="_m_l_c_l___array_list_8h.html#a025cc069888cc7c1d951c77e08bb18da">new_array_list</a>(<a class="code" href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a>);</div>
-<div class="line">  </div>
-<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">append</a>(&amp;l, &amp;x);  </div>
-<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;tmp);  </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span>(i = 0; i &lt; 5; i++)</div>
+<div class="line">    l-&gt;<a class="code" href="structs__array__list.html#aa21b53d2dc761b8900f91dd91adfe388">d</a>-&gt;<a class="code" href="structs__array__list__descriptor.html#aa524a65be4e61718b441f3fa78e1b637">append</a>(l, &amp;i);</div>
+<div class="line"> </div>
+<div class="line">l-&gt;<a class="code" href="structs__array__list.html#aa21b53d2dc761b8900f91dd91adfe388">d</a>-&gt;<a class="code" href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">free</a>(&amp;l);</div>
 <div class="ttc" id="a_m_l_c_l___array_list_8h_html_a025cc069888cc7c1d951c77e08bb18da"><div class="ttname"><a href="_m_l_c_l___array_list_8h.html#a025cc069888cc7c1d951c77e08bb18da">new_array_list</a></div><div class="ttdeci">ArrayList * new_array_list(void(*type_manifest)(TypeDescriptor *))</div><div class="ttdoc">The array list constructor.</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.c:80</div></div>
-<div class="ttc" id="astructs__linked__list__descriptor_html_a26f5fcb26c30ebac217af8f0f2b07616"><div class="ttname"><a href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">s_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(LinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:59</div></div>
+<div class="ttc" id="astructs__array__list__descriptor_html_a0ab227a067404bddb21bad57477153b2"><div class="ttname"><a href="structs__array__list__descriptor.html#a0ab227a067404bddb21bad57477153b2">s_array_list_descriptor::free</a></div><div class="ttdeci">void(* free)(ArrayList **)</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.h:69</div></div>
+<div class="ttc" id="astructs__array__list__descriptor_html_aa524a65be4e61718b441f3fa78e1b637"><div class="ttname"><a href="structs__array__list__descriptor.html#aa524a65be4e61718b441f3fa78e1b637">s_array_list_descriptor::append</a></div><div class="ttdeci">int(* append)(ArrayList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.h:48</div></div>
+<div class="ttc" id="astructs__array__list_html"><div class="ttname"><a href="structs__array__list.html">s_array_list</a></div><div class="ttdoc">A generic Array Lists Compared to others structures of the lib this one is not freed when empty....</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.h:32</div></div>
+<div class="ttc" id="astructs__array__list_html_aa21b53d2dc761b8900f91dd91adfe388"><div class="ttname"><a href="structs__array__list.html#aa21b53d2dc761b8900f91dd91adfe388">s_array_list::d</a></div><div class="ttdeci">struct s_array_list_descriptor * d</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.h:36</div></div>
 </div><!-- fragment --><p><b>[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]</b></p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Linked list</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">float</span> x;  </div>
-<div class="line"><a class="code" href="structs__linked__cell.html">LinkedList</a> l;  </div>
+<div class="line"><a class="code" href="structs__linked__cell.html">LinkedList</a> l;</div>
+<div class="line"><span class="keywordtype">float</span> *tmp;</div>
 <div class="line">  </div>
-<div class="line">x = 5.3f;  </div>
+<div class="line">x = 3.8f;  </div>
 <div class="line">l = <a class="code" href="_m_l_c_l___linked_list_8h.html#a18fa0f4b189e1774ec3394c2bb729f30">new_linked_list</a>(&amp;x, <a class="code" href="_m_l_c_l__basic__types_8h.html#adb3e3c1775c881414fd300deef79267b">float_m</a>);  </div>
 <div class="line">  </div>
-<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#aa8b388e256d97221aedd6894b23a6bd5">append</a>(&amp;l, &amp;x);  </div>
-<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;tmp);  </div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_adb3e3c1775c881414fd300deef79267b"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#adb3e3c1775c881414fd300deef79267b">float_m</a></div><div class="ttdeci">void float_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The float manifest assign its respective functions according to the required ones by the type interfa...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:164</div></div>
-</div><!-- fragment --> <div class="fragment"><div class="line">flowchart  LR</div>
-<div class="line">  1</div>
-<div class="line">    --&gt; 2</div>
-<div class="line">    --&gt; 3</div>
+<div class="line">x = 3.8f;</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a>(&amp;l, &amp;x);  </div>
+<div class="line">x = 2.5f;</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a>(&amp;l, &amp;x);</div>
+<div class="line">x = 1.5f;</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a>(&amp;l, &amp;x);</div>
+<div class="line">x = 3.8f;</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a>(&amp;l, &amp;x);  </div>
+<div class="line">x = 3.8f;</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">prepend</a>(&amp;l, &amp;x);  </div>
+<div class="line">tmp = (<span class="keywordtype">float</span> *) l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a140f475e93d59d6a52bc786dc5948133">shift</a>(&amp;l);</div>
+<div class="line"> </div>
+<div class="line">free(tmp);</div>
+<div class="line">l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;l);  </div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_adb3e3c1775c881414fd300deef79267b"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#adb3e3c1775c881414fd300deef79267b">float_m</a></div><div class="ttdeci">void float_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The float manifest assign its respective functions according to the required ones by the type interfa...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:246</div></div>
+<div class="ttc" id="astructs__linked__list__descriptor_html_a140f475e93d59d6a52bc786dc5948133"><div class="ttname"><a href="structs__linked__list__descriptor.html#a140f475e93d59d6a52bc786dc5948133">s_linked_list_descriptor::shift</a></div><div class="ttdeci">void *(* shift)(LinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:56</div></div>
+<div class="ttc" id="astructs__linked__list__descriptor_html_a26f5fcb26c30ebac217af8f0f2b07616"><div class="ttname"><a href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">s_linked_list_descriptor::free</a></div><div class="ttdeci">void(* free)(LinkedList *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:59</div></div>
+<div class="ttc" id="astructs__linked__list__descriptor_html_a53ceb52b5f46cad9d3e76e85c0fa2e84"><div class="ttname"><a href="structs__linked__list__descriptor.html#a53ceb52b5f46cad9d3e76e85c0fa2e84">s_linked_list_descriptor::prepend</a></div><div class="ttdeci">int(* prepend)(LinkedList *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_LinkedList.h:49</div></div>
+</div><!-- fragment --><div class="fragment"><div class="line">flowchart  LR</div>
+<div class="line">  1.2</div>
+<div class="line">    --&gt; 2.5</div>
+<div class="line">    --&gt; 3.8</div>
 <div class="line">    --&gt; e( )</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Circular linked list</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
 <div class="line"><a class="code" href="structs__linked__cell.html">CircularLinkedList</a> l;  </div>
@@ -211,7 +291,7 @@ Circular linked list</h2>
 <div class="line">    2 --&gt; 3</div>
 <div class="line">    3 --&gt; 4</div>
 <div class="line">    4 --&gt; 0</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Double linked list</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
 <div class="line"><a class="code" href="structs__double__linked__cell.html">DoubleLinkedList</a> l;  </div>
@@ -233,7 +313,7 @@ Double linked list</h2>
 <div class="line">    2 &lt;--&gt; 3</div>
 <div class="line">    3 &lt;--&gt; 4</div>
 <div class="line">    4 --&gt; e( )</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 Circular double linked list</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
 <div class="line"><a class="code" href="structs__double__linked__cell.html">CircularDoubleLinkedList</a> l;  </div>
@@ -250,9 +330,9 @@ Circular double linked list</h2>
 <div class="line">    2 &lt;--&gt; 3</div>
 <div class="line">    3 &lt;--&gt; 4</div>
 <div class="line">    4 &lt;--&gt; 0</div>
-</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md11"></a>
 Trees</h1>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Binary search tree</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
 <div class="line"><a class="code" href="structs__binary__search__tree__node.html">BinarySearchTree</a> l;  </div>
@@ -277,7 +357,7 @@ Binary search tree</h2>
 <div class="line">    4 --&gt; 8</div>
 <div class="line">    8 --&gt; 5</div>
 <div class="line">    8 --&gt; e2( )</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 AVL tree</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> x;  </div>
 <div class="line"><a class="code" href="structs__avl__node__.html">AVLTree</a> l;  </div>
@@ -302,9 +382,9 @@ AVL tree</h2>
 <div class="line">    4 --&gt; 8</div>
 <div class="line">    8 --&gt; 5</div>
 <div class="line">    8 --&gt; e2( )</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
 Type manifest</h1>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 What's that</h2>
 <p>All the structures are linked to a <em>TypeDescriptor</em>, an interface required to manipulate the data they are carrying.</p>
 <p>It requires (for now), few things:</p><ul>
@@ -316,8 +396,7 @@ What's that</h2>
 <p>The <em>TypeDescriptor</em> gets those through a type manifest which handle specific functions of the type to be manipulated. <br  />
  Its like defining you own type in Python (__str__, __eq__, __lt__, etc...).</p>
 <p>When making new structures you passes the manifest of the type you want they carry : </p><div class="fragment"><div class="line"><a class="code" href="structs__array__list.html">ArrayList</a> l = <a class="code" href="_m_l_c_l___array_list_8h.html#a025cc069888cc7c1d951c77e08bb18da">new_array_list</a>(<a class="code" href="_m_l_c_l__basic__types_8h.html#a619b21f6c2ccf78339dcc3fd266c9dc7">int_m</a>); <span class="comment">/* Voilà, you have got a brand new array list of int */</span></div>
-<div class="ttc" id="astructs__array__list_html"><div class="ttname"><a href="structs__array__list.html">s_array_list</a></div><div class="ttdoc">A generic Array Lists Compared to others structures of the lib this one is not freed when empty....</div><div class="ttdef"><b>Definition:</b> MLCL_ArrayList.h:32</div></div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md16"></a>
 Define your own type</h2>
 <p>Let's look at the <em>char_m</em>(anifest) for example:</p>
 <div class="fragment"><div class="line"><span class="comment">/*   src/basic_types.c */</span>  </div>
@@ -399,33 +478,32 @@ Define your own type</h2>
 <div class="line"> l-&gt;<a class="code" href="structs__linked__cell.html#a2ced86f7cf585f7e56f1ffb6b8c0d452">d</a>-&gt;<a class="code" href="structs__linked__list__descriptor.html#a26f5fcb26c30ebac217af8f0f2b07616">free</a>(&amp;tmp);  </div>
 <div class="line"> <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a1e45c9e0d01f34e73b63312f46223c12"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a1e45c9e0d01f34e73b63312f46223c12">char_lt</a></div><div class="ttdeci">int char_lt(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:52</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a1e5bfff18381d46032ed69f291db3b1a"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a1e5bfff18381d46032ed69f291db3b1a">char_fprint</a></div><div class="ttdeci">void char_fprint(FILE *stream, const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:72</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a397529ee292f3eb85093aa6d616a42f9"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a397529ee292f3eb85093aa6d616a42f9">char_cmp</a></div><div class="ttdeci">int char_cmp(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:44</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a399a1eda097bc3976e2d3d0a0ce87d83"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a399a1eda097bc3976e2d3d0a0ce87d83">char_ge</a></div><div class="ttdeci">int char_ge(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:64</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a48f8a1a80ddb718b51aa000ef6f6eb09"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a48f8a1a80ddb718b51aa000ef6f6eb09">char_eq</a></div><div class="ttdeci">int char_eq(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:48</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a571296fd48efc8804c03564930d4d898"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a571296fd48efc8804c03564930d4d898">char_m</a></div><div class="ttdeci">void char_m(TypeDescriptor *type_descriptor)</div><div class="ttdoc">The char manifest assign its respective functions according to the required ones by the type interfac...</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:28</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a7363a18107d88c983f9ab80389985a94"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a7363a18107d88c983f9ab80389985a94">char_free</a></div><div class="ttdeci">void char_free(void **x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:88</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a87a5548697cefd34ef01cf3e07d3e6af"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a87a5548697cefd34ef01cf3e07d3e6af">char_copy</a></div><div class="ttdeci">void * char_copy(const void *data)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:78</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a90b7c8d856d1bd514eec198e548c1c94"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a90b7c8d856d1bd514eec198e548c1c94">char_le</a></div><div class="ttdeci">int char_le(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:56</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_aac1895a4866a738835221db6c4ab93f6"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#aac1895a4866a738835221db6c4ab93f6">char_print</a></div><div class="ttdeci">void char_print(const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:68</div></div>
-<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_ae7961cff284def9adce70d63aecb353b"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#ae7961cff284def9adce70d63aecb353b">char_gt</a></div><div class="ttdeci">int char_gt(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:60</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a1e45c9e0d01f34e73b63312f46223c12"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a1e45c9e0d01f34e73b63312f46223c12">char_lt</a></div><div class="ttdeci">int char_lt(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:130</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a1e5bfff18381d46032ed69f291db3b1a"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a1e5bfff18381d46032ed69f291db3b1a">char_fprint</a></div><div class="ttdeci">void char_fprint(FILE *stream, const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:150</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a397529ee292f3eb85093aa6d616a42f9"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a397529ee292f3eb85093aa6d616a42f9">char_cmp</a></div><div class="ttdeci">int char_cmp(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:122</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a399a1eda097bc3976e2d3d0a0ce87d83"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a399a1eda097bc3976e2d3d0a0ce87d83">char_ge</a></div><div class="ttdeci">int char_ge(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:142</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a48f8a1a80ddb718b51aa000ef6f6eb09"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a48f8a1a80ddb718b51aa000ef6f6eb09">char_eq</a></div><div class="ttdeci">int char_eq(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:126</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a7363a18107d88c983f9ab80389985a94"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a7363a18107d88c983f9ab80389985a94">char_free</a></div><div class="ttdeci">void char_free(void **x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:166</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a87a5548697cefd34ef01cf3e07d3e6af"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a87a5548697cefd34ef01cf3e07d3e6af">char_copy</a></div><div class="ttdeci">void * char_copy(const void *data)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:156</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_a90b7c8d856d1bd514eec198e548c1c94"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#a90b7c8d856d1bd514eec198e548c1c94">char_le</a></div><div class="ttdeci">int char_le(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:134</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_aac1895a4866a738835221db6c4ab93f6"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#aac1895a4866a738835221db6c4ab93f6">char_print</a></div><div class="ttdeci">void char_print(const void *x)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:146</div></div>
+<div class="ttc" id="a_m_l_c_l__basic__types_8h_html_ae7961cff284def9adce70d63aecb353b"><div class="ttname"><a href="_m_l_c_l__basic__types_8h.html#ae7961cff284def9adce70d63aecb353b">char_gt</a></div><div class="ttdeci">int char_gt(const void *x, const void *y)</div><div class="ttdef"><b>Definition:</b> MLCL_basic_types.c:138</div></div>
 <div class="ttc" id="astructs__type__descriptor_html"><div class="ttname"><a href="structs__type__descriptor.html">s_type_descriptor</a></div><div class="ttdoc">Interface for all types manipulated by the structs of the library.</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:29</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_a097f32ac2668b07bf4f016a91136b9a7"><div class="ttname"><a href="structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7">s_type_descriptor::print</a></div><div class="ttdeci">void(* print)(const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:33</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_a097f32ac2668b07bf4f016a91136b9a7"><div class="ttname"><a href="structs__type__descriptor.html#a097f32ac2668b07bf4f016a91136b9a7">s_type_descriptor::print</a></div><div class="ttdeci">void(* print)(const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:34</div></div>
 <div class="ttc" id="astructs__type__descriptor_html_a12e6642df2d6502155eeeff089a4ed79"><div class="ttname"><a href="structs__type__descriptor.html#a12e6642df2d6502155eeeff089a4ed79">s_type_descriptor::data_size</a></div><div class="ttdeci">size_t data_size</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:30</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_a2257189f65546087c83fe737d5022bea"><div class="ttname"><a href="structs__type__descriptor.html#a2257189f65546087c83fe737d5022bea">s_type_descriptor::cmp</a></div><div class="ttdeci">int(* cmp)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:32</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_a43c52eb181b7f7d67aec1cad92134109"><div class="ttname"><a href="structs__type__descriptor.html#a43c52eb181b7f7d67aec1cad92134109">s_type_descriptor::free_data</a></div><div class="ttdeci">void(* free_data)(void **)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:36</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_a7ce72c0944a4b2727f19677b126b521f"><div class="ttname"><a href="structs__type__descriptor.html#a7ce72c0944a4b2727f19677b126b521f">s_type_descriptor::gt</a></div><div class="ttdeci">int(* gt)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:40</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_a7e258569d6239b183f6456a1c3614149"><div class="ttname"><a href="structs__type__descriptor.html#a7e258569d6239b183f6456a1c3614149">s_type_descriptor::copy</a></div><div class="ttdeci">void *(* copy)(const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:35</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_aabe3ab9d13d2d05cddff5cac616d5f81"><div class="ttname"><a href="structs__type__descriptor.html#aabe3ab9d13d2d05cddff5cac616d5f81">s_type_descriptor::le</a></div><div class="ttdeci">int(* le)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:39</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_ab8bec7cda82878ce09a8a80445bd0aa4"><div class="ttname"><a href="structs__type__descriptor.html#ab8bec7cda82878ce09a8a80445bd0aa4">s_type_descriptor::lt</a></div><div class="ttdeci">int(* lt)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:38</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_ad2e016c55cf1ba9ab5f62a3ebbb2d31c"><div class="ttname"><a href="structs__type__descriptor.html#ad2e016c55cf1ba9ab5f62a3ebbb2d31c">s_type_descriptor::manifest</a></div><div class="ttdeci">void(* manifest)(struct s_type_descriptor *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:31</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_ad3898bcdbde71f0bd1168dd104f9daf6"><div class="ttname"><a href="structs__type__descriptor.html#ad3898bcdbde71f0bd1168dd104f9daf6">s_type_descriptor::eq</a></div><div class="ttdeci">int(* eq)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:37</div></div>
-<div class="ttc" id="astructs__type__descriptor_html_ae03ae289d00de53fd675c12d9c48afb3"><div class="ttname"><a href="structs__type__descriptor.html#ae03ae289d00de53fd675c12d9c48afb3">s_type_descriptor::ge</a></div><div class="ttdeci">int(* ge)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:41</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_a2257189f65546087c83fe737d5022bea"><div class="ttname"><a href="structs__type__descriptor.html#a2257189f65546087c83fe737d5022bea">s_type_descriptor::cmp</a></div><div class="ttdeci">int(* cmp)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:33</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_a43c52eb181b7f7d67aec1cad92134109"><div class="ttname"><a href="structs__type__descriptor.html#a43c52eb181b7f7d67aec1cad92134109">s_type_descriptor::free_data</a></div><div class="ttdeci">void(* free_data)(void **)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:37</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_a7ce72c0944a4b2727f19677b126b521f"><div class="ttname"><a href="structs__type__descriptor.html#a7ce72c0944a4b2727f19677b126b521f">s_type_descriptor::gt</a></div><div class="ttdeci">int(* gt)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:41</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_a7e258569d6239b183f6456a1c3614149"><div class="ttname"><a href="structs__type__descriptor.html#a7e258569d6239b183f6456a1c3614149">s_type_descriptor::copy</a></div><div class="ttdeci">void *(* copy)(const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:36</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_aabe3ab9d13d2d05cddff5cac616d5f81"><div class="ttname"><a href="structs__type__descriptor.html#aabe3ab9d13d2d05cddff5cac616d5f81">s_type_descriptor::le</a></div><div class="ttdeci">int(* le)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:40</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_ab8bec7cda82878ce09a8a80445bd0aa4"><div class="ttname"><a href="structs__type__descriptor.html#ab8bec7cda82878ce09a8a80445bd0aa4">s_type_descriptor::lt</a></div><div class="ttdeci">int(* lt)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:39</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_ad2e016c55cf1ba9ab5f62a3ebbb2d31c"><div class="ttname"><a href="structs__type__descriptor.html#ad2e016c55cf1ba9ab5f62a3ebbb2d31c">s_type_descriptor::manifest</a></div><div class="ttdeci">void(* manifest)(struct s_type_descriptor *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:32</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_ad3898bcdbde71f0bd1168dd104f9daf6"><div class="ttname"><a href="structs__type__descriptor.html#ad3898bcdbde71f0bd1168dd104f9daf6">s_type_descriptor::eq</a></div><div class="ttdeci">int(* eq)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:38</div></div>
+<div class="ttc" id="astructs__type__descriptor_html_ae03ae289d00de53fd675c12d9c48afb3"><div class="ttname"><a href="structs__type__descriptor.html#ae03ae289d00de53fd675c12d9c48afb3">s_type_descriptor::ge</a></div><div class="ttdeci">int(* ge)(const void *, const void *)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.h:42</div></div>
 <div class="ttc" id="atest_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="test_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> test.c:22</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Extended Examples</h1>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Double Linked List of Circular double linked lists</h2>
 <div class="fragment"><div class="line"><a class="code" href="structs__double__linked__cell.html">DoubleLinkedList</a> l;  </div>
 <div class="line"><a class="code" href="structs__double__linked__cell.html">CircularDoubleLinkedList</a> l_2;  </div>
@@ -461,13 +539,38 @@ Double Linked List of Circular double linked lists</h2>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="a_m_l_c_l___type_descriptor_8h_html_a5b443ff770622e989d18a6f9f025ccf5"><div class="ttname"><a href="_m_l_c_l___type_descriptor_8h.html#a5b443ff770622e989d18a6f9f025ccf5">new_type_descriptor</a></div><div class="ttdeci">TypeDescriptor * new_type_descriptor(void(*type_manifest)(TypeDescriptor *type_descriptor))</div><div class="ttdoc">Allocate a type descriptor for a given type manifest.</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.c:23</div></div>
-<div class="ttc" id="a_m_l_c_l___type_descriptor_8h_html_a87aba20fdae25e7c3d70bce4e90408d7"><div class="ttname"><a href="_m_l_c_l___type_descriptor_8h.html#a87aba20fdae25e7c3d70bce4e90408d7">type_descriptor_free</a></div><div class="ttdeci">void type_descriptor_free(TypeDescriptor **td)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.c:33</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+<div class="ttc" id="a_m_l_c_l___type_descriptor_8h_html_a87aba20fdae25e7c3d70bce4e90408d7"><div class="ttname"><a href="_m_l_c_l___type_descriptor_8h.html#a87aba20fdae25e7c3d70bce4e90408d7">type_descriptor_free</a></div><div class="ttdeci">void type_descriptor_free(TypeDescriptor **td)</div><div class="ttdef"><b>Definition:</b> MLCL_TypeDescriptor.c:38</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
 Credits</h1>
 <p>Doxygen css from jothepro <a href="https://github.com/jothepro/doxygen-awesome-css">doxygen-awesome-css</a></p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Annex</h1>
-<h3><a class="anchor" id="autotoc_md19"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
+Structs inheritance</h3>
+<div class="fragment"><div class="line">flowchart  TB</div>
+<div class="line">     </div>
+<div class="line">    ArrayList --&gt; TypeDescriptor</div>
+<div class="line">    LinkedList --&gt; TypeDescriptor</div>
+<div class="line">    DoubleLinkedList --&gt; TypeDescriptor</div>
+<div class="line">    </div>
+<div class="line">    List --&gt; ArrayList</div>
+<div class="line">    List --&gt; LinkedList </div>
+<div class="line">    List --&gt; CircularLinkedList --&gt; LinkedList</div>
+<div class="line">    List --&gt; DoubleLinkedList </div>
+<div class="line">    List --&gt; CircularDoubleLinkedList --&gt; DoubleLinkedList</div>
+<div class="line">    </div>
+<div class="line">    BinaryHeap --&gt; ArrayList</div>
+<div class="line">    Queue --&gt; List</div>
+<div class="line">    Stack --&gt; List</div>
+<div class="line">    </div>
+<div class="line">    AVLTree --&gt; BinarySearchTree --&gt; TypeDescriptor</div>
+<div class="line">    LexicalTree --&gt; TypeDescriptor</div>
+<div class="line">    BKTree --&gt; TypeDescriptor</div>
+<div class="line">    Tree --&gt; BinarySearchTree</div>
+<div class="line">    Tree --&gt; AVLTree</div>
+<div class="line">    Tree --&gt; LexicalTree</div>
+<div class="line">    Tree --&gt; BKTree</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
 Linked list implementation</h3>
 <div class="fragment"><div class="line">flowchart  LR</div>
 <div class="line">    d0 --&gt; lld</div>

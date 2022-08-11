@@ -221,12 +221,12 @@ void circular_linked_list_print(CircularLinkedList cll){
 void circular_linked_list_fprint(FILE * stream, CircularLinkedList cll){
     CircularLinkedList tmp;
     if(!cll) return;
-    tmp = cll->next;
-    cll->d->cell_fprint(stream, cll); printf(", ");
-    while(tmp != cll){
-        tmp->d->cell_fprint(stream, tmp); printf(", ");
+    tmp = cll;
+    while(tmp->next != cll){
+        tmp->d->cell_fprint(stream, tmp); fprintf(stream, "%s", cll->d->type_descriptor->separator);
         tmp = tmp->next;
     }
+    cll->d->cell_fprint(stream, tmp);
 }
 
 void circular_linked_list_to_dot_(CircularLinkedList ll, FILE * stream){

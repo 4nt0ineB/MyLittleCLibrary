@@ -130,7 +130,7 @@ static void linked_list_merge_(LinkedList *l, LinkedList *r, int (*cmp) (const v
     tmp = merged;
 
     while(head_l && head_r){
-        if(cmp(head_l->data, head_r->data) == 1){
+        if(cmp(head_l->data, head_r->data) > 0){
             tmp->next = head_l;
             head_l = head_l->next;
         }else{
@@ -315,8 +315,10 @@ void linked_list_cell_fprint(FILE * stream, LinkedCell * lc){
 void linked_list_fprint(FILE * stream, LinkedList ll){
     if(!ll) return;
     ll->d->cell_fprint(stream, ll);
-    printf(", ");
-    ll->d->fprint(stream, ll->next);
+    if(ll->next){
+        fprintf(stream, "%s", ll->d->type_descriptor->separator);
+        ll->d->fprint(stream, ll->next);
+    }
 }
 
 void linked_list_to_dot_(LinkedList ll, FILE * stream){

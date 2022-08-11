@@ -317,8 +317,10 @@ static int partition(void ** l, int start, int end, int (*cmp) (const void *, co
         while (head1 <= head2 && cmp(l[start], l[head1]) != 1)
             head1++;
 
-        while (cmp(l[start], l[head2]) == 1)
+
+        while (cmp(l[start], l[head2]) == 1){
             head2--;
+        }
 
         if(head1 < head2){
             tmp = l[head1];
@@ -428,12 +430,10 @@ void array_list_fprint(FILE * stream, const ArrayList * l){
     int i;
     if(!l) return;
     if(l->count <= 0) return;
-    fprintf(stream, "[");
     for(i = 0; i < l->count - 1; i++){
-        l->d->type_descriptor->fprint(stream, l->array[i]);fprintf(stream, ", ");
+        l->d->type_descriptor->fprint(stream, l->array[i]);fprintf(stream, "%s", l->d->type_descriptor->separator);
     }
     l->d->type_descriptor->fprint(stream, l->array[i]);
-    fprintf(stream, "]");
 }
 
 void array_list_free_descriptor(ArrayListDescriptor ** ald){

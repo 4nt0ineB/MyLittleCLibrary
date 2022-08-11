@@ -43,6 +43,9 @@ List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *)){
     l->shift = list_shift;
     l->to_dot = list_to_dot;
 
+    l->prefix = '[';
+    l->suffix = ']';
+
     switch (list_type) {
         case ARRAY_LIST:
             l->s.array_list = NULL;
@@ -331,6 +334,7 @@ void list_print (const List *l){
 
 void list_fprint (FILE * stream, const List *l){
     if(!l) return;
+    fprintf(stream, "%c", l->prefix);
     switch (l->type) {
         case ARRAY_LIST:
             l->s.array_list->d->fprint(stream, l->s.array_list);
@@ -352,6 +356,7 @@ void list_fprint (FILE * stream, const List *l){
             l->s.circular_double_linked_list->d->fprint(stream, l->s.circular_double_linked_list);
             break;
     }
+    fprintf(stream, "%c", l->suffix);
 }
 
 void list_to_dot(const List *l, const char * path){
