@@ -70,22 +70,20 @@ l->d->type_descriptor->fprint = custom_fprint_for_the_data_of_my_linked_list;
 ## Lists
 
 ### List
-The list interface provide a small and easy interface for the different list implementation
+The list interface provide a basic methods for the different list implementation
 
 A circular linked list of char:
 ```c
 List *l;
-char c;
 
-l = new_list(CIRCULAR_LINKED_LIST, char_m);
+l = new_list(LINKED_LIST, str_m);
 
 /* add some values */
-c = 'a'; 
-l->append(l, &c);
-c = 'b'; 
-l->append(l, &c);
-c = 'b'; 
-l->append(l, &c);
+l->append(l, "hell");
+l->append(l, "shell");
+l->append(l, "Foo");
+l->append(l, "bar");
+l->append(l, "Bubble");
 
 /* Print the list */
 l->print(l);
