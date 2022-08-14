@@ -33,7 +33,7 @@
 /* Trees */
 #include "Trees/MLCL_BinarySearchTree_test.h"
 #include "Trees/MLCL_AVLTree_test.h"
-#include "Heap/MLCL_BinaryHeap_test.h"
+#include "Trees/MLCL_TernarySearchTree_test.h"
 /* Stack */
 #include "Stack/MLCL_Stack_test.h"
 /* Queue */

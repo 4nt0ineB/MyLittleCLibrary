@@ -17,6 +17,8 @@ var annotated_dup =
     [ "s_list", "structs__list.html", "structs__list" ],
     [ "s_queue", "structs__queue.html", "structs__queue" ],
     [ "s_stack", "structs__stack.html", "structs__stack" ],
+    [ "s_ternary_search_node", "structs__ternary__search__node.html", "structs__ternary__search__node" ],
+    [ "s_ternary_search_tree_descriptor", "structs__ternary__search__tree__descriptor.html", "structs__ternary__search__tree__descriptor" ],
     [ "s_type_descriptor", "structs__type__descriptor.html", "structs__type__descriptor" ],
     [ "Timer", "struct_timer.html", "struct_timer" ]
 ];

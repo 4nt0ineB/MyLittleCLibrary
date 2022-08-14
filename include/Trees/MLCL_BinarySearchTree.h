@@ -40,8 +40,8 @@ typedef struct s_binary_search_tree_node {
  * a TypeDescriptor allowing manipulation of the data, and the the number of nodes.
  */
 typedef struct s_binary_search_tree_descriptor {
-    TypeDescriptor * type_descriptor;
     int n; /**< Number of nodes in the tree */
+    TypeDescriptor * type_descriptor;
     int (*height) (BinarySearchTree); /**< Return the height of the tree */
     int (*nb_nodes) (BinarySearchTree); /**< Return the number of nodes. O(1) by the struct */
     int (*nb_leaves) (BinarySearchTree); /**< Return the number of leaves */

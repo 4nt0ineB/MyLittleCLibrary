@@ -37,7 +37,6 @@ int test_list_append(){
     if(!l)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    printf("\n");
     l->append(l, "hell");
     l->append(l, "shell");
     l->append(l, "Foo");

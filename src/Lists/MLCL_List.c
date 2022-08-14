@@ -17,6 +17,7 @@
  */
 
 #include "../../include/Lists/MLCL_List.h"
+#include <string.h>
 
 
 List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *)){
@@ -101,7 +102,8 @@ int list_check_init_(List *l, const void * data){
     if(l->is_empty(l)){
         switch (l->type) {
             case ARRAY_LIST:
-                l->s.array_list = new_array_list(l->type_manifest);
+                if(!l->s.array_list)
+                    l->s.array_list = new_array_list(l->type_manifest);
                 if(l->s.array_list)
                     return l->s.array_list->d->append(l->s.array_list, data);
                 return 0;

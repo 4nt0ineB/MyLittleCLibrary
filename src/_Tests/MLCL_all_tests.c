@@ -24,19 +24,20 @@ int run_all_tests(){
     int i;
     int (*tests[])() =
             {
-            run_all_type_descriptor_tests,
-            run_all_linked_list_tests,
-            run_all_circular_linked_list_tests,
-            run_all_double_linked_list_tests,
-            run_all_circular_double_linked_list_tests,
-            run_all_binary_search_tree_tests,
-            run_all_avl_tree_tests,
-            run_all_array_list_tests,
-            run_all_list_tests,
-            run_all_binary_heap_tests,
-            run_all_queue_tests,
-            run_all_stack_tests,
-            NULL
+            run_all_type_descriptor_tests
+            , run_all_linked_list_tests
+            , run_all_circular_linked_list_tests
+            , run_all_double_linked_list_tests
+            , run_all_circular_double_linked_list_tests
+            , run_all_binary_search_tree_tests
+            , run_all_avl_tree_tests
+            , run_all_array_list_tests
+            , run_all_list_tests
+            , run_all_binary_heap_tests
+            , run_all_queue_tests
+            , run_all_stack_tests
+            , run_all_ternary_search_tree_tests
+            , NULL
     };
 
     timer = new_timer();
