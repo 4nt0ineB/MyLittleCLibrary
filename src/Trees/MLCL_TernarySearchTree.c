@@ -27,8 +27,8 @@ TernarySearchTreeDescriptor * ternary_search_tree_descriptor(){
     /* Methods */
     d->insert_branch = ternary_search_tree_insert_branch;
     d->add = ternary_search_tree_add;
-    /*d->search = ternary_search_tree_search;
-    d->remove = ternary_search_tree_remove;*/
+    d->search = ternary_search_tree_search;
+    d->remove = ternary_search_tree_remove;
     d->print = ternary_search_tree_print;
     d->fprint_ = ternary_search_tree_fprint_;
     d->fprint = ternary_search_tree_fprint;
@@ -113,9 +113,40 @@ int ternary_search_tree_add(TernarySearchTree *t, const char * word){
     }
 }
 
-/*void ternary_search_tree_remove(TernarySearchTree *t, const char * word);
+void ternary_search_tree_remove(TernarySearchTree *t, const char * word){
+    if(!*t) return;
+    if((*t)->d->type_descriptor->eq(word, (*t)->data)){
+        if(*word == MLCL_TST_STOP_CHAR){
+            TernarySearchTree tmp = (*t);
+            *t = (*t)->right;
+            tmp->right = NULL;
+            tmp->d->free(&tmp);
+            return;
+        }
+        (*t)->d->remove(&(*t)->child, word + 1);
+        if(!(*t)->left && !(*t)->right){
+            (*t)->child = NULL;
+            (*t)->d->free(&(*t));
+        }
 
-int ternary_search_tree_search(const TernarySearchTree t, const char *word);*/
+    } else if((*t)->d->type_descriptor->gt(word, (*t)->data)){
+        (*t)->d->remove(&(*t)->right, word);
+
+    } else
+        (*t)->d->remove(&(*t)->left, word);
+}
+
+int ternary_search_tree_search(const TernarySearchTree t, const char *word){
+    if(!t) return 0;
+    if(t->d->type_descriptor->eq(word, t->data)){
+        if(*word == MLCL_TST_STOP_CHAR)
+            return 1;
+        return t->d->search(t->child, word + 1);
+    }
+    if(t->d->type_descriptor->gt(word, t->data))
+        return t->d->search(t->right, word);
+    return t->d->search(t->left, word);
+}
 
 void ternary_search_tree_print(const TernarySearchTree t){
     if(!t) return;
