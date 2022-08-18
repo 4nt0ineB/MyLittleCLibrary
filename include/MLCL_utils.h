@@ -27,9 +27,15 @@
 unsigned mlcl_unsigned_rand();
 
 int int_rand(int a, int b);
-
 float float_rand(float min, float max);
-
 int proper_modulo(int a, int b);
+
+/**
+ * Return Levenshtein distance (edit distance) between two words
+ * @param s1
+ * @param s2
+ * @return
+ */
+int mlcl_levenshtein(const char *s1, const char *s2);
 
 #endif /* MYLITTLECLIBRARY_MLCL_UTILS_H_H */

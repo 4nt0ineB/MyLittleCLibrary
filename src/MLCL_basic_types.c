@@ -28,9 +28,7 @@
 void str_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    type_descriptor->separator[0] = ',';
-    type_descriptor->separator[1] = ' ';
-    type_descriptor->separator[2] = '\0';
+    strcpy(type_descriptor->separator, ", ");
 
     type_descriptor->manifest = str_m;
     type_descriptor->cmp = str_cmp;
@@ -102,9 +100,7 @@ void str_free(void ** x){
 void char_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    type_descriptor->separator[0] = ',';
-    type_descriptor->separator[1] = ' ';
-    type_descriptor->separator[2] = '\0';
+    strcpy(type_descriptor->separator, ", ");
 
     type_descriptor->manifest = char_m;
     type_descriptor->cmp = char_cmp;
@@ -174,9 +170,8 @@ void char_free(void ** x){
 void int_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(int);
-    type_descriptor->separator[0] = ',';
-    type_descriptor->separator[1] = ' ';
-    type_descriptor->separator[2] = '\0';
+    strcpy(type_descriptor->separator, ", ");
+
 
     type_descriptor->manifest = int_m;
     type_descriptor->cmp = int_cmp;
@@ -246,9 +241,7 @@ void int_free(void ** x){
 void float_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    type_descriptor->separator[0] = ',';
-    type_descriptor->separator[1] = ' ';
-    type_descriptor->separator[2] = '\0';
+    strcpy(type_descriptor->separator, ", ");
 
     type_descriptor->manifest = float_m;
     type_descriptor->cmp = float_cmp;

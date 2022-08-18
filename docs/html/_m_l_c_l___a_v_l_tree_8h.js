@@ -1,10 +1,10 @@
 var _m_l_c_l___a_v_l_tree_8h =
 [
-    [ "s_avl_node_", "structs__avl__node__.html", "structs__avl__node__" ],
+    [ "s_avl_node", "structs__avl__node.html", "structs__avl__node" ],
     [ "s_avl_tree_descriptor", "structs__avl__tree__descriptor.html", "structs__avl__tree__descriptor" ],
-    [ "AVLTree", "_m_l_c_l___a_v_l_tree_8h.html#a5fbb96b306202b20843f7c18de9d8ded", null ],
+    [ "AVLTree", "_m_l_c_l___a_v_l_tree_8h.html#a48a5dfdcf80948a05f455be3775ea713", null ],
     [ "AVLTreeDescriptor", "_m_l_c_l___a_v_l_tree_8h.html#aba6f8667822062986142ef75be078509", null ],
-    [ "AVLTreeNode", "_m_l_c_l___a_v_l_tree_8h.html#a690fab75dabcab644c82cd68d6fd0329", null ],
+    [ "AVLTreeNode", "_m_l_c_l___a_v_l_tree_8h.html#ac55cc6a8682dc15d98908d9a6bf26052", null ],
     [ "avl_tree_add", "_m_l_c_l___a_v_l_tree_8h.html#ae2c42356e1d49af693343f4e4b69e933", null ],
     [ "avl_tree_builder", "_m_l_c_l___a_v_l_tree_8h.html#ac75285e51f2abc4166a25d958a382ffd", null ],
     [ "avl_tree_descriptor", "_m_l_c_l___a_v_l_tree_8h.html#a93d0498ab2b78d3fbd59702f2761c945", null ],

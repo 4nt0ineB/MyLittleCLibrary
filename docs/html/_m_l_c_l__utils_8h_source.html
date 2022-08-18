@@ -145,12 +145,18 @@ $(document).ready(function(){initNavTree('_m_l_c_l__utils_8h_source.html',''); i
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">unsigned</span> <a class="code" href="_m_l_c_l__utils_8h.html#a5e22bac7372b4b0784101113fd3dcf78">mlcl_unsigned_rand</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__utils_8h.html#a7d915f8a6b3888b8648a557ab4dfc186">int_rand</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">float</span> <a class="code" href="_m_l_c_l__utils_8h.html#a0ceb8db9b925b9858018a23ada0e3560">float_rand</a>(<span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">float</span> <a class="code" href="_m_l_c_l__utils_8h.html#a0ceb8db9b925b9858018a23ada0e3560">float_rand</a>(<span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__utils_8h.html#abd92b41758002d711bcfc1b382acc54b">proper_modulo</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__utils_8h.html#abd92b41758002d711bcfc1b382acc54b">proper_modulo</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_UTILS_H_H */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * Return Levenshtein distance (edit distance) between two words</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @param s1</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @param s2</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * @return</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_m_l_c_l__utils_8h.html#a9c712ee166999d4505b76a56d0710fad">mlcl_levenshtein</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">/* MYLITTLECLIBRARY_MLCL_UTILS_H_H */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

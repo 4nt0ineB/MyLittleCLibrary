@@ -24,10 +24,10 @@
 /**
  * @brief A generic AVL tree
  */
-typedef struct s_avl_node_ {
+typedef struct s_avl_node {
     void * data;
     int balance; /* To help balancing the tree each node has relative balance */
-    struct s_avl_node_ *left, *right;
+    struct s_avl_node *left, *right;
     struct s_avl_tree_descriptor * d; /*!< Descriptor of the binary tree */
 } AVLTreeNode, *AVLTree;
 
