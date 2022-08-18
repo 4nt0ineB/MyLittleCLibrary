@@ -66,6 +66,7 @@ typedef struct s_array_list_descriptor {
     void (*fprint) (FILE *, const ArrayList *);
     void (*to_dot_) (const ArrayList *, FILE *);
     void (*to_dot) (const ArrayList *, const char *);
+    void (*empty) (ArrayList *);
     void (*free) (ArrayList **);
 
 } ArrayListDescriptor;
@@ -186,6 +187,8 @@ void array_list_print(const ArrayList *l);
  * @return
  */
 void array_list_fprint(FILE * stream, const ArrayList *l);
+
+void array_list_empty(ArrayList *l);
 
 /**
  * @brief free the descriptor of the array list

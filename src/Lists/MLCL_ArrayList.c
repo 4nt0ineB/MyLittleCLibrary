@@ -57,6 +57,7 @@ ArrayListDescriptor * array_list_descriptor(){
     ald->fprint = array_list_fprint;
     ald->to_dot_ = array_list_to_dot_;
     ald->to_dot = array_list_to_dot;
+    ald->empty = array_list_empty;
     ald->free = array_list_free;
 
     /* al_d->to_dot = linked_list_to_dot; */
@@ -436,6 +437,23 @@ void array_list_fprint(FILE * stream, const ArrayList * l){
     l->d->type_descriptor->fprint(stream, l->array[i]);
 }
 
+void array_list_empty(ArrayList *l){
+    int i;
+    if(!l) return;
+    /* Free the elements */
+    if(l->array){
+        for (i = 0; i < l->count; ++i) {
+            if(l->array[i])
+                l->d->type_descriptor->free_data(&l->array[i]);
+        }
+    }
+    free(l->array);
+    /* Init */
+    l->array = (void **) calloc(ARRAY_LIST_BLOCK_SIZE, sizeof(void *));
+    l->count = 0;
+    l->size = ARRAY_LIST_BLOCK_SIZE;
+}
+
 void array_list_free_descriptor(ArrayListDescriptor ** ald){
     if(!*ald) return;
     if((*ald)->type_descriptor)
@@ -459,7 +477,6 @@ void array_list_free(ArrayList ** l){
     free(*l);
     *l = NULL;
 }
-
 
 void array_list_to_dot_(const ArrayList *l, FILE * stream){
     int i;

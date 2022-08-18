@@ -62,7 +62,9 @@ typedef struct s_list{
     void * (*shift) (struct  s_list *);
     void (*print) (const struct s_list *);
     void (*fprint) (FILE *, const struct s_list *);
+    void (*fprint_join) (FILE *stream, struct s_list *l, const char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN]);
     void (*to_dot) (const struct s_list *, const char *);
+    void (*empty) (struct s_list *);
 
     char prefix;
     char suffix;
@@ -83,8 +85,10 @@ int list_is_empty(const List *l);
 int list_length(const List *l);
 void list_free(List **l);
 void list_print (const List *l);
+void list_fprint_join(FILE *stream, List *l, const char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN]);
 void list_fprint (FILE * stream, const List *l);
 void list_to_dot(const List *l, const char * path);
+void list_empty(List *l);
 
 /**
  * @brief Init the list with data if empty and return 1, else return 0.

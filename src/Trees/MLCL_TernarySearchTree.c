@@ -2,8 +2,18 @@
  *   This file is part of the MLCL Library.
  *   Antoine Bastos 2022
  *
- *   This Library is free software under the terms of
- *   the MIT license.
+ *    This Library is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This Library is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "../../include/Trees/MLCL_TernarySearchTree.h"
@@ -23,6 +33,8 @@ TernarySearchTreeDescriptor * ternary_search_tree_descriptor(){
     d->fprint_ = ternary_search_tree_fprint_;
     d->fprint = ternary_search_tree_fprint;
     d->free = ternary_search_tree_free;
+    d->to_dot_ = ternary_tree_to_dot_;
+    d->to_dot = ternary_tree_to_dot;
     /* */
     d->type_descriptor = NULL;
     return d;
@@ -112,19 +124,20 @@ void ternary_search_tree_print(const TernarySearchTree t){
 
 void ternary_search_tree_fprint_(FILE *stream, const TernarySearchTree t, List *l, int i){
     if(t){
-
         t->d->fprint_(stream, t->left, l, i);
 
+        /* Resize the list to only keep the prefix */
         while(!l->is_empty(l) && i < l->length(l))
             free(l->pop(l));
 
-        l->append(l, t->data);
         if(* (char *) t->data == MLCL_TST_STOP_CHAR){
-            l->fprint(stream, l);
+            l->fprint_join(stream, l, "");
             fprintf(stream, "\n");
-        }
-        else
+        }else{
+            /* Store the char in the list */
+            l->append(l, t->data);
             t->d->fprint_(stream, t->child, l, i + 1);
+        }
         t->d->fprint_(stream, t->right, l, i);
     }
 }
@@ -165,4 +178,38 @@ void ternary_search_tree_free(TernarySearchTree *t){
 
     free(*t);
     *t = NULL;
+}
+
+void ternary_tree_to_dot_(const TernarySearchTree t, FILE * stream){
+    char c;
+    if(!t) return;
+
+    c = * (char *) t->data;
+    /* \0 will be blank in dot */
+    if(c == '\0') c = '0';
+
+    fprintf(stream, "  n%p [label=\"%c\"]\n", (void *) &*t, c);
+    if(t->left){
+        fprintf(stream, "  n%p:w -> n%p:c [color=\"#ab2222\"]\n", (void *) &*t, (void *) t->left);
+        t->d->to_dot_(t->left, stream);
+    }
+    if(t->child){
+        fprintf(stream, "  n%p:s -> n%p:c  \n", (void *) &*t, (void *) t->child);
+        t->d->to_dot_(t->child, stream);
+    }
+    if(t->right){
+        fprintf(stream, "  n%p:e -> n%p:c [color=\"#2257ab\"]\n", (void *) &*t, (void *) t->right);
+        t->d->to_dot_(t->right, stream);
+    }
+}
+
+void ternary_tree_to_dot(const TernarySearchTree t, const char * path){
+    FILE *file = fopen(path, "w");
+    fprintf(file, "digraph arbre {\n"
+                  "graph [ splines=true]\n"
+                  "  node [shape=circle,height=.1]\n"
+                  "  \n\n");
+    t->d->to_dot_(t, file);
+    fprintf(file, "\n}");
+    fclose(file);
 }

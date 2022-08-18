@@ -23,12 +23,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN 16
+
 /**
  * @brief Interface for all types manipulated by the structs of the library.
  */
 typedef struct s_type_descriptor {
     size_t data_size;
-    char separator[6];
+    char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN];
     void (*manifest) (struct s_type_descriptor*); /**<  type_manifest used to make the type descriptor */
     int (*cmp) (const void *, const void *); /**< Comparison function */
     void (*print) (const void *); /**< Printing function, shorthand to fprint */
