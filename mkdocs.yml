@@ -16,5 +16,17 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
+plugins:
+  - search:
+      lang: en
+
 theme:
   name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: light blue
+  features:
+    - header.autohide
