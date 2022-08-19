@@ -50,6 +50,7 @@ int proper_modulo(int a, int b) {
 int mlcl_levenshtein(const char *s1, const char *s2){
     unsigned int len1, len2;
     unsigned int i, j;
+    int result;
     unsigned int **mat;
 
     len1 = strlen(s1);
@@ -69,5 +70,12 @@ int mlcl_levenshtein(const char *s1, const char *s2){
         for (j = 1; j <= len1; j++)
             mat[i][j] = MIN3(mat[i-1][j] + 1, mat[i][j-1] + 1, mat[i-1][j-1] + (s1[j-1] == s2[i-1] ? 0 : 1));
 
-    return mat[len2][len1];
+    /* Save result */
+    result = (int) mat[len2][len1];
+    /* Free array */
+    for(j = 0; j <= len2; j++)
+        free(mat[j]);
+    free(mat);
+
+    return result;
 }
