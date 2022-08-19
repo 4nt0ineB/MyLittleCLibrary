@@ -5,6 +5,9 @@ Google_tests/
 *.dot
 *.pdf
 
+# env
+.env/
+
 # IDE
 .vscode/
 .idea/
