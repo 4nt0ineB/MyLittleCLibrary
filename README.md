@@ -1,5 +1,5 @@
 
-# My LittleC Library
+# My Little C Library
 An ANSI C library gathering things I learned in college, to implement things faster for my homework and projects.
 
 [![workflow](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/cydaw6/MyLittleCLibrary/actions/workflows/c-cpp.yml)
