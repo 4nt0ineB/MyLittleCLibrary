@@ -68,7 +68,7 @@ int str_ge(const void * x, const void * y){
 }
 
 void str_print(const void * x){
-    char_fprint(stdout, x);
+    str_fprint(stdout, x);
 }
 
 void str_fprint(FILE * stream, const void * x){

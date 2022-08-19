@@ -71,7 +71,6 @@ BKTree new_bk_tree(const char * word){
 int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node){
     int d;
     BKTree * tmp;
-    if(!*root) return 0;
     /* Empty tree */
     if(!*root){
         *root = bk_tree_node;
@@ -80,8 +79,9 @@ int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node){
     d = mlcl_levenshtein((*root)->data, bk_tree_node->data);
 
     /* Already exists ?*/
-    if(d == 0)
+    if(d == 0) {
         return 0;
+    }
 
     /* Child ? */
     if((*root)->value == bk_tree_node->value){
@@ -136,6 +136,7 @@ static void bk_tree_print_(BKTree root, int t){
 void bk_tree_print(BKTree root){
     if(!root) return;
     root->d->type_descriptor->print(root->data);
+    printf("\n");
     bk_tree_print_(root->child, 0);
     bk_tree_print_(root->siblings, 0);
 }

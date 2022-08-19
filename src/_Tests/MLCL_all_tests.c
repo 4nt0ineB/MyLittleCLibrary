@@ -37,6 +37,7 @@ int run_all_tests(){
             , run_all_queue_tests
             , run_all_stack_tests
             , run_all_ternary_search_tree_tests
+            , run_all_bk_tree_tests
             , NULL
     };
 

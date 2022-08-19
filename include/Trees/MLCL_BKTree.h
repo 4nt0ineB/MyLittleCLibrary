@@ -48,7 +48,7 @@ BKTreeNode * bk_tree_builder(const void * data, BKtreeDescriptor *d);
 BKTree new_bk_tree(const char * word);
 int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node);
 int bk_tree_add(BKTree * root, const char * word);
-static void bk_tree_print_(BKTree root, int t);
+/*static void bk_tree_print_(BKTree root, int t);*/
 void bk_tree_print(BKTree root);
 
 #endif /* MYLITTLECLIBRARY_MLCL_BKTREE_H */
