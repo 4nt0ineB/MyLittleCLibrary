@@ -456,13 +456,10 @@ flowchart  TB
 	Queue --> List
 	Stack --> List
 	
-	AVLTree --> BinarySearchTree --> TypeDescriptor
+	BinarySearchTree --> TypeDescriptor
+	AVLTree --> TypeDescriptor
 	LexicalTree --> TypeDescriptor
 	BKTree --> TypeDescriptor
-	Tree --> BinarySearchTree
-	Tree --> AVLTree
-	Tree --> LexicalTree
-	Tree --> BKTree
 	
 ```
 
