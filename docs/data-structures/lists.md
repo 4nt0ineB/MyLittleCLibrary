@@ -169,10 +169,7 @@ l->append(l, "shell");
 l->append(l, "Foo");  
 l->append(l, "bar");  
 l->append(l, "Bubble");  
-  
-/* Print the list */  
-l->print(l);  
-  
+    
 l->free(&l);  
 ```  
 
