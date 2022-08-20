@@ -4,9 +4,12 @@
 ```c 
 int i; 
 ArrayList *l;
+
 l = new_array_list(int_m);   
+
 for(i = 0; i < 5; i++)  
     l->d->append(l, &i);
+    
 l->d->free(&l);  
 ```   
 **[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]**
