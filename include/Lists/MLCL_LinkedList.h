@@ -155,7 +155,7 @@ int linked_list_insert(LinkedList * ll, const void * data);
 LinkedList linked_list_search(LinkedList ll, const void * data);
 
 /**
- * @brief removeete the first occurrence of the cell containing equal data to the given one, from the linked list.
+ * @brief Remove the first occurrence of the cell containing equal data to the given one, from the linked list.
  * Uses linked list descriptor search function.
  * @param l
  * @param data
