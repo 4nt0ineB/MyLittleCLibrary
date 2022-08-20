@@ -94,7 +94,8 @@ void * movie_copy(const void * data){
 	alloc_data->title = (char *) malloc(sizeof(char) * (strlen((Movie *)->title) + 1));
 	strcpy(alloc_data->title, (Movie *)->title);
 	
-	alloc_data->director = (Movie *)->director; /* We choose to just copy the pointer to the person */
+	/* We choose to just copy the pointer to the person */	
+	alloc_data->director = (Movie *)->director; 
     alloc_data->year = (Movie *)->year;
     alloc_data->minutes	= (Movie *)->minutes;
     
