@@ -184,4 +184,4 @@ l->s.array_list->d->merge_sort(&l->s.array_list);
 You will notice that here we access the *ArrayList* implementation through the **s** (for "structure") field, depending on the type of implementation we set to create the *List*.
 
 #### Methods
-[All the available methods](/include/Lists/MLCL_List.h)
+[Header file](https://github.com/cydaw6/MyLittleCLibrary/blob/main/include/Lists/MLCL_List.h)
