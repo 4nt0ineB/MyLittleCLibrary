@@ -127,7 +127,7 @@ int main(){
  movie1 = new_movie("Tron", 1982);
  l = new_linked_list(&movie1, movie_m);     
  
- movie2 = new_movie("Tron Legacy", 2010);
+ movie2 = new_movie("Tron Legacy", 2011);
  l->d->prepend(&l, &movie2);
  l->d->print(l);
  
