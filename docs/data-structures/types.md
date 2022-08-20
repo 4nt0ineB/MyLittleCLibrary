@@ -118,7 +118,8 @@ void movie_free(void ** x){
 */
 ```
 
-Then you will be able to use the Movie struct in the data structures.
+Then you will be able to use the Movie struct in all the data structures.
+
 ```c
 int main(){  
  LinkedList l;  
