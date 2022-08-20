@@ -116,12 +116,10 @@ void movie_free(void ** x){
 /* 
     Related functions of the Movie struct...
 */
+```
 
-/*    
-	By making your own type_manifest you will be able to use your custom Type through
-	the lib's implemented structures. Like so:    
-*/
- 
+Then you will be able to use the Movie struct in the data structures.
+```c
 int main(){  
  LinkedList l;  
  Movie movie1, movie2;
