@@ -22,29 +22,43 @@
 #include "MLCL_LinkedList.h"
 #include <assert.h>
 
+typedef LinkedListNode CircularLinkedListNode;
+
 /**
  * @brief CircularLinkedList implement LinkedList
  */
 typedef LinkedList CircularLinkedList;
 
+/***************************************************
+ * CircularLinkedListNode
+ ***************************************************/
+CircularLinkedListNode * new_circular_linked_list_node(void *data);
+void circular_linked_list_node_fprint(const CircularLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
+void circular_linked_list_node_print(const CircularLinkedListNode *self, void (data_fprint) (FILE *, const void *));
+void circular_linked_list_node_free(CircularLinkedListNode *self, void (*data_free) (void *data));
 
-LinkedList * new_linked_list(void (*type_manifest) (TypeDescriptor *td));
+LinkedList * new_circular_linked_list(void (*type_manifest) (TypeDescriptor *td));
 int linked_list_append(LinkedList *self, void *data);
-/*
-int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (const void *, const void *));
-*/
 int circular_linked_list_prepend(LinkedList *self, void *data);
 void circular_linked_list_merge_sort(LinkedList *self, int (*ordering) (const void *, const void *));
 void * circular_linked_list_shift(LinkedList *self);
 void * circular_linked_list_pop(LinkedList *self);
 void * circular_linked_list_search(const LinkedList *self, int (*filter) (const void *));
-int circular_linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data));
-int circular_linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data));
-void circular_linked_list_fprint(const LinkedList *self, FILE *stream); /**< Print the list on the given stream*/
-void circular_linked_list_print(const LinkedList *self); /**< Print the list on stdout */
+void circular_linked_list_fprint(const LinkedList *self, FILE *stream);
+void circular_linked_list_print(const LinkedList *self);
 void circular_linked_list_to_dot_(LinkedList *self, FILE *stream);
-void circular_linked_list_to_dot(LinkedList *self, const char *path); /**< Make a formatted dot file of the struct */
-void circular_linked_list_clear(LinkedList *self, void (*data_free_f) (void *data));
-void circular_linked_list_free(LinkedList *self, void (*data_free_f) (void *data));
+void circular_linked_list_to_dot(LinkedList *self, const char *path);
+void circular_linked_list_clear(LinkedList *self, void (*data_free) (void *data));
+void circular_linked_list_free(LinkedList *self, void (*data_free) (void *data));
+
+/*
+    @Todo: remove, remove_all, append_sorted
+ */
+
+/*
+    int circular_linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+    int circular_linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+    int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (const void *, const void *));
+ */
 
 #endif /* MYLITTLECLIBRARY_MLCL_CIRCULARLINKEDLIST_H */

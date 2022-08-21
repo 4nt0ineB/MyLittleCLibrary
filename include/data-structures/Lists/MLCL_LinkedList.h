@@ -47,8 +47,8 @@ typedef struct {
  ***************************************************/
 LinkedListNode * new_linked_list_node(void *data);
 int linked_list_node_insert(LinkedListNode **self, void *data);
-void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (fprint_fct) (FILE *, const void *));
-void linked_list_node_print(const LinkedListNode *self, void (fprint_fct) (FILE *, const void *));
+void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
+void linked_list_node_print(const LinkedListNode *self, void (data_fprint) (FILE *, const void *));
 void linked_list_node_free(LinkedListNode *self, void (*data_free_f) (void *data));
 
 /***************************************************
@@ -65,13 +65,13 @@ void linked_list_merge_sort(LinkedList *self, int (*ordering) (const void *, con
 void * linked_list_shift(LinkedList *self);
 void * linked_list_pop(LinkedList *self);
 void * linked_list_search(const LinkedList *self, int (*filter) (const void *));
-int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data));
-int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data));
-void linked_list_fprint(const LinkedList *self, FILE *stream); /**< Print the list on the given stream*/
-void linked_list_print(const LinkedList *self); /**< Print the list on stdout */
+int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+void linked_list_fprint(const LinkedList *self, FILE *stream);
+void linked_list_print(const LinkedList *self);
 void linked_list_to_dot_(LinkedList *self, FILE *stream);
-void linked_list_to_dot(LinkedList *self, const char *path); /**< Make a formatted dot file of the struct */
-void linked_list_clear(LinkedList *self, void (*data_free_f) (void *data));
-void linked_list_free(LinkedList *self, void (*data_free_f) (void *data));
+void linked_list_to_dot(LinkedList *self, const char *path);
+void linked_list_clear(LinkedList *self, void (*data_free) (void *data));
+void linked_list_free(LinkedList *self, void (*data_free) (void *data));
 
 #endif MYLITTLECLIBRARY_MLCL_LINKEDLIST_H

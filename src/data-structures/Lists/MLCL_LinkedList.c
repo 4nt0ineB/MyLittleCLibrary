@@ -204,7 +204,7 @@ void * linked_list_search(const LinkedList *self, int (*filter) (const void *)){
     }
     return NULL;
 }
-int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data)){
+int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data)){
     LinkedListNode *cursor, *tmp;
     if(!self || !self->head || !filter) return 0;
     cursor = self->head;
@@ -212,7 +212,7 @@ int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*da
     if(filter(cursor)){
         tmp = cursor;
         self->head = tmp->next;
-        linked_list_node_free(tmp, data_free_f);
+        linked_list_node_free(tmp, data_free);
         self->length--;
         return 1;
     }
@@ -220,7 +220,7 @@ int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*da
         if(filter(cursor)){
             tmp = cursor;
             cursor->next = tmp->next;
-            linked_list_node_free(cursor, data_free_f);
+            linked_list_node_free(cursor, data_free);
             self->length--;
             return 1;
         }
@@ -228,7 +228,7 @@ int linked_list_remove(LinkedList *self, int (*filter) (const void *), void (*da
     }
     return 0;
 }
-int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free_f) (void *data)){
+int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void (*data_free) (void *data)){
     LinkedListNode *cursor, *tmp;
     int i;
     if(!self || !self->head || !filter) return 0;
@@ -238,14 +238,14 @@ int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void 
     if(filter(cursor)){
         tmp = cursor;
         self->head = tmp->next;
-        linked_list_node_free(tmp, data_free_f);
+        linked_list_node_free(tmp, data_free);
         return 1;
     }
     while(cursor->next){
         if(filter(cursor)){
             tmp = cursor;
             cursor->next = tmp->next;
-            linked_list_node_free(cursor, data_free_f);
+            linked_list_node_free(cursor, data_free);
             i++;
         }
         tmp = tmp->next;
@@ -336,18 +336,19 @@ void linked_list_to_dot(LinkedList *self, const char * path){
     fclose(stream);
 }
 
-void linked_list_clear(LinkedList *self, void (*data_free_f) (void *data)){
+void linked_list_clear(LinkedList *self, void (*data_free) (void *data)){
     LinkedListNode *cursor;
-    if(!self || !self->head || !data_free_f) return;
+    if(!self || !self->head || !data_free) return;
     cursor = self->head;
     while(cursor->next)
-        linked_list_node_free(cursor->next, data_free_f);
-    linked_list_node_free(self->head, data_free_f);
+        linked_list_node_free(cursor->next, data_free);
+    linked_list_node_free(self->head, data_free);
+    self->head = NULL;
     self->length = 0;
 }
-void linked_list_free(LinkedList *self, void (*data_free_f) (void *data)){
-    if(!self || !self->head || !data_free_f) return;
-    linked_list_clear(self, data_free_f);
+void linked_list_free(LinkedList *self, void (*data_free) (void *data)){
+    if(!self || !self->head || !data_free) return;
+    linked_list_clear(self, data_free);
     type_descriptor_free(self->td);
     free(self);
 }
