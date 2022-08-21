@@ -190,8 +190,38 @@ void linked_list_merge_sort(LinkedList *self, int (*ordering) (const void *, con
     if(!self || !self->head || !ordering) return;
     linked_list_merge_sort_(&self->head, ordering);
 }
-void * linked_list_shift(LinkedList *self);
-void * linked_list_pop(LinkedList *self);
+void * linked_list_shift(LinkedList *self){
+    LinkedListNode *tmp;
+    void * data;
+    if(!self || !self->head) return NULL;
+    tmp = self->head;
+    data = tmp->data;
+    self->head = tmp->next;
+    self->length--;
+    linked_list_node_free(tmp, self->td->free_data);
+    return data;
+}
+void * linked_list_pop(LinkedList *self){
+    LinkedListNode *tmp, *tmp_2;
+    void * data;
+    if(!self || !self->head) return NULL;
+    /* Head */
+    if(!self->head->next){
+        data = self->head->data;
+        tmp_2 = self->head;
+        self->head = NULL;
+    }else{
+        tmp = self->head;
+        while(tmp->next->next)
+            tmp = tmp->next;
+        data = tmp->next->data;
+        tmp_2 = tmp->next;
+        tmp->next = NULL;
+    }
+    linked_list_node_free(tmp_2, self->td->free_data);
+    self->length--;
+    return data;
+}
 
 void * linked_list_search(const LinkedList *self, int (*filter) (const void *)){
     LinkedListNode *tmp;
@@ -253,43 +283,6 @@ int linked_list_remove_all(LinkedList *self, int (*filter) (const void *), void 
     self->length -= i;
     return i;
 }
-
-/*void * linked_list_shift(LinkedList * ll){
-    LinkedCell * tmp;
-    void * data;
-    if(!*ll) return NULL;
-    tmp = *ll;
-    data = tmp->data;
-    *ll = tmp->next;
-    tmp->next = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        linked_list_descriptor_free(&tmp->d);
-        *ll = NULL;
-    }
-    free(tmp);
-    return data;
-}
-
-void * linked_list_pop(LinkedList * ll){
-    LinkedCell * tmp;
-    void * data;
-    if(!*ll) return NULL;
-    if((*ll)->next)
-        return (*ll)->d->pop(&(*ll)->next);
-    tmp = *ll;
-    data = tmp->data;
-    *ll = tmp->next;
-    tmp->next = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        linked_list_descriptor_free(&tmp->d);
-        *ll = NULL;
-    }
-    free(tmp);
-    return data;
-}*/
-
 
 void linked_list_fprint(const LinkedList *self, FILE *stream){
     LinkedListNode *cursor;
