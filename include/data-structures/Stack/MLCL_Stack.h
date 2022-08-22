@@ -21,20 +21,13 @@
 
 #include "../Lists/MLCL_List.h"
 
-typedef struct s_stack {
-    List *l;
-    int (*add) (struct s_stack *, const void *);
-    void * (*peek) (const struct s_stack *);
-    void * (*pop) (struct s_stack *);
-    int (*is_empty) (const struct s_stack *);
-    void (*free) (struct s_stack **);
-} Stack;
+typedef struct List Stack;
 
 Stack * new_stack(void (*type_manifest) (TypeDescriptor *));
-int stack_add(Stack *s, const void * data);
-void * stack_peek(const Stack *s);
-void * stack_pop(Stack * s);
-int stack_is_empty(const Stack *s);
-void stack_free(Stack **s);
+int stack_add(Stack *self, void *data);
+void * stack_peek(const Stack *self);
+void * stack_pop(Stack *self);
+int stack_is_empty(const Stack *self);
+void stack_free(Stack **self);
 
 #endif /* MYLITTLECLIBRARY_MLCL_STACK_H */

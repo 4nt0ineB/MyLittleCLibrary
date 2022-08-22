@@ -39,7 +39,7 @@ typedef enum e_list_type {
 /**
  * Interface of lists for basic usage
  */
-typedef struct s_list{
+typedef struct List{
     char prefix;
     char suffix;
     LIST_TYPE type; /**< Type of list implementation of the list */

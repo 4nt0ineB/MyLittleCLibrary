@@ -21,20 +21,13 @@
 
 #include "../Lists/MLCL_List.h"
 
-typedef struct s_queue {
-    List *l;
-    int (*add) (struct s_queue *, const void *);
-    void * (*peek) (const struct s_queue *);
-    void * (*pop) (struct s_queue *);
-    int (*is_empty) (const struct s_queue *);
-    void (*free) (struct s_queue **);
-} Queue;
+typedef List Queue;
 
 Queue * new_queue(void (*type_manifest) (TypeDescriptor *));
-int queue_add(Queue *q, const void * data);
-void * queue_peek(const Queue *q);
-void * queue_pop(Queue * q);
-int queue_is_empty(const Queue *q);
-void queue_free(Queue **q);
+int queue_add(Queue *self, void *data);
+void * queue_peek(const Queue *self);
+void * queue_pop(Queue *self);
+int queue_is_empty(const Queue *self);
+void queue_free(Queue **self);
 
 #endif /* MYLITTLECLIBRARY_MLCL_QUEUE_H */
