@@ -22,12 +22,19 @@
 #include "../../core/MLCL_TypeDescriptor.h"
 #include "../Lists/MLCL_List.h"
 
+
 typedef struct BKTreeNode {
     int value;
     void * data;
-    struct BKTreeNode *child;
-    struct BKTreeNode *siblings;
+    struct BKTreeNode *child, *siblings;
 } BKTreeNode;
+
+
+typedef struct {
+    int n;
+    BKTreeNode *root;
+    TypeDescriptor *td;
+} BKTree;
 
 typedef struct s_bk_tree_descriptor {
     int n;
@@ -47,14 +54,21 @@ typedef struct s_bk_tree_descriptor {
     void (*free) (BKTree *);
 } BKtreeDescriptor;
 
-BKTreeNode * bk_tree_builder(const void *data, BKtreeDescriptor *d);
-BKTree new_bk_tree(const char *word);
-int bk_tree_insert_node(BKTree *root, BKTreeNode *bk_tree_node);
-int bk_tree_add(BKTree *root, const char *word);
+/***************************************************
+ * BKTreeNode
+ ***************************************************/
+BKTreeNode * new_bk_tree_node(void *data);
+void bk_tree_node_free(BKTreeNode **self, void (data_free) (void *));
 
-void bk_tree_fprint_(FILE *stream, const BKTree root, int t);
-void bk_tree_fprint(FILE *stream, const BKTree root);
-void bk_tree_print(const BKTree root);
+
+/***************************************************
+ * BKTree
+ ***************************************************/
+BKTree * new_bk_tree(void (*type_manifest) (TypeDescriptor *));
+int bk_tree_insert_node(BKTree *root, BKTreeNode *bk_tree_node);
+int bk_tree_add(BKTree *root, char *word);
+void bk_tree_fprint(const BKTree *self, FILE *stream);
+void bk_tree_print(const BKTree *self);
 
 /**
  *
@@ -64,17 +78,10 @@ void bk_tree_print(const BKTree root);
  * @param r_suggestions
  * @return
  */
-int bk_tree_fuzzy_search_(const BKTree *root, int *s, const char *word, List *r_suggestions);
-int bk_tree_fuzzy_search(const BKTree *root, const char *word, List *r_suggestions);
-/*
-void (*to_dot_) (const BKTree, FILE *);
-void (*to_dot) (const BKTree, const char *);
-*/
-
-void bk_tree_free_descriptor(BKtreeDescriptor **d);
-void bk_tree_free(BKTree *root);
-
-void bk_tree_to_dot_(const BKTree root, FILE *file);
-void bk_tree_to_dot(const BKTree root, const char *path);
+int bk_tree_fuzzy_search_(const BKTreeNode *root, int *s, const char *word, List *r_suggestions);
+int bk_tree_fuzzy_search(const BKTree *self, const char *word, List *r_suggestions);
+void bk_tree_free(BKTree **self);
+void bk_tree_to_dot_(const BKTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *));
+void bk_tree_to_dot(const BKTree *self, const char *path);
 
 #endif /* MYLITTLECLIBRARY_MLCL_BKTREE_H */

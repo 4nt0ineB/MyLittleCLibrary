@@ -382,6 +382,29 @@ void list_to_dot(const List *self, const char * path){
     }
 }
 
+TypeDescriptor * list_get_td(const List *self){
+    if(!self || !list_length(self)) return NULL;
+
+    switch (self->type) {
+        case ARRAY_LIST:
+            return self->s.array_list->td;
+
+        case LINKED_LIST:
+            return self->s.linked_list->td;
+
+        case CIRCULAR_LINKED_LIST:
+            return self->s.circular_linked_list->td;
+
+        case DOUBLE_LINKED_LIST:
+            return self->s.double_linked_list->td;
+
+        case CIRCULAR_DOUBLE_LINKED_LIST:
+            return self->s.circular_double_linked_list->td;
+
+        default:
+            return NULL;
+    }
+}
 
 /*
 

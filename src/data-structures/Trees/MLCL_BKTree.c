@@ -21,57 +21,54 @@
 #include "../../../include/utils/MLCL_utils.h"
 
 
-BKtreeDescriptor * bk_tree_descriptor(){
-    BKtreeDescriptor *d;
-    d = (BKtreeDescriptor *) malloc(sizeof(BKtreeDescriptor));
-    if(!d) return NULL;
-    d->n = 1; /* Descriptor shall not exist if there is not at least one node  */
-    /* Methods */
-    d->insert_node = bk_tree_insert_node;
-    d->add = bk_tree_add;
-    d->fuzzy_search_ = bk_tree_fuzzy_search_;
-    d->fuzzy_search = bk_tree_fuzzy_search;
-    d->free = bk_tree_free;
-    d->print = bk_tree_print;
-    d->fprint = bk_tree_fprint;
-    d->fprint_ = bk_tree_fprint_;
-    d->to_dot_ = bk_tree_to_dot_;
-    d->to_dot = bk_tree_to_dot;
-    d->type_descriptor = NULL;
-    return d;
-}
+/***************************************************
+ * BKTreeNode
+ ***************************************************/
 
-BKTreeNode * bk_tree_builder(const void * data, BKtreeDescriptor *d){
+BKTreeNode * new_bk_tree_node(void *data){
     BKTreeNode *node;
     if(!data) return NULL;
-    if(!d) return NULL;
     node = (BKTreeNode *) malloc(sizeof(BKTreeNode));
     if(!node) return NULL;
-    node->child = node->siblings = NULL;
     node->value = 0;
-    node->data = d->type_descriptor->copy(data);
-    if(!node->data) return NULL;
-    node->d = d;
-    return node;
+    node->data = data;
+    node->child = node->siblings = NULL;
+    return NULL;
 }
 
-BKTree new_bk_tree(const char * word){
-    BKtreeDescriptor * d;
-    if(!word) return NULL;
-    d = bk_tree_descriptor();
-    if(!d) return NULL;
-    d->type_descriptor = new_type_descriptor(str_m);
-    if(!d->type_descriptor) return NULL;
-    return bk_tree_builder(word, d);
+void bk_tree_node_free(BKTreeNode **self, void (data_free) (void *)){
+    if(!*self) return;
+    if(data_free)
+        data_free((*self)->data);
+    free(*self);
+    *self = NULL;
 }
 
-int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node) {
+
+/***************************************************
+ * BKTree
+ ***************************************************/
+
+
+BKTree * new_bk_tree(void (*type_manifest) (TypeDescriptor *)){
+    BKTree *tree;
+    if(!type_manifest) return NULL;
+    tree = (BKTree *) malloc(sizeof(BKTree));
+    if(!tree) return NULL;
+    tree->n = 0;
+    tree->root = NULL;
+    tree->td = new_type_descriptor(type_manifest);
+    if(!tree->td)
+        bk_tree_free(&tree);
+    return tree;
+}
+
+static int bk_tree_insert_node_(BKTreeNode **root, BKTreeNode *bk_tree_node) {
     int d;
-    BKTree *tmp;
+    BKTreeNode **tmp;
     /* Empty tree */
     if (!*root) {
         *root = bk_tree_node;
-        (*root)->d->n++;
         return 1;
     }
     d = mlcl_levenshtein((*root)->data, bk_tree_node->data);
@@ -84,7 +81,7 @@ int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node) {
     /* Child ? */
     if ((*root)->value == bk_tree_node->value) {
         bk_tree_node->value = d;
-        return (*root)->d->insert_node(&(*root)->child, bk_tree_node);
+        return bk_tree_insert_node_(&(*root)->child, bk_tree_node);
     }
     /* Look up on siblings / (siblings as ordered list) */
     tmp = &(*root)->siblings;
@@ -92,86 +89,88 @@ int bk_tree_insert_node(BKTree * root, BKTreeNode * bk_tree_node) {
     /* No siblings */
     if (!*tmp) {
         *tmp = bk_tree_node;
-        (*root)->d->n++;
         return 1;
 
     }else if ((*tmp)->value > bk_tree_node->value){
         bk_tree_node->siblings = (*tmp);
         (*tmp) = bk_tree_node;
-        (*root)->d->n++;
         return 1;
 
     }
 
-    return (*tmp)->d->insert_node(&(*tmp), bk_tree_node);
+    return bk_tree_insert_node_(&(*tmp), bk_tree_node);
 }
 
-int bk_tree_add(BKTree * root, const char * word){
-    BKTreeNode * new_node;
+static int bk_tree_add_(BKTreeNode **root, char *word){
+    BKTreeNode *node;
     if(!*root) return 0;
     if(!word)
         return 0;
-    if(!(new_node = bk_tree_builder(word, (*root)->d)))
-        return 0;
-    return (*root)->d->insert_node(root, new_node);
+    node = new_bk_tree_node(word);
+    if(!node) return 0;
+    return bk_tree_insert_node_(root, node);
 }
 
-void bk_tree_fprint_(FILE *stream, const BKTree root, int t){
+int bk_tree_insert_add(BKTree *self, char * word){
+    if(!self) return 0;
+    return bk_tree_add_(&self->root, word) && (++self->n || 1);
+}
+
+static void bk_tree_fprint_(const BKTreeNode *root, FILE *stream, int t, void (*data_fprint) (const void *, FILE *stream)){
     int i;
     if(!root) return;
     for(i = 0; i < t; i++)
         printf("      ");
     fprintf(stream, "%s%d─> ",(root->siblings) ? "├─" : "└─", root->value);
-    root->d->type_descriptor->print(root->data);
+    data_fprint(root->data, stream);
     fprintf(stream, "\n");
-    root->d->fprint_(stream, root->child, t + 1);
-    root->d->fprint_(stream, root->siblings, t);
+    bk_tree_fprint_(root->child, stream, t + 1, data_fprint);
+    bk_tree_fprint_(root->siblings, stream, t, data_fprint);
 }
 
-void bk_tree_fprint(FILE *stream, const BKTree root){
-    if(!root) return;
-    root->d->type_descriptor->fprint(stream, root->data);
+void bk_tree_fprint(const BKTree *self, FILE *stream){
+    if(!self) return;
+    self->td->fprint(self->root->data, stream);
     fprintf(stream, "\n");
-    root->d->fprint_(stream, root->child, 0);
-    root->d->fprint_(stream, root->siblings, 0);
+    bk_tree_fprint_(self->root->child, stream, 0, self->td->fprint);
+    bk_tree_fprint_(self->root->siblings, stream, 0, self->td->fprint);
 }
 
-void bk_tree_print(const BKTree root){
-    if(!root) return;
-    root->d->fprint(stdout, root);
+void bk_tree_print(const BKTree *self){
+    bk_tree_fprint(self, stdout);
 }
 
-int bk_tree_fuzzy_search_(const BKTree *root, int *s, const char *word, List *r_suggestions){
+int bk_tree_fuzzy_search_(const BKTreeNode *root, int *s, const char *word, List *r_suggestions){
     int d;
-    BKTree tmp;
-    if(!*root) return 0;
-    d = mlcl_levenshtein(word, (*root)->data);
+    BKTreeNode *tmp;
+    if(!root) return 0;
+    d = mlcl_levenshtein(word, root->data);
 
     if(d < *s){
         *s = d;
-        r_suggestions->empty(r_suggestions);
+        list_clear(r_suggestions, list_get_td(r_suggestions)->data_free);
     }
 
     /* Word exits in the tree */
     if(d == 0){
-        r_suggestions->empty(r_suggestions);
+        list_clear(r_suggestions, list_get_td(r_suggestions)->data_free);
         return 1;
     }
 
     if(d <= *s)
-        r_suggestions->prepend(r_suggestions, (*root)->data);
+        list_prepend(r_suggestions, root->data);
 
-    if((*root)->child){
-        if(abs(d - (*root)->child->value) <= *s){
-            (*root)->d->fuzzy_search_(&(*root)->child, s, word, r_suggestions);
+    if(root->child){
+        if(abs(d - root->child->value) <= *s){
+            bk_tree_fuzzy_search_(root->child, s, word, r_suggestions);
         }
 
-        if(!(*root)->child->siblings)
-            return r_suggestions->is_empty(r_suggestions);
-        tmp = (*root)->child->siblings;
+        if(!root->child->siblings)
+            return !list_length(r_suggestions);
+        tmp = root->child->siblings;
         while(tmp){
             if(abs(d - tmp->value) <= *s){
-                (*root)->d->fuzzy_search_(&tmp, s, word, r_suggestions);
+                bk_tree_fuzzy_search_(tmp, s, word, r_suggestions);
             }
             tmp = tmp->siblings;
         }
@@ -179,74 +178,73 @@ int bk_tree_fuzzy_search_(const BKTree *root, int *s, const char *word, List *r_
     return 0;
 }
 
-int bk_tree_fuzzy_search(const BKTree *root, const char *word, List *r_suggestions){
+int bk_tree_fuzzy_search(const BKTree *self, const char *word, List *r_suggestions){
     int x;
     x = __INT_MAX__;
-    if(!*root || !word) return 0;
-    return (*root)->d->fuzzy_search_(root, &x, word, r_suggestions);
+    if(!self || !word) return 0;
+    return bk_tree_fuzzy_search_(self->root, &x, word, r_suggestions);
 }
 
-
-void bk_tree_free_descriptor(BKtreeDescriptor **d){
-    if(!*d) return;
-    if((*d)->type_descriptor)
-        type_descriptor_free(&(*d)->type_descriptor);
-    free(*d);
-    *d = NULL;
-}
-
-void bk_tree_free(BKTree *root){
+static void bk_tree_clear_(BKTreeNode **root, void (*data_free) (void *)){
     if(!*root) return;
 
-    (*root)->d->free(&(*root)->child);
-    (*root)->d->free(&(*root)->siblings);
+    bk_tree_clear_(&(*root)->child, data_free);
+    bk_tree_clear_(&(*root)->siblings, data_free);
 
-    if((*root)->data)
-        (*root)->d->type_descriptor->data_free(&(*root)->data);
-
-    /* The tree will decrease of 1 node. */
-    (*root)->d->n--;
-    /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-    if((*root)->d->n == 0)
-        bk_tree_free_descriptor(&(*root)->d);
+    if(data_free)
+        data_free(&(*root)->data);
 
     free(*root);
     *root = NULL;
 }
 
-void bk_tree_to_dot_(const BKTree root, FILE *file){
-    BKTree tmp;
-    if(!root) return;
+void bk_tree_clear(BKTree *self){
+    if(!self) return;
+    bk_tree_clear_(&self->root, self->td->data_free);
+    self->n = 0;
+}
 
-    fprintf(file, "  n%p [label=\"", (void *) &*root);
-    root->d->type_descriptor->fprint(file, root->data);
-    fprintf(file, "\"]\n");
+void bk_tree_free(BKTree **self){
+    if(!*self) return;
+    bk_tree_clear(*self);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
+}
+
+void bk_tree_to_dot_(const BKTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    BKTreeNode *tmp;
+    if(!root || !data_fprint) return;
+    fprintf(stream, "  n%p [label=\"", (void *) &*root);
+    data_fprint(root->data, stream);
+    fprintf(stream, "\"]\n");
     if(root->child){
-        fprintf(file,
+        fprintf(stream,
                 "  n%p -> n%p [color=\"#2257ab\", label=\" %d \"]\n",
                 (void *) &*root, (void *) root->child, root->child->value);
-        root->d->to_dot_(root->child, file);
+        bk_tree_to_dot_(root->child, stream, data_fprint);
 
         if(!(tmp = root->child->siblings))
             return;
 
         while(tmp){
-            fprintf(file, "  n%p [label=\"",(void *) &*tmp);
-            root->d->type_descriptor->fprint(file, tmp->data);
-            fprintf(file, "\"]\n");
-            fprintf(file, "  n%p -> n%p [color=\"#2257ab\", label=\" %d \"]\n", (void *) &*root, (void *) tmp, tmp->value);
-            root->d->to_dot_(tmp, file);
+            fprintf(stream, "  n%p [label=\"",(void *) &*tmp);
+            data_fprint(tmp->data, stream);
+            fprintf(stream, "\"]\n");
+            fprintf(stream, "  n%p -> n%p [color=\"#2257ab\", label=\" %d \"]\n", (void *) &*root, (void *) tmp, tmp->value);
+            /* @Todo bad: do not use while use proper recursion */
+            bk_tree_to_dot_(tmp, stream, data_fprint);
             tmp = tmp->siblings;
         }
     }
 }
 
-void bk_tree_to_dot(const BKTree root, const char *path){
+void bk_tree_to_dot(const BKTree *self, const char *path){
     FILE *file = fopen(path, "w");
     fprintf(file, "digraph arbre {\n"
                   "\n"
                   "   \n"
                   "  \n\n");
-    root->d->to_dot_(root, file);
+    bk_tree_to_dot_(self->root, file, self->td->fprint);
     fprintf(file, "\n}");
 }
