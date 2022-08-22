@@ -227,7 +227,7 @@ int binary_search_tree_remove(BinarySearchTree * t, const void * data){
             (*t)->left = tmp->left;
             tmp->left = tmp->right = NULL;
             if(data) {
-                tmp->d->type_descriptor->free_data(&data);
+                tmp->d->type_descriptor->data_free(&data);
             }
             tmp->d->free(&tmp);
         }
@@ -315,7 +315,7 @@ void binary_search_tree_free(BinarySearchTree * t){
     if(!*t) return;
     (*t)->d->free(&(*t)->left);
     (*t)->d->free(&(*t)->right);
-    (*t)->d->type_descriptor->free_data(&(*t)->data);
+    (*t)->d->type_descriptor->data_free(&(*t)->data);
     /* The tree will decrease of 1 node. */
     (*t)->d->n--;
     /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */

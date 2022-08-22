@@ -80,9 +80,9 @@ int test_binary_heap_pop(){
     binary_heap_add(h, &x);
 
     tmp = binary_heap_pop(h);
-    h->d->type_descriptor->free_data(&tmp);
+    h->d->type_descriptor->data_free(&tmp);
     tmp = binary_heap_pop(h);
-    h->d->type_descriptor->free_data(&tmp);
+    h->d->type_descriptor->data_free(&tmp);
 
     x = 2;
     if(h->l->d->type_descriptor->eq(h->l->array[0], &x) != 1)

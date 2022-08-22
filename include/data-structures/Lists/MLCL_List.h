@@ -36,59 +36,39 @@ typedef enum e_list_type {
     CIRCULAR_DOUBLE_LINKED_LIST
 } LIST_TYPE;
 
-
 /**
  * Interface of lists for basic usage
  */
 typedef struct s_list{
+    char prefix;
+    char suffix;
     LIST_TYPE type; /**< Type of list implementation of the list */
     void (*type_manifest) (TypeDescriptor *); /**< type_manifest stored to be able to realloc a list struct of the same type*/
 
     union {
-        ArrayList * array_list;
-        LinkedList linked_list;
-        CircularLinkedList circular_linked_list;
-        DoubleLinkedList double_linked_list;
-        CircularDoubleLinkedList circular_double_linked_list;
+        ArrayList *array_list;
+        LinkedList *linked_list;
+        CircularLinkedList *circular_linked_list;
+        DoubleLinkedList *double_linked_list;
+        CircularDoubleLinkedList *circular_double_linked_list;
     } s; /**< The pointer to the list structure implementation */
-
-    int (*length) (const struct s_list *);
-    int (*is_empty) (const struct s_list *);
-    int (*append) (struct s_list *, const void *);
-    int (*prepend) (struct s_list *, const void *);
-    void * (*head_peek) (const struct s_list *);
-    void * (*tail_peek) (const struct s_list *);
-    void * (*pop) (struct s_list *);
-    void * (*shift) (struct  s_list *);
-    void (*print) (const struct s_list *);
-    void (*fprint) (FILE *, const struct s_list *);
-    void (*fprint_join) (FILE *stream, struct s_list *l, const char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN]);
-    void (*to_dot) (const struct s_list *, const char *);
-    void (*empty) (struct s_list *);
-
-    char prefix;
-    char suffix;
-
-    void (*free) (struct s_list **);
-    int (*check_init_) (struct s_list *, const void *);
 
 } List;
 
 List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *));
-int list_append(List *l, const void *data);
-int list_prepend(List *l, const void *data);
+int list_append(List *l, void *data);
+int list_prepend(List *l, void *data);
 void * list_head_peek(const List *l);
 void * list_tail_peek(const List *l);
 void * list_pop(List *l);
 void * list_shift(List *l);
-int list_is_empty(const List *l);
-int list_length(const List *l);
+unsigned long int list_length(const List *l);
 void list_free(List **l);
 void list_print (const List *l);
 void list_fprint_join(FILE *stream, List *l, const char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN]);
 void list_fprint (FILE * stream, const List *l);
 void list_to_dot(const List *l, const char * path);
-void list_empty(List *l);
+void list_clear(List *l);
 
 /**
  * @brief Init the list with data if empty and return 1, else return 0.

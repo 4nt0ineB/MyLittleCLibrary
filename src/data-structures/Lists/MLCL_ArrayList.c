@@ -20,165 +20,113 @@
 #include <assert.h>
 #include <string.h>
 
-ArrayListDescriptor * array_list_descriptor(){
-    ArrayListDescriptor * ald;
-    ald = (ArrayListDescriptor *) malloc(sizeof(ArrayListDescriptor));
-    if(!ald) return NULL;
-    /*ll_descriptor->add = linked_list_add_;*/
-    /*al_d->ordered_add = linked_list_ordered_add;
-    ald->reverse_ordered_add = linked_list_reverse_ordered_add;
-    ald->append = linked_list_append;
-    ald->prepend = linked_list_prepend;
-    ald->insert = linked_list_insert;
-    ald->search = linked_list_search;
-    ald->remove = linked_list_remove;
-    */
-
-    ald->append = array_list_append;
-    ald->insert = array_list_insert;
-    ald->assign_i = array_list_assign_i;
-    ald->pop = array_list_pop;
-    ald->pop_i = array_list_pop_i;
-    ald->search = array_list_search;
-    ald->binary_search = array_list_binary_search;
-    /* Sort */
-    ald->is_sorted = array_list_is_sorted;
-    ald->bublle_sort = array_list_bublle_sort;
-    ald->selection_sort = array_list_selection_sort;
-    ald->insertion_sort = array_list_insertion_sort;
-    ald->quick_sort = array_list_quick_sort;
-    ald->merge_sort = array_list_merge_sort;
-    ald->make_space = array_list_make_space;
-    ald->update_space = array_list_update_space;
-    /* Print */
-    ald->print_i = array_list_print_i;
-    ald->print = array_list_print;
-    ald->fprint_i = array_list_fprint_i;
-    ald->fprint = array_list_fprint;
-    ald->to_dot_ = array_list_to_dot_;
-    ald->to_dot = array_list_to_dot;
-    ald->empty = array_list_empty;
-    ald->free = array_list_free;
-
-    /* al_d->to_dot = linked_list_to_dot; */
-    /* Held type */
-    ald->type_descriptor = NULL;
-    return ald;
-}
-
-ArrayList * array_list_builder(ArrayListDescriptor * descriptor){
-    ArrayList * al;
-    assert(descriptor);
-    if(!(al = (ArrayList *) malloc(sizeof(ArrayList))))
-        return NULL;
-    al->array = (void **) calloc(ARRAY_LIST_BLOCK_SIZE, sizeof(void *));
-    al->count = 0;
-    al->size = ARRAY_LIST_BLOCK_SIZE;
-    al->d = descriptor;
-    return al;
-}
-
 ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *)){
-    ArrayListDescriptor * ald;
-    assert(type_manifest);
-    if(!(ald = array_list_descriptor()))
-        return NULL;
-    if(!(ald->type_descriptor = new_type_descriptor(type_manifest)))
-        return NULL;
-    return array_list_builder(ald);
+    ArrayList * list;
+    if(!type_manifest) return NULL;
+    list = (ArrayList *) malloc(sizeof(ArrayList));
+    if(!list) return NULL;
+    list->array = (void **) calloc(ARRAY_LIST_BLOCK_SIZE, sizeof(void *));
+    list->count = 0;
+    list->size = ARRAY_LIST_BLOCK_SIZE;
+    strcpy(list->separator, ", ");
+    list->td = new_type_descriptor(type_manifest);
+    if(!list->td){
+        array_list_free(&list);
+    }
+    return list;
 }
 
-int array_list_make_space(ArrayList *l){
-    if(!l) return 0;
-    if(l->size == l->count){
+int array_list_make_space(ArrayList *self){
+    if(!self) return 0;
+    if(self->size == self->count){
         void ** tmp;
-        tmp = (void **) realloc(l->array,
-                                (l->size + ARRAY_LIST_BLOCK_SIZE) * sizeof(void *));
+        tmp = (void **) realloc(self->array,
+                                (self->size + ARRAY_LIST_BLOCK_SIZE) * sizeof(void *));
         if(!tmp) return 0;
-        l->size += ARRAY_LIST_BLOCK_SIZE;
-        l->array = tmp;
+        self->size += ARRAY_LIST_BLOCK_SIZE;
+        self->array = tmp;
     }
     return 1;
 }
 
-int array_list_update_space(ArrayList *l){
+int array_list_update_space(ArrayList *self){
     int n_blocks;
-    if(!l) return 0;
-    n_blocks = l->count / ARRAY_LIST_BLOCK_SIZE;
-    if(l->count % ARRAY_LIST_BLOCK_SIZE != 0) n_blocks++;
-    if((l->size / ARRAY_LIST_BLOCK_SIZE) - n_blocks >= ARRAY_LIST_MAX_EMPTY_BLOCKS){
+    if(!self) return 0;
+    n_blocks = self->count / ARRAY_LIST_BLOCK_SIZE;
+    if(self->count % ARRAY_LIST_BLOCK_SIZE != 0) n_blocks++;
+    if((self->size / ARRAY_LIST_BLOCK_SIZE) - n_blocks >= ARRAY_LIST_MAX_EMPTY_BLOCKS){
         int new_size;
         void ** tmp;
         new_size = n_blocks * ARRAY_LIST_BLOCK_SIZE + ARRAY_LIST_BLOCK_SIZE;
-        if(!(tmp = (void **) realloc(l->array, new_size * sizeof(void *))))
+        if(!(tmp = (void **) realloc(self->array, new_size * sizeof(void *))))
             return 0;
-        l->size = new_size;
-        l->array = tmp;
+        self->size = new_size;
+        self->array = tmp;
     }
     return 1;
 }
 
-int array_list_append(ArrayList *l, const void * data){
-    if(!l) return 0;
-    if(!array_list_make_space(l)) {
+int array_list_append(ArrayList *self, void * data){
+    if(!self) return 0;
+    if(!array_list_make_space(self)) {
         return 0;
     }
-    l->array[l->count] = l->d->type_descriptor->copy(data);
-    l->count++;
-    if(!data && !l->array[l->count]) return 0;
+    self->array[self->count] = data;
+    self->count++;
+    if(!data && !self->array[self->count]) return 0;
     return 1;
 }
 
-int array_list_insert(ArrayList *l, int i, const void * data){
+int array_list_insert(ArrayList *self, int i, void * data){
     int j;
-    if(!l) return 0;
-    l->d->make_space(l);
-    l->count++;
-    for(j = l->count; j > i; j--){
-        l->array[j] = l->array[j - 1];
+    if(!self) return 0;
+    array_list_make_space(self);
+    self->count++;
+    for(j = self->count; j > i; j--){
+        self->array[j] = self->array[j - 1];
     }
-    l->array[i] = l->d->type_descriptor->copy(data);
+    self->array[i] = data;
     return 1;
 }
 
-int array_list_assign_i(ArrayList *l, int i, const void * data){
-    if(!l) return 0;
-    if(i < 0 || i > l->count) return 0;
-    if(!array_list_make_space(l)) {
+int array_list_assign_i(ArrayList *self, int i, void * data){
+    if(!self) return 0;
+    if(i < 0 || i > self->count) return 0;
+    if(!array_list_make_space(self)) {
         return 0;
     }
-    if(i == l->count){
-        l->array[i] = l->d->type_descriptor->copy(data);
-        l->count++;
+    if(i == self->count){
+        self->array[i] = data;
+        self->count++;
     }else{
-        l->d->type_descriptor->free_data(l->array[i]);
-        l->array[i] = l->d->type_descriptor->copy(data);
+        self->td->data_free(self->array[i]);
+        self->array[i] = data;
     }
     return 1;
 }
 
-void * array_list_pop_i(ArrayList *l, int index){
+void * array_list_pop_i(ArrayList *self, int index){
     int i;
     void * tmp;
-    if(!l) return NULL;
-    if(l->count <= 0) return NULL;
-    tmp = l->array[index];
-    for(i = index; i < l->count - 1; i++){
-        l->array[i] = l->array[i + 1];
+    if(!self) return NULL;
+    if(self->count <= 0) return NULL;
+    tmp = self->array[index];
+    for(i = index; i < self->count - 1; i++){
+        self->array[i] = self->array[i + 1];
     }
-    l->count--;
-    array_list_update_space(l);
+    self->count--;
+    array_list_update_space(self);
     return tmp;
 }
 
-void * array_list_pop(ArrayList *l){
+void * array_list_pop(ArrayList *self){
     void * tmp;
-    if(!l) return NULL;
-    if(l->count <= 0) return NULL;
-    tmp = l->array[l->count - 1];
-    l->array[l->count - 1] = NULL;
-    l->count--;
-    array_list_update_space(l);
+    if(!self) return NULL;
+    if(self->count <= 0) return NULL;
+    tmp = self->array[self->count - 1];
+    self->array[self->count - 1] = NULL;
+    self->count--;
+    array_list_update_space(self);
     return tmp;
 }
 
@@ -187,25 +135,25 @@ void * array_list_pop(ArrayList *l){
  * @param l
  * @param length
  * @param data
- * @param cmp must return -1, 0, 1
+ * @param cmp must return 1 or 0
  * @param res
  * @return
  */
-static int array_list_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
+static int array_list_search_(void **l, int length, const void *data, int (*filter) (const void *, const void *), int * r_index){
     int i;
     if(!*l) return 0;
     for(i = 0; i < length; i++){
-        if(cmp(data, l[i]) == 0){
-            if(res) *res = i;
+        if(filter(l[i], data)){
+            if(r_index) *r_index = i;
             return 1;
         }
     }
     return 0;
 }
 
-int array_list_search(ArrayList *l, const void *data, int * res){
-    if(!l) return -1;
-    return array_list_search_(l->array, l->count, data, l->d->type_descriptor->cmp, res);
+int array_list_search(ArrayList *self, const void *data, int (*filter) (const void *, const void *), int *r_index){
+    if(!self) return 0;
+    return array_list_search_(self->array, self->count, data, filter, r_index);
 }
 
 
@@ -217,7 +165,7 @@ int array_list_search(ArrayList *l, const void *data, int * res){
  * @param cmp must return -1, 0, 1
  * @return
  */
-static int array_list_binary_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * res){
+static int array_list_binary_search_(void **l, int length, const void *data, int (*cmp) (const void *, const void *), int * r_index){
     int mid, head1, head2, test, i;
     if(!*l) return 0;
     head1 = 0;
@@ -231,78 +179,78 @@ static int array_list_binary_search_(void **l, int length, const void *data, int
         }else if(test == -1){
             head2 = mid - 1;
         }else{
-            if(res) *res = mid;
+            if(r_index) *r_index = mid;
             return 1;
         }
         i++;
     }
     if(cmp(l[head1], data) == 0){
-        if(res) *res = head1;
+        if(r_index) *r_index = head1;
         return 1;
     }
     return 0;
 }
 
-int array_list_binary_search(ArrayList *l, const void *data, int * res){
-    if(!l) return -1;
-    return array_list_binary_search_(l->array, l->count - 1, data, l->d->type_descriptor->cmp, res);
+int array_list_binary_search(ArrayList *self, const void *data, int * r_index){
+    if(!self) return 0;
+    return array_list_binary_search_(self->array, self->count - 1, data, self->td->cmp, r_index);
 }
 
-int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *)){
+int array_list_is_sorted(const ArrayList *self, int (*cmp) (const void *, const void *)){
     int i;
-    if(!l) return 1;
-    if(l->count <= 1) return 1;
-    for(i = 0; i < l->count - 1; i++)
-        if(cmp(l->array[i], l->array[i + 1]) != 1)
+    if(!self) return 1;
+    if(self->count <= 1) return 1;
+    for(i = 0; i < self->count - 1; i++)
+        if(cmp(self->array[i], self->array[i + 1]) != 1)
             return 0;
     return 1;
 }
 
-void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+void array_list_bublle_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
     int i, j;
     void * tmp;
-    if(!l) return;
-    for(i = 0; i < l->count - 1; i++){
-        for(j = l->count - 1; j > i; j--){
-            if(cmp(l->array[j], l->array[j - 1]) == 1){
-                tmp = l->array[j - 1];
-                l->array[j - 1] = l->array[j];
-                l->array[j] = tmp;
+    if(!self) return;
+    for(i = 0; i < self->count - 1; i++){
+        for(j = self->count - 1; j > i; j--){
+            if(cmp(self->array[j], self->array[j - 1]) == 1){
+                tmp = self->array[j - 1];
+                self->array[j - 1] = self->array[j];
+                self->array[j] = tmp;
             }
         }
     }
 }
 
-void array_list_insertion_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+void array_list_insertion_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
     int i, j;
     void * tmp;
-    if(!l) return;
-    for(i = 0; i < l->count; i++){
-        tmp = l->array[i];
+    if(!self) return;
+    for(i = 0; i < self->count; i++){
+        tmp = self->array[i];
         j = i;
-        while(j > 0 && cmp(tmp, l->array[j - 1]) == 1){
-            l->array[j] = l->array[j - 1];
+        while(j > 0 && cmp(tmp, self->array[j - 1]) == 1){
+            self->array[j] = self->array[j - 1];
             j--;
         }
-        l->array[j] = tmp;
+        self->array[j] = tmp;
     }
 }
 
-void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
+void array_list_selection_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
     int i, i_min;
     int min, j;
     void * tmp;
-    if(!l) return;
-    for(i = 0; i < l->count - 1; i++){
+    if(!self) return;
+    for(i = 0; i < self->count - 1; i++){
         i_min = min = i;
         /* Find the index of the min */
-        for(j = i_min; j < l->count; j++)
-            if(cmp(l->array[j], l->array[min]) == 1)
+        for(j = i_min; j < self->count; j++)
+            if(cmp(self->array[j], self->array[min]) == 1)
                 i_min = min = j;
         /* Switch values */
-        tmp = l->array[i];
-        l->array[i] = l->array[i_min];
-        l->array[i_min] = tmp;
+        tmp = self->array[i];
+        self->array[i] = self->array[i_min];
+        self->array[i_min] = tmp;
     }
 }
 
@@ -349,9 +297,9 @@ void array_list_quick_sort_(void ** l, int start, int end, int (*cmp) (const voi
     array_list_quick_sort_(l, pivot + 1, end, cmp);
 }
 
-void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
-    if(!l) return;
-    array_list_quick_sort_(l->array, 0, l->count - 1, cmp);
+void array_list_quick_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
+    if(!self) return;
+    array_list_quick_sort_(self->array, 0, self->count - 1, cmp);
 }
 
 
@@ -409,95 +357,87 @@ static void _array_list_merge_sort(void ** l, int start, int end, int (*cmp) (co
     _array_list_merge_sort_merge(l, start, mid, end, cmp);
 }
 
-void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *)){
-    _array_list_merge_sort(l->array, 0, l->count - 1, cmp);
+void array_list_merge_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
+    _array_list_merge_sort(self->array, 0, self->count - 1, cmp);
 }
 
-void array_list_print_i(const ArrayList  *l, int i) {
-    l->d->fprint_i(stdout, l, i);
+void array_list_print_i(const ArrayList  *self, int i) {
+    array_list_fprint_i(self, stdout, i);
 }
 
-void array_list_fprint_i(FILE * stream, const ArrayList  *l, int i) {
-    if(i < 0 || i >= l->count)
+void array_list_fprint_i(const ArrayList *self, FILE *stream, int i) {
+    if(i < 0 || i >= self->count)
         return;
-    l->d->type_descriptor->fprint(stream, l->array[i]);
+    self->td->fprint(stream, self->array[i]);
 }
 
-void array_list_print(const ArrayList  *l){
-    l->d->fprint(stdout, l);
+void array_list_print(const ArrayList  *self){
+    array_list_fprint(self, stdout);
 }
 
-void array_list_fprint(FILE * stream, const ArrayList * l){
+void array_list_fprint(const ArrayList *self, FILE * stream){
     int i;
-    if(!l) return;
-    if(l->count <= 0) return;
-    for(i = 0; i < l->count - 1; i++){
-        l->d->type_descriptor->fprint(stream, l->array[i]);fprintf(stream, "%s", l->d->type_descriptor->separator);
+    if(!self) return;
+    if(self->count <= 0) return;
+    for(i = 0; i < self->count - 1; i++){
+        self->td->fprint(stream, self->array[i]);
+        fprintf(stream, "%s", self->td->separator);
     }
-    l->d->type_descriptor->fprint(stream, l->array[i]);
+    self->td->fprint(stream, self->array[i]);
 }
 
-void array_list_empty(ArrayList *l){
+void array_list_empty(ArrayList *self){
     int i;
-    if(!l) return;
+    if(!self) return;
     /* Free the elements */
-    if(l->array){
-        for (i = 0; i < l->count; ++i) {
-            if(l->array[i])
-                l->d->type_descriptor->free_data(&l->array[i]);
+    if(self->array){
+        for (i = 0; i < self->count; ++i) {
+            if(self->array[i])
+                self->td->data_free(&self->array[i]);
         }
     }
-    free(l->array);
+    free(self->array);
     /* Init */
-    l->array = (void **) calloc(ARRAY_LIST_BLOCK_SIZE, sizeof(void *));
-    l->count = 0;
-    l->size = ARRAY_LIST_BLOCK_SIZE;
+    self->array = (void **) calloc(ARRAY_LIST_BLOCK_SIZE, sizeof(void *));
+    self->count = 0;
+    self->size = ARRAY_LIST_BLOCK_SIZE;
 }
 
-void array_list_free_descriptor(ArrayListDescriptor ** ald){
-    if(!*ald) return;
-    if((*ald)->type_descriptor)
-        type_descriptor_free(&(*ald)->type_descriptor);
-    free(*ald);
-    *ald = NULL;
-}
-
-void array_list_free(ArrayList ** l){
+void array_list_free(ArrayList **self){
     int i;
-    if(!*l) return;
-    if((*l)->array){
-        for (i = 0; i < (*l)->count; ++i) {
-            if((*l)->array[i])
-                (*l)->d->type_descriptor->free_data(&(*l)->array[i]);
+    if(!*self) return;
+    if((*self)->array){
+        for (i = 0; i < (*self)->count; ++i) {
+            if((*self)->array[i])
+                (*self)->td->data_free(&(*self)->array[i]);
         }
     }
-    free((*l)->array);
-    if((*l)->d->type_descriptor)
-        array_list_free_descriptor(&(*l)->d);
-    free(*l);
-    *l = NULL;
+    free((*self)->array);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
 }
 
-void array_list_to_dot_(const ArrayList *l, FILE * stream){
+void array_list_to_dot_(const ArrayList *self, FILE *stream){
     int i;
-    if(!stream || !l) return;
+    if(!stream || !self) return;
     fprintf(stream, "digraph {\n"
             "\n"
             "    node [shape=record, fontcolor=black, fontsize=14, width=4.75, fixedsize=true];\n");
     fprintf(stream, "  values [label=\"");
-    for(i = 0; i < l->count - 1; i++){
-        array_list_fprint_i(stream, l, i);
+    for(i = 0; i < self->count - 1; i++){
+        array_list_fprint_i(self, stream, i);
         fprintf(stream, " | ");
     }
-    array_list_fprint_i(stream, l, l->count - 1);
+    array_list_fprint_i(self, stream, self->count - 1);
     fprintf(stream, "\"];\n}");
 }
 
-void array_list_to_dot(const ArrayList *l, const char * path){
+void array_list_to_dot(const ArrayList *self, const char *path){
     FILE * file;
     if(!path) return;
     if(!(file = fopen(path, "w")))
         return;
-    array_list_to_dot_(l, file);
+    array_list_to_dot_(self, file);
     fclose(file);
 }

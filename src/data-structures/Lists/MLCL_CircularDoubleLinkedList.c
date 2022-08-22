@@ -18,53 +18,229 @@
 
 #include "../../../include/data-structures/Lists/MLCL_CircularDoubleLinkedList.h"
 #include "../../../include/data-structures/Lists/MLCL_DoubleLinkedList.h"
+#include <string.h>
+
+/***************************************************
+ * DoubleLinkedListNode
+ ***************************************************/
 
 
 
-DoubleLinkedCell * circular_double_linked_list_builder(const void * data, CircularDoubleLinkedListDescriptor * descriptor){
-    DoubleLinkedCell * dlc;
-    if((dlc = double_linked_list_builder(data, descriptor))){
-        /* Circular */
-        dlc->next = dlc;
-        dlc->prev = dlc;
-    }
-    return dlc;
+DoubleLinkedListNode * new_circular_double_linked_list_node(void *data){
+    DoubleLinkedListNode *node;
+    node = new_double_linked_list_node(data);
+    if(!node) return NULL;
+    node->prev = node->next = node;
+    return node;
+}
+int circular_double_linked_list_node_insert(DoubleLinkedListNode **self, void *data){
+    return double_linked_list_node_insert(self, data);
+}
+void * circular_double_linked_list_node_extract(DoubleLinkedListNode **self){
+    return double_linked_list_node_extract(self);
+}
+void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *)){
+    double_linked_list_node_fprint(self, stream, data_fprint);
+}
+void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (FILE *, const void *)){
+    circular_double_linked_list_node_fprint(self, stdout, data_fprint);
+}
+void circular_double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data)){
+    double_linked_list_node_free(self, data_free_f);
 }
 
-CircularDoubleLinkedListDescriptor * circular_double_linked_list_descriptor(){
-    DoubleLinkedListDescriptor * dlld;
-    if((dlld = double_linked_list_descriptor())){
-        /* Override affected function */
-        dlld->add_ = circular_double_linked_list_add_;
-        dlld->prepend = circular_double_linked_list_prepend;
-        dlld->append = circular_double_linked_list_append;
-        dlld->free = circular_double_linked_list_free;
-        dlld->search = circular_double_linked_list_search;
-        dlld->shift = circular_double_linked_list_shift;
-        dlld->pop = circular_double_linked_list_pop;
-        dlld->print = circular_double_linked_list_print;
-        dlld->fprint = circular_double_linked_list_fprint;
-        dlld->to_dot = circular_double_linked_list_to_dot;
-    }
-    return dlld;
-}
+/***************************************************
+ * CircularDoubleLinkedList
+ ***************************************************/
 
-DoubleLinkedCell * new_circular_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
-    CircularDoubleLinkedListDescriptor * cdlld;
+
+CircularDoubleLinkedList * new_circular_double_linked_list(void (*type_manifest) (TypeDescriptor *td)){
+    CircularDoubleLinkedList *list;
     if(!type_manifest) return NULL;
-    if((cdlld = circular_double_linked_list_descriptor()))
-        cdlld->type_descriptor = new_type_descriptor(type_manifest);
-    return circular_double_linked_list_builder(data, cdlld);
+    list = (CircularDoubleLinkedList *) malloc(sizeof(CircularDoubleLinkedList));
+    if(!list) return NULL;
+    list->head = NULL;
+    list->length = 0;
+    list->td = new_type_descriptor(type_manifest);
+    strcpy(list->separator, ", ");
+    if(!list->td) return NULL;
+    return list;
 }
 
-int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
-    DoubleLinkedCell * new_cell;
-    DoubleLinkedCell * tmp;
+static int circular_double_linked_list_append_(DoubleLinkedListNode **self, void * data){
+    DoubleLinkedListNode *node;
+    if(!*self)
+        return 0;
+    node = new_circular_double_linked_list_node(data);
+    if(!node) return 0;
+    node->prev = (*self)->prev;
+    node->next = *self;
+    (*self)->prev->next = node;
+    (*self)->prev = node;
+    return 1;
+}
+int circular_double_linked_list_append(DoubleLinkedList *self, void *data){
+    if(!self || !self->head || !data) return 0;
+    return circular_double_linked_list_append_(&self->head, data) && ++self->length;
+}
+/*
+int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (const void *, const void *));
+*/
+static int circular_double_linked_list_prepend_(DoubleLinkedListNode **self, void *data){
+    DoubleLinkedListNode *node, *tmp;
+    if(!*self)
+        return 0;
+    node = new_circular_double_linked_list_node(data);
+    if(!node) return 0;
+    /* Save the head */
+    tmp = *self;
+    /* Change the head */
+    *self = node;
+    /* Link prev save cell to new head */
+    tmp->prev->next = node;
+    /* link the head to previous head */
+    node->prev = tmp->prev;
+    tmp->prev = node;
+    node->next = tmp;
+    return 1;
+}
+int circular_double_linked_list_prepend(DoubleLinkedList *self, void *data){
+    if(!self || !self->head || !data) return 0;
+    return circular_double_linked_list_prepend_(&self->head, data) && ++self->length;
+}
+
+static void * circular_double_linked_list_shift_(DoubleLinkedListNode **self){
+    DoubleLinkedListNode * tmp;
+    void * data;
+    if(!self) return NULL;
+    tmp = *self;
+    data = tmp->data;
+    *self = tmp->next;
+    (*self)->prev = tmp->prev;
+    tmp->prev->next = *self;
+    tmp->next = tmp->prev = NULL;
+    free(tmp);
+    return data;
+}
+void * circular_double_linked_list_shift(DoubleLinkedList *self){
+    void *tmp;
+    if(!self || !self->head) return NULL;
+    tmp = circular_double_linked_list_shift_(&self->head);
+    if(tmp) --self->head;
+    return tmp;
+}
+
+static void * circular_double_linked_list_pop_(DoubleLinkedListNode **self){
+    if(!*self) return NULL;
+    return circular_double_linked_list_node_extract(&(*self)->prev);
+}
+
+void * circular_double_linked_list_pop(DoubleLinkedList *self){
+    void *tmp;
+    if(!self || !self->head) return NULL;
+    tmp = circular_double_linked_list_pop_(&self->head);
+    if(tmp) --self->length;
+    return  tmp;
+}
+static void * circular_double_linked_list_search_(const DoubleLinkedListNode *self, int (*filter) (const void *)){
+    DoubleLinkedListNode *tmp;
+    if(!self) return 0;
+    if(!filter(self->data))
+        return self->data;
+    tmp = self->next;
+    while(tmp->next != self){
+        if(filter(tmp->data))
+            return tmp;
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+void * circular_double_linked_list_search(const DoubleLinkedList *self, int (*filter) (const void *)){
+    if(!self || !self->head || !filter) return NULL;
+    return circular_double_linked_list_search_(self->head, filter);
+}
+
+void circular_double_linked_list_fprint(const CircularDoubleLinkedList *self, FILE * stream){
+    DoubleLinkedListNode *tmp;
+    if(!self || !stream) return;
+    tmp = self->head->next;
+    while(tmp->next != self->head){
+        circular_double_linked_list_node_fprint(tmp, stream, self->td->fprint);
+        fprintf(stream, "%s", self->separator);
+        tmp = tmp->next;
+    }
+    circular_double_linked_list_node_fprint(tmp, stream, self->td->fprint);
+}
+
+void circular_double_linked_list_print(const CircularDoubleLinkedList *self){
+    circular_double_linked_list_fprint(self, stdout);
+}
+
+void circular_double_linked_list_to_dot_(CircularDoubleLinkedList *self, FILE * stream){
+    DoubleLinkedListNode *tmp;
+    if(!self || !self->head || !stream) return;
+    tmp = self->head;
+    while(tmp->next != self->head){
+        fprintf(stream, "  n%p [label=\"", (void *) tmp);
+        circular_double_linked_list_node_fprint(tmp, stream, self->td->fprint);
+        fprintf(stream, "\"]\n");
+        fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+        fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
+        tmp = tmp->next;
+    }
+    fprintf(stream, "  n%p [label=\"", (void *) tmp);
+    circular_double_linked_list_node_fprint(tmp, stream, self->td->fprint);
+    fprintf(stream, "\"]\n");
+    fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+    fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
+}
+
+void circular_double_linked_list_to_dot(CircularDoubleLinkedList *self, const char * path){
+    FILE * stream;
+    if(!self || !path) return;
+    stream =fopen(path, "w");
+    if(!stream)
+        printf("File can't be opened\n");
+    fprintf(stream, "digraph {\n"
+                    "rankdir=\"LR\";\n"
+                    "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
+    );
+    circular_double_linked_list_to_dot_(self, stream);
+    fprintf(stream, "}\n");
+    fclose(stream);
+}
+
+void circular_double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data)){
+    DoubleLinkedListNode *tmp, *tmp_2;
+    if(!self || !self->head) return;
+    tmp = self->head->next;
+    while(tmp != self->head){
+        tmp_2 = tmp->next;
+        circular_double_linked_list_node_free(&tmp, data_free);
+        free(tmp);
+        tmp = tmp_2;
+    }
+    circular_double_linked_list_node_free(&self->head, data_free);
+    self->length = 0;
+}
+void circular_double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data)){
+    if(!*self || !(*self)->head) return;
+    circular_double_linked_list_clear(*self, data_free);
+    free(*self);
+    *self = NULL;
+}
+
+/****************************************************************
+ ****************************************************************/
+
+/*int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
+    DoubleLinkedListNode * new_cell;
+    DoubleLinkedListNode * tmp;
     if(!*cll) return 0;
-    /* Prepend */
+    *//* Prepend *//*
     if(cmp(data, (*cll)->data))
         return (*cll)->d->prepend(cll, data);
-    /* Insert */
+    *//* Insert *//*
     if(!(new_cell = double_linked_list_builder(data, (*cll)->d)))
         return 0;
     tmp = (*cll)->next;
@@ -78,150 +254,18 @@ int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void 
         }
         tmp = tmp->next;
     }
-    /* after "last" cell */
+    *//* after "last" cell *//*
     new_cell->next = tmp->next;
     tmp->next->prev = new_cell;
     tmp->next = new_cell;
     (*cll)->d->length++;
     return 1;
-}
-
-int circular_double_linked_list_prepend(CircularDoubleLinkedList * cdll, const void * data){
-    DoubleLinkedCell * cell;
-    CircularDoubleLinkedList tmp;
-    if(!*cdll)
-        return 0;
-    if(!(cell = double_linked_list_builder(data, (*cdll)->d)))
-        return 0;
-    /* Save the head */
-    tmp = *cdll;
-    /* Change the head */
-    *cdll = cell;
-    /* Link prev save cell to new head */
-    tmp->prev->next = cell;
-    /* link the head to previous head */
-    cell->prev = tmp->prev;
-    tmp->prev = cell;
-    cell->next = tmp;
-    cell->d->length++;
-    return 1;
-}
-
-int circular_double_linked_list_append(CircularDoubleLinkedList * cdll, const void * data){
-    DoubleLinkedCell * cell;
-    if(!*cdll)
-        return 0;
-    if(!(cell = double_linked_list_builder(data, (*cdll)->d)))
-        return 0;
-    cell->prev = (*cdll)->prev;
-    cell->next = *cdll;
-    (*cdll)->prev->next = cell;
-    (*cdll)->prev = cell;
-    cell->d->length++;
-    return 1;
-}
-
-CircularDoubleLinkedList circular_double_linked_list_search(CircularDoubleLinkedList cdll, const void * data){
-    CircularDoubleLinkedList tmp;
-    if(!cdll) return 0;
-    if(!cdll->d->type_descriptor->cmp(cdll->data, data))
-        return cdll;
-    tmp = cdll->next;
-    while(tmp->next != cdll){
-        if(!tmp->d->type_descriptor->cmp(tmp->data, data))
-            return tmp;
-        tmp = tmp->next;
-    }
-    return NULL;
-}
-
-void * circular_double_linked_list_shift(CircularDoubleLinkedList * cdll){
-    DoubleLinkedCell * tmp;
-    void * data;
-    if(!cdll) return NULL;
-    tmp = *cdll;
-    data = tmp->data;
-    *cdll = tmp->next;
-    (*cdll)->prev = tmp->prev;
-    tmp->prev->next = *cdll;
-    tmp->next = tmp->prev = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        double_linked_list_descriptor_free(&tmp->d);
-        *cdll = NULL;
-    }
-    free(tmp);
-    return data;
-}
-
-void * circular_double_linked_list_pop(CircularDoubleLinkedList * cdll){
-    if(!*cdll) return NULL;
-    return (*cdll)->d->extract(&(*cdll)->prev);
-}
+}*/
 
 
-void circular_double_linked_list_free(CircularDoubleLinkedList * cdll){
-    CircularDoubleLinkedList tmp;
-    CircularDoubleLinkedList tmp_2;
-    if(!*cdll) return;
-    tmp = (*cdll)->next;
-    while(tmp != *cdll){
-        tmp_2 = tmp->next;
-        tmp->d->type_descriptor->free_data(&tmp->data);
-        free(tmp);
-        tmp = tmp_2;
-    }
-    (*cdll)->d->type_descriptor->free_data(&(*cdll)->data);
-    double_linked_list_descriptor_free(&(*cdll)->d);
-    free(*cdll);
-    *cdll = NULL;
-}
+/*
 
-void circular_double_linked_list_print(CircularDoubleLinkedList cdll){
-    if(cdll) cdll->d->fprint(stdout, cdll);
-}
+    static int circular_double_linked_list_remove_(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+    static int circular_double_linked_list_remove_all_(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
 
-void circular_double_linked_list_fprint(FILE * stream, CircularDoubleLinkedList cdll){
-    CircularDoubleLinkedList tmp;
-    if(!cdll) return;
-    tmp = cdll->next;
-    while(tmp->next != cdll){
-        tmp->d->cell_fprint(stream, tmp); fprintf(stream, "%s", cdll->d->type_descriptor->separator);
-        tmp = tmp->next;
-    }
-    cdll->d->cell_fprint(stream, tmp);
-
-}
-
-void circular_double_linked_list_to_dot_(CircularDoubleLinkedList cdll, FILE * stream){
-    CircularDoubleLinkedList tmp;
-    tmp = cdll;
-    while(tmp->next != cdll){
-        fprintf(stream, "  n%p [label=\"", (void *) tmp);
-        tmp->d->cell_fprint(stream, tmp);
-        fprintf(stream, "\"]\n");
-        fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
-        fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
-        tmp = tmp->next;
-    }
-    fprintf(stream, "  n%p [label=\"", (void *) tmp);
-    tmp->d->cell_fprint(stream, tmp);
-    fprintf(stream, "\"]\n");
-    fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
-    fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
-}
-
-void circular_double_linked_list_to_dot(CircularDoubleLinkedList cdll, const char * dest_path){
-    FILE * stream;
-    if(!cdll) return;
-    stream =fopen(dest_path, "w");
-    if(!stream)
-        printf("File can't be opened\n");
-    fprintf(stream, "digraph {\n"
-                  "rankdir=\"LR\";\n"
-                  "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
-    );
-    circular_double_linked_list_to_dot_(cdll, stream);
-    fprintf(stream, "}\n");
-    fclose(stream);
-}
+ */

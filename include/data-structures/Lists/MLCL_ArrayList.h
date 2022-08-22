@@ -33,48 +33,9 @@ typedef struct s_array_list {
     void ** array; /**< the array */
     int count; /**< Number of elements, the length */
     int size; /**< Total available space allocated */
-    struct s_array_list_descriptor * d;
+    TypeDescriptor *td;
+    char separator[MLCL_SEPARATOR_LEN];
 } ArrayList;
-
-/**
- * @brief Descriptor of the array list
- * Even if not required for this type of struct
- * we keep the general syntax for mnemonic purpose mystruct->d(escriptor)->myfunction
- */
-typedef struct s_array_list_descriptor {
-    TypeDescriptor * type_descriptor;
-    int (*make_space) (ArrayList *l);
-    int (*update_space) (ArrayList *l);
-    int (*append) (ArrayList *, const void *);
-    int (*insert) (ArrayList *, int i, const void *);
-    int (*assign_i) (ArrayList *, int i, const void *);
-    void * (*pop) (ArrayList *);
-    void * (*pop_i) (ArrayList *, int i);
-    int (*search) (ArrayList *, const void *, int *);
-    int (*binary_search) (ArrayList *, const void *, int *);
-    int (*is_sorted) (const ArrayList *, int (*cmp) (const void *, const void *));
-    /* Sorting */
-    void (*bublle_sort) (ArrayList *, int (*cmp) (const void *, const void *));
-    void (*selection_sort) (ArrayList *, int (*cmp) (const void *, const void *));
-    void (*insertion_sort) (ArrayList *, int (*cmp) (const void *, const void *));
-    void (*quick_sort) (ArrayList *, int (*cmp) (const void *, const void *));
-    void (*merge_sort) (ArrayList *, int (*cmp) (const void *, const void *));
-    /* Print */
-    void (*print_i) (const ArrayList *, int);
-    void (*fprint_i) (FILE *, const ArrayList *, int);
-    void (*print) (const ArrayList *);
-    void (*fprint) (FILE *, const ArrayList *);
-    void (*to_dot_) (const ArrayList *, FILE *);
-    void (*to_dot) (const ArrayList *, const char *);
-    void (*empty) (ArrayList *);
-    void (*free) (ArrayList **);
-
-} ArrayListDescriptor;
-
-/**
- * @brief Return a new allocated array list pointer for a given array list descriptor
- */
-ArrayList * array_list_builder(ArrayListDescriptor * descriptor);
 
 /**
  * @brief The array list constructor
@@ -83,9 +44,9 @@ ArrayList * array_list_builder(ArrayListDescriptor * descriptor);
  */
 ArrayList * new_array_list(void (*type_manifest) (TypeDescriptor *));
 
-int array_list_make_space(ArrayList *l);
+int array_list_make_space(ArrayList *self);
 
-int array_list_update_space(ArrayList *l);
+int array_list_update_space(ArrayList *self);
 
 /**
  * @brief Append allocated copy of the data to the end of the list
@@ -93,7 +54,7 @@ int array_list_update_space(ArrayList *l);
  * @param data
  * @return
  */
-int array_list_append(ArrayList *l, const void * data);
+int array_list_append(ArrayList *self, void * data);
 
 /**
  * @brief Insert data at index
@@ -102,7 +63,7 @@ int array_list_append(ArrayList *l, const void * data);
  * @param data
  * @return
  */
-int array_list_insert(ArrayList *l, int i, const void * data);
+int array_list_insert(ArrayList *self, int i, void * data);
 
 /**
  * @brief At a given index, free and assign new data
@@ -111,14 +72,14 @@ int array_list_insert(ArrayList *l, int i, const void * data);
  * @param data
  * @return
  */
-int array_list_assign_i(ArrayList *l, int i, const void * data);
+int array_list_assign_i(ArrayList *self, int i, void * data);
 
 /**
  * @brief Remove and return last value of the list
  * @param l
  * @return
  */
-void * array_list_pop(ArrayList *l);
+void * array_list_pop(ArrayList *self);
 
 /**
  * @brief Remove and return data at given index of the list.
@@ -126,7 +87,7 @@ void * array_list_pop(ArrayList *l);
  * @param l
  * @return
  */
-void * array_list_pop_i(ArrayList *l, int i);
+void * array_list_pop_i(ArrayList *self, int i);
 
 /**
  * @brief Naive search
@@ -135,7 +96,7 @@ void * array_list_pop_i(ArrayList *l, int i);
  * @param res (pass NULL if unwanted)
  * @return 1 if exists, 0 else
  */
-int array_list_search(ArrayList *l, const void *data, int * res);
+int array_list_search(ArrayList *self, const void *data, int (*filter) (const void *, const void*), int *r_index);
 
 /**
  * @brief
@@ -143,7 +104,7 @@ int array_list_search(ArrayList *l, const void *data, int * res);
  * @param res the index of the value will be return (pass NULL if unwanted)
  * @return 1 if exists, 0 else
  */
-int array_list_binary_search(ArrayList *l, const void *data, int * res);
+int array_list_binary_search(ArrayList *self, const void *data, int *r_index);
 
 /**
  * Return Check if list is sorted
@@ -151,34 +112,34 @@ int array_list_binary_search(ArrayList *l, const void *data, int * res);
  * @param cmp comparison function
  * @return 1 or 0
  */
-int array_list_is_sorted(const ArrayList *l, int (*cmp) (const void *, const void *));
+int array_list_is_sorted(const ArrayList *self, int (*cmp) (const void *, const void *));
 
-void array_list_bublle_sort(ArrayList *l, int (*cmp) (const void *, const void *));
-void array_list_selection_sort(ArrayList *l, int (*cmp) (const void *, const void *));
-void array_list_insertion_sort(ArrayList *l, int (*cmp) (const void *, const void *));
-void array_list_quick_sort(ArrayList *l, int (*cmp) (const void *, const void *));
-void array_list_merge_sort(ArrayList *l, int (*cmp) (const void *, const void *));
+void array_list_bublle_sort(ArrayList *self, int (*cmp) (const void *, const void *));
+void array_list_selection_sort(ArrayList *self, int (*cmp) (const void *, const void *));
+void array_list_insertion_sort(ArrayList *self, int (*cmp) (const void *, const void *));
+void array_list_quick_sort(ArrayList *self, int (*cmp) (const void *, const void *));
+void array_list_merge_sort(ArrayList *self, int (*cmp) (const void *, const void *));
 
 /**
  * @brief print data at a given index
  * @param l
  * @param i
  */
-void array_list_print_i(const ArrayList *l, int i);
+void array_list_print_i(const ArrayList *self, int i);
 
 /**
  * @brief Print on given stream the data at a given index
  * @param l
  * @param i
  */
-void array_list_fprint_i(FILE * stream, const ArrayList *l, int i);
+void array_list_fprint_i(const ArrayList *self, FILE * stream, int i);
 
 /**
  * @brief Print the list on stdout
  * @param l
  * @return
  */
-void array_list_print(const ArrayList *l);
+void array_list_print(const ArrayList *self);
 
 /**
  * @brief Print the list on the given stream
@@ -186,24 +147,18 @@ void array_list_print(const ArrayList *l);
  * @param l
  * @return
  */
-void array_list_fprint(FILE * stream, const ArrayList *l);
+void array_list_fprint(const ArrayList *self, FILE * stream);
 
-void array_list_empty(ArrayList *l);
-
-/**
- * @brief free the descriptor of the array list
- * @param ald
- */
-void array_list_free_descriptor(ArrayListDescriptor ** ald);
+void array_list_empty(ArrayList *self);
 
 /**
  * @brief Free the array list
  * @param l
  */
-void array_list_free(ArrayList ** l);
+void array_list_free(ArrayList **self);
 
-void array_list_to_dot_(const ArrayList *l, FILE * stream);
-void array_list_to_dot(const ArrayList *l, const char * path);
+void array_list_to_dot_(const ArrayList *self, FILE * stream);
+void array_list_to_dot(const ArrayList *self, const char * path);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */

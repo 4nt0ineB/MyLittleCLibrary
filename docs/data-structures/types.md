@@ -43,7 +43,7 @@ void movie_m(TypeDescriptor * td){
     td->print = movie_print;  
     td->fprint = movie_fprint;  
     td->copy = movie_copy;  
-    td->free_data = movie_free;  
+    td->data_free = movie_free;  
     td->eq = movie_eq;  
     td->lt = movie_lt;  
     td->le = movie_le;  

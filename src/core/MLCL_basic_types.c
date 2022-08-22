@@ -35,14 +35,12 @@ char * new_str(const char *str){
 void str_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    strcpy(type_descriptor->separator, ", ");
-
     type_descriptor->manifest = str_m;
     type_descriptor->cmp = str_cmp;
     type_descriptor->print = str_print;
     type_descriptor->fprint = str_fprint;
     type_descriptor->copy = str_copy;
-    type_descriptor->free_data = str_free;
+    type_descriptor->data_free = str_free;
     type_descriptor->eq = str_eq;
     type_descriptor->lt = str_lt;
     type_descriptor->le = str_le;
@@ -113,13 +111,12 @@ char * new_char(char c){
 void char_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    strcpy(type_descriptor->separator, ", ");
     type_descriptor->manifest = char_m;
     type_descriptor->cmp = char_cmp;
     type_descriptor->print = char_print;
     type_descriptor->fprint = char_fprint;
     type_descriptor->copy = char_copy;
-    type_descriptor->free_data = char_free;
+    type_descriptor->data_free = char_free;
     type_descriptor->eq = char_eq;
     type_descriptor->lt = char_lt;
     type_descriptor->le = char_le;
@@ -188,15 +185,12 @@ int * new_int(int x){
 void int_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(int);
-    strcpy(type_descriptor->separator, ", ");
-
-
     type_descriptor->manifest = int_m;
     type_descriptor->cmp = int_cmp;
     type_descriptor->print = int_print;
     type_descriptor->fprint = int_fprint;
     type_descriptor->copy = int_copy;
-    type_descriptor->free_data = int_free;
+    type_descriptor->data_free = int_free;
     type_descriptor->eq = int_eq;
     type_descriptor->lt = int_lt;
     type_descriptor->le = int_le;
@@ -265,14 +259,12 @@ float * new_float(float x){
 void float_m(TypeDescriptor * type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
-    strcpy(type_descriptor->separator, ", ");
-
     type_descriptor->manifest = float_m;
     type_descriptor->cmp = float_cmp;
     type_descriptor->print = float_print;
     type_descriptor->fprint = float_fprint;
     type_descriptor->copy = float_copy;
-    type_descriptor->free_data = float_free;
+    type_descriptor->data_free = float_free;
     type_descriptor->eq = float_eq;
     type_descriptor->lt = float_lt;
     type_descriptor->le = float_le;

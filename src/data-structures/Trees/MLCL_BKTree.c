@@ -202,7 +202,7 @@ void bk_tree_free(BKTree *root){
     (*root)->d->free(&(*root)->siblings);
 
     if((*root)->data)
-        (*root)->d->type_descriptor->free_data(&(*root)->data);
+        (*root)->d->type_descriptor->data_free(&(*root)->data);
 
     /* The tree will decrease of 1 node. */
     (*root)->d->n--;

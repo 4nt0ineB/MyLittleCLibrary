@@ -26,19 +26,17 @@
 #define MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN 16
 #define MLCL_SEPARATOR_LEN 16
 
-
 /**
  * @brief Interface for all types manipulated by the structs of the library.
  */
-typedef struct s_type_descriptor {
+typedef struct TypeDescriptor {
     size_t data_size;
-    char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN];
-    void (*manifest) (struct s_type_descriptor*); /**<  type_manifest used to make the type descriptor */
+    void (*manifest) (struct TypeDescriptor*); /**<  type_manifest used to make the type descriptor */
     int (*cmp) (const void *, const void *); /**< Comparison function */
     void (*print) (const void *); /**< Printing function, shorthand to fprint */
     void (*fprint) (FILE *, const void *); /**< Printing function on given stream */
     void * (*copy) (const void *); /**< Function to allocate a copy of a data of the associated type */
-    void (*free_data) (void *); /**< Function to free the data */
+    void (*data_free) (void *); /**< Function to free the data */
     int (*eq) (const void *, const void *); /**< equal test */
     int (*lt) (const void *, const void *); /**< less than test */
     int (*le) (const void *, const void *); /**< less equal test */
@@ -58,6 +56,6 @@ TypeDescriptor * new_type_descriptor(void (*type_manifest) (TypeDescriptor *type
  * Free a type descriptor
  * @param td type descriptor
  */
-void type_descriptor_free(TypeDescriptor *td);
+void type_descriptor_free(TypeDescriptor **td);
 
 #endif /* MYLITTLECLIBRARY_MLCL_TYPES_H */

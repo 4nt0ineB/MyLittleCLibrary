@@ -24,20 +24,20 @@
 /***************************************************
  * CircularLinkedListNode
  ***************************************************/
-CircularLinkedListNode * new_circular_linked_list_node(void *data){
-    CircularLinkedListNode *node;
+LinkedListNode * new_circular_linked_list_node(void *data){
+    LinkedListNode *node;
     node = new_linked_list_node(data);
     if(!node) return NULL;
     node->next = node;
     return node;
 }
-void circular_linked_list_node_fprint(const CircularLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *)){
+void circular_linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *)){
     linked_list_node_fprint(self, stream, data_fprint);
 }
-void circular_linked_list_node_print(const CircularLinkedListNode *self, void (data_fprint) (FILE *, const void *)){
+void circular_linked_list_node_print(const LinkedListNode *self, void (data_fprint) (FILE *, const void *)){
     linked_list_node_print(self, data_fprint);
 }
-void circular_linked_list_node_free(CircularLinkedListNode *self, void (*data_free) (void *data)){
+void circular_linked_list_node_free(LinkedListNode **self, void (*data_free) (void *)){
     linked_list_node_free(self, data_free);
 }
 
@@ -95,11 +95,11 @@ void * circular_linked_list_shift(LinkedList *self){
     tmp_2 = self->head->next;
     self->head = tmp_2;
     self->length--;
-    circular_linked_list_node_free(tmp_2, self->td->free_data);
+    circular_linked_list_node_free(&tmp_2, self->td->data_free);
     return data;
 }
 void * circular_linked_list_pop(LinkedList *self){
-    CircularLinkedListNode *tmp, *tmp_2;
+    LinkedListNode *tmp, *tmp_2;
     void * data;
     if(!self || !self->head) return NULL;
     tmp = self->head->next;
@@ -115,7 +115,7 @@ void * circular_linked_list_pop(LinkedList *self){
     if(tmp == tmp_2)
         self->head = NULL;
     self->length--;
-    circular_linked_list_node_free(tmp_2, self->td->free_data);
+    circular_linked_list_node_free(&tmp_2, self->td->data_free);
     return data;
     /*
      CircularLinkedListNode *tmp, *tmp_2;
@@ -124,7 +124,7 @@ void * circular_linked_list_pop(LinkedList *self){
     tmp = self->head->next;
     if(tmp == self->head){
         data = self->head->data;
-        circular_linked_list_node_free(tmp_2, self->td->free_data);
+        circular_linked_list_node_free(tmp_2, self->td->data_free);
         self->head = NULL;
         return data;
     }
@@ -135,12 +135,12 @@ void * circular_linked_list_pop(LinkedList *self){
     data = tmp_2->data;
 
     self->length--;
-    circular_linked_list_node_free(tmp_2, self->td->free_data);
+    circular_linked_list_node_free(tmp_2, self->td->data_free);
     return data;
      */
 }
 void * circular_linked_list_search(const LinkedList *self, int (*filter) (const void *)){
-    CircularLinkedListNode *tmp;
+    LinkedListNode *tmp;
     if(!self || !self->head || !filter) return 0;
     if(filter(self->head))
         return self->head->data;
@@ -159,7 +159,7 @@ int circular_linked_list_remove_all(LinkedList *self, int (*filter) (const void 
 */
 
 void circular_linked_list_fprint(const LinkedList *self, FILE *stream){
-    CircularLinkedListNode *tmp;
+    LinkedListNode *tmp;
     if(!self || !self->head || !stream) return;
     tmp = self->head;
     while(tmp->next != self->head){
@@ -173,7 +173,7 @@ void circular_linked_list_print(const LinkedList *self){
     circular_linked_list_fprint(self, stdout);
 }
 void circular_linked_list_to_dot_(LinkedList *self, FILE *stream){
-    CircularLinkedListNode *tmp;
+    LinkedListNode *tmp;
     if(!self || !self->head || !stream) return;
     tmp = self->head;
     while(tmp->next != self->head){
@@ -202,23 +202,24 @@ void circular_linked_list_to_dot(LinkedList *self, const char *path){
     fclose(stream);
 }
 void circular_linked_list_clear(LinkedList *self, void (*data_free) (void *data)){
-    CircularLinkedListNode *tmp, *tmp_2;
+    LinkedListNode *tmp, *tmp_2;
     if(!self || !self->head || !data_free) return;
     tmp = self->head->next;
     while(tmp != self->head){
         tmp_2 = tmp->next;
-        circular_linked_list_node_free(tmp, data_free);
+        circular_linked_list_node_free(&tmp, data_free);
         tmp = tmp_2;
     }
-    circular_linked_list_node_free(tmp, data_free);
+    circular_linked_list_node_free(&tmp, data_free);
     self->head = NULL;
     self->length = 0;
 }
-void circular_linked_list_free(LinkedList *self, void (*data_free) (void *data)){
-    if(!self || !self->head || !data_free) return;
-    circular_linked_list_clear(self, data_free);
-    type_descriptor_free(self->td);
-    free(self);
+void circular_linked_list_free(LinkedList **self, void (*data_free) (void *data)){
+    if(!*self || !(*self)->head || !data_free) return;
+    circular_linked_list_clear(*self, data_free);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
 }
 
 /*************************

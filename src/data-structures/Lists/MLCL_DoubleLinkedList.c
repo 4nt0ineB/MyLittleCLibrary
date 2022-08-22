@@ -22,64 +22,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-DoubleLinkedCell * double_linked_list_builder(const void * data, DoubleLinkedListDescriptor * descriptor){
-    DoubleLinkedCell * cell;
-    cell = (DoubleLinkedCell *) calloc(1, sizeof(DoubleLinkedCell));
-    assert(descriptor);
-    if(!cell) return NULL;
-    if(!(cell->data = descriptor->type_descriptor->copy(data))
-       && descriptor->type_descriptor->data_size)
-        return NULL;
-    cell->d = descriptor;
-    cell->next = cell->prev = NULL;
-    return cell;
+/***************************************************
+ * DoubleLinkedListNode
+ ***************************************************/
+
+DoubleLinkedListNode * new_double_linked_list_node(void *data){
+    DoubleLinkedListNode *node;
+    if(!data) return NULL;
+    node = (DoubleLinkedListNode *) malloc(sizeof(DoubleLinkedListNode));
+    if(!node) return NULL;
+    node->data = data;
+    node->prev = node->next = NULL;
+    return node;
 }
 
-DoubleLinkedListDescriptor * double_linked_list_descriptor(){
-    DoubleLinkedListDescriptor * ll_descriptor;
-    ll_descriptor = (DoubleLinkedListDescriptor *) malloc(sizeof(DoubleLinkedListDescriptor));
-    if(!ll_descriptor) return NULL;
-    ll_descriptor->add_ = double_linked_list_add_;
-    ll_descriptor->ordered_add = double_linked_list_ordered_add;
-    ll_descriptor->reverse_ordered_add = double_linked_list_reverse_ordered_add;
-    ll_descriptor->append = double_linked_list_append;
-    ll_descriptor->prepend = double_linked_list_prepend;
-    ll_descriptor->append = double_linked_list_append;
-    ll_descriptor->insert = double_linked_list_insert;
-    ll_descriptor->search = double_linked_list_search;
-    ll_descriptor->extract = double_linked_list_extract;
-    ll_descriptor->remove = double_linked_list_remove;
-    ll_descriptor->shift = double_linked_list_shift;
-    ll_descriptor->pop = double_linked_list_pop;
-    ll_descriptor->print = double_linked_list_print;
-    ll_descriptor->cell_free = double_linked_list_cell_free;
-    ll_descriptor->free = double_linked_list_free;
-    ll_descriptor->to_dot_ = double_linked_list_to_dot_;
-    ll_descriptor->to_dot = double_linked_list_to_dot;
-    ll_descriptor->cell_print = double_linked_list_cell_print;
-    ll_descriptor->print = double_linked_list_print;
-    ll_descriptor->cell_fprint = double_linked_list_cell_fprint;
-    ll_descriptor->fprint = double_linked_list_fprint;
-    /* Held type */
-    ll_descriptor->type_descriptor = NULL;
-    /* ... */
-    ll_descriptor->length = 1; /*<! For the descriptor to exists at least one cell exists */
-    return ll_descriptor;
+int double_linked_list_node_insert(DoubleLinkedListNode **self, void *data){
+    DoubleLinkedListNode *node;
+    if(!*self || !data) return 0;
+    node = new_double_linked_list_node(data);
+    if(!node) return 0;
+    node->next = (*self)->next;
+    node->next->prev = node;
+    node->prev = *self;
+    (*self)->next = node;
+    return 1;
 }
 
-DoubleLinkedCell * new_double_linked_list(const void * data, void (*type_manifest) (TypeDescriptor *)){
-    DoubleLinkedListDescriptor * lld;
-    if(!type_manifest) return NULL;
-    lld = double_linked_list_descriptor();
-    if(!lld) return NULL;
-    /* Define list type */
-    lld->type_descriptor = new_type_descriptor(type_manifest);
-    return double_linked_list_builder(data, lld);
+void * double_linked_list_node_extract(DoubleLinkedListNode **self){
+    DoubleLinkedListNode * tmp;
+    void *data;
+    if(!self) return NULL;
+    tmp = *self;
+    data = tmp->data;
+    if(!tmp->prev){
+        *self = tmp->next;
+        if(*self)
+            (*self)->prev = NULL;
+    }else if(!tmp->next){
+        tmp->prev->next = NULL;
+    }else{
+        tmp->prev->next = tmp->next;
+        tmp->next->prev = tmp->prev;
+    }
+    tmp->next = tmp->prev = NULL;
+    free(tmp);
+    return data;
 }
 
+void double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (*fprint_fct) (FILE *, const void *)){
+    if(!self || !stream || !fprint_fct) return;
+    fprint_fct(stream, self->data);
+}
+
+void double_linked_list_node_print(const DoubleLinkedListNode *self, void (*fprint_fct) (FILE *, const void *)){
+    if(!self || !fprint_fct) return;
+    double_linked_list_node_fprint(self, stdout, fprint_fct);
+}
+
+void double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data)){
+    if(!*self) return;
+    if(data_free_f)
+        data_free_f((*self)->data);
+    free(*self);
+    *self = NULL;
+}
+
+/*
 int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp) (const void *, const void *)){
-    DoubleLinkedCell * new_cell;
-    /* End of list OR Inside the list but inferior to the current cell */
+    DoubleLinkedListNode * new_cell;
+    *//* End of list OR Inside the list but inferior to the current cell *//*
     if(!*dll) return 0;
     if(cmp(data, (*dll)->data)){
         if(!(new_cell = double_linked_list_builder(data, (*dll)->d)))
@@ -98,8 +109,8 @@ int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp
         return 1;
     }
     return (*dll)->d->add_(&(*dll)->next, data, cmp);
-}
-
+}*/
+/*
 int double_linked_list_ordered_add(DoubleLinkedList * dll, const void * data){
     if(!*dll) return 0;
     return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->lt);
@@ -108,189 +119,197 @@ int double_linked_list_ordered_add(DoubleLinkedList * dll, const void * data){
 int double_linked_list_reverse_ordered_add(DoubleLinkedList * dll, const void * data){
     if(!*dll) return 0;
     return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->ge);
+}*/
+
+/***************************************************
+ * DoubleLinkedList
+ ***************************************************/
+
+DoubleLinkedList * new_double_linked_list(void (*type_manifest) (TypeDescriptor *td)){
+    DoubleLinkedList *list;
+    if(!type_manifest) return NULL;
+    list = (DoubleLinkedList *) malloc(sizeof(DoubleLinkedList));
+    if(!list) return NULL;
+    list->head = NULL;
+    list->length = 0;
+    list->td = new_type_descriptor(type_manifest);
+    strcpy(list->separator, ", ");
+    if(!list->td) return NULL;
+    return list;
 }
 
-int double_linked_list_prepend(DoubleLinkedList * ll, const void * data){
-    DoubleLinkedCell * cell;
-    if(!*ll) return 0;
-    if(!(cell = double_linked_list_builder(data, (*ll)->d))) return 0;
-    cell->next = *ll;
-    *ll = cell;
-    cell->next->prev = *ll;
-    (*ll)->d->length++;
+static int double_linked_list_prepend_(DoubleLinkedListNode **self, void *data){
+    DoubleLinkedListNode *node;
+    if(!*self) return 0;
+    node = new_double_linked_list_node(data);
+    if(!node) return 0;
+    node->next = *self;
+    *self = node;
+    node->next->prev = *self;
     return 1;
 }
+int double_linked_list_prepend(DoubleLinkedList *self, void *data){
+    return double_linked_list_prepend_(&self->head, data) && ++self->length;
+}
 
-int double_linked_list_append(DoubleLinkedList * ll, const void * data){
-    DoubleLinkedCell * cell;
-    if(!*ll) return 0;
-    if((*ll)->next)
-        return (*ll)->d->append(&(*ll)->next, data);
-    if(!(cell = double_linked_list_builder(data, (*ll)->d)))
-        return 0;
-    (*ll)->next = cell;
-    cell->prev = *ll;
-    (*ll)->d->length++;
+static int double_linked_list_append_(DoubleLinkedListNode **self, void *data){
+    DoubleLinkedListNode *node;
+    if(!*self) return 0;
+    if((*self)->next)
+        return double_linked_list_append_(&(*self)->next, data);
+    node = new_double_linked_list_node(data);
+    if(!node) return 0;
+    (*self)->next = node;
+    node->prev = *self;
     return 1;
 }
-
-int double_linked_list_insert(DoubleLinkedList * ll, const void * data){
-    DoubleLinkedCell * cell;
-    if(!*ll) return 0;
-    if(!(cell = double_linked_list_builder(data, (*ll)->d))) return 0;
-    cell->next = (*ll)->next;
-    cell->next->prev = cell;
-    cell->prev = *ll;
-    (*ll)->next = cell;
-    (*ll)->d->length++;
-    return 1;
+int double_linked_list_append(DoubleLinkedList *self, void *data){
+    return double_linked_list_append_(&self->head, data) && ++self->length;
 }
 
-DoubleLinkedCell * double_linked_list_search(DoubleLinkedList ll, const void * data){
-    if(!ll) return NULL;
-    if(!ll->d->type_descriptor->cmp(ll->data, data))
-        return ll;
-    return ll->d->search(ll->next, data);
+static void * double_linked_list_search_(const DoubleLinkedListNode *self, int (*filter) (const void *)){
+    if(!self) return NULL;
+    if(filter(self->data)) return self->data;
+    return double_linked_list_search_(self->next, filter);
+}
+void * linked_list_search(const DoubleLinkedList *self, int (*filter) (const void *)){
+    if(!self || !self->head || !filter) return NULL;
+    return double_linked_list_search_(self->head, filter);
 }
 
-void * double_linked_list_extract(DoubleLinkedCell ** dlc){
-    DoubleLinkedCell * tmp;
-    void * data;
-    if(!dlc) return NULL;
-    tmp = *dlc;
-    data = tmp->data;
-    if(!tmp->prev){
-        *dlc = tmp->next;
-        if(*dlc)
-            (*dlc)->prev = NULL;
-    }else if(!tmp->next){
-        tmp->prev->next = NULL;
-    }else{
-        tmp->prev->next = tmp->next;
-        tmp->next->prev = tmp->prev;
-    }
-    tmp->next = tmp->prev = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        double_linked_list_descriptor_free(&tmp->d);
-        *dlc = NULL;
-    }
-    free(tmp);
-    return data;
-}
-
-int double_linked_list_remove(DoubleLinkedList * ll, const void * data){
-    if(!*ll) return 0;
-    if(!((*ll)->d->type_descriptor->cmp((*ll)->data, data))){
-        free((*ll)->d->extract(ll));
+static int double_linked_list_remove_(DoubleLinkedListNode **self, int (*filter) (const void *), void (*data_free) (void *data)){
+    if(!*self || !filter || !data_free) return 0;
+    if(filter((*self)->data)){
+        data_free(double_linked_list_node_extract(self));
         return 1;
     }
-    return (*ll)->d->remove(&(*ll)->next, data);
+    return double_linked_list_remove_(&(*self)->next, filter, data_free);
+}
+int linked_list_remove(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data)){
+    if(!self || !self->head || !filter || !data_free) return 0;
+    return double_linked_list_remove_(&self->head, filter, data_free) && (--self->length || 1);
 }
 
-void * double_linked_list_shift(DoubleLinkedList * ll){
-    DoubleLinkedCell * tmp;
+static int double_linked_list_remove_all_(DoubleLinkedListNode **self, int (*filter) (const void *), void (*data_free) (void *data)){
+    DoubleLinkedListNode **tmp;
+    int i;
+    if(!*self || !filter || !data_free) return 0;
+    i = 0;
+    tmp = self;
+    while(*tmp){
+        if(filter((*tmp)->data)){
+            data_free(double_linked_list_node_extract(self));
+            i++;
+        }
+    }
+    return i;
+}
+int linked_list_remove_all(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data)){
+    int i;
+    if(!self || !self->head || !filter || !data_free) return 0;
+    i = double_linked_list_remove_all_(&self->head, filter, data_free);
+    self->length -= i;
+    return i;
+}
+
+void * double_linked_list_shift_(DoubleLinkedListNode **self){
+    DoubleLinkedListNode * tmp;
     void * data;
-    if(!*ll) return NULL;
-    tmp = *ll;
+    if(!*self) return NULL;
+    tmp = *self;
     data = tmp->data;
-    *ll = tmp->next;
+    *self = tmp->next;
     tmp->next->prev = NULL;
     tmp->next = tmp->prev = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        double_linked_list_descriptor_free(&tmp->d);
-        *ll = NULL;
-    }
     free(tmp);
     return data;
 }
+void * double_linked_list_shift(DoubleLinkedList *self) {
+    void *tmp;
+    if(!self || !self->head) return NULL;
+    tmp = double_linked_list_shift_(&self->head);
+    if(tmp) --self->length;
+    return  tmp;
+}
 
-void * double_linked_list_pop(DoubleLinkedList * ll){
-    DoubleLinkedCell * tmp;
+static void * double_linked_list_pop_(DoubleLinkedListNode **self){
+    DoubleLinkedListNode * tmp;
     void * data;
-    if(!*ll) return NULL;
-    if((*ll)->next)
-        return (*ll)->d->pop(&(*ll)->next);
-    tmp = *ll;
+    if(!*self) return NULL;
+    if((*self)->next)
+        return double_linked_list_pop_(&(*self)->next);
+    tmp = *self;
     data = tmp->data;
     tmp->prev->next = NULL;
-    *ll = tmp->next;
+    *self = tmp->next;
     tmp->next = NULL;
-    tmp->d->length--;
-    if(tmp->d->length == 0){
-        double_linked_list_descriptor_free(&tmp->d);
-        *ll = NULL;
-    }
     free(tmp);
     return data;
 }
-
-void double_linked_list_descriptor_free(DoubleLinkedListDescriptor ** lld){
-    if(!*lld) return;
-    type_descriptor_free(&((*lld)->type_descriptor));
-    free(*lld);
-    *lld = NULL;
+void * double_linked_list_pop(DoubleLinkedList *self){
+    void *tmp;
+    if(!self || !self->head) return NULL;
+    tmp = double_linked_list_pop_(&self->head);
+    if(tmp) --self->length;
+    return  tmp;
 }
 
-void double_linked_list_cell_free(DoubleLinkedCell ** ll){
-    if(!*ll) return;
-    (*ll)->d->type_descriptor->free_data(&(*ll)->data);
-    /* Decrease the length of the list from the descriptor it was linked to. */
-    (*ll)->d->length--;
-    free(*ll);
-    *ll = NULL;
+void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data)){
+    DoubleLinkedListNode *tmp, *tmp_2;
+    if(!self || !self->head || !data_free) return;
+    tmp = self->head;
+    while(tmp){
+        tmp_2 = tmp->next;
+        double_linked_list_node_free(&tmp, data_free);
+        self->length--;
+        tmp = tmp_2;
+    }
+    self->head = NULL;
 }
 
-void double_linked_list_free(DoubleLinkedList * ll){
-    if(!*ll) return;
-    (*ll)->d->free(&(*ll)->next);
-    (*ll)->d->type_descriptor->free_data(&(*ll)->data);
-    /* The linked list will decrease of 1 elem. */
-    (*ll)->d->length--;
-    /* After that, the list may be empty. Thus, the descriptor could no longer exist. */
-    if((*ll)->d->length == 0)
-        double_linked_list_descriptor_free(&(*ll)->d);
-    free(*ll);
-    *ll = NULL;
+void double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data)){
+    if(!*self) return;
+    if(data_free)
+        double_linked_list_clear(*self, data_free);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
 }
 
-void double_linked_list_cell_print(DoubleLinkedCell * dlc){
-    if(dlc) dlc->d->cell_fprint(stdout, dlc);
-}
-
-void double_linked_list_print(DoubleLinkedList dll){
-    if(dll) dll->d->fprint(stdout, dll);
-}
-
-void double_linked_list_cell_fprint(FILE * stream, DoubleLinkedCell * dlc){
-    if(dlc) dlc->d->type_descriptor->fprint(stream, dlc->data);
-}
-void double_linked_list_fprint(FILE * stream, DoubleLinkedList dll){
-    if(!dll) return;
-    dll->d->cell_fprint(stream, dll);
-    if(dll->next){
-        fprintf(stream, "%s", dll->d->type_descriptor->separator);
-        dll->d->fprint(stream, dll->next);
+void double_linked_list_fprint(const DoubleLinkedList *self, FILE *stream){
+    DoubleLinkedListNode *tmp;
+    if(!self || !self->head) return;
+    double_linked_list_node_fprint(self->head, stream, self->td->fprint);
+    tmp = self->head->next;
+    while(tmp){
+        fprintf(stream, "%s", self->td->separator);
+        double_linked_list_node_fprint(self->head, stream, self->td->fprint);
+        tmp = tmp->next;
     }
 }
 
-void double_linked_list_to_dot_(DoubleLinkedList ll, FILE * stream){
-    while(ll){
-        fprintf(stream, "  n%p [label=\"", (void *) ll);
-        ll->d->cell_fprint(stream, ll);
+void double_linked_list_print(const DoubleLinkedList *self){
+    if(!self || !self->head) return;
+    double_linked_list_fprint(self, stdout);
+}
+
+void double_linked_list_node_to_dot_(DoubleLinkedList *self, FILE * stream){
+    DoubleLinkedListNode *tmp;
+    while(tmp){
+        fprintf(stream, "  n%p [label=\"", (void *) tmp);
+        double_linked_list_node_fprint(tmp, stream, self->td->fprint);
         fprintf(stream, "\"]\n");
-        if(ll->next){
-            fprintf(stream, " n%p -> n%p\n", (void *) ll, (void *) ll->next);
-            fprintf(stream, " n%p -> n%p\n", (void *) ll->next, (void *) ll);
+        if(tmp->next){
+            fprintf(stream, " n%p -> n%p\n", (void *) tmp, (void *) tmp->next);
+            fprintf(stream, " n%p -> n%p\n", (void *) tmp->next, (void *) tmp);
         }
-        ll = ll->next;
+        tmp = tmp->next;
     }
 }
 
-void double_linked_list_to_dot(DoubleLinkedList ll, const char * dest_path){
+void double_linked_list_node_to_dot(DoubleLinkedList *self, const char * dest_path){
     FILE * stream;
-    if(!ll) return;
+    if(!self) return;
     stream =fopen(dest_path, "w");
     if(!stream)
         printf("File can't be opened\n");
@@ -299,8 +318,7 @@ void double_linked_list_to_dot(DoubleLinkedList ll, const char * dest_path){
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    double_linked_list_to_dot_(ll, stream);
+    double_linked_list_node_to_dot_(self, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }
-

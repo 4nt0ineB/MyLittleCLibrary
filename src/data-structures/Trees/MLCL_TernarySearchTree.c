@@ -158,7 +158,7 @@ void ternary_search_tree_fprint_(FILE *stream, const TernarySearchTree t, List *
         t->d->fprint_(stream, t->left, l, i);
 
         /* Resize the list to only keep the prefix */
-        while(!l->is_empty(l) && i < l->length(l))
+        while(!list_is_empty(l) && i < l->length(l))
             free(l->pop(l));
 
         if(* (char *) t->data == MLCL_TST_STOP_CHAR){
@@ -198,7 +198,7 @@ void ternary_search_tree_free(TernarySearchTree *t){
     (*t)->d->free(&(*t)->right);
 
     if((*t)->data)
-        (*t)->d->type_descriptor->free_data(&(*t)->data);
+        (*t)->d->type_descriptor->data_free(&(*t)->data);
 
     /* The tree will decrease of 1 node. */
     (*t)->d->n--;

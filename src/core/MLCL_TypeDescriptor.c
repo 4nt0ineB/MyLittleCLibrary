@@ -26,15 +26,11 @@ TypeDescriptor * new_type_descriptor(void (* type_manifest) (TypeDescriptor * ty
     type_descriptor = (TypeDescriptor *) malloc(sizeof(TypeDescriptor));
     if(!type_descriptor) return NULL;
     type_manifest(type_descriptor);
-    /* @Todo: check if manifest gave all needed functions */
-
-    type_descriptor->separator[0] = ',';
-    type_descriptor->separator[1] = ' ';
-    type_descriptor->separator[2] = '\0';
-
     return type_descriptor;
 }
 
-void type_descriptor_free(TypeDescriptor *td){
-    if(td) free(td);
+void type_descriptor_free(TypeDescriptor **td){
+    if(!*td) return;
+    free(*td);
+    *td = NULL;
 }
