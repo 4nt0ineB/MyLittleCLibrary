@@ -34,7 +34,7 @@ typedef struct TypeDescriptor {
     void (*manifest) (struct TypeDescriptor*); /**<  type_manifest used to make the type descriptor */
     int (*cmp) (const void *, const void *); /**< Comparison function */
     void (*print) (const void *); /**< Printing function, shorthand to fprint */
-    void (*fprint) (FILE *, const void *); /**< Printing function on given stream */
+    void (*fprint) (const void *, FILE *); /**< Printing function on given stream */
     void * (*copy) (const void *); /**< Function to allocate a copy of a data of the associated type */
     void (*data_free) (void *); /**< Function to free the data */
     int (*eq) (const void *, const void *); /**< equal test */

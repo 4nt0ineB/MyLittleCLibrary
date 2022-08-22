@@ -35,8 +35,8 @@ void * extract(DoubleLinkedListNode **self);
 DoubleLinkedListNode * new_circular_double_linked_list_node(void *data);
 int circular_double_linked_list_node_insert(DoubleLinkedListNode **self, void *data);
 void * circular_double_linked_list_node_extract(DoubleLinkedListNode **self);
-void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
-void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (FILE *, const void *));
+void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *));
+void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (const void *, FILE *));
 void circular_double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data));
 
 /***************************************************
@@ -60,6 +60,6 @@ void circular_double_linked_list_print(const DoubleLinkedList *self);
 void circular_double_linked_list_to_dot_(DoubleLinkedList *self, FILE *stream);
 void circular_double_linked_list_to_dot(DoubleLinkedList *self, const char *path);
 void circular_double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data));
-void circular_double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data));
+void circular_double_linked_list_free(DoubleLinkedList **self);
 
 #endif /* MYLITTLECLIBRARY_MLCL_CIRCULARDOUBLELINKEDLIST_H */

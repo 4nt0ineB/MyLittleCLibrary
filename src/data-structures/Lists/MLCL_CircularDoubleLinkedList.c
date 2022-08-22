@@ -39,10 +39,10 @@ int circular_double_linked_list_node_insert(DoubleLinkedListNode **self, void *d
 void * circular_double_linked_list_node_extract(DoubleLinkedListNode **self){
     return double_linked_list_node_extract(self);
 }
-void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *)){
+void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *)){
     double_linked_list_node_fprint(self, stream, data_fprint);
 }
-void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (FILE *, const void *)){
+void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (const void *, FILE *)){
     circular_double_linked_list_node_fprint(self, stdout, data_fprint);
 }
 void circular_double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data)){
@@ -223,9 +223,9 @@ void circular_double_linked_list_clear(DoubleLinkedList *self, void (*data_free)
     circular_double_linked_list_node_free(&self->head, data_free);
     self->length = 0;
 }
-void circular_double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data)){
+void circular_double_linked_list_free(DoubleLinkedList **self){
     if(!*self || !(*self)->head) return;
-    circular_double_linked_list_clear(*self, data_free);
+    circular_double_linked_list_clear(*self, (*self)->td->data_free);
     free(*self);
     *self = NULL;
 }

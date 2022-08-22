@@ -22,14 +22,12 @@
 #include "../../core/MLCL_TypeDescriptor.h"
 #include "../Lists/MLCL_List.h"
 
-
-typedef struct s_bk_node {
+typedef struct BKTreeNode {
     int value;
     void * data;
-    struct s_bk_node *child;
-    struct s_bk_node *siblings;
-    struct s_bk_tree_descriptor *d;
-} BKTreeNode, *BKTree;
+    struct BKTreeNode *child;
+    struct BKTreeNode *siblings;
+} BKTreeNode;
 
 typedef struct s_bk_tree_descriptor {
     int n;

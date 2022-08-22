@@ -31,8 +31,8 @@ typedef LinkedList CircularLinkedList;
  * CircularLinkedListNode
  ***************************************************/
 LinkedListNode * new_circular_linked_list_node(void *data);
-void circular_linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
-void circular_linked_list_node_print(const LinkedListNode *self, void (data_fprint) (FILE *, const void *));
+void circular_linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *));
+void circular_linked_list_node_print(const LinkedListNode *self, void (data_fprint) (const void *, FILE *));
 void circular_linked_list_node_free(LinkedListNode **self, void (*data_free) (void *data));
 
 /***************************************************
@@ -50,7 +50,7 @@ void circular_linked_list_print(const LinkedList *self);
 void circular_linked_list_to_dot_(LinkedList *self, FILE *stream);
 void circular_linked_list_to_dot(LinkedList *self, const char *path);
 void circular_linked_list_clear(LinkedList *self, void (*data_free) (void *data));
-void circular_linked_list_free(LinkedList **self, void (*data_free) (void *data));
+void circular_linked_list_free(LinkedList **self);
 
 /*
     @Todo: remove, remove_all, append_sorted

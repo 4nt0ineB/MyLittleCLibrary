@@ -25,15 +25,15 @@
 /**
  * @brief A generic Double linked list \n
  */
-typedef struct s_double_linked_node {
+typedef struct DoubleLinkedListNode {
     void *data; /*!< Generic data */
-    struct s_double_linked_node *next, *prev; /*!< Next cell */
+    struct DoubleLinkedListNode *next, *prev; /*!< Next cell */
 } DoubleLinkedListNode;
 
 typedef struct {
-    struct s_double_linked_node *head;
+    DoubleLinkedListNode *head;
     TypeDescriptor *td;
-    unsigned long int length;
+    int length;
     char separator[MLCL_SEPARATOR_LEN];
 } DoubleLinkedList;
 
@@ -44,8 +44,8 @@ typedef struct {
 DoubleLinkedListNode * new_double_linked_list_node(void *data);
 int double_linked_list_node_insert(DoubleLinkedListNode **self, void *data);
 void * double_linked_list_node_extract(DoubleLinkedListNode **self);
-void double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
-void double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (FILE *, const void *));
+void double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *));
+void double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (const void *, FILE *));
 void double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data));
 
 /***************************************************
@@ -69,6 +69,6 @@ void double_linked_list_print(const DoubleLinkedList *self);
 void double_linked_list_to_dot_(DoubleLinkedList *self, FILE *stream);
 void double_linked_list_to_dot(DoubleLinkedList *self, const char *path);
 void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data));
-void double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data));
+void double_linked_list_free(DoubleLinkedList **self);
 
 #endif /* MYLITTLECLIBRARY_DOUBLELINKEDLIST_H */

@@ -381,19 +381,19 @@ void array_list_fprint(const ArrayList *self, FILE * stream){
     if(self->count <= 0) return;
     for(i = 0; i < self->count - 1; i++){
         self->td->fprint(stream, self->array[i]);
-        fprintf(stream, "%s", self->td->separator);
+        fprintf(stream, "%s", self->separator);
     }
     self->td->fprint(stream, self->array[i]);
 }
 
-void array_list_empty(ArrayList *self){
+void array_list_empty(ArrayList *self, void (*data_free) (void *)){
     int i;
     if(!self) return;
     /* Free the elements */
     if(self->array){
         for (i = 0; i < self->count; ++i) {
             if(self->array[i])
-                self->td->data_free(&self->array[i]);
+               data_free(&self->array[i]);
         }
     }
     free(self->array);

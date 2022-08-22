@@ -46,12 +46,12 @@ int linked_list_node_insert(LinkedListNode **self, void *data){
     return 1;
 }
 
-void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (*data_fprint) (FILE *, const void *)){
+void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (*data_fprint) (const void *, FILE *)){
     if(!self || !stream || !data_fprint) return;
     data_fprint(stream, self->data);
 }
 
-void linked_list_node_print(const LinkedListNode *self, void (*data_fprint) (FILE *, const void *)){
+void linked_list_node_print(const LinkedListNode *self, void (*data_fprint) (const void *, FILE *)){
     if(!self || !data_fprint) return;
     linked_list_node_fprint(self, stdout, data_fprint);
 }
@@ -293,7 +293,7 @@ void linked_list_fprint(const LinkedList *self, FILE *stream){
     cursor = self->head;
     while(cursor->next){
         linked_list_node_fprint(cursor, stream, self->td->fprint);
-        fprintf(stream, "%s", self->td->separator);
+        fprintf(stream, "%s", self->separator);
         cursor = cursor->next;
     }
     linked_list_node_fprint(cursor, stream, self->td->fprint);
@@ -342,9 +342,9 @@ void linked_list_clear(LinkedList *self, void (*data_free) (void *data)){
     self->head = NULL;
     self->length = 0;
 }
-void linked_list_free(LinkedList **self, void (*data_free) (void *data)){
-    if(!*self || !(*self)->head || !data_free) return;
-    linked_list_clear(*self, data_free);
+void linked_list_free(LinkedList **self){
+    if(!*self || !(*self)->head) return;
+    linked_list_clear(*self, (*self)->td->data_free);
     type_descriptor_free(&(*self)->td);
     free(*self);
     *self = NULL;

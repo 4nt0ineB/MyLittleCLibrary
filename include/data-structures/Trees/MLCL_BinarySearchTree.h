@@ -26,12 +26,37 @@
 /**
  * @brief A generic binary search tree
  */
-typedef struct s_binary_search_tree_node {
+typedef struct BinarySearchTreeNode {
     void * data;
-    struct s_binary_search_tree_node * left; /* left child */
-    struct s_binary_search_tree_node * right; /* right child */
-    struct s_binary_search_tree_descriptor * d; /*!< Descriptor of the binary search tree */
-} BinarySearchTreeNode,  * BinarySearchTree;
+    struct BinarySearchTreeNode *left, *right;
+} BinarySearchTreeNode;
+
+typedef struct {
+    BinarySearchTreeNode *root;
+    int n; /**< Number of nodes */
+    TypeDescriptor *td;
+} BinarySearchTree;
+
+/***************************************************
+ * BinarySearchTreeNode
+ ***************************************************/
+
+BinarySearchTreeNode * new_binary_search_tree_node(void *data);
+void binary_search_tree_node_free(BinarySearchTreeNode **self, void (*data_free) (void *));
+
+/**
+ * @brief Print the given node on stdout
+ * @param n
+ */
+void binary_search_tree_node_print(const BinarySearchTreeNode *self,  void (data_fprint) (const void *, FILE *));
+
+/**
+ * @brief Print the given node on the given stream
+ * @param n
+ */
+void binary_search_tree_node_fprint (const BinarySearchTreeNode *self, FILE * stream,  void (data_fprint) (const void *, FILE *));
+
+
 
 /**
  * @brief Descriptor of the binary tree
@@ -66,62 +91,51 @@ typedef struct s_binary_search_tree_descriptor {
     void (*free) (BinarySearchTree *); /**< Free to tree */
 } BinarySearchTreeDescriptor;
 
-/**
- * @brief Allocate and return a default
- * binary tree descriptor. Type descriptor set to null.
- * @return
- */
-BinarySearchTreeDescriptor * binary_search_tree_descriptor();
 
-/**
- * @brief A detailed constructor for the nodes of a binary tree.
- * @param data First cell's data.
- * @param descriptor The binary tree descriptor.
- * @return
- */
-BinarySearchTreeNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor);
+/***************************************************
+ * BinarySearchTreeNode
+ ***************************************************/
 
 /**
  * @brief Allocate a new binary search tree
- * @param val
  * @return
  */
-BinarySearchTree new_binary_search_tree(const void * data, void (*type_manifest) (TypeDescriptor *));
+BinarySearchTree * new_binary_search_tree(void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Return the height of the tree
  * @param a tree
  * @return Binary tree height
  */
-int binary_search_tree_height(BinarySearchTree t);
+int binary_search_tree_height(const BinarySearchTree *self);
 
 /**
  * @brief Return the number of nodes
  * @param a tree
  * @return
  */
-int binary_search_tree_nb_nodes(BinarySearchTree t);
+int binary_search_tree_nb_nodes(const BinarySearchTree *self);
 
 /**
  * @brief Return the number of leaves
  * @param a tree
  * @return
  */
-int binary_search_tree_nb_leaves(BinarySearchTree t);
+int binary_search_tree_nb_leaves(const BinarySearchTree *self);
 
 /**
  * @brief Return the number of internal nodes
  * @param a tree
  * @return
  */
-int binary_search_tree_nb_internal_nodes(BinarySearchTree t);
+int binary_search_tree_nb_internal_nodes(const BinarySearchTree *self);
 
 /**
  * @brief Return the number nodes having two children
  * @param t
  * @return
  */
-int binary_search_tree_nb_two_children(BinarySearchTree t);
+int binary_search_tree_nb_two_children(const BinarySearchTree *self);
 
 /**
  * @brief Return true if a given tree is a perfect
@@ -129,21 +143,21 @@ int binary_search_tree_nb_two_children(BinarySearchTree t);
  * @param t
  * @return
  */
-int binary_search_tree_is_perfect_bt(BinarySearchTree t);
+int binary_search_tree_is_perfect_bt(const BinarySearchTree *self);
 
 /**
  * @brief Return a pointer to the min node
  * @param t
  * @return
  */
-BinarySearchTree binary_search_tree_min(BinarySearchTree t);
+BinarySearchTreeNode * binary_search_tree_min(BinarySearchTree *self);
 
 /**
  * @brief Return a pointer to the the max node
  * @param t
  * @return
  */
-BinarySearchTree binary_search_tree_max(BinarySearchTree t);
+BinarySearchTreeNode * binary_search_tree_max(BinarySearchTree *self);
 
 /**
  * @brief Return 1 if the binary tree is BST
@@ -152,7 +166,7 @@ BinarySearchTree binary_search_tree_max(BinarySearchTree t);
  * @param a
  * @return int
  */
-int binary_search_tree_is_bst(BinarySearchTree t);
+int binary_search_tree_is_bst(const BinarySearchTree *self);
 
 /**
  * @brief add data to the tree
@@ -160,14 +174,14 @@ int binary_search_tree_is_bst(BinarySearchTree t);
  * @param data
  * @return
  */
-int binary_search_tree_add(BinarySearchTree * t, const void * data);
+int binary_search_tree_add(BinarySearchTree *self, void * data);
 
 /**
  * @brief Remove the minx node in the tree and return the pointer of its data
  * @param t
  * @return
  */
-void * binary_search_tree_extract_min(BinarySearchTree * t);
+void * binary_search_tree_extract_min(BinarySearchTree *self);
 
 /**
  * @brief Remove the max node in the tree and return the pointer of its data
@@ -182,7 +196,7 @@ void * binary_search_tree_extract_max(BinarySearchTree * t);
  * @param data
  * @return
  */
-int binary_search_tree_remove(BinarySearchTree * t, const void * data);
+int binary_search_tree_remove(BinarySearchTree *self, const void *data);
 
 /**
  * @brief Return a pointer to the first occurrence of the node having data equal to the given one, trough preorder traversal
@@ -192,40 +206,24 @@ int binary_search_tree_remove(BinarySearchTree * t, const void * data);
  */
 BinarySearchTree binary_search_tree_search(BinarySearchTree * t, const void * data);
 
-/**
- * @brief Print the given node on stdout
- * @param n
- */
-void binary_search_tree_node_print(BinarySearchTreeNode * n);
-
-/**
- * @brief Print the given node on the given stream
- * @param n
- */
-void binary_search_tree_node_fprint (FILE * stream, BinarySearchTreeNode * n);
-
 /* Depth First Traversals */
-void binary_search_tree_fprint_preorder(FILE * stream, BinarySearchTree t);
-void binary_search_tree_fprint_inorder(FILE * stream, BinarySearchTree t);
-void binary_search_tree_fprint_postorder(FILE * stream, BinarySearchTree t);
+void binary_search_tree_fprint_preorder(const BinarySearchTree *self, FILE * stream);
+void binary_search_tree_fprint_inorder(const BinarySearchTree *self, FILE * stream);
+void binary_search_tree_fprint_postorder(const BinarySearchTree *self, FILE * stream);
 
 /**
  * @brief Make a formatted dot file of the struct
  * @param ll
  * @param dest_path
  */
-void binary_search_tree_to_dot(BinarySearchTree t, const char * dest_path);
+void binary_search_tree_to_dot(const BinarySearchTree *self, const char *dest_path);
 
-/**
- * @brief Free the descriptor of the Binary search tree
- * @param bstd
- */
-void binary_search_tree_descriptor_free(BinarySearchTreeDescriptor ** bstd);
+void binary_search_tree_clear(BinarySearchTree *self, void (*data_free) (void *));
 
 /**
  * @brief Free the binary search tree
  * @param t
  */
-void binary_search_tree_free(BinarySearchTree * t);
+void binary_search_tree_free(BinarySearchTree **self);
 
 #endif /* MYLITTLECLIBRARY_MLCL_BinarySearchTree_H */

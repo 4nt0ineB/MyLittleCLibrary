@@ -56,19 +56,19 @@ typedef struct s_list{
 } List;
 
 List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *));
-int list_append(List *l, void *data);
-int list_prepend(List *l, void *data);
-void * list_head_peek(const List *l);
-void * list_tail_peek(const List *l);
-void * list_pop(List *l);
-void * list_shift(List *l);
-unsigned long int list_length(const List *l);
-void list_free(List **l);
-void list_print (const List *l);
-void list_fprint_join(FILE *stream, List *l, const char separator[MLCL_TYPE_DESCRIPTOR_SEPARATOR_LEN]);
-void list_fprint (FILE * stream, const List *l);
-void list_to_dot(const List *l, const char * path);
-void list_clear(List *l);
+int list_append(List *self, void *data);
+int list_prepend(List *self, void *data);
+void * list_head_peek(const List *self);
+void * list_tail_peek(const List *self);
+void * list_pop(List *self);
+void * list_shift(List *self);
+int list_length(const List *self);
+void list_free(List **self);
+void list_print (const List *self);
+void list_fprint_join(List *self, FILE *stream, const char separator[MLCL_SEPARATOR_LEN]);
+void list_fprint (const List *self, FILE * stream);
+void list_to_dot(const List *self, const char * path);
+void list_clear(List *self, void (*data_free) (void *));
 
 /**
  * @brief Init the list with data if empty and return 1, else return 0.

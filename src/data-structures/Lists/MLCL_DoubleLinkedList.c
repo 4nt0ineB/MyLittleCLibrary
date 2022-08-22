@@ -69,14 +69,14 @@ void * double_linked_list_node_extract(DoubleLinkedListNode **self){
     return data;
 }
 
-void double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (*fprint_fct) (FILE *, const void *)){
-    if(!self || !stream || !fprint_fct) return;
-    fprint_fct(stream, self->data);
+void double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!self || !stream || !data_fprint) return;
+    data_fprint(stream, self->data);
 }
 
-void double_linked_list_node_print(const DoubleLinkedListNode *self, void (*fprint_fct) (FILE *, const void *)){
-    if(!self || !fprint_fct) return;
-    double_linked_list_node_fprint(self, stdout, fprint_fct);
+void double_linked_list_node_print(const DoubleLinkedListNode *self, void (*data_fprint) (const void *, FILE *)){
+    if(!self || !data_fprint) return;
+    double_linked_list_node_fprint(self, stdout, data_fprint);
 }
 
 void double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data)){
@@ -267,10 +267,9 @@ void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *d
     self->head = NULL;
 }
 
-void double_linked_list_free(DoubleLinkedList **self, void (*data_free) (void *data)){
+void double_linked_list_free(DoubleLinkedList **self){
     if(!*self) return;
-    if(data_free)
-        double_linked_list_clear(*self, data_free);
+    double_linked_list_clear(*self, (*self)->td->data_free);
     type_descriptor_free(&(*self)->td);
     free(*self);
     *self = NULL;
@@ -282,7 +281,7 @@ void double_linked_list_fprint(const DoubleLinkedList *self, FILE *stream){
     double_linked_list_node_fprint(self->head, stream, self->td->fprint);
     tmp = self->head->next;
     while(tmp){
-        fprintf(stream, "%s", self->td->separator);
+        fprintf(stream, "%s", self->separator);
         double_linked_list_node_fprint(self->head, stream, self->td->fprint);
         tmp = tmp->next;
     }
@@ -295,6 +294,8 @@ void double_linked_list_print(const DoubleLinkedList *self){
 
 void double_linked_list_node_to_dot_(DoubleLinkedList *self, FILE * stream){
     DoubleLinkedListNode *tmp;
+    if(!self) return;
+    tmp = self->head;
     while(tmp){
         fprintf(stream, "  n%p [label=\"", (void *) tmp);
         double_linked_list_node_fprint(tmp, stream, self->td->fprint);

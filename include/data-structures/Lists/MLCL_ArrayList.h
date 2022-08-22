@@ -149,7 +149,7 @@ void array_list_print(const ArrayList *self);
  */
 void array_list_fprint(const ArrayList *self, FILE * stream);
 
-void array_list_empty(ArrayList *self);
+void array_list_empty(ArrayList *self, void (*data_free) (void *));
 
 /**
  * @brief Free the array list

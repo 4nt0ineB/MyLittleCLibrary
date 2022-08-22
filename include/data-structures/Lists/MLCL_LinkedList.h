@@ -27,9 +27,9 @@
 /**
  * @brief A generic linked list node \n
  */
-typedef struct s_linked_list_node {
+typedef struct LinkedListNode {
     void *data;
-    struct s_linked_list_node *next;
+    struct LinkedListNode *next;
 } LinkedListNode;
 
 /**
@@ -38,7 +38,7 @@ typedef struct s_linked_list_node {
 typedef struct {
     LinkedListNode *head;
     TypeDescriptor *td;
-    unsigned long int length;
+    int length;
     char separator[MLCL_SEPARATOR_LEN];
 } LinkedList;
 
@@ -47,8 +47,8 @@ typedef struct {
  ***************************************************/
 LinkedListNode * new_linked_list_node(void *data);
 int linked_list_node_insert(LinkedListNode **self, void *data);
-void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (FILE *, const void *));
-void linked_list_node_print(const LinkedListNode *self, void (*data_fprint) (FILE *, const void *));
+void linked_list_node_fprint(const LinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *));
+void linked_list_node_print(const LinkedListNode *self, void (*data_fprint) (const void *, FILE *));
 void linked_list_node_free(LinkedListNode **self, void (*data_free) (void *));
 
 /***************************************************
@@ -72,6 +72,6 @@ void linked_list_print(const LinkedList *self);
 void linked_list_to_dot_(LinkedList *self, FILE *stream);
 void linked_list_to_dot(LinkedList *self, const char *path);
 void linked_list_clear(LinkedList *self, void (*data_free) (void *data));
-void linked_list_free(LinkedList **self, void (*data_free) (void *data));
+void linked_list_free(LinkedList **self);
 
-#endif MYLITTLECLIBRARY_MLCL_LINKEDLIST_H
+#endif /* MYLITTLECLIBRARY_MLCL_LINKEDLIST_H */

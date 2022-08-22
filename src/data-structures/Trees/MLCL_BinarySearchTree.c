@@ -18,309 +18,362 @@
 
 #include "../../../include/data-structures/Trees/MLCL_BinarySearchTree.h"
 #include "../../../include/utils/MLCL_utils.h"
-#include <assert.h>
 
-BinarySearchTreeDescriptor * binary_search_tree_descriptor(){
-    BinarySearchTreeDescriptor * bt_descriptor;
-    bt_descriptor = (BinarySearchTreeDescriptor *) malloc(sizeof(BinarySearchTreeDescriptor));
-    if(!bt_descriptor) return NULL;
-    /* functions affectation */
-    bt_descriptor->height = binary_search_tree_height;
-    bt_descriptor->nb_nodes = binary_search_tree_nb_nodes;
-    bt_descriptor->nb_leaves = binary_search_tree_nb_leaves;
-    bt_descriptor->nb_internal_nodes = binary_search_tree_nb_internal_nodes;
-    bt_descriptor->nb_two_children = binary_search_tree_nb_two_children;
-    bt_descriptor->is_perfect_bt = binary_search_tree_is_perfect_bt;
-    bt_descriptor->is_bst = binary_search_tree_is_bst;
-    bt_descriptor->add = binary_search_tree_add;
-    bt_descriptor->search = binary_search_tree_search;
-    bt_descriptor->min = binary_search_tree_min;
-    bt_descriptor->max = binary_search_tree_max;
-    bt_descriptor->extract_min = binary_search_tree_extract_min;
-    bt_descriptor->extract_max = binary_search_tree_extract_max;
-    bt_descriptor->remove = binary_search_tree_remove;
-    bt_descriptor->node_print = binary_search_tree_node_print;
-    bt_descriptor->node_fprint = binary_search_tree_node_fprint;
-    bt_descriptor->fprint_preorder = binary_search_tree_fprint_preorder;
-    bt_descriptor->fprint_inorder = binary_search_tree_fprint_inorder;
-    bt_descriptor->fprint_postorder = binary_search_tree_fprint_postorder;
-    bt_descriptor->to_dot = binary_search_tree_to_dot;
-    bt_descriptor->free = binary_search_tree_free;
-    bt_descriptor->n = 1; /*<! For the descriptor to exists at least one node exists */
-    return bt_descriptor;
-}
+/***************************************************
+ * BinarySearchTreeNode
+ ***************************************************/
 
-BinarySearchTreeNode * binary_search_tree_builder(const void * data, BinarySearchTreeDescriptor * descriptor){
-    BinarySearchTreeNode * node;
+BinarySearchTreeNode * new_binary_search_tree_node(void * data){
+    BinarySearchTreeNode *node;
     node = (BinarySearchTreeNode *) calloc(1, sizeof(BinarySearchTreeNode));
-    assert(descriptor);
     if(!node) return NULL;
-    if(!(node->data = descriptor->type_descriptor->copy(data))
-       && descriptor->type_descriptor->data_size)
-        return NULL;
-    node->d = descriptor;
+    node->data = data;
     node->left = node->right = NULL;
     return node;
 }
 
-BinarySearchTree new_binary_search_tree(const void * data, void (*type_manifest) (TypeDescriptor *)){
-    BinarySearchTreeDescriptor * btd;
-    if(!type_manifest) return NULL;
-    if(!(btd = binary_search_tree_descriptor())) return NULL;
-    btd->type_descriptor = new_type_descriptor(type_manifest);
-    return binary_search_tree_builder(data, btd);
+void binary_search_tree_node_free(BinarySearchTreeNode **self, void (*data_free) (void *)){
+    if(*self) return;
+    if(data_free)
+        data_free((*self)->data);
+    free(*self);
+    *self = NULL;
 }
 
-int binary_search_tree_height(BinarySearchTree t){
+void binary_search_tree_node_print(const BinarySearchTreeNode *self, void (data_fprint) (const void *, FILE *)){
+    binary_search_tree_node_fprint(self, stdout, data_fprint);
+}
+
+void binary_search_tree_node_fprint(const BinarySearchTreeNode *self, FILE * stream, void (data_fprint) (const void *, FILE *)){
+    if(self) data_fprint(self->data, stream);
+}
+
+/***************************************************
+ * BinarySearchTree
+ ***************************************************/
+
+
+BinarySearchTree * new_binary_search_tree(void (*type_manifest) (TypeDescriptor *)){
+    BinarySearchTree *tree;
+    if(!type_manifest) return NULL;
+    tree = (BinarySearchTree *) malloc(sizeof(BinarySearchTree));
+    if(!tree) return NULL;
+    tree->td = new_type_descriptor(type_manifest);
+    if(!tree->td){
+        binary_search_tree_free(&tree);
+    }
+    tree->root = NULL;
+    return tree;
+}
+
+static int binary_search_tree_height_(const BinarySearchTreeNode *root){
     int hln, hrn;
-    if (!t) return -1;
-    if (!t->left && !t->right) return 0;
-    hln = t->d->height(t->left);
-    hrn = t->d->height(t->right);
+    if (!root) return -1;
+    if (!root->left && !root->right) return 0;
+    hln = binary_search_tree_height_(root->left);
+    hrn = binary_search_tree_height_(root->right);
     return 1 + ((hln > hrn) ? hln : hrn);
 }
 
-int binary_search_tree_nb_nodes(BinarySearchTree t){
-    if (!t) return 0;
-    /*return 1 + t->d->nb_nodes(t->left) + t->d->nb_nodes(t->right);*/
-    return t->d->n;
+int binary_search_tree_height(const BinarySearchTree *self){
+    if(!self) return -1;
+    return binary_search_tree_height_(self->root);
 }
 
-int binary_search_tree_nb_leaves(BinarySearchTree t){
-    if (!t) return 0;
-    if (!t->left && !t->right) return 1;
-    return t->d->nb_leaves(t->left) + t->d->nb_leaves(t->right);
+/*static int binary_search_tree_nb_nodes_(const BinarySearchTreeNode *root) {
+    if(!root) return 0;
+    return 1
+            + binary_search_tree_nb_nodes_(root->left)
+            + binary_search_tree_nb_nodes_(root->right);
+}*/
+int binary_search_tree_nb_nodes(const BinarySearchTree *self){
+    if (!self) return 0;
+    return self->n;
 }
 
-int binary_search_tree_nb_internal_nodes(BinarySearchTree t){
-    if (!t) return 0;
-    if (!t->left && !t->right) return 0;
-    return 1 + t->d->nb_internal_nodes(t->left) + t->d->nb_internal_nodes(t->right);
+static int binary_search_tree_nb_leaves_(const BinarySearchTreeNode *root){
+    if (!root) return 0;
+    if (!root->left && !root->right) return 1;
+    return binary_search_tree_nb_leaves_(root->left)
+            + binary_search_tree_nb_leaves_(root->right);
 }
 
-int binary_search_tree_nb_two_children(BinarySearchTree t){
+int binary_search_tree_nb_leaves(const BinarySearchTree *self){
+    if(!self) return 0;
+    return binary_search_tree_nb_leaves_(self->root);
+}
+
+
+static int binary_search_tree_nb_internal_nodes_(const BinarySearchTreeNode *root){
+    if (!root) return 0;
+    if (!root->left && !root->right) return 0;
+    return 1
+            + binary_search_tree_nb_internal_nodes_(root->left)
+            + binary_search_tree_nb_internal_nodes_(root->right);
+}
+int binary_search_tree_nb_internal_nodes(const BinarySearchTree *self){
+    if(!self) return 0;
+    return binary_search_tree_nb_internal_nodes_(self->root);
+}
+
+
+static int binary_search_tree_nb_two_children_(const BinarySearchTreeNode *root){
     int x = 0;
-    if (!t) return 0;
-    if (t->left && t->right) x = 1;
-    return x + t->d->nb_two_children(t->left) + t->d->nb_two_children(t->right);
+    if (!root) return 0;
+    if (root->left && root->right) x = 1;
+    return x
+            + binary_search_tree_nb_two_children_(root->left)
+            + binary_search_tree_nb_two_children_(root->right);
 }
 
-int binary_search_tree_is_perfect_bt(BinarySearchTree t){
-    if (!t) return 1;
-    if ((!t->left && t->right) || (t->left && !t->right)) return 0;
-    return t->d->is_perfect_bt(t->left) && t->d->is_perfect_bt(t->right);
+int binary_search_tree_nb_two_children(const BinarySearchTree *self){
+    if(!self) return 0;
+    return binary_search_tree_nb_two_children_(self->root);
 }
 
-BinarySearchTree binary_search_tree_min(BinarySearchTree t) {
-    if (!t)
+static int binary_search_tree_is_perfect_bt_(const BinarySearchTreeNode *root){
+    if (!root) return 1;
+    if ((!root->left && root->right) || (root->left && !root->right)) return 0;
+    return binary_search_tree_is_perfect_bt_(root->left)
+            && binary_search_tree_is_perfect_bt_(root->right);
+}
+
+int binary_search_tree_is_perfect_bt(const BinarySearchTree *self){
+    if(!self) return 1;
+    return binary_search_tree_is_perfect_bt_(self->root);
+}
+
+static BinarySearchTreeNode * binary_search_tree_min_(BinarySearchTreeNode *root){
+    if (!root)
         return NULL;
-    if (!t->left)
-        return t;
-    return t->d->min(t->left);
+    if (!root->left)
+        return root;
+    return binary_search_tree_min_(root->left);
 }
 
-BinarySearchTree binary_search_tree_max(BinarySearchTree t) {
-    if (!t)
+BinarySearchTreeNode * binary_search_tree_min(BinarySearchTree *self){
+    if(!self) return NULL;
+    return binary_search_tree_min_(self->root);
+}
+
+static BinarySearchTreeNode * binary_search_tree_max_(BinarySearchTreeNode *root){
+    if (!root)
         return NULL;
-    if (!t->right)
-        return t;
-    return t->d->max(t->right);
+    if (!root->right)
+        return root;
+    return binary_search_tree_max_(root->right);
 }
 
-int binary_search_tree_is_bst(BinarySearchTree t){
-    BinarySearchTree tmp, tmp2;
-    if (!t)
+BinarySearchTreeNode * binary_search_tree_max(BinarySearchTree *self){
+    if(!self) return NULL;
+    return binary_search_tree_max_(self->root);
+}
+
+static int binary_search_tree_is_bst_(const BinarySearchTreeNode *root, int (*cmp) (const void *, const void *)){
+    BinarySearchTreeNode *tmp, *tmp2;
+    if (!root)
         return 1;
-    tmp = t->d->max(t->left);
-    if (tmp && t->d->type_descriptor->eq(tmp->data, t->data))
+    tmp = binary_search_tree_max_(root->left);
+    if (tmp && cmp(tmp->data, root->data) >= 0)
         return 0;
-    tmp2 = t->d->min(t->right);
-    if (tmp2 && t->d->type_descriptor->eq(tmp2->data, t->data))
+    tmp2 = binary_search_tree_min_(root->right);
+    if (tmp2 && cmp(tmp2->data, root->data) <= 0)
         return 0;
-    return t->d->is_bst(t->left) && t->d->is_bst(t->right);
+    return binary_search_tree_is_bst_(root->left, cmp) && binary_search_tree_is_bst_(root->right, cmp);
 }
 
-int binary_search_tree_add(BinarySearchTree * t, const void * data){
-    if(!t) return 0;
-    /* less or equal -> left */
-    if((*t)->d->type_descriptor->le(data, (*t)->data)) {
-        if (!(*t)->left) {
-            if(!((*t)->left = binary_search_tree_builder(data, (*t)->d)))
-                return 0;
-            (*t)->d->n++;
-            return 1;
-        }
-        return (*t)->d->add(&(*t)->left, data);
-    }
-    /* greater -> right */
-    if (!(*t)->right) {
-        if(!((*t)->right = binary_search_tree_builder(data, (*t)->d)))
-            return 0;
-        (*t)->d->n++;
-        return 1;
-    }
-    return (*t)->d->add(&(*t)->right, data);
+int binary_search_tree_is_bst(const BinarySearchTree *self){
+    if(!self) return 1;
+    return binary_search_tree_is_bst_(self->root, self->td->cmp);
 }
 
-void * binary_search_tree_extract_min(BinarySearchTree * t){
-    if (!*t)
+static int binary_search_tree_add_(BinarySearchTreeNode **root, void * data, int (*cmp) (const void *, const void *)){
+    if (!*root)
+        return (*root = new_binary_search_tree_node(data)) ? 1 : 0;
+    if (cmp((*root)->data, data) > 0)
+        return binary_search_tree_add_(&(*root)->left, data, cmp);
+    if (cmp((*root)->data, data) <= 0)
+        return binary_search_tree_add_(&(*root)->right, data, cmp);
+    return 0;
+}
+
+int binary_search_tree_add(BinarySearchTree *self, void * data){
+    if(!self) return 0;
+    return binary_search_tree_add_(&self->root, data, self->td->cmp);
+}
+
+static void * binary_search_tree_extract_min_(BinarySearchTreeNode **root){
+    if (!*root)
         return NULL;
-    if (!(*t)->left) {
-        BinarySearchTree tmp;
+    if (!(*root)->left) {
+        BinarySearchTreeNode *tmp;
         void * data;
-        tmp = *t;
+        tmp = *root;
         data = tmp->data;
-        *t = tmp->right;
-        tmp->d->n--;
-        /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-        if(tmp->d->n == 0){
-            binary_search_tree_descriptor_free(&tmp->d);
-            *t = NULL;
-        }
-        free(tmp);
+        *root = tmp->right;
+        binary_search_tree_node_free(&tmp, NULL);
         return data;
     }
-    return (*t)->d->extract_min(&(*t)->left);
+    return binary_search_tree_extract_min_(&(*root)->left);
 }
 
-void * binary_search_tree_extract_max(BinarySearchTree * t) {
-    if (!*t)
+void * binary_search_tree_extract_min(BinarySearchTree *self){
+    void *tmp;
+    if(!self) return NULL;
+    tmp = binary_search_tree_extract_min_(&self->root);
+    if(tmp) --self->n;
+    return tmp;
+}
+
+static void * binary_search_tree_extract_max_(BinarySearchTreeNode **root) {
+    if (!*root)
         return NULL;
-    if (!(*t)->right) {
-        BinarySearchTree tmp;
+    if (!(*root)->right) {
+        BinarySearchTreeNode *tmp;
         void * data;
-        tmp = *t;
+        tmp = *root;
         data = tmp->data;
-        *t = tmp->left;
-        tmp->d->n--;
-        /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-        if(tmp->d->n == 0){
-            binary_search_tree_descriptor_free(&tmp->d);
-            *t = NULL;
-        }
-        free(tmp);
+        *root = tmp->left;
+        binary_search_tree_node_free(&tmp, NULL);
         return data;
     }
-    return (*t)->d->extract_min(&(*t)->left);
+    return binary_search_tree_extract_max_(&(*root)->left);
+}
+void * binary_search_tree_extract_max(BinarySearchTree *self) {
+    if(!self) return NULL;
+    return binary_search_tree_extract_max_(&self->root);
 }
 
-int binary_search_tree_remove(BinarySearchTree * t, const void * data){
-    if (!*t)
+static int binary_search_tree_remove_(BinarySearchTreeNode **root, const void *data, int (*cmp) (const void *, const void *), void (*data_free) (void *)){
+    if (!*root)
         return 0;
-    if ((*t)->d->type_descriptor->eq((*t)->data, data)) {
-        BinarySearchTree tmp;
-        void * data;
-        tmp = *t;
-        if(!(*t)->right && !(*t)->left){
-            tmp->d->free(t);
+    if (cmp((*root)->data, data) == 0) {
+        BinarySearchTreeNode *tmp;
+        void * data_tmp;
+        tmp = *root;
+        if(!(*root)->right && !(*root)->left){
+            binary_search_tree_node_free(root, data_free);
         }else{
-            if ((*t)->right){
-                data = (*t)->d->extract_min(&(*t)->right);
-                *t = binary_search_tree_builder(data, (*t)->d);
-                (*t)->d->n++;
-            } else if ((*t)->left){
-                data = (*t)->d->extract_max(&(*t)->left);
-                *t = binary_search_tree_builder(data, (*t)->d);
-                (*t)->d->n++;
+            if ((*root)->right){
+                data_tmp = binary_search_tree_extract_min_(&(*root)->right);
+                *root = new_binary_search_tree_node(data_tmp);
+            } else if ((*root)->left){
+                data_tmp = binary_search_tree_extract_max_(&(*root)->left);
+                *root = new_binary_search_tree_node(data_tmp);
             }
-            (*t)->right = tmp->right;
-            (*t)->left = tmp->left;
+            (*root)->right = tmp->right;
+            (*root)->left = tmp->left;
             tmp->left = tmp->right = NULL;
-            if(data) {
-                tmp->d->type_descriptor->data_free(&data);
+            if(data_tmp) {
+                data_free(&data_tmp);
             }
-            tmp->d->free(&tmp);
+            binary_search_tree_node_free(&tmp, data_free);
         }
         return 1;
     }
-    if ((*t)->d->type_descriptor->lt(data, (*t)->data))
-        return (*t)->d->remove(&(*t)->left, data);
-    return (*t)->d->remove(&(*t)->right, data);
+    if (cmp(data, (*root)->data) < 0)
+        return binary_search_tree_remove_(&(*root)->left, data, cmp, data_free);
+    return binary_search_tree_remove_(&(*root)->right, data, cmp, data_free);
 }
 
-BinarySearchTree binary_search_tree_search(BinarySearchTree * t, const void * data){
-    if (!*t)
+int binary_search_tree_remove(BinarySearchTree *self, const void *data){
+    if(!self) return 0;
+    return binary_search_tree_remove_(&self->root, data, self->td->cmp, self->td->data_free);
+}
+
+BinarySearchTreeNode * binary_search_tree_search_(BinarySearchTreeNode **root, const void * data, int (*cmp) (const void *, const void *)){
+    if (!*root)
         return NULL;
-    if ((*t)->d->type_descriptor->gt((*t)->data, data))
-        return (*t)->d->search(&(*t)->left, data);
-    if ((*t)->d->type_descriptor->lt((*t)->data, data))
-        return (*t)->d->search(&(*t)->right, data);
-    return *t;
+    if (cmp((*root)->data, data) > 0)
+        return binary_search_tree_search_(&(*root)->left, data, cmp);
+    if (cmp((*root)->data, data) < 0)
+        return binary_search_tree_search_(&(*root)->right, data, cmp);
+    return *root;
 }
 
-void binary_search_tree_node_print (BinarySearchTreeNode * n){
-    if(n) n->d->node_fprint(stdout, n);
+static void binary_search_tree_fprint_preorder_(const BinarySearchTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    binary_search_tree_node_fprint(root, stream, data_fprint);
+    binary_search_tree_fprint_preorder_(root->left, stream, data_fprint);
+    binary_search_tree_fprint_preorder_(root->right, stream, data_fprint);
 }
 
-void binary_search_tree_node_fprint (FILE * stream, BinarySearchTreeNode * n){
-    if(n) n->d->type_descriptor->fprint(stream, n->data);
+void binary_search_tree_fprint_preorder(const BinarySearchTree *self, FILE *stream){
+    if(!self) return;
+    binary_search_tree_fprint_preorder_(self->root, stream, self->td->fprint);
 }
 
-void binary_search_tree_fprint_preorder(FILE * stream, BinarySearchTree t){
-    if(!t) return;
-    t->d->node_fprint(stream, t);
-    t->d->fprint_preorder(stream, t->left);
-    t->d->fprint_preorder(stream, t->right);
+static void binary_search_tree_fprint_inorder_(const BinarySearchTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    binary_search_tree_fprint_inorder_(root->left, stream, data_fprint);
+    binary_search_tree_node_fprint(root, stream, data_fprint);
+    binary_search_tree_fprint_inorder_(root->right, stream, data_fprint);
 }
 
-void binary_search_tree_fprint_inorder(FILE * stream, BinarySearchTree t){
-    if(!t) return;
-    t->d->fprint_inorder(stream, t->left);
-    t->d->node_fprint(stream, t);
-    t->d->fprint_inorder(stream, t->right);
+void binary_search_tree_fprint_inorder(const BinarySearchTree *self, FILE *stream){
+    if(!self) return;
+    binary_search_tree_fprint_inorder_(self->root, stream, self->td->fprint);
 }
 
-void binary_search_tree_fprint_postorder(FILE * stream, BinarySearchTree t){
-    if(!t) return;
-    t->d->fprint_postorder(stream, t->left);
-    t->d->fprint_postorder(stream, t->right);
-    t->d->node_fprint(stream, t);
+static void binary_search_tree_fprint_postorder_(const BinarySearchTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    binary_search_tree_fprint_inorder_(root->left, stream, data_fprint);
+    binary_search_tree_fprint_inorder_(root->right, stream, data_fprint);
+    binary_search_tree_node_fprint(root, stream, data_fprint);
 }
 
-static void _binary_search_tree_to_dot(BinarySearchTree t, FILE * stream){
-    if(!t) return;
-    fprintf(stream, "  n%p [label=\"<left> | <valeur> ", (void *) &*t);
-    t->d->node_fprint(stream, t);
+void binary_search_tree_fprint_postorder(const BinarySearchTree *self, FILE *stream){
+    if(!self) return;
+    binary_search_tree_fprint_postorder_(self->root, stream, self->td->fprint);
+}
+
+static void binary_search_tree_to_dot_(const BinarySearchTreeNode *root, FILE * stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    fprintf(stream, "  n%p [label=\"<left> | <valeur> ", (void *) &*root);
+    binary_search_tree_node_fprint(root, stream, data_fprint);
     fprintf(stream, " | <right>\", color=\"#918d8d\"]\n");
-    if(t->left)
-        fprintf(stream, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*t, (void *) t->left);
-    _binary_search_tree_to_dot(t->left, stream);
-    if(t->right)
-        fprintf(stream, "  n%p:right:c -> n%p:valeur [color=blue];\n", (void *) &*t, (void *) t->right);
-    _binary_search_tree_to_dot(t->right, stream);
+    if(root->left)
+        fprintf(stream, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*root, (void *) root->left);
+    binary_search_tree_to_dot_(root->left, stream, data_fprint);
+    if(root->right)
+        fprintf(stream, "  n%p:right:c -> n%p:valeur [color=blue];\n", (void *) &*root, (void *) root->right);
+    binary_search_tree_to_dot_(root->right, stream, data_fprint);
 }
 
-void binary_search_tree_to_dot(BinarySearchTree t, const char * dest_path){
+void binary_search_tree_to_dot(const BinarySearchTree *self, const char * dest_path){
     FILE * stream;
-    if(!t) return;
+    if(!self) return;
     stream =fopen(dest_path, "w");
     if(!stream)
         printf("File can't be opened\n");
     fprintf(stream, "digraph arbre {\n"
                "  node [shape=record , height=.1 ]\n"
                "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
-    _binary_search_tree_to_dot(t, stream);
+    binary_search_tree_to_dot_(self->root, stream, self->td->fprint);
     fprintf(stream, "}\n");
     fclose(stream);
 }
 
-void binary_search_tree_descriptor_free(BinarySearchTreeDescriptor ** bstd) {
-    if (!*bstd) return;
-    type_descriptor_free(&((*bstd)->type_descriptor));
-    free(*bstd);
-    *bstd = NULL;
+
+
+
+static void binary_search_tree_clear_(BinarySearchTreeNode **root, void (*data_free) (void *)){
+    if(!*root) return;
+    binary_search_tree_clear_(&(*root)->left, data_free);
+    binary_search_tree_clear_(&(*root)->right, data_free);
+    binary_search_tree_node_free(root, data_free);
 }
 
-void binary_search_tree_free(BinarySearchTree * t){
-    if(!*t) return;
-    (*t)->d->free(&(*t)->left);
-    (*t)->d->free(&(*t)->right);
-    (*t)->d->type_descriptor->data_free(&(*t)->data);
-    /* The tree will decrease of 1 node. */
-    (*t)->d->n--;
-    /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-    if((*t)->d->n == 0)
-        binary_search_tree_descriptor_free(&(*t)->d);
-    free(*t);
-    *t = NULL;
+void binary_search_tree_clear(BinarySearchTree *self, void (*data_free) (void *)){
+    if(!self) return;
+    binary_search_tree_clear_(&self->root, data_free);
+    self->n = 0;
+}
+
+void binary_search_tree_free(BinarySearchTree **self){
+    if(!*self) return;
+    binary_search_tree_clear(*self, (*self)->td->data_free);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
 }
