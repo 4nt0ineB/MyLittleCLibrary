@@ -73,10 +73,10 @@ int str_ge(const void *x, const void *y){
 }
 
 void str_print(const void *x){
-    str_fprint(stdout, x);
+    str_fprint(x, stdout);
 }
 
-void str_fprint(FILE *stream, const void *x){
+void str_fprint(const void *x, FILE *stream){
     if(!x)
         fprintf(stream, "Null");
     fprintf(stream, "%s",  (char *) x);
@@ -149,10 +149,10 @@ int char_ge(const void *x, const void *y){
 }
 
 void char_print(const void * x){
-    char_fprint(stdout, x);
+    char_fprint(x, stdout);
 }
 
-void char_fprint(FILE * stream, const void * x){
+void char_fprint(const void *x, FILE *stream){
     if(!x)
         fprintf(stream, "Null");
     fprintf(stream, "%c",  *(char *) x);
@@ -223,10 +223,10 @@ int int_ge(const void * x, const void * y){
 }
 
 void int_print(const void * x){
-    int_fprint(stdout, x);
+    int_fprint(x, stdout);
 }
 
-void int_fprint(FILE * stream, const void * x){
+void int_fprint(const void *x, FILE *stream){
     if(!x)
         fprintf(stream, "Null");
     fprintf(stream, "%d",  *(int *) x);
@@ -297,10 +297,10 @@ int float_ge(const void * x, const void * y){
 }
 
 void float_print(const void * x){
-    float_fprint(stdout, x);
+    float_fprint(x, stdout);
 }
 
-void float_fprint(FILE * stream, const void * x){
+void float_fprint(const void *x, FILE *stream){
     if(!x)
         fprintf(stream, "Null");
     fprintf(stream, "%.2f",  *(float *) x);

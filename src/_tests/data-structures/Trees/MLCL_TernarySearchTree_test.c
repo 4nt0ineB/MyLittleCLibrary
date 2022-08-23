@@ -7,6 +7,7 @@
 #include "../../../../include/_tests/data-structures/Trees/MLCL_TernarySearchTree_test.h"
 #include "../../../../include/data-structures/Trees/MLCL_TernarySearchTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
+/*
 
 int run_all_ternary_search_tree_tests(){
     printf("▒▒▒ Running all TernarySearchTree tests ▒▒▒\n");
@@ -51,8 +52,10 @@ int test_ternary_search_tree_remove(){
     t->d->add(&t, "Cypher");
     t->d->add(&t, "Switch");
 
-    /*t->d->to_dot(t, "test.dot");
-    t->d->print(t);*/
+    */
+/*t->d->to_dot(t, "test.dot");
+    t->d->print(t);*//*
+
 
     t->d->remove(&t, "Switch");
     t->d->remove(&t, "Cypher");
@@ -88,4 +91,4 @@ int test_ternary_search_tree_search(){
 
     t->d->free(&t);
     return 1;
-}
+}*/

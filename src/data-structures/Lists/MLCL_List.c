@@ -245,7 +245,7 @@ void list_print(const List *self){
     list_fprint(self, stdout);
 }
 
-void list_fprint_join(List *self, FILE *stream, const char separator[MLCL_SEPARATOR_LEN]){
+void list_fprint_join(List *self, FILE *stream, const char *separator){
     char seperator_tmp[MLCL_SEPARATOR_LEN];
     char *p_separator;
     char l_pref_tmp, l_suf_tmp;

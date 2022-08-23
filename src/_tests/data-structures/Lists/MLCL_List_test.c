@@ -9,6 +9,7 @@
 #include "../../../../include/data-structures/Lists/MLCL_List.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
+/*
 
 int run_all_list_tests(){
     printf("▒▒▒ Running all List tests ▒▒▒\n");
@@ -38,3 +39,4 @@ int test_list_append(){
     l->free(&l);
     return 1;
 }
+*/

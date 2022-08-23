@@ -23,6 +23,7 @@
 #include "../../../../include/data-structures/Lists/MLCL_CircularLinkedList.h"
 
 #include <stdio.h>
+/*
 
 int run_all_circular_linked_list_tests(){
     printf("▒▒▒ Running all CircularLinkedList tests ▒▒▒\n");
@@ -147,3 +148,4 @@ int test_circular_linked_list_shift(){
     cll->d->free(&cll);
     return 1;
 }
+*/

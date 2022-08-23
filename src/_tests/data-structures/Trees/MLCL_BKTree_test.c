@@ -8,6 +8,7 @@
 #include "../../../../include/data-structures/Trees/MLCL_BKTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
+/*
 
 int run_all_bk_tree_tests(){
     printf("▒▒▒ Running all BKTree tests ▒▒▒\n");
@@ -49,15 +50,21 @@ int test_bk_tree_fuzzy_search(){
     t->d->add(&t, "Django");
     t->d->add(&t, "Dodecahedron");
 
-    /*printf("\n");
+    */
+/*printf("\n");
     t->d->print(t);
-    printf("\n");*/
+    printf("\n");*//*
 
-    /*t->d->to_dot(t, "test.dot");*/
+
+    */
+/*t->d->to_dot(t, "test.dot");*//*
+
 
     l = new_list(LINKED_LIST, str_m);
     t->d->fuzzy_search(&t, "jan", l);
-    /*l->print(l);*/
+    */
+/*l->print(l);*//*
+
 
     if(str_cmp(l->s.linked_list->data, "Django") != 0)
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -66,4 +73,4 @@ int test_bk_tree_fuzzy_search(){
     t->d->free(&t);
     l->free(&l);
     return 1;
-}
+}*/

@@ -9,10 +9,12 @@
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
 
+/*
 
 int run_all_array_list_tests(){
     printf("▒▒▒ Running all ArrayList tests ▒▒▒\n");
-    MLCL_TEST(test_array_list_append, "test_array_list_append")
+    */
+/*MLCL_TEST(test_array_list_append, "test_array_list_append")
     MLCL_TEST(test_array_list_pop, "test_array_list_pop")
     MLCL_TEST(test_array_list_pop_i, "test_array_list_pop_i")
     MLCL_TEST(test_array_list_is_sorted, "test_array_list_is_sorted")
@@ -22,7 +24,8 @@ int run_all_array_list_tests(){
     MLCL_TEST(test_array_list_quick_sort, "test_array_list_quick_sort")
     MLCL_TEST(test_array_list_merge_sort, "test_array_list_merge_sort")
     MLCL_TEST(test_array_list_search, "test_array_list_search")
-    MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")
+    MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")*//*
+
     return 1;
 }
 
@@ -330,4 +333,4 @@ int test_array_list_binary_search(){
 
     l->d->free(&l);
     return 1;
-}
+}*/

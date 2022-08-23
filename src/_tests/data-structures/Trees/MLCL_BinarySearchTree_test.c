@@ -20,6 +20,7 @@
 #include "../../../../include/data-structures/Trees/MLCL_BinarySearchTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
+/*
 
 
 int run_all_binary_search_tree_tests(){
@@ -267,4 +268,4 @@ int test_binary_search_tree_is_bst(){
         MLCL_ERR(2, MLCL_ERR_TRUE)
     t->d->free(&t);
     return 1;
-}
+}*/

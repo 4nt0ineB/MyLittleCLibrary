@@ -21,6 +21,7 @@
 #include "../../../../include/data-structures/Lists/MLCL_DoubleLinkedList.h"
 #include "../../../../include/core/MLCL_basic_types.h"
 
+/*
 
 int run_all_double_linked_list_tests(){
     printf("▒▒▒ Running all DoubleLinkedList tests ▒▒▒\n");
@@ -120,7 +121,9 @@ int test_double_linked_list_append(){
 }
 
 int test_double_linked_list_insert(){
-    /* @Todo Insert test*/
+    */
+/* @Todo Insert test*//*
+
     return 1;
 }
 
@@ -205,6 +208,9 @@ int test_double_linked_list_pop(){
 }
 
 int test_double_linked_list_filter(){
-    /* @Todo filter test */
+    */
+/* @Todo filter test *//*
+
     return 1;
 }
+*/

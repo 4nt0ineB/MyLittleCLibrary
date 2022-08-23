@@ -8,6 +8,7 @@
 #include "../../../../include/data-structures/Stack/MLCL_Stack.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
+/*
 
 int run_all_stack_tests(){
     printf("▒▒▒ Running all Stack tests ▒▒▒\n");
@@ -65,4 +66,4 @@ int test_stack_pop(){
 
     q->free(&q);
     return 1;
-}
+}*/

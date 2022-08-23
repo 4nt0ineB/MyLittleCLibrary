@@ -21,6 +21,7 @@
 #include "../../../../include/data-structures/Lists/MLCL_CircularDoubleLinkedList.h"
 #include "../../../../include/core/MLCL_basic_types.h"
 
+/*
 
 int run_all_circular_double_linked_list_tests(){
     printf("▒▒▒ Running all CircularDoubleLinkedList tests ▒▒▒\n");
@@ -146,3 +147,4 @@ int test_circular_double_linked_list_shift(){
     cdll->d->free(&cdll);
     return 1;
 }
+*/

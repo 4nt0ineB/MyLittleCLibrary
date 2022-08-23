@@ -18,10 +18,10 @@
 
 #ifndef MYLITTLECLIBRARY_MLCL_AVLTREE_TEST_H
 #define MYLITTLECLIBRARY_MLCL_AVLTREE_TEST_H
-
+/*
 int run_all_avl_tree_tests();
 int test_new_avl_tree();
 int test_avl_tree_add();
-int test_avl_remove();
+int test_avl_remove();*/
 
 #endif /* MYLITTLECLIBRARY_MLCL_AVLTREE_TEST_H */

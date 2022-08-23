@@ -6,9 +6,9 @@
 
 #ifndef MYLITTLECLIBRARY_MLCL_BKTREE_TEST_H
 #define MYLITTLECLIBRARY_MLCL_BKTREE_TEST_H
-
+/*
 int run_all_bk_tree_tests();
 int test_bk_tree_add();
-int test_bk_tree_fuzzy_search();
+int test_bk_tree_fuzzy_search();*/
 
 #endif /* MYLITTLECLIBRARY_MLCL_BKTREE_TEST_H */

@@ -11,24 +11,16 @@
 
 typedef enum { MIN_HEAP, MAX_HEAP } BINARY_HEAP_ORDER;
 
-typedef struct s_binary_heap {
+typedef struct BinaryHeap {
     BINARY_HEAP_ORDER type;
-    ArrayList *l;
-    struct s_binary_heap_descriptor * d;
+    ArrayList *array;
+    TypeDescriptor *td;
 } BinaryHeap;
 
-typedef struct s_binary_heap_descriptor{
-    TypeDescriptor * type_descriptor;
-    int (*cmp_data) (const BinaryHeap *, const void *, const void *);
-    void (*free) (BinaryHeap **);
-} BinaryHeapDescriptor;
-
-BinaryHeap * binary_heap_builder(BINARY_HEAP_ORDER order, BinaryHeapDescriptor * descriptor);
-BinaryHeapDescriptor * binary_heap_descriptor();
 BinaryHeap * new_binary_heap(BINARY_HEAP_ORDER order, void (*type_manifest) (TypeDescriptor *));
-int array_list_is_heap(const BinaryHeap *h);
-int binary_heap_cmp_data(const BinaryHeap *h, const void * x, const void * y);
-int binary_heap_get_child_index(const BinaryHeap *h, int i);
+int array_list_is_heap(const BinaryHeap *self);
+int binary_heap_cmp_data(const BinaryHeap *self, const void * x, const void * y);
+int binary_heap_get_child_index(const BinaryHeap *self, int i);
 
 /**
  * @brief change the given index data by the given one, while respecting the structures ordering
@@ -37,9 +29,9 @@ int binary_heap_get_child_index(const BinaryHeap *h, int i);
  * @param data
  * @param shallow_copy 1 just copy the address, 0 deep copy of the data
  */
-int binary_heap_swap(BinaryHeap *h, int i, const void * data, char shallow_copy);
+int binary_heap_swap(BinaryHeap *self, int i, const void * data, char shallow_copy);
 
-void binary_heap_add(BinaryHeap *h, const void * data);
+void binary_heap_add(BinaryHeap *self, const void * data);
 
 /**
  * @brief Return the pointer to the data with highest priority. Depends on heap type (MIN_HEAP / MAX_HEAP).
@@ -48,5 +40,6 @@ void binary_heap_add(BinaryHeap *h, const void * data);
  */
 void * binary_heap_pop(BinaryHeap *h);
 
+void binary_heap_clear(BinaryHeap *self, void (*data_free) (void *));
 void binary_heap_free(BinaryHeap **h);
 #endif /* MYLITTLECLIBRARY_MLCL_BINARYHEAP_H */

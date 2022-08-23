@@ -23,6 +23,7 @@
 #include "../../../../include/core/MLCL_basic_types.h"
 
 #include <stdio.h>
+/*
 
 int run_all_avl_tree_tests(){
     printf("▒▒▒ Running all AVLTree tests ▒▒▒\n");
@@ -83,4 +84,4 @@ int test_avl_remove(){
         MLCL_ERR(1, MLCL_ERR_TRUE)
     avl->d->free(&avl);
     return 1;
-}
+}*/

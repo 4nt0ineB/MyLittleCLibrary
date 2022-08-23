@@ -8,6 +8,7 @@
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_TypeDescriptor.h"
 #include "../../../../include/core/MLCL_basic_types.h"
+/*
 
 int run_all_binary_heap_tests(){
     printf("▒▒▒ Running all BinaryHeap tests ▒▒▒\n");
@@ -80,3 +81,4 @@ int test_binary_heap_pop(){
     return 1;
 }
 
+*/

@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 /* ############## str (char *) ############## */
-
+char * new_str(const char *str);
 void str_m(TypeDescriptor *type_descriptor);
 int str_cmp(const void *x, const void *y);
 int str_eq(const void *x, const void *y);
@@ -20,11 +20,12 @@ int str_le(const void *x, const void *y);
 int str_gt(const void *x, const void *y);
 int str_ge(const void *x, const void *y);
 void str_print(const void *x);
-void str_fprint(FILE *stream, const void *x);
+void str_fprint(const void *x, FILE *stream);
 void * str_copy(const void *data);
 void str_free(void *x);
 
 /* ############## char ############## */
+char * new_char(char x);
 /**
  * @brief The char manifest assign its respective functions according
  * to the required ones by the type interface TypeDescriptor
@@ -57,7 +58,7 @@ void char_print(const void *x);
  * @param x
  * @param file
  */
-void char_fprint(FILE *stream, const void *x);
+void char_fprint(const void *x, FILE *stream);
 
 /**
  * Copy the given data to a new address
@@ -108,7 +109,7 @@ void int_print(const void *x);
  *
  * @param x
  */
-void int_fprint(FILE *stream, const void *x);
+void int_fprint(const void *x, FILE *stream);
 
 /**
  * Copy the given data to a new address
@@ -125,6 +126,8 @@ void * int_copy(const void *data);
 void int_free(void *x);
 
 /* ############## float ############## */
+float * new_float(float x);
+
 /**
  * @brief The float manifest assign its respective functions according
  * to the required ones by the type interface TypeDescriptor
@@ -157,7 +160,7 @@ void float_print(const void *x);
  * @param x
   * @param file
  */
-void float_fprint(FILE *stream, const void *x);
+void float_fprint(const void *x, FILE *stream);
 
 /**
  * Copy the given data to a new address

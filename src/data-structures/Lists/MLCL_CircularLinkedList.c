@@ -44,7 +44,7 @@ void circular_linked_list_node_free(LinkedListNode **self, void (*data_free) (vo
 LinkedList * new_circular_linked_list(void (*type_manifest) (TypeDescriptor *td)){
     return new_linked_list(type_manifest);
 }
-int linked_list_append(CircularLinkedList *self, void *data){
+int circular_linked_list_append(CircularLinkedList *self, void *data){
     LinkedListNode *tmp;
     if(!self || data) return 0;
     if(!self->head){

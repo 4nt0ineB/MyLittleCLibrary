@@ -18,7 +18,7 @@
 
 #ifndef MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H
 #define MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H
-
+/*
 
 
 int run_all_binary_search_tree_tests();
@@ -32,6 +32,6 @@ int test_binary_search_tree_is_perfect_bt();
 int test_binary_search_tree_is_bst();
 int test_binary_search_tree_add();
 int test_binary_tree_remove();
-int test_binary_tree_search();
+int test_binary_tree_search();*/
 
 #endif /* MYLITTLECLIBRARY_MLCL_BinarySearchTree_TEST_H */

@@ -53,7 +53,7 @@ void * list_shift(List *self);
 int list_length(const List *self);
 void list_free(List **self);
 void list_print (const List *self);
-void list_fprint_join(List *self, FILE *stream, const char separator[MLCL_SEPARATOR_LEN]);
+void list_fprint_join(List *self, FILE *stream, const char *separator);
 void list_fprint (const List *self, FILE * stream);
 void list_to_dot(const List *self, const char * path);
 void list_clear(List *self, void (*data_free) (void *));

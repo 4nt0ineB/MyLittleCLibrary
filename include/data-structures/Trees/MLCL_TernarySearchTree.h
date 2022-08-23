@@ -15,11 +15,16 @@
 /**
  * Ternary search tree with char / prefix tree / lexical tree
  */
-typedef struct s_ternary_search_node {
+typedef struct TernarySearchTreeNode {
     void *data;
-    struct s_ternary_search_tree_descriptor *d;
-    struct s_ternary_search_node *left, *child, *right;
-} TernarySearchNode, *TernarySearchTree;
+    struct TernarySearchTreeNode *left, *child, *right;
+} TernarySearchTreeNode;
+
+typedef struct {
+    int n;
+    TernarySearchTreeNode *root;
+    TypeDescriptor *td;
+} TernarySearchTree;
 
 typedef struct s_ternary_search_tree_descriptor {
     int n;
@@ -36,19 +41,30 @@ typedef struct s_ternary_search_tree_descriptor {
     void (*to_dot) (const TernarySearchTree, const char *);
 } TernarySearchTreeDescriptor;
 
-TernarySearchTreeDescriptor * ternary_search_tree_descriptor();
-TernarySearchNode * ternary_search_tree_builder(const void * data, TernarySearchTreeDescriptor *d);
-TernarySearchTree new_ternary_search_tree(const char * word);
+/***************************************************
+ * TernarySearchTreeNode
+ ***************************************************/
+TernarySearchTreeNode * new_ternary_search_tree_node(void *data);
+void ternary_search_tree_node_free(TernarySearchTreeNode **self, void (data_free) (void *));
 
-int ternary_search_tree_insert_branch(TernarySearchTree * ancestor, TernarySearchTree * t, const char * word);
-int ternary_search_tree_add(TernarySearchTree *t, const char * word);
-int ternary_search_tree_search(const TernarySearchTree t, const char *word);
-void ternary_search_tree_remove(TernarySearchTree *t, const char * word);
-void ternary_search_tree_print(const TernarySearchTree t);
-void ternary_search_tree_fprint_(FILE *stream, const TernarySearchTree t, List *l, int i);
-void ternary_search_tree_fprint(FILE *stream, const TernarySearchTree t);
-void ternary_search_tree_free_descriptor(TernarySearchTreeDescriptor **tstd);
-void ternary_search_tree_free(TernarySearchTree *t);
-void ternary_tree_to_dot_(const TernarySearchTree t, FILE * stream);
-void ternary_tree_to_dot(const TernarySearchTree t, const char * path);
+
+/***************************************************
+ * TernarySearchTree
+ ***************************************************/
+
+int ternary_search_tree_insert_branch_(TernarySearchTreeNode **root, char * word);
+int ternary_search_tree_add_(TernarySearchTreeNode **root, char * word, int (*cmp) (const void *, const void *));
+int ternary_search_tree_add(TernarySearchTree *self, char *word);
+int ternary_search_tree_search_(const TernarySearchTreeNode *root, const char *word, int (cmp) (const void *, const void *));
+int ternary_search_tree_search(const TernarySearchTree *self, const char *word);
+int ternary_search_tree_remove_(TernarySearchTreeNode **root, char *word, int (*cmp) (const void*, const void*), void (*data_free) (void *));
+int ternary_search_tree_remove(TernarySearchTree *self, char *word);
+void ternary_search_tree_fprint_(const TernarySearchTreeNode *t, FILE *stream, List *l, int i);
+void ternary_search_tree_fprint(const TernarySearchTree *self, FILE *stream);
+void ternary_search_tree_print(const TernarySearchTree *self);
+void ternary_search_tree_clear_(TernarySearchTreeNode **root, void (data_free) (void *));
+void ternary_search_tree_clear(TernarySearchTree *self, void (data_free) (void *));
+void ternary_search_tree_free(TernarySearchTree **self);
+void ternary_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream);
+void ternary_tree_to_dot(const TernarySearchTree *self, const char *path);
 #endif /* MYLITTLECLIBRARY_MLCL_TERNARYSEARCHTREE_H */
