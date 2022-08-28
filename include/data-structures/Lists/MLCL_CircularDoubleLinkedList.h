@@ -52,9 +52,9 @@ int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (c
 int circular_double_linked_list_prepend(DoubleLinkedList *self, void *data);
 void * circular_double_linked_list_shift(DoubleLinkedList *self);
 void * circular_double_linked_list_pop(DoubleLinkedList *self);
-void * circular_double_linked_list_search(const DoubleLinkedList *self, int (*filter) (const void *));
-int circular_double_linked_list_remove(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
-int circular_double_linked_list_remove_all(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
+void * circular_double_linked_list_search(const DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *));
+int circular_double_linked_list_remove(DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data));
+int circular_double_linked_list_remove_all(DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data));
 void circular_double_linked_list_fprint(const DoubleLinkedList *self, FILE *stream);
 void circular_double_linked_list_print(const DoubleLinkedList *self);
 void circular_double_linked_list_to_dot_(DoubleLinkedList *self, FILE *stream);

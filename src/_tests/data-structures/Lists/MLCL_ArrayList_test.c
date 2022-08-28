@@ -9,12 +9,12 @@
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
 
-/*
+
 
 int run_all_array_list_tests(){
     printf("▒▒▒ Running all ArrayList tests ▒▒▒\n");
-    */
-/*MLCL_TEST(test_array_list_append, "test_array_list_append")
+    
+    MLCL_TEST(test_array_list_append, "test_array_list_append")
     MLCL_TEST(test_array_list_pop, "test_array_list_pop")
     MLCL_TEST(test_array_list_pop_i, "test_array_list_pop_i")
     MLCL_TEST(test_array_list_is_sorted, "test_array_list_is_sorted")
@@ -24,313 +24,274 @@ int run_all_array_list_tests(){
     MLCL_TEST(test_array_list_quick_sort, "test_array_list_quick_sort")
     MLCL_TEST(test_array_list_merge_sort, "test_array_list_merge_sort")
     MLCL_TEST(test_array_list_search, "test_array_list_search")
-    MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")*//*
+    MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")
 
     return 1;
 }
 
 int test_array_list_append(){
-    ArrayList * l;
+    ArrayList *list;
     int i;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
     for(i = 0; i < 10; i++)
-        l->d->append(l, &i);
+        array_list_append(list, new_int(i));
 
-    if(*(int *) l->array[5] != 5)
+    if(*(int *) list->array[5] != 5)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    if(l->count != 10)
+    if(list->count != 10)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
-    if(l->size != 10)
+    if(list->size != 10)
         MLCL_ERR(4, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_pop(){
-    ArrayList * l;
+    ArrayList *list;
     int i;
-    void * x;
+    void *x;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
     for(i = 0; i < 5; i++)
-        l->d->append(l, &i);
+        array_list_append(list, new_int(i));
 
-    x = l->d->pop(l);
+    x = array_list_pop(list);
 
     if(*(int *) x != 4)
         MLCL_ERR(2, MLCL_ERR_TRUE)
     free(x);
-    free(l->d->pop(l));
-    free(l->d->pop(l));
-    free(l->d->pop(l));
-    free(l->d->pop(l));
+    free(array_list_pop(list));
+    free(array_list_pop(list));
+    free(array_list_pop(list));
+    free(array_list_pop(list));
 
-    if(l->count != 0)
+    if(list->count != 0)
         MLCL_ERR(3, MLCL_ERR_TRUE)
-    if(l->size != 10)
+    if(list->size != 10)
         MLCL_ERR(4, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_pop_i(){
-    ArrayList * l;
+    ArrayList *list;
     int i;
     void * x;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
     for(i = 0; i < 5; i++)
-        l->d->append(l, &i);
+        array_list_append(list, new_int(i));
 
-    x = l->d->pop_i(l, 0);
+    x = array_list_pop_i(list, 0);
     if(*(int *) x != 0)
         MLCL_ERR(2, MLCL_ERR_TRUE)
     free(x);
 
-    x = l->d->pop_i(l, 1);
+    x = array_list_pop_i(list, 1);
     if(*(int *) x != 2)
         MLCL_ERR(2, MLCL_ERR_TRUE)
     free(x);
 
-    if(l->count != 3)
+    if(list->count != 3)
         MLCL_ERR(3, MLCL_ERR_TRUE)
-    if(l->size != 10)
+    if(list->size != 10)
         MLCL_ERR(4, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_is_sorted(){
-    ArrayList * l;
+    ArrayList *list;
     int i;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
     for(i = 0; i < 5; i++)
-        l->d->append(l, &i);
+        array_list_append(list, new_int(i));
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+    if(!array_list_is_sorted(list, list->td->le))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_bubble_sort(){
-    ArrayList * l;
-    int x;
+    ArrayList *list;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->bublle_sort(l, l->d->type_descriptor->le);
+    array_list_bublle_sort(list, list->td->le);
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+    if(!array_list_is_sorted(list, list->td->le))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_selection_sort(){
-    ArrayList * l;
-    int x;
+    ArrayList *list;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->selection_sort(l, l->d->type_descriptor->le);
+    array_list_selection_sort(list, list->td->le);
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+    if(!array_list_is_sorted(list, list->td->le))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_insertion_sort(){
-    ArrayList * l;
-    int x;
+    ArrayList *list;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->insertion_sort(l, l->d->type_descriptor->ge);
+    array_list_insertion_sort(list, list->td->ge);
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->ge))
+    if(!array_list_is_sorted(list, list->td->ge))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_quick_sort(){
-    ArrayList * l;
-    int x;
+    ArrayList *list;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
     MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->quick_sort(l, l->d->type_descriptor->le);
+    array_list_quick_sort(list, list->td->le);
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+    if(!array_list_is_sorted(list, list->td->le))
     MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_merge_sort(){
-    ArrayList * l;
-    int x;
+    ArrayList *list;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->merge_sort(l, l->d->type_descriptor->le);
+    array_list_merge_sort(list, list->td->le);
 
-    if(!l->d->is_sorted(l, l->d->type_descriptor->le))
+    if(!array_list_is_sorted(list, list->td->le))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_search(){
-    ArrayList * l;
+    ArrayList *list;
     int x, index;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->quick_sort(l, l->d->type_descriptor->le);
+    array_list_quick_sort(list, list->td->le);
 
     x = 28;
-    if(!l->d->search(l, &x, &index))
+    if(!array_list_search(list, &x, int_eq, &index))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     if(index != 4)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
 }
 
 int test_array_list_binary_search(){
-    ArrayList * l;
+    ArrayList *list;
     int x, index;
 
-    l = new_array_list(int_m);
-    if(!l)
+    list = new_array_list(int_m);
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 6;
-    l->d->append(l, &x);
-    x = 3;
-    l->d->append(l, &x);
-    x = 28;
-    l->d->append(l, &x);
-    x = 2;
-    l->d->append(l, &x);
-    x = 1;
-    l->d->append(l, &x);
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
 
-    l->d->quick_sort(l, l->d->type_descriptor->le);
+    array_list_quick_sort(list, list->td->le);
 
     x = 28;
-    if(!l->d->binary_search(l, &x, &index))
+    if(!array_list_binary_search(list, &x, &index))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     if(index != 4)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
-    l->d->free(&l);
+    array_list_free(&list);
     return 1;
-}*/
+}

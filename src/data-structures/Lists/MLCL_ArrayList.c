@@ -380,8 +380,8 @@ void array_list_empty(ArrayList *self, void (*data_free) (void *)){
     /* Free the elements */
     if(self->array){
         for (i = 0; i < self->count; ++i) {
-            if(self->array[i])
-               data_free(&self->array[i]);
+            if(self->array[i] && data_free)
+                data_free(self->array[i]);
         }
     }
     free(self->array);
@@ -392,16 +392,10 @@ void array_list_empty(ArrayList *self, void (*data_free) (void *)){
 }
 
 void array_list_free(ArrayList **self){
-    int i;
     if(!*self) return;
-    if((*self)->array){
-        for (i = 0; i < (*self)->count; ++i) {
-            if((*self)->array[i])
-                (*self)->td->data_free(&(*self)->array[i]);
-        }
-    }
-    free((*self)->array);
+    array_list_empty(*self, (*self)->td->data_free);
     type_descriptor_free(&(*self)->td);
+    free((*self)->array);
     free(*self);
     *self = NULL;
 }

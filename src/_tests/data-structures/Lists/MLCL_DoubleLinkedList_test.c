@@ -91,7 +91,7 @@ int test_double_linked_list_prepend(){
 
     double_linked_list_prepend(list, new_float(7.9f));
 
-    double_linked_list_print(list);
+    /*double_linked_list_print(list);*/
 
     if(!list->head)
         MLCL_ERR(2, MLCL_ERR_ALLOC)

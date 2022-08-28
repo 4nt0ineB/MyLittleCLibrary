@@ -6,7 +6,6 @@
 
 #ifndef MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H
 #define MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H
-/*
 
 int run_all_array_list_tests();
 int test_array_list_append();
@@ -20,6 +19,5 @@ int test_array_list_selection_sort();
 int test_array_list_insertion_sort();
 int test_array_list_quick_sort();
 int test_array_list_merge_sort();
-*/
 
 #endif /* MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H */
