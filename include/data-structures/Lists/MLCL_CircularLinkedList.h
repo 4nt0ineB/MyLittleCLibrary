@@ -44,7 +44,7 @@ int circular_linked_list_prepend(LinkedList *self, void *data);
 void circular_linked_list_merge_sort(LinkedList *self, int (*ordering) (const void *, const void *));
 void * circular_linked_list_shift(LinkedList *self);
 void * circular_linked_list_pop(LinkedList *self);
-void * circular_linked_list_search(const LinkedList *self, int (*filter) (const void *));
+void * circular_linked_list_search(const LinkedList *self, const void *data, int (*filter) (const void *, const void *));
 void circular_linked_list_fprint(const LinkedList *self, FILE *stream);
 void circular_linked_list_print(const LinkedList *self);
 void circular_linked_list_to_dot_(LinkedList *self, FILE *stream);

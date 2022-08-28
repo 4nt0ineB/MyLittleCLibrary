@@ -7,7 +7,7 @@
  *    the Free Software Foundation, either version 3 of the License, or
  *    (at your option) any later version.
  *
- *    This Library is distributed in the hope that it will be useful,
+ *    This Library is distributed in the hope that it wilist be useful,
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
@@ -23,11 +23,11 @@
 #include "../../../../include/data-structures/Lists/MLCL_CircularLinkedList.h"
 
 #include <stdio.h>
-/*
+
 
 int run_all_circular_linked_list_tests(){
-    printf("▒▒▒ Running all CircularLinkedList tests ▒▒▒\n");
-    MLCL_TEST(test_circular_linked_list_ordered_add, "test_circular_linked_list_ordered_add")
+    printf("▒▒▒ Running alist CircularLinkedList tests ▒▒▒\n");
+    /*MLCL_TEST(test_circular_linked_list_ordered_add, "test_circular_linked_list_ordered_add")*/
     MLCL_TEST(test_circular_linked_list_prepend, "test_circular_linked_list_prepend")
     MLCL_TEST(test_circular_linked_list_append, "test_circular_linked_list_append")
     MLCL_TEST(test_circular_linked_list_search, "test_circular_linked_list_search")
@@ -35,117 +35,141 @@ int run_all_circular_linked_list_tests(){
     MLCL_TEST(test_circular_linked_list_shift, "test_circular_linked_list_shift")
     return 1;
 }
-
+/*
 int test_circular_linked_list_ordered_add(){
-    CircularLinkedList cll;
+    CircularLinkedList *list;
     int x;
-    x = 5;
-    cll = new_circular_linked_list(&x, int_m);
-    x = 6;
-    cll->d->ordered_add(&cll, &x);
+
+    list = new_circular_linked_list(int_m);
+
+    linked_list_prepend(list, new_int(5));
+    circular_linked_list_ordered_add(list, new_int(6));
+    circular_linked_list_ordered_add(list, new_int(2));
+    circular_linked_list_ordered_add(list, new_int(3));
+
     x = 2;
-    cll->d->ordered_add(&cll, &x);
-    x = 3;
-    cll->d->ordered_add(&cll, &x);
-    x = 2;
-    if(cll->d->type_descriptor->cmp(&x, cll->data) != 0)
+    if(list->td->cmp(&x, list->head->data) != 0)
         MLCL_ERR(1, MLCL_ERR_TRUE)
+
     x = 3;
-    if(cll->d->type_descriptor->cmp(&x, cll->next->data) != 0)
+    if(list->td->cmp(&x, list->head->next->data) != 0)
         MLCL_ERR(2, MLCL_ERR_TRUE)
+
     x = 5;
-    if(cll->d->type_descriptor->cmp(&x, cll->next->next->data) != 0)
+    if(list->td->cmp(&x, list->head->next->next->data) != 0)
         MLCL_ERR(3, MLCL_ERR_TRUE)
+
     x = 6;
-    if(cll->d->type_descriptor->cmp(&x, cll->next->next->next->data) != 0)
+    if(list->td->cmp(&x, list->head->next->next->next->data) != 0)
         MLCL_ERR(4, MLCL_ERR_TRUE)
-    cll->d->free(&cll);
+
+    circular_linked_list_free(&list);
     return 1;
-}
+}*/
 
 int test_circular_linked_list_append(){
-    CircularLinkedList ll;
-    float x;
-    x = 5.4f;
-    ll = new_circular_linked_list(&x, float_m);
-    if(!ll)
-        MLCL_ERR(1, MLCL_ERR_ALLOC);
-    x = 5.3f;
-    ll->d->append(&ll, &x);
-    ll->d->append(&ll, &x);
-    x = 5.96f;
-    ll->d->append(&ll, &x);
-    if(ll->next->next->next->next != ll)
-        MLCL_ERR(2, MLCL_ERR_TRUE);
-    ll->d->free(&ll);
-    return 1;
-}
+    CircularLinkedList *list;
 
-int test_circular_linked_list_search(){
-    CircularLinkedList ll;
-    int x;
-    x = 5;
-    ll = new_circular_linked_list(&x, int_m);
-    if(!ll)
+    list = new_circular_linked_list(float_m);
+
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 6;
-    ll->d->prepend(&ll, &x);
-    x = 7;
-    ll->d->prepend(&ll, &x);
-    if((* (int *) ll->data) != 7)
-        MLCL_ERR(2, MLCL_ERR_EQ)
-    if(!ll->d->search(ll, &x))
-        MLCL_ERR(3, MLCL_ERR_TRUE)
-    ll->d->free(&ll);
+
+    circular_linked_list_append(list, new_float(5.4f));
+    circular_linked_list_append(list, new_float(5.3f));
+    circular_linked_list_append(list, new_float(5.3f));
+    circular_linked_list_append(list, new_float(5.96f));
+
+    if(list->head->next->next->next->next != list->head)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    circular_linked_list_free(&list);
     return 1;
 }
 
 int test_circular_linked_list_prepend(){
-    CircularLinkedList ll;
-    float x;
-    x = 5.4f;
-    ll = new_circular_linked_list(&x, float_m);
-    if(!ll)
+    CircularLinkedList *list;
+
+    list = new_circular_linked_list(float_m);
+
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 5.3f;
-    ll->d->prepend(&ll, &x);
-    if(ll != ll->next->next)
+
+    circular_linked_list_prepend(list, new_float(5.4f));
+    circular_linked_list_prepend(list, new_float(5.3f));
+    /*printf("\n");
+    circular_linked_list_print(list);*/
+
+    if(list->head != list->head->next->next)
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    ll->d->free(&ll);
+
+    circular_linked_list_free(&list);
+    return 1;
+}
+
+int test_circular_linked_list_search(){
+    CircularLinkedList *list;
+    int x;
+
+    list = new_circular_linked_list(int_m);
+
+    if(!list) MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    circular_linked_list_prepend(list, new_int(5));
+    circular_linked_list_prepend(list, new_int(6));
+    circular_linked_list_prepend(list, new_int(7));
+
+    if((* (int *) list->head->data) != 7)
+        MLCL_ERR(2, MLCL_ERR_EQ)
+
+    x = 6;
+    if(!circular_linked_list_search(list, &x, int_eq))
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+
+    circular_linked_list_free(&list);
     return 1;
 }
 
 int test_circular_linked_list_pop(){
-    CircularLinkedList ll;
-    int x;
-    void * data;
-    x = 5;
-    ll = new_circular_linked_list(&x, int_m);
-    if(!ll)
+    CircularLinkedList *list;
+    void *data;
+
+    list = new_circular_linked_list(int_m);
+
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    x = 6;
-    ll->d->prepend(&ll, &x);
-    data = ll->d->pop(&ll);
+
+    circular_linked_list_prepend(list, new_int(5));
+    circular_linked_list_prepend(list, new_int(6));
+
+    data = circular_linked_list_pop(list);
+
     if((* (int *) data) != 5)
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    ll->d->free(&ll);
+
+    circular_linked_list_free(&list);
     free(data);
     return 1;
 }
 
 int test_circular_linked_list_shift(){
-    CircularLinkedList cll;
-    float x;
-    x = 5.4f;
-    cll = new_circular_linked_list(&x, float_m);
-    x = 5.5f;
-    cll->d->append(&cll, &x);
-    if(!cll)
+    CircularLinkedList *list;
+    void *data;
+
+    list = new_circular_linked_list(float_m);
+    circular_linked_list_append(list, new_float(5.4f));
+    circular_linked_list_append(list, new_float(5.5f));
+
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    free((float *) cll->d->shift(&cll));
-    if(cll->next->next != cll)
-        MLCL_ERR(2, MLCL_ERR_TRUE)
-    cll->d->free(&cll);
+
+    data = circular_linked_list_shift(list);
+
+    if(list->head->next->next != list->head)
+    MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    circular_linked_list_free(&list);
+    free(data);
     return 1;
 }
-*/
+
