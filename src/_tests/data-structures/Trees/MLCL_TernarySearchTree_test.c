@@ -31,7 +31,6 @@ int test_ternary_search_tree_add(){
     ternary_search_tree_add(tree, "Foo");
     ternary_search_tree_add(tree, "Bar");
 
-
     if(* (char *) tree->root->data != 'B')
         MLCL_ERR(2, MLCL_ERR_TRUE)
 

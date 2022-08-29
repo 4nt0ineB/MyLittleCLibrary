@@ -66,6 +66,6 @@ void ternary_search_tree_print(const TernarySearchTree *self);
 void ternary_search_tree_clear_(TernarySearchTreeNode **root, void (data_free) (void *));
 void ternary_search_tree_clear(TernarySearchTree *self, void (data_free) (void *));
 void ternary_search_tree_free(TernarySearchTree **self);
-void ternary_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream);
-void ternary_tree_to_dot(const TernarySearchTree *self, const char *path);
+void ternary_search_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream);
+void ternary_search_tree_to_dot(const TernarySearchTree *self, const char *path);
 #endif /* MYLITTLECLIBRARY_MLCL_TERNARYSEARCHTREE_H */

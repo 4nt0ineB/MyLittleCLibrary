@@ -197,7 +197,7 @@ void ternary_search_tree_free(TernarySearchTree **self){
     *self = NULL;
 }
 
-void ternary_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream){
+void ternary_search_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream){
     char c;
     if(!root) return;
 
@@ -208,25 +208,25 @@ void ternary_tree_to_dot_(const TernarySearchTreeNode *root, FILE * stream){
     fprintf(stream, "  n%p [label=\"%c\"]\n", (void *) &*root, c);
     if(root->left){
         fprintf(stream, "  n%p:w -> n%p:c [color=\"#ab2222\"]\n", (void *) &*root, (void *) root->left);
-        ternary_tree_to_dot_(root->left, stream);
+        ternary_search_tree_to_dot_(root->left, stream);
     }
     if(root->child){
         fprintf(stream, "  n%p:s -> n%p:c  \n", (void *) &*root, (void *) root->child);
-        ternary_tree_to_dot_(root->child, stream);
+        ternary_search_tree_to_dot_(root->child, stream);
     }
     if(root->right){
         fprintf(stream, "  n%p:e -> n%p:c [color=\"#2257ab\"]\n", (void *) &*root, (void *) root->right);
-        ternary_tree_to_dot_(root->right, stream);
+        ternary_search_tree_to_dot_(root->right, stream);
     }
 }
 
-void ternary_tree_to_dot(const TernarySearchTree *self, const char *path){
+void ternary_search_tree_to_dot(const TernarySearchTree *self, const char *path){
     FILE *file = fopen(path, "w");
     fprintf(file, "digraph arbre {\n"
                   "graph [ splines=true]\n"
                   "  node [shape=circle,height=.1]\n"
                   "  \n\n");
-    ternary_tree_to_dot_(self->root, file);
+    ternary_search_tree_to_dot_(self->root, file);
     fprintf(file, "\n}");
     fclose(file);
 }
