@@ -8,7 +8,7 @@
 #include "../../../../include/data-structures/Trees/MLCL_BKTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
-/*
+
 
 int run_all_bk_tree_tests(){
     printf("▒▒▒ Running all BKTree tests ▒▒▒\n");
@@ -18,59 +18,61 @@ int run_all_bk_tree_tests(){
 }
 
 int test_bk_tree_add(){
-    BKTree t;
+    BKTree *tree;
 
-    t = new_bk_tree("dog");
-    if(!t)
+    tree = new_bk_tree();
+    
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    t->d->add(&t, "god");
-    t->d->add(&t, "house");
-    t->d->add(&t, "mouse");
-    t->d->add(&t, "Dogma");
+    bk_tree_add(tree, "dog");
+    bk_tree_add(tree, "god");
+    bk_tree_add(tree, "house");
+    bk_tree_add(tree, "mouse");
+    bk_tree_add(tree, "Dogma");
 
-    t->d->free(&t);
+    /*printf("\n");
+    bk_tree_print(tree);
+    printf("\n");*/
+
+    bk_tree_free(&tree);
     return 1;
 }
 
 int test_bk_tree_fuzzy_search(){
-    BKTree t;
-    List *l;
+    BKTree *tree;
+    List *list;
 
-    t = new_bk_tree("dog");
-    if(!t)
+    tree = new_bk_tree();
+
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    t->d->add(&t, "god");
-    t->d->add(&t, "house");
-    t->d->add(&t, "mouse");
-    t->d->add(&t, "Dogma");
-    t->d->add(&t, "Dogma 95");
-    t->d->add(&t, "Doctrine");
-    t->d->add(&t, "Django");
-    t->d->add(&t, "Dodecahedron");
+    bk_tree_add(tree, "dog");
+    bk_tree_add(tree, "god");
+    bk_tree_add(tree, "house");
+    bk_tree_add(tree, "mouse");
+    bk_tree_add(tree, "Dogma");
+    bk_tree_add(tree, "Dogma 95");
+    bk_tree_add(tree, "Doctrine");
+    bk_tree_add(tree, "Django");
+    bk_tree_add(tree, "Dodecahedron");
 
-    */
-/*printf("\n");
-    t->d->print(t);
-    printf("\n");*//*
+    /*printf("\n");
+    bk_tree_print(tree);
+    printf("\n");*/
 
+    /*bk_tree_to_dot(tree, "test.dot");*/
 
-    */
-/*t->d->to_dot(t, "test.dot");*//*
+    list = new_list(LINKED_LIST, str_m);
+    bk_tree_fuzzy_search(tree, "jan", list);
 
+    /*list_print(list);*/
 
-    l = new_list(LINKED_LIST, str_m);
-    t->d->fuzzy_search(&t, "jan", l);
-    */
-/*l->print(l);*//*
-
-
-    if(str_cmp(l->s.linked_list->data, "Django") != 0)
+    if(str_cmp(list->s.linked_list->head->data, "Django") != 0)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-
-    t->d->free(&t);
-    l->free(&l);
+    bk_tree_free(&tree);
+    list_free(&list);
     return 1;
-}*/
+}

@@ -52,6 +52,7 @@ void ternary_search_tree_node_free(TernarySearchTreeNode **self, void (data_free
  * TernarySearchTree
  ***************************************************/
 
+TernarySearchTree * new_ternary_search_tree();
 int ternary_search_tree_insert_branch_(TernarySearchTreeNode **root, char * word);
 int ternary_search_tree_add_(TernarySearchTreeNode **root, char * word, int (*cmp) (const void *, const void *));
 int ternary_search_tree_add(TernarySearchTree *self, char *word);

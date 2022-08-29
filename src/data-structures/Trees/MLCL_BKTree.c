@@ -21,7 +21,7 @@ BKTreeNode * new_bk_tree_node(void *data){
     node->value = 0;
     node->data = data;
     node->child = node->siblings = NULL;
-    return NULL;
+    return node;
 }
 
 void bk_tree_node_free(BKTreeNode **self, void (data_free) (void *)){
@@ -38,14 +38,13 @@ void bk_tree_node_free(BKTreeNode **self, void (data_free) (void *)){
  ***************************************************/
 
 
-BKTree * new_bk_tree(void (*type_manifest) (TypeDescriptor *)){
+BKTree * new_bk_tree(){
     BKTree *tree;
-    if(!type_manifest) return NULL;
     tree = (BKTree *) malloc(sizeof(BKTree));
     if(!tree) return NULL;
     tree->n = 0;
     tree->root = NULL;
-    tree->td = new_type_descriptor(type_manifest);
+    tree->td = new_type_descriptor(str_m);
     if(!tree->td)
         bk_tree_free(&tree);
     return tree;
@@ -91,15 +90,13 @@ static int bk_tree_insert_node_(BKTreeNode **root, BKTreeNode *bk_tree_node) {
 
 static int bk_tree_add_(BKTreeNode **root, char *word){
     BKTreeNode *node;
-    if(!*root) return 0;
-    if(!word)
-        return 0;
-    node = new_bk_tree_node(word);
+    if(!word) return 0;
+    node = new_bk_tree_node(new_str(word));
     if(!node) return 0;
     return bk_tree_insert_node_(root, node);
 }
 
-int bk_tree_insert_add(BKTree *self, char * word){
+int bk_tree_add(BKTree *self, char * word){
     if(!self) return 0;
     return bk_tree_add_(&self->root, word) && (++self->n || 1);
 }
@@ -117,11 +114,13 @@ static void bk_tree_fprint_(const BKTreeNode *root, FILE *stream, int t, void (*
 }
 
 void bk_tree_fprint(const BKTree *self, FILE *stream){
-    if(!self) return;
+    if(!self || !self->root) return;
     self->td->fprint(self->root->data, stream);
-    fprintf(stream, "\n");
-    bk_tree_fprint_(self->root->child, stream, 0, self->td->fprint);
-    bk_tree_fprint_(self->root->siblings, stream, 0, self->td->fprint);
+    if(self->root->child || self->root->siblings){
+        fprintf(stream, "\n");
+        bk_tree_fprint_(self->root->child, stream, 0, self->td->fprint);
+        bk_tree_fprint_(self->root->siblings, stream, 0, self->td->fprint);
+    }
 }
 
 void bk_tree_print(const BKTree *self){
@@ -136,17 +135,18 @@ int bk_tree_fuzzy_search_(const BKTreeNode *root, int *s, const char *word, List
 
     if(d < *s){
         *s = d;
-        list_clear(r_suggestions, list_get_td(r_suggestions)->data_free);
+        /* list_get_td(r_suggestions)->data_free */
+        list_clear(r_suggestions, str_free);
     }
 
     /* Word exits in the tree */
     if(d == 0){
-        list_clear(r_suggestions, list_get_td(r_suggestions)->data_free);
+        list_clear(r_suggestions, str_free);
         return 1;
     }
 
     if(d <= *s)
-        list_prepend(r_suggestions, root->data);
+        list_prepend(r_suggestions, new_str(root->data));
 
     if(root->child){
         if(abs(d - root->child->value) <= *s){
@@ -176,11 +176,10 @@ int bk_tree_fuzzy_search(const BKTree *self, const char *word, List *r_suggestio
 static void bk_tree_clear_(BKTreeNode **root, void (*data_free) (void *)){
     if(!*root) return;
 
-    bk_tree_clear_(&(*root)->child, data_free);
     bk_tree_clear_(&(*root)->siblings, data_free);
+    bk_tree_clear_(&(*root)->child, data_free);
 
-    if(data_free)
-        data_free(&(*root)->data);
+    free((*root)->data);
 
     free(*root);
     *root = NULL;

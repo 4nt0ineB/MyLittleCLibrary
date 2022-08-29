@@ -8,7 +8,7 @@
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_TypeDescriptor.h"
 #include "../../../../include/core/MLCL_basic_types.h"
-/*
+
 
 int run_all_binary_heap_tests(){
     printf("▒▒▒ Running all BinaryHeap tests ▒▒▒\n");
@@ -20,65 +20,53 @@ int run_all_binary_heap_tests(){
 }
 
 int test_binary_heap_add(){
-    BinaryHeap *h;
+    BinaryHeap *heap;
     int x;
 
-    h = new_binary_heap(MAX_HEAP, int_m);
+    heap = new_binary_heap(MAX_HEAP, int_m);
 
-    if(!h)
+    if(!heap)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 5;
-    binary_heap_add(h, &x);
-    x = 2;
-    binary_heap_add(h, &x);
-    x = 6;
-    binary_heap_add(h, &x);
-    x = 1;
-    binary_heap_add(h, &x);
-    x = 0;
-    binary_heap_add(h, &x);
+    binary_heap_add(heap, new_int(5));
+    binary_heap_add(heap, new_int(2));
+    binary_heap_add(heap, new_int(6));
+    binary_heap_add(heap, new_int(1));
+    binary_heap_add(heap, new_int(0));
 
     x = 6;
-    if(h->l->d->type_descriptor->eq(h->l->array[0], &x) != 1)
+    if(heap->td->eq(heap->list->array[0], &x) != 1)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    h->d->free(&h);
+    binary_heap_free(&heap);
     return 1;
 }
 
 int test_binary_heap_pop(){
-    BinaryHeap *h;
+    BinaryHeap *heap;
     int x;
-    void * tmp;
 
-    h = new_binary_heap(MAX_HEAP, int_m);
+    heap = new_binary_heap(MAX_HEAP, int_m);
 
-    if(!h)
+    if(!heap)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    x = 5;
-    binary_heap_add(h, &x);
-    x = 2;
-    binary_heap_add(h, &x);
-    x = 6;
-    binary_heap_add(h, &x);
-    x = 1;
-    binary_heap_add(h, &x);
-    x = 0;
-    binary_heap_add(h, &x);
+    binary_heap_add(heap, new_int(5));
+    binary_heap_add(heap, new_int(2));
+    binary_heap_add(heap, new_int(6));
+    binary_heap_add(heap, new_int(1));
+    binary_heap_add(heap, new_int(0));
 
-    tmp = binary_heap_pop(h);
-    h->d->type_descriptor->data_free(&tmp);
-    tmp = binary_heap_pop(h);
-    h->d->type_descriptor->data_free(&tmp);
+    free(binary_heap_pop(heap));
+    free(binary_heap_pop(heap));
+
 
     x = 2;
-    if(h->l->d->type_descriptor->eq(h->l->array[0], &x) != 1)
-    MLCL_ERR(2, MLCL_ERR_TRUE)
+    if(heap->td->eq(heap->list->array[0], &x) != 1)
+        MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    h->d->free(&h);
+    binary_heap_free(&heap);
     return 1;
 }
 
-*/
+

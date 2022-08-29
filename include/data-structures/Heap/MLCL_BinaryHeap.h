@@ -13,7 +13,7 @@ typedef enum { MIN_HEAP, MAX_HEAP } BINARY_HEAP_ORDER;
 
 typedef struct BinaryHeap {
     BINARY_HEAP_ORDER type;
-    ArrayList *array;
+    ArrayList *list;
     TypeDescriptor *td;
 } BinaryHeap;
 

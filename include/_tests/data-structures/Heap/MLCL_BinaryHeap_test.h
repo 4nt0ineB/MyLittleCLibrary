@@ -9,9 +9,9 @@
 
 
 #include "../../../data-structures/Heap/MLCL_BinaryHeap.h"
-/*
+
 int run_all_binary_heap_tests();
 int test_binary_heap_add();
-int test_binary_heap_pop();*/
+int test_binary_heap_pop();
 
 #endif /* MYLITTLECLIBRARY_MLCL_BINARYHEAP_TEST_H */

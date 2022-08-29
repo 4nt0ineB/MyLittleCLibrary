@@ -7,7 +7,7 @@
 #include "../../../../include/_tests/data-structures/Trees/MLCL_TernarySearchTree_test.h"
 #include "../../../../include/data-structures/Trees/MLCL_TernarySearchTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
-/*
+
 
 int run_all_ternary_search_tree_tests(){
     printf("▒▒▒ Running all TernarySearchTree tests ▒▒▒\n");
@@ -19,76 +19,81 @@ int run_all_ternary_search_tree_tests(){
 
 
 int test_ternary_search_tree_add(){
-    TernarySearchTree t;
+    TernarySearchTree *tree;
 
-    t = new_ternary_search_tree("Beetlejuice");
+    tree = new_ternary_search_tree();
 
-    if(!t)
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    t->d->add(&t, "Foo");
-    t->d->add(&t, "Bar");
+
+    ternary_search_tree_add(tree, "Beetlejuice");
+    ternary_search_tree_add(tree, "Foo");
+    ternary_search_tree_add(tree, "Bar");
 
 
-    if(* (char *) t->data != 'B')
+    if(* (char *) tree->root->data != 'B')
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    if(* (char *) t->child->left->child->data != 'r')
+    if(* (char *) tree->root->child->left->child->data != 'r')
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
-    t->d->free(&t);
+    ternary_search_tree_free(&tree);
     return 1;
 }
 
 int test_ternary_search_tree_remove(){
-    TernarySearchTree t;
+    TernarySearchTree *tree;
 
-    t = new_ternary_search_tree("Neo");
-    if(!t)
+    tree = new_ternary_search_tree();
+
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    t->d->add(&t, "Trinity");
-    t->d->add(&t, "Morpheus");
-    t->d->add(&t, "Cypher");
-    t->d->add(&t, "Switch");
-
-    */
-/*t->d->to_dot(t, "test.dot");
-    t->d->print(t);*//*
+    ternary_search_tree_add(tree, "Neo");
+    ternary_search_tree_add(tree, "Trinity");
+    ternary_search_tree_add(tree, "Morpheus");
+    ternary_search_tree_add(tree, "Cypher");
+    ternary_search_tree_add(tree, "Switch");
 
 
-    t->d->remove(&t, "Switch");
-    t->d->remove(&t, "Cypher");
+    /*t->d->to_dot(t, "test.dot");
+    t->d->print(t);*/
 
-    if(t->left->left)
+
+    ternary_search_tree_remove(tree, "Switch");
+    ternary_search_tree_remove(tree, "Cypher");
+
+    if(tree->root->left->left)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    if(t->right->left)
+    if(tree->root->right->left)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
-    t->d->free(&t);
+    ternary_search_tree_free(&tree);
     return 1;
 }
 
 int test_ternary_search_tree_search(){
-    TernarySearchTree t;
+    TernarySearchTree *tree;
 
-    t = new_ternary_search_tree("Scott");
+    tree = new_ternary_search_tree();
 
-    if(!t)
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    t->d->add(&t, "Ramona");
-    t->d->add(&t, "Wallace");
-    t->d->add(&t, "Kim");
-    t->d->add(&t, "knives");
+    ternary_search_tree_add(tree, "Scott");
+    ternary_search_tree_add(tree, "Ramona");
+    ternary_search_tree_add(tree, "Wallace");
+    ternary_search_tree_add(tree, "Kim");
+    ternary_search_tree_add(tree, "knives");
 
-    if(!t->d->search(t, "Kim"))
+    if(!ternary_search_tree_search(tree, "Kim"))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    if(t->d->search(t, "Todd"))
+    if(ternary_search_tree_search(tree, "Todd"))
         MLCL_ERR(3, MLCL_ERR_FALSE)
 
-    t->d->free(&t);
+    ternary_search_tree_free(&tree);
     return 1;
-}*/
+}

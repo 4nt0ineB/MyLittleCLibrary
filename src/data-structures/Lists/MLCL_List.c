@@ -291,7 +291,6 @@ void list_fprint_join(List *self, FILE *stream, const char *separator){
 
 void list_clear(List *self, void (*data_free) (void *)){
     if(!self) return;
-    if(!list_length(self)) return;
     switch (self->type) {
         case ARRAY_LIST:
             array_list_empty(self->s.array_list, data_free);
@@ -370,7 +369,7 @@ void list_to_dot(const List *self, const char * path){
 }
 
 TypeDescriptor * list_get_td(const List *self){
-    if(!self || !list_length(self)) return NULL;
+    if(!self) return NULL;
 
     switch (self->type) {
         case ARRAY_LIST:

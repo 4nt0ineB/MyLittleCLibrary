@@ -52,7 +52,7 @@ void bk_tree_node_free(BKTreeNode **self, void (data_free) (void *));
 /***************************************************
  * BKTree
  ***************************************************/
-BKTree * new_bk_tree(void (*type_manifest) (TypeDescriptor *));
+BKTree * new_bk_tree();
 int bk_tree_insert_node(BKTree *root, BKTreeNode *bk_tree_node);
 int bk_tree_add(BKTree *root, char *word);
 void bk_tree_fprint(const BKTree *self, FILE *stream);

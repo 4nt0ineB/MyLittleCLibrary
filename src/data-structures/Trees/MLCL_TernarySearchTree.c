@@ -10,6 +10,7 @@
 /***************************************************
  * TernarySearchTreeNode
  ***************************************************/
+
 TernarySearchTreeNode * new_ternary_search_tree_node(void *data){
     TernarySearchTreeNode *node;
     if(!data) return NULL;
@@ -32,6 +33,20 @@ void ternary_search_tree_node_free(TernarySearchTreeNode **self, void (data_free
  * TernarySearchTree
  ***************************************************/
 
+TernarySearchTree * new_ternary_search_tree(){
+    TernarySearchTree *tree;
+    tree = (TernarySearchTree *) malloc(sizeof(TernarySearchTree));
+    if(!tree) return NULL;
+    tree->td = new_type_descriptor(char_m);
+    if(!tree->td){
+        ternary_search_tree_free(&tree);
+        return NULL;
+    }
+    tree->root = NULL;
+    tree->n = 0;
+    return tree;
+}
+
 /**
  * Insert a branch of letters
  * (Straight line of child carrying the letters left of the word)
@@ -39,7 +54,7 @@ void ternary_search_tree_node_free(TernarySearchTreeNode **self, void (data_free
  */
 int ternary_search_tree_insert_branch_(TernarySearchTreeNode **root, char *word){
     if(!word) return 0;
-    *root = new_ternary_search_tree_node(word);
+    *root = new_ternary_search_tree_node(new_char(*word));
     if(*root){
         if(*word)
             return 1 + ternary_search_tree_insert_branch_(&(*root)->child, word + 1);
@@ -50,27 +65,20 @@ int ternary_search_tree_insert_branch_(TernarySearchTreeNode **root, char *word)
 
 int ternary_search_tree_add_(TernarySearchTreeNode **root, char *word, int (*cmp) (const void *, const void *)){
     char c;
-    if(!*root) return 0;
+    if(!*root) {
+        return ternary_search_tree_insert_branch_(root, word);
+    }
     else{
         c = *word;
         if(cmp(&c, (*root)->data) < 0){
-            if(!(*root)->left){ /* Add branch while descriptor is accessible */
-                return ternary_search_tree_insert_branch_(&(*root)->left, word);
-            }
             return ternary_search_tree_add_(&(*root)->left, word, cmp);
 
         }else if(cmp(&c, (*root)->data) > 0){
-            if(!(*root)->right){ /* Add branch while descriptor is accessible */
-                return ternary_search_tree_insert_branch_(&(*root)->right, word);
-            }
             return ternary_search_tree_add_(&(*root)->right, word, cmp);
 
         }else{
             if(*word == MLCL_TST_STOP_CHAR)
                 return 1;
-            if(!(*root)->child){ /* Add branch while descriptor is accessible */
-                return ternary_search_tree_insert_branch_(&(*root)->child, ++word);
-            }
             return ternary_search_tree_add_(&(*root)->child, ++word, cmp);
         }
     }
@@ -184,6 +192,7 @@ void ternary_search_tree_clear(TernarySearchTree *self, void (data_free) (void *
 void ternary_search_tree_free(TernarySearchTree **self){
     if(!*self) return;
     ternary_search_tree_clear(*self, (*self)->td->data_free);
+    type_descriptor_free(&(*self)->td);
     free(*self);
     *self = NULL;
 }
