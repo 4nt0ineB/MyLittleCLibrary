@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #ifndef MYLITTLECLIBRARY_MLCL_BinarySearchTree_H
 #define MYLITTLECLIBRARY_MLCL_BinarySearchTree_H
@@ -27,7 +15,7 @@
  * @brief A generic binary search tree
  */
 typedef struct BinarySearchTreeNode {
-    void * data;
+    void *data;
     struct BinarySearchTreeNode *left, *right;
 } BinarySearchTreeNode;
 
@@ -174,7 +162,7 @@ int binary_search_tree_is_bst(const BinarySearchTree *self);
  * @param data
  * @return
  */
-int binary_search_tree_add(BinarySearchTree *self, void * data);
+int binary_search_tree_add(BinarySearchTree *self, void *data);
 
 /**
  * @brief Remove the minx node in the tree and return the pointer of its data
@@ -204,7 +192,7 @@ int binary_search_tree_remove(BinarySearchTree *self, const void *data);
  * @param data
  * @return
  */
-BinarySearchTree binary_search_tree_search(BinarySearchTree * t, const void * data);
+BinarySearchTreeNode * binary_search_tree_search(BinarySearchTree *self, const void *data);
 
 /* Depth First Traversals */
 void binary_search_tree_fprint_preorder(const BinarySearchTree *self, FILE * stream);

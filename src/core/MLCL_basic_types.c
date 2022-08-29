@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../include/core/MLCL_basic_types.h"
 
@@ -158,7 +146,7 @@ void char_fprint(const void *x, FILE *stream){
     fprintf(stream, "%c",  *(char *) x);
 }
 
-void * char_copy(const void * data){
+void * char_copy(const void *data){
     void * alloc_data;
     size_t data_size;
     data_size = sizeof(char);
@@ -232,7 +220,7 @@ void int_fprint(const void *x, FILE *stream){
     fprintf(stream, "%d",  *(int *) x);
 }
 
-void * int_copy(const void * data){
+void * int_copy(const void *data){
     void * alloc_data;
     size_t data_size;
     data_size = sizeof(int);
@@ -306,7 +294,7 @@ void float_fprint(const void *x, FILE *stream){
     fprintf(stream, "%.2f",  *(float *) x);
 }
 
-void * float_copy(const void * data){
+void * float_copy(const void *data){
     void * alloc_data;
     size_t data_size;
     data_size = sizeof(float);

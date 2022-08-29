@@ -29,9 +29,9 @@ int binary_heap_get_child_index(const BinaryHeap *self, int i);
  * @param data
  * @param shallow_copy 1 just copy the address, 0 deep copy of the data
  */
-int binary_heap_swap(BinaryHeap *self, int i, const void * data, char shallow_copy);
+int binary_heap_swap(BinaryHeap *self, int i, const void *data, char shallow_copy);
 
-void binary_heap_add(BinaryHeap *self, const void * data);
+void binary_heap_add(BinaryHeap *self, const void *data);
 
 /**
  * @brief Return the pointer to the data with highest priority. Depends on heap type (MIN_HEAP / MAX_HEAP).

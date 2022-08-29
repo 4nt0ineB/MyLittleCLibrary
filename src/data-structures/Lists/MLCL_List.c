@@ -51,7 +51,6 @@ List * new_list(LIST_TYPE list_type, void (*type_manifest) (TypeDescriptor *)){
 
 int list_length(const List *self){
     if(!self) return 0;
-    if(!list_length(self)) return 0;
     switch (self->type) {
         case ARRAY_LIST:
             return self->s.array_list->count;

@@ -1,26 +1,13 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../../include/_tests/data-structures/Trees/MLCL_BinarySearchTree_test.h"
 #include "../../../../include/data-structures/Trees/MLCL_BinarySearchTree.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
-/*
 
 
 int run_all_binary_search_tree_tests(){
@@ -51,221 +38,200 @@ int run_all_binary_search_tree_tests(){
 }
 
 int test_new_binary_search_tree(){
-    BinarySearchTree t;
+    BinarySearchTree *tree;
     float x;
-    x = 1.2f;
-    t = new_binary_search_tree(&x, float_m);
-    if(!t)
+
+    tree = new_binary_search_tree(float_m);
+    binary_search_tree_add(tree, new_float(1.2f));
+
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    if(!t->d->type_descriptor->eq(t->data, &x))
+
+    x = 1.2f;
+    if(!tree->td->eq(tree->root->data, &x))
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_height(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->height(t) != 2)
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_height(tree) != 2)
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_nb_nodes(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->nb_nodes(t) != 6)
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_nb_nodes(tree) != 6)
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_nb_leaves(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->nb_leaves(t) != 3)
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_nb_leaves(tree) != 3)
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_nb_internal_nodes(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->nb_internal_nodes(t) != 3)
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_nb_internal_nodes(tree) != 3)
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_nb_two_children(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->nb_two_children(t) != 2)
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_nb_two_children(tree) != 2)
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_is_perfect_bt(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(t->d->is_perfect_bt(t))
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(binary_search_tree_is_perfect_bt(tree))
         MLCL_ERR(1, MLCL_ERR_FALSE)
-    x = 15;
-    t->d->add(&t, &x);
-    if(!t->d->is_perfect_bt(t))
+
+    binary_search_tree_add(tree, new_int(15));
+
+    if(!binary_search_tree_is_perfect_bt(tree))
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_search_tree_add(){
-    BinarySearchTree t;
+    BinarySearchTree *tree;
     int x;
-    x = 1;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 3;
-    t->d->add(&t, &x);
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(3));
+    binary_search_tree_add(tree, new_int(4));
+
     x = 4;
-    t->d->add(&t, &x);
-    x = 3;
-    if(!(t->d->type_descriptor->eq(t->right->right->data, &x)))
+    if(!(tree->td->eq(tree->root->right->right->data, &x)))
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 
 int test_binary_tree_remove(){
-    BinarySearchTree t;
+    BinarySearchTree *tree;
     int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
     x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
+    binary_search_tree_remove(tree, &x);
+
     x = 9;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->remove(&t, &x);
-    x = 9;
-    if(!(t->d->type_descriptor->eq(t->right->data, &x)))
+    if(!(tree->td->eq(tree->root->right->data, &x)))
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 int test_binary_tree_search(){
-    BinarySearchTree t;
+    BinarySearchTree *tree;
     int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
     x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    x = 4;
-    if(!(t->d->search(&t, &x)))
+    if(!(binary_search_tree_search(tree, &x)))
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
 }
 
 int test_binary_search_tree_is_bst(){
-    BinarySearchTree t;
-    int x;
-    x = 7;
-    t = new_binary_search_tree(&x, int_m);
-    x = 2;
-    t->d->add(&t, &x);
-    x = 14;
-    t->d->add(&t, &x);
-    x = 1;
-    t->d->add(&t, &x);
-    x = 4;
-    t->d->add(&t, &x);
-    x = 9;
-    t->d->add(&t, &x);
-    if(!(t->d->is_bst(t)))
+    BinarySearchTree *tree;
+
+    tree = new_binary_search_tree(int_m);
+    binary_search_tree_add(tree, new_int(7));
+    binary_search_tree_add(tree, new_int(2));
+    binary_search_tree_add(tree, new_int(14));
+    binary_search_tree_add(tree, new_int(1));
+    binary_search_tree_add(tree, new_int(4));
+    binary_search_tree_add(tree, new_int(9));
+
+    if(!(binary_search_tree_is_bst(tree)))
         MLCL_ERR(2, MLCL_ERR_TRUE)
-    t->d->free(&t);
+
+    binary_search_tree_free(&tree);
     return 1;
-}*/
+}

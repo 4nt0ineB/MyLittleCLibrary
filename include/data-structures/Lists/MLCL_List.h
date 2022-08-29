@@ -65,7 +65,7 @@ TypeDescriptor * list_get_td(const List *self);
  * @param data
  * @return
  */
-int list_check_init_(List *l, const void * data);
+int list_check_init_(List *l, const void *data);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_LIST_H */

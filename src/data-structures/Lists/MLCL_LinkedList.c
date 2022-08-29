@@ -183,7 +183,7 @@ void linked_list_merge_sort(LinkedList *self, int (*ordering) (const void *, con
 }
 void * linked_list_shift(LinkedList *self){
     LinkedListNode *tmp;
-    void * data;
+    void *data;
     if(!self || !self->head) return NULL;
     tmp = self->head;
     data = tmp->data;
@@ -194,7 +194,7 @@ void * linked_list_shift(LinkedList *self){
 }
 void * linked_list_pop(LinkedList *self){
     LinkedListNode *tmp, *tmp_2;
-    void * data;
+    void *data;
     if(!self || !self->head) return NULL;
     /* Head */
     if(!self->head->next){
@@ -344,7 +344,7 @@ void linked_list_free(LinkedList **self){
 }
 
 
-/*int linked_list_add_(LinkedList * ll, const void * data, int (*cmp) (const void *, const void *)){
+/*int linked_list_add_(LinkedList * ll, const void *data, int (*cmp) (const void *, const void *)){
     LinkedCell * new_cell;
     *//* End of list OR Inside the list but inferior to the current cell *//*
     if(!*ll) return 0;
@@ -366,12 +366,12 @@ void linked_list_free(LinkedList **self){
 }*/
 /*
 
-int linked_list_ordered_add(LinkedList * ll, const void * data){
+int linked_list_ordered_add(LinkedList * ll, const void *data){
     if(!*ll) return 0;
     return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->lt);
 }
 
-int linked_list_reverse_ordered_add(LinkedList * ll, const void * data){
+int linked_list_reverse_ordered_add(LinkedList * ll, const void *data){
     if(!*ll) return 0;
     return (*ll)->d->add_(ll,  data, (*ll)->d->type_descriptor->ge);
 }

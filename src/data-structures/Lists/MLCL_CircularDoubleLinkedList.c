@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../include/data-structures/Lists/MLCL_CircularDoubleLinkedList.h"
 #include "../../../include/data-structures/Lists/MLCL_DoubleLinkedList.h"
@@ -245,7 +233,7 @@ void circular_double_linked_list_free(DoubleLinkedList **self){
 /****************************************************************
  ****************************************************************/
 
-/*int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
+/*int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void *data, int (*cmp) (const void *, const void *)){
     DoubleLinkedListNode * new_cell;
     DoubleLinkedListNode * tmp;
     if(!*cll) return 0;

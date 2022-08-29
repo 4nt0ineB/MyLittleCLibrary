@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #ifndef MYLITTLECLIBRARY_MLCL_AVLTREE_H
 #define MYLITTLECLIBRARY_MLCL_AVLTREE_H
@@ -24,101 +12,86 @@
 /**
  * @brief A generic AVL tree
  */
-typedef struct s_avl_node {
-    void * data;
+typedef struct AVLTreeNode {
+    void *data;
     int balance; /* To help balancing the tree each node has relative balance */
-    struct s_avl_node *left, *right;
-    struct s_avl_tree_descriptor * d; /*!< Descriptor of the binary tree */
-} AVLTreeNode, *AVLTree;
+    struct AVLTreeNode *left, *right;
+} AVLTreeNode;
+
+typedef struct AVLTree {
+    int n;
+    AVLTreeNode *root;
+    TypeDescriptor *td;
+}AVLTree;
+
+
+/***************************************************
+ * AVlTreeNode
+ ***************************************************/
+
+AVLTreeNode * new_avl_tree_node(void *data);
+
+void avl_tree_node_free(AVLTreeNode **self, void (*data_free) (void *));
 
 /**
- * @brief Descriptor of the AVL tree
- * The tree - the nodes - refers to a binary tree descriptor,
- * gathering implemented functions of the BinarySearchTree type, including
- * a TypeDescriptor allowing manipulation of the data, and the the number of nodes.
+ * @brief Print the given node on stdout
+ * @param n
  */
-typedef struct s_avl_tree_descriptor {
-    TypeDescriptor * type_descriptor;
-    int n; /**< Number of nodes in the tree */
-    int (*height) (AVLTree); /**< Return the height of the tree */
-    int (*nb_nodes) (AVLTree); /**< Return the number of nodes. O(1) by the struct */
-    int (*nb_leaves) (AVLTree); /**< Return the number of leaves */
-    int (*nb_internal_nodes) (AVLTree); /**< Return the number of internal nodes */
-    int (*nb_two_children) (AVLTree); /**< Number of nodes having two children */
-    int  (*add) (AVLTree *, const void *); /**< add data to the tree */
-    AVLTree (*min) (AVLTree); /**< Return a pointer to the min node */
-    AVLTree (*max) (AVLTree); /**< Return a pointer to the the max node */
-    int (*extract_min) (AVLTree *, void *);  /**< Remove the min node in the tree and return the pointer of its data */
-    int (*extract_max) (AVLTree *, void *);  /**< Remove the max node in the tree and return the pointer of its data */
-    int (*remove) (AVLTree *, const void *); /**< Remove the first occurrence of the given data trough preorder traversal  */
-    AVLTree (*search) (AVLTree *, const void *); /**< Return a pointer to the first occurrence of the node having data equal to the given one, trough preorder traversal */
-    int (*is_perfect_bt) (AVLTree); /**< Return 1 if the tree is a perfect binary tree, else 0 */
-    int (*is_bst) (AVLTree); /**< Return 1 if the tree is a binary search tree, else 0 */
-    void (*node_print) (AVLTreeNode *);  /**< Print the given node on stdout */
-    void (*node_fprint) (FILE *, AVLTreeNode *); /**< Print the given node on the given stream */
-    void (*fprint_preorder) (FILE *, AVLTree);
-    void (*fprint_inorder) (FILE *, AVLTree);
-    void (*fprint_postorder) (FILE *, AVLTree);
-    void (*to_dot) (AVLTree, const char *); /**< Make a formatted dot file of the struct */
-    void (*free) (AVLTree *); /**< Free to tree */
-} AVLTreeDescriptor;
+void avl_tree_node_print(const AVLTreeNode *self,  void (data_fprint) (const void *, FILE *));
 
 /**
- * @brief Allocate and return a default
- * avl tree descriptor. Type descriptor set to null.
- * @return
+ * @brief Print the given node on the given stream
+ * @param n
  */
-AVLTreeDescriptor * avl_tree_descriptor();
+void avl_tree_node_fprint (const AVLTreeNode *self, FILE * stream,  void (data_fprint) (const void *, FILE *));
 
-/**
- * @brief A detailed constructor for the nodes of a avl tree.
- * @param data First cell's data.
- * @param descriptor The binary tree descriptor.
- * @return
- */
-AVLTreeNode * avl_tree_builder(const void * data, AVLTreeDescriptor * descriptor);
+
+
+/***************************************************
+ * AVlTree
+ ***************************************************/
 
 /**
  * @brief Allocate a new AVL Trees
  * @param val
  * @return
  */
-AVLTree new_avl_tree(const void * data, void (*type_manifest) (TypeDescriptor *));
+AVLTree * new_avl_tree(void (*type_manifest) (TypeDescriptor *));
 
 /**
  * @brief Return the height of the tree
  * @param a tree
  * @return Binary tree height
  */
-int avl_tree_height(AVLTree t);
+int avl_tree_height(const AVLTree *self);
 
 /**
  * @brief Return the number of nodes
  * @param a tree
  * @return
  */
-int avl_tree_nb_nodes(AVLTree t);
+int avl_tree_nb_nodes(const AVLTree *self);
 
 /**
  * @brief Return the number of leaves
  * @param a tree
  * @return
  */
-int avl_tree_nb_leaves(AVLTree t);
+int avl_tree_nb_leaves(const AVLTree *self);
 
 /**
  * @brief Return the number of internal nodes
  * @param a tree
  * @return
  */
-int avl_tree_nb_internal_nodes(AVLTree t);
+int avl_tree_nb_internal_nodes(const AVLTree *self);
 
 /**
  * @brief Return the number nodes having two children
  * @param t
  * @return
  */
-int avl_tree_nb_two_children(AVLTree t);
+int avl_tree_nb_two_children(const AVLTree *self);
 
 /**
  * @brief Return true if a given tree is a perfect
@@ -126,21 +99,21 @@ int avl_tree_nb_two_children(AVLTree t);
  * @param t
  * @return
  */
-int avl_tree_is_perfect_bt(AVLTree t);
+int avl_tree_is_perfect_bt(const AVLTree *self);
 
 /**
  * @brief Return a pointer to the min node
  * @param t
  * @return
  */
-AVLTree avl_tree_min(AVLTree t);
+AVLTreeNode * avl_tree_min(AVLTree *self);
 
 /**
  * @brief Return a pointer to the the max node
  * @param t
  * @return
  */
-AVLTree avl_tree_max(AVLTree t);
+AVLTreeNode * avl_tree_max(AVLTree *self);
 
 /**
  * @brief Return 1 if the binary tree is BST
@@ -149,7 +122,7 @@ AVLTree avl_tree_max(AVLTree t);
  * @param a
  * @return int
  */
-int avl_tree_is_bst(AVLTree t);
+int avl_tree_is_bst(const AVLTree *self);
 
 /**
  * @brief add data to the tree
@@ -157,7 +130,7 @@ int avl_tree_is_bst(AVLTree t);
  * @param data
  * @return
  */
-int avl_tree_add(AVLTree * t, const void * data);
+int avl_tree_add(AVLTree *self, void *data);
 
 /**
  * @brief Remove the minx node in the tree and return the pointer of its data
@@ -165,7 +138,7 @@ int avl_tree_add(AVLTree * t, const void * data);
  * @param rdata
  * @return
  */
-int avl_tree_extract_min(AVLTree *r, void * rdata);
+int avl_tree_extract_min(AVLTree *self, void * rdata);
 
 /**
  * @brief Remove the max node in the tree and return the pointer of its data
@@ -181,7 +154,7 @@ int avl_tree_extract_max(AVLTree *r, void * rdata);
  * @param data
  * @return
  */
-int avl_tree_remove(AVLTree * t, const void * data);
+int avl_tree_remove(AVLTree *self, const void *data);
 
 /**
  * @brief Return a pointer to the first occurrence of the node having data equal to the given one, trough preorder traversal
@@ -189,42 +162,30 @@ int avl_tree_remove(AVLTree * t, const void * data);
  * @param data
  * @return
  */
-AVLTree avl_tree_search(AVLTree * t, const void * data);
-
-/**
- * @brief Print the given node on stdout
- * @param n
- */
-void avl_tree_node_print (AVLTreeNode * n);
-
-/**
- * @brief Print the given node on the given stream
- * @param n
- */
-void avl_tree_node_fprint (FILE * stream, AVLTreeNode * n);
+AVLTreeNode * avl_tree_search(AVLTree *self, const void *data);
 
 /* Depth First Traversals */
-void avl_tree_fprint_preorder(FILE * stream, AVLTree t);
-void avl_tree_fprint_inorder(FILE * stream, AVLTree t);
-void avl_tree_fprint_postorder(FILE * stream, AVLTree t);
+void avl_tree_fprint_preorder(const AVLTree *self, FILE *stream);
+void avl_tree_fprint_inorder(const AVLTree *self, FILE *stream);
+void avl_tree_fprint_postorder(const AVLTree *self, FILE *stream);
 
 /**
  * @brief Make a formatted dot file of the struct
  * @param ll
  * @param dest_path
  */
-void avl_tree_to_dot(AVLTree t, const char * dest_path);
+void avl_tree_to_dot(const AVLTree *self, const char *dest_path);
 
 /**
- * @brief Free the descriptor of the Binary search tree
- * @param bstd
+ * @brief Clear the binary search tree
+ * @param t
  */
-void avl_tree_descriptor_free(AVLTreeDescriptor ** bstd);
+void avl_tree_clear(AVLTree *self, void (*data_free) (void *));
 
 /**
  * @brief Free the binary search tree
  * @param t
  */
-void avl_tree_free(AVLTree * t);
+void avl_tree_free(AVLTree **self);
 
 #endif /* MYLITTLECLIBRARY_MLCL_AVLTREE_H */

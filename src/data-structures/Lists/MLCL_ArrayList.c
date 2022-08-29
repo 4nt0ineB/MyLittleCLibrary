@@ -54,7 +54,7 @@ int array_list_update_space(ArrayList *self){
     return 1;
 }
 
-int array_list_append(ArrayList *self, void * data){
+int array_list_append(ArrayList *self, void *data){
     if(!self) return 0;
     if(!array_list_make_space(self)) {
         return 0;
@@ -65,7 +65,7 @@ int array_list_append(ArrayList *self, void * data){
     return 1;
 }
 
-int array_list_insert(ArrayList *self, int i, void * data){
+int array_list_insert(ArrayList *self, int i, void *data){
     int j;
     if(!self) return 0;
     array_list_make_space(self);
@@ -77,7 +77,7 @@ int array_list_insert(ArrayList *self, int i, void * data){
     return 1;
 }
 
-int array_list_assign_i(ArrayList *self, int i, void * data){
+int array_list_assign_i(ArrayList *self, int i, void *data){
     if(!self) return 0;
     if(i < 0 || i > self->count) return 0;
     if(!array_list_make_space(self)) {

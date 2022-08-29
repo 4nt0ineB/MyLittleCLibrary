@@ -84,7 +84,7 @@ void movie_fprint(FILE * stream, const void * x){
   fprintf(stream, "%c",  *(char *) x);  
 }  
   
-void * movie_copy(const void * data){  
+void * movie_copy(const void *data){  
 	void *alloc_data;  
 	size_t data_size;  
 	data_size = sizeof(char);  

@@ -30,7 +30,7 @@ By doing so, we can override the methods behavior be using custom ones
 or
 
 ```c
-void custom_fprint_for_the_data_of_my_linked_list(FILE * stream, const void * data){
+void custom_fprint_for_the_data_of_my_linked_list(FILE * stream, const void *data){
 	if(stream && data)
 		fprintf("***-- %c --***", *(char *) data);
 }

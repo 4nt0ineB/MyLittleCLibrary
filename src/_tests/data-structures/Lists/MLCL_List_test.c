@@ -9,7 +9,6 @@
 #include "../../../../include/data-structures/Lists/MLCL_List.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_basic_types.h"
-/*
 
 int run_all_list_tests(){
     printf("▒▒▒ Running all List tests ▒▒▒\n");
@@ -19,24 +18,24 @@ int run_all_list_tests(){
 
 int test_list_append(){
 
-    List * l;
+    List *list;
 
-    l = new_list(LINKED_LIST, str_m);
+    list = new_list(LINKED_LIST, str_m);
 
-    if(!l)
+    if(!list)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-    l->append(l, "hell");
-    l->append(l, "shell");
-    l->append(l, "Foo");
-    l->append(l, "bar");
-    l->append(l, "Bubble");
-    l->s.linked_list->d->merge_sort(&l->s.linked_list, l->s.linked_list->d->type_descriptor->lt);
+    list_append(list, new_str("hell"));
+    list_append(list, new_str("shell"));
+    list_append(list, new_str("Foo"));
+    list_append(list, new_str("bar"));
+    list_append(list, new_str("Bubble"));
+    linked_list_merge_sort(list->s.linked_list, list->s.linked_list->td->lt);
 
-    if(l->s.linked_list->d->type_descriptor->eq(l->s.linked_list->data, "Bubble") != 1)
+    if(list->s.linked_list->td->eq(list->s.linked_list->head->data, "Bubble") != 1)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    l->free(&l);
+    list_free(&list);
     return 1;
 }
-*/
+

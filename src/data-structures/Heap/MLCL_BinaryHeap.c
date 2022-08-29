@@ -53,7 +53,7 @@ int binary_heap_get_child_index(const BinaryHeap *self, int i){
     return (2 * i + 1);
 }
 
-int binary_heap_swap(BinaryHeap *self, int i, const void * data, char shallow_copy){
+int binary_heap_swap(BinaryHeap *self, int i, const void *data, char shallow_copy){
     int child;
     if(!self || i > self->array->count) return 0;
 
@@ -76,7 +76,7 @@ int binary_heap_swap(BinaryHeap *self, int i, const void * data, char shallow_co
     return 1;
 }
 
-void binary_heap_add(BinaryHeap *self, const void * data){
+void binary_heap_add(BinaryHeap *self, const void *data){
     if(!self) return;
     /* We make sure there is enough space */
     if(!array_list_make_space(self->array))

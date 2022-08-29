@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../../include/_tests/data-structures/Trees/MLCL_AVLTree_test.h"
 #include "../../../../include/data-structures/Trees/MLCL_AVLTree.h"
@@ -23,7 +11,6 @@
 #include "../../../../include/core/MLCL_basic_types.h"
 
 #include <stdio.h>
-/*
 
 int run_all_avl_tree_tests(){
     printf("▒▒▒ Running all AVLTree tests ▒▒▒\n");
@@ -34,54 +21,58 @@ int run_all_avl_tree_tests(){
 }
 
 int test_new_avl_tree(){
-    AVLTree avl;
-    int x;
-    x = 8;
-    avl = new_avl_tree(&x,  int_m);
-    if(!avl)
+    AVLTree *tree;
+
+    tree = new_avl_tree(int_m);
+
+    if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
-    avl->d->free(&avl);
+
+    avl_tree_free(&tree);
     return 1;
 }
 
 int test_avl_tree_add(){
-    AVLTree avl;
+    AVLTree *tree;
     int x;
-    x = 8;
-    avl = new_avl_tree(&x,  int_m);
-    x = 7;
-    avl->d->add(&avl, &x);
+
+    tree = new_avl_tree(int_m);
+    avl_tree_add(tree, new_int(8));
+    avl_tree_add(tree, new_int(7));
+    avl_tree_add(tree, new_int(6));
+    avl_tree_add(tree, new_int(4));
+    avl_tree_add(tree, new_int(5));
+
+    /*avl_tree_to_dot(tree, "test.dot");
+    avl_tree_fprint_preorder(tree, stdout);*/
+
     x = 6;
-    avl->d->add(&avl, &x);
-    x = 4;
-    avl->d->add(&avl, &x);
-    x = 5;
-    avl->d->add(&avl, &x);
-    x = 6;
-    if(!avl->d->type_descriptor->eq(avl->left->right->data, &x))
+    if(!tree->td->eq(tree->root->left->right->data, &x))
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    avl->d->free(&avl);
+
+    avl_tree_free(&tree);
     return 1;
 }
 
 int test_avl_remove(){
-    AVLTree avl;
+    AVLTree *tree;
     int x;
+
+    tree = new_avl_tree(int_m);
+    avl_tree_add(tree, new_int(8));
+    avl_tree_add(tree, new_int(7));
+    avl_tree_add(tree, new_int(6));
+    avl_tree_add(tree, new_int(4));
+    avl_tree_add(tree, new_int(5));
+
     x = 8;
-    avl = new_avl_tree(&x,  int_m);
-    x = 7;
-    avl->d->add(&avl, &x);
+    avl_tree_remove(tree, &x);
+
     x = 6;
-    avl->d->add(&avl, &x);
-    x = 4;
-    avl->d->add(&avl, &x);
-    x = 5;
-    avl->d->add(&avl, &x);
-    x = 8;
-    avl->d->remove(&avl, &x);
-    x = 6;
-    if(!avl->d->type_descriptor->eq(avl->right->left->data, &x))
+    if(!tree->td->eq(tree->root->right->left->data, &x))
         MLCL_ERR(1, MLCL_ERR_TRUE)
-    avl->d->free(&avl);
+
+    avl_tree_free(&tree);
     return 1;
-}*/
+}
+

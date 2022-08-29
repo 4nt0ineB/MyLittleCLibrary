@@ -13,7 +13,7 @@
 
 typedef struct BKTreeNode {
     int value;
-    void * data;
+    void *data;
     struct BKTreeNode *child, *siblings;
 } BKTreeNode;
 

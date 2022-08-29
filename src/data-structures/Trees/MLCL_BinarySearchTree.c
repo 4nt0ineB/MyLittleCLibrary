@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../include/data-structures/Trees/MLCL_BinarySearchTree.h"
 #include "../../../include/utils/MLCL_utils.h"
@@ -23,7 +11,7 @@
  * BinarySearchTreeNode
  ***************************************************/
 
-BinarySearchTreeNode * new_binary_search_tree_node(void * data){
+BinarySearchTreeNode * new_binary_search_tree_node(void *data){
     BinarySearchTreeNode *node;
     node = (BinarySearchTreeNode *) calloc(1, sizeof(BinarySearchTreeNode));
     if(!node) return NULL;
@@ -33,9 +21,8 @@ BinarySearchTreeNode * new_binary_search_tree_node(void * data){
 }
 
 void binary_search_tree_node_free(BinarySearchTreeNode **self, void (*data_free) (void *)){
-    if(*self) return;
-    if(data_free)
-        data_free((*self)->data);
+    if(!*self) return;
+    if(data_free) data_free((*self)->data);
     free(*self);
     *self = NULL;
 }
@@ -62,6 +49,7 @@ BinarySearchTree * new_binary_search_tree(void (*type_manifest) (TypeDescriptor 
     if(!tree->td){
         binary_search_tree_free(&tree);
     }
+    tree->n = 0;
     tree->root = NULL;
     return tree;
 }
@@ -187,7 +175,7 @@ int binary_search_tree_is_bst(const BinarySearchTree *self){
     return binary_search_tree_is_bst_(self->root, self->td->cmp);
 }
 
-static int binary_search_tree_add_(BinarySearchTreeNode **root, void * data, int (*cmp) (const void *, const void *)){
+static int binary_search_tree_add_(BinarySearchTreeNode **root, void *data, int (*cmp) (const void *, const void *)){
     if (!*root)
         return (*root = new_binary_search_tree_node(data)) ? 1 : 0;
     if (cmp((*root)->data, data) > 0)
@@ -197,9 +185,9 @@ static int binary_search_tree_add_(BinarySearchTreeNode **root, void * data, int
     return 0;
 }
 
-int binary_search_tree_add(BinarySearchTree *self, void * data){
+int binary_search_tree_add(BinarySearchTree *self, void *data){
     if(!self) return 0;
-    return binary_search_tree_add_(&self->root, data, self->td->cmp);
+    return binary_search_tree_add_(&self->root, data, self->td->cmp) && ++self->n;
 }
 
 static void * binary_search_tree_extract_min_(BinarySearchTreeNode **root){
@@ -207,7 +195,7 @@ static void * binary_search_tree_extract_min_(BinarySearchTreeNode **root){
         return NULL;
     if (!(*root)->left) {
         BinarySearchTreeNode *tmp;
-        void * data;
+        void *data;
         tmp = *root;
         data = tmp->data;
         *root = tmp->right;
@@ -230,7 +218,7 @@ static void * binary_search_tree_extract_max_(BinarySearchTreeNode **root) {
         return NULL;
     if (!(*root)->right) {
         BinarySearchTreeNode *tmp;
-        void * data;
+        void *data;
         tmp = *root;
         data = tmp->data;
         *root = tmp->left;
@@ -249,7 +237,7 @@ static int binary_search_tree_remove_(BinarySearchTreeNode **root, const void *d
         return 0;
     if (cmp((*root)->data, data) == 0) {
         BinarySearchTreeNode *tmp;
-        void * data_tmp;
+        void *data_tmp;
         tmp = *root;
         if(!(*root)->right && !(*root)->left){
             binary_search_tree_node_free(root, data_free);
@@ -264,9 +252,6 @@ static int binary_search_tree_remove_(BinarySearchTreeNode **root, const void *d
             (*root)->right = tmp->right;
             (*root)->left = tmp->left;
             tmp->left = tmp->right = NULL;
-            if(data_tmp) {
-                data_free(&data_tmp);
-            }
             binary_search_tree_node_free(&tmp, data_free);
         }
         return 1;
@@ -281,7 +266,7 @@ int binary_search_tree_remove(BinarySearchTree *self, const void *data){
     return binary_search_tree_remove_(&self->root, data, self->td->cmp, self->td->data_free);
 }
 
-BinarySearchTreeNode * binary_search_tree_search_(BinarySearchTreeNode **root, const void * data, int (*cmp) (const void *, const void *)){
+BinarySearchTreeNode * binary_search_tree_search_(BinarySearchTreeNode **root, const void *data, int (*cmp) (const void *, const void *)){
     if (!*root)
         return NULL;
     if (cmp((*root)->data, data) > 0)
@@ -290,6 +275,12 @@ BinarySearchTreeNode * binary_search_tree_search_(BinarySearchTreeNode **root, c
         return binary_search_tree_search_(&(*root)->right, data, cmp);
     return *root;
 }
+
+BinarySearchTreeNode * binary_search_tree_search(BinarySearchTree *self, const void *data){
+    if(!self || !self->root) return NULL;
+    return binary_search_tree_search_(&self->root, data, self->td->cmp);
+}
+
 
 static void binary_search_tree_fprint_preorder_(const BinarySearchTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
     if(!root) return;
@@ -317,8 +308,8 @@ void binary_search_tree_fprint_inorder(const BinarySearchTree *self, FILE *strea
 
 static void binary_search_tree_fprint_postorder_(const BinarySearchTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
     if(!root) return;
-    binary_search_tree_fprint_inorder_(root->left, stream, data_fprint);
-    binary_search_tree_fprint_inorder_(root->right, stream, data_fprint);
+    binary_search_tree_fprint_postorder_(root->left, stream, data_fprint);
+    binary_search_tree_fprint_postorder_(root->right, stream, data_fprint);
     binary_search_tree_node_fprint(root, stream, data_fprint);
 }
 
@@ -343,7 +334,7 @@ static void binary_search_tree_to_dot_(const BinarySearchTreeNode *root, FILE * 
 void binary_search_tree_to_dot(const BinarySearchTree *self, const char * dest_path){
     FILE * stream;
     if(!self) return;
-    stream =fopen(dest_path, "w");
+    stream = fopen(dest_path, "w");
     if(!stream)
         printf("File can't be opened\n");
     fprintf(stream, "digraph arbre {\n"

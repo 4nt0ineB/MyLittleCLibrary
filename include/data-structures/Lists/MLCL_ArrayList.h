@@ -42,7 +42,7 @@ int array_list_update_space(ArrayList *self);
  * @param data
  * @return
  */
-int array_list_append(ArrayList *self, void * data);
+int array_list_append(ArrayList *self, void *data);
 
 /**
  * @brief Insert data at index
@@ -51,7 +51,7 @@ int array_list_append(ArrayList *self, void * data);
  * @param data
  * @return
  */
-int array_list_insert(ArrayList *self, int i, void * data);
+int array_list_insert(ArrayList *self, int i, void *data);
 
 /**
  * @brief At a given index, free and assign new data
@@ -60,7 +60,7 @@ int array_list_insert(ArrayList *self, int i, void * data);
  * @param data
  * @return
  */
-int array_list_assign_i(ArrayList *self, int i, void * data);
+int array_list_assign_i(ArrayList *self, int i, void *data);
 
 /**
  * @brief Remove and return last value of the list

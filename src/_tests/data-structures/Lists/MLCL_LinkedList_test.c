@@ -144,7 +144,7 @@ int test_linked_list_remove(){
 
 int test_linked_list_shift(){
     LinkedList *list;
-    void * data;
+    void *data;
 
     list = new_linked_list(int_m);
 
@@ -169,7 +169,7 @@ int test_linked_list_shift(){
 
 int test_linked_list_pop(){
     LinkedList *list;
-    void * data;
+    void *data;
 
     list = new_linked_list(int_m);
 

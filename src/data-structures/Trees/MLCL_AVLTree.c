@@ -20,178 +20,165 @@
 #include "../../../include/data-structures/Trees/MLCL_AVLTree.h"
 #include <assert.h>
 
-AVLTreeDescriptor  * avl_tree_descriptor(){
-    AVLTreeDescriptor * avl_descriptor;
-    avl_descriptor = (AVLTreeDescriptor *) malloc(sizeof(AVLTreeDescriptor));
-    if(!avl_descriptor) return NULL;
-    /* functions affectation */
-    avl_descriptor->height = avl_tree_height;
-    avl_descriptor->nb_nodes = avl_tree_nb_nodes;
-    avl_descriptor->nb_leaves = avl_tree_nb_leaves;
-    avl_descriptor->nb_internal_nodes = avl_tree_nb_internal_nodes;
-    avl_descriptor->nb_two_children = avl_tree_nb_two_children;
-    avl_descriptor->is_perfect_bt = avl_tree_is_perfect_bt;
-    avl_descriptor->is_bst = avl_tree_is_bst;
-    avl_descriptor->add = avl_tree_add;
-    avl_descriptor->search = avl_tree_search;
-    avl_descriptor->min = avl_tree_min;
-    avl_descriptor->max = avl_tree_max;
-    avl_descriptor->extract_min = avl_tree_extract_min;
-    avl_descriptor->extract_max = avl_tree_extract_max;
-    avl_descriptor->remove = avl_tree_remove;
-    avl_descriptor->node_print = avl_tree_node_print;
-    avl_descriptor->node_fprint = avl_tree_node_fprint;
-    avl_descriptor->fprint_preorder = avl_tree_fprint_preorder;
-    avl_descriptor->fprint_inorder = avl_tree_fprint_inorder;
-    avl_descriptor->fprint_postorder = avl_tree_fprint_postorder;
-    avl_descriptor->to_dot = avl_tree_to_dot;
-    avl_descriptor->free = avl_tree_free;
-    avl_descriptor->n = 1; /*<! For the descriptor to exists at least one node exists */
-    return avl_descriptor;
-}
 
+/***************************************************
+ * AVlTreeNode
+ ***************************************************/
 
-
-AVLTreeNode * avl_tree_builder(const void * data, AVLTreeDescriptor * descriptor){
+AVLTreeNode * new_avl_tree_node(void *data){
     AVLTreeNode * node;
-    node = (AVLTreeNode *) calloc(1, sizeof(AVLTreeNode));
-    assert(descriptor);
+    node = (AVLTreeNode *) malloc(sizeof(AVLTreeNode));
     if(!node) return NULL;
-    if(!(node->data = descriptor->type_descriptor->copy(data))
-       && descriptor->type_descriptor->data_size)
-        return NULL;
-    node->d = descriptor;
+    node->data = data;
     node->balance = 0;
     node->left = node->right = NULL;
     return node;
 }
 
+void avl_tree_node_free(AVLTreeNode **self, void (*data_free) (void *)){
+    if(!*self) return;
+    if(data_free)
+        data_free((*self)->data);
+    free(*self);
+    *self = NULL;
+}
 
-AVLTree new_avl_tree(const void * data, void (*type_manifest) (TypeDescriptor *)){
-    AVLTreeDescriptor * btd;
-    if(!type_manifest) return NULL;
-    if(!(btd = avl_tree_descriptor())) return NULL;
-    btd->type_descriptor = new_type_descriptor(type_manifest);
-    return avl_tree_builder(data, btd);
+void avl_tree_node_fprint (const AVLTreeNode *self, FILE * stream, void (data_fprint) (const void *, FILE *)){
+    if(!self) return;
+    data_fprint(self->data, stream);
+}
+
+void avl_tree_node_print(const AVLTreeNode *self,  void (data_fprint) (const void *, FILE *)){
+    avl_tree_node_fprint(self, stdout, data_fprint);
 }
 
 
-static void avl_tree_l_rotation(AVLTree *r){
-    AVLTree newr;
+/***************************************************
+ * AVlTree
+ ***************************************************/
+
+AVLTree * new_avl_tree(void (*type_manifest) (TypeDescriptor *)){
+    AVLTree *tree;
+    if(!type_manifest) return NULL;
+    tree = (AVLTree *) malloc(sizeof(AVLTree));
+    if(!tree) return NULL;
+    tree->td = new_type_descriptor(type_manifest);
+    if(!tree->td){
+        avl_tree_free(&tree);
+        return NULL;
+    }
+    tree->root = NULL;
+    tree->n = 0;
+    return tree;
+}
+
+
+static void avl_tree_l_rotation(AVLTreeNode **root){
+    AVLTreeNode *newr;
     int i, j;
-    if(!*r || !(*r)->right)
+    if(!*root || !(*root)->right)
         return;
     /* Update subtrees */
-    newr = (*r)->right;
-    (*r)->right = newr->left;
-    newr->left = *r;
+    newr = (*root)->right;
+    (*root)->right = newr->left;
+    newr->left = *root;
 
     /* Updates balances */
-    i = (*r)->balance;
+    i = (*root)->balance;
     j = newr->balance;
 
     /* Update root balance */
     if(j >= 0)
-        (*r)->balance = i - j - 1;
+        (*root)->balance = i - j - 1;
     else
-        (*r)->balance = i - 1;
+        (*root)->balance = i - 1;
 
     /* Update new root balance */
-    if((*r)->balance <= 0)
-        newr->balance = j + (*r)->balance - 1;
+    if((*root)->balance <= 0)
+        newr->balance = j + (*root)->balance - 1;
     else
         newr->balance = j - 1;
 
     /* switch roots */
-    *r = newr;
+    *root = newr;
 }
 
-static void avl_tree_r_rotation(AVLTree *r){
-    AVLTree newr;
+static void avl_tree_r_rotation(AVLTreeNode **root){
+    AVLTreeNode *newr;
     int i, j;
-    if(!*r || !(*r)->left)
+    if(!*root || !(*root)->left)
         return;
 
     /* Update subtrees */
-    newr = (*r)->left;
-    (*r)->left = newr->right;
-    newr->right = *r;
+    newr = (*root)->left;
+    (*root)->left = newr->right;
+    newr->right = *root;
 
     /* Update balances */
-    i = (*r)->balance;
+    i = (*root)->balance;
     j = newr->balance;
 
     /* Update root balance */
     if(j > 0)
-        (*r)->balance = i + 1;
+        (*root)->balance = i + 1;
     else
-        (*r)->balance = i - j + 1;
+        (*root)->balance = i - j + 1;
 
     /* Update new root balance */
-    if((*r)->balance <= 0)
+    if((*root)->balance <= 0)
         newr->balance = j + 1;
     else
-        newr->balance = j + (*r)->balance + 1;
+        newr->balance = j + (*root)->balance + 1;
 
     /* switch roots */
-    *r = newr;
+    *root = newr;
 }
 
-static void avl_tree_lr_rotation(AVLTree *r){
-    avl_tree_l_rotation(&(*r)->left);
-    avl_tree_r_rotation(r);
+static void avl_tree_lr_rotation(AVLTreeNode **root){
+    avl_tree_l_rotation(&(*root)->left);
+    avl_tree_r_rotation(root);
 }
 
-static void avl_tree_rl_rotation(AVLTree *r){
-    avl_tree_r_rotation(&(*r)->right);
-    avl_tree_l_rotation(r);
+static void avl_tree_rl_rotation(AVLTreeNode **root){
+    avl_tree_r_rotation(&(*root)->right);
+    avl_tree_l_rotation(root);
 }
 
 
-static void avl_tree_balance(AVLTree *r){
-    if((*r)->balance == 2){
-        if((*r)->right->balance >= 0)
-            avl_tree_l_rotation(r);
+static void avl_tree_balance(AVLTreeNode **root){
+    if((*root)->balance == 2){
+        if((*root)->right->balance >= 0)
+            avl_tree_l_rotation(root);
         else
-            avl_tree_rl_rotation(r);
+            avl_tree_rl_rotation(root);
 
-    }else if((*r)->balance == -2){
-        if((*r)->left->balance <= 0)
-            avl_tree_r_rotation(r);
+    }else if((*root)->balance == -2){
+        if((*root)->left->balance <= 0)
+            avl_tree_r_rotation(root);
         else
-            avl_tree_lr_rotation(r);
+            avl_tree_lr_rotation(root);
     }
 
 }
 
-int avl_tree_add(AVLTree *r, const void * data){
+int avl_tree_add_(AVLTreeNode **root, void *data, int (*cmp) (const void *, const void *)){
     int var;
-    if(!*r) return 0;
-    var = 0;
-    /* no duplicates */
-    if((*r)->d->type_descriptor->eq((*r)->data, data))
+    if(!*root){
+        if((*root = new_avl_tree_node(data)))
+            return 1;
         return 0;
-    if((*r)->d->type_descriptor->le(data, (*r)->data)){
-        if(!(*r)->left){
-            if(((*r)->left = avl_tree_builder(data, (*r)->d))){
-                var = -1;
-                (*r)->d->n++;
-            }
-        }else
-            var = -(*r)->d->add(&(*r)->left, data);
-    }else{
-        if(!(*r)->right){
-            if(((*r)->right = avl_tree_builder(data, (*r)->d))){
-                var = 1;
-                (*r)->d->n++;
-            }
-        }else
-            var = (*r)->d->add(&(*r)->right, data);
     }
+    /* no duplicates */
+    if(cmp(data, (*root)->data) == 0)
+        return 0;
+    if(cmp((*root)->data, data) > 0)
+        var = -avl_tree_add_(&(*root)->left, data, cmp);
+    else
+        var = avl_tree_add_(&(*root)->right, data, cmp);
     if(var != 0){
-        (*r)->balance += var;
-        avl_tree_balance(r);
-        if((*r)->balance == 0)
+        (*root)->balance += var;
+        avl_tree_balance(root);
+        if((*root)->balance == 0)
             return 0;
         else
             return 1;
@@ -199,286 +186,351 @@ int avl_tree_add(AVLTree *r, const void * data){
         return 0;
 }
 
-int avl_tree_extract_min(AVLTree *r, void * rdata){
-    if (!*r)
-        return 0;
-    if (!(*r)->left) {
-        AVLTree tmp = *r;
-        rdata = tmp->data;
-        *r = (*r)->right;
-        tmp->left = tmp->right = NULL;
-        tmp->d->n--;
-        /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-        if(tmp->d->n == 0){
-            avl_tree_descriptor_free(&tmp->d);
-            *r = NULL;
-        }
-        free(tmp);
-        return 1;
-    }
-    return (*r)->d->extract_min(&(*r)->left, rdata);
+
+
+int avl_tree_add(AVLTree *self, void *data){
+    if(!self || !data) return 0;
+    return avl_tree_add_(&self->root, data, self->td->cmp) && ++self->n;
 }
 
-int avl_tree_extract_max(AVLTree *r, void * rdata){
-    if (!*r)
-        return 0;
-    if (!(*r)->right) {
-        AVLTree tmp = *r;
+int avl_tree_extract_min_(AVLTreeNode **root, void *rdata){
+    if (!*root || !rdata) return 0;
+    if (!(*root)->left) {
+        AVLTreeNode *tmp = *root;
         rdata = tmp->data;
-        *r = (*r)->left;
-        tmp->left = tmp->right = NULL;
-        tmp->d->n--;
-        /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-        if(tmp->d->n == 0){
-            avl_tree_descriptor_free(&tmp->d);
-            *r = NULL;
-        }
-        free(tmp);
+        *root = (*root)->right;
+        avl_tree_node_free(&tmp, NULL);
         return 1;
     }
-    return (*r)->d->extract_max(&(*r)->right, rdata);
+    return avl_tree_extract_min_(&(*root)->left, rdata);
 }
 
-int avl_tree_remove(AVLTree *r, const void * data){
+int avl_tree_extract_min(AVLTree *self, void *rdata){
+    if(!self || !self->root || !rdata) return 0;
+    return avl_tree_extract_min_(&self->root, rdata) && --self->n;
+}
+
+int avl_tree_extract_max_(AVLTreeNode **root, void *rdata){
+    if (!*root || !rdata) return 0;
+    if (!(*root)->right) {
+        AVLTreeNode *tmp = *root;
+        rdata = tmp->data;
+        *root = (*root)->left;
+        avl_tree_node_free(&tmp, NULL);
+        return 1;
+    }
+    return avl_tree_extract_max_(&(*root)->right, rdata);
+}
+
+int avl_tree_extract_max(AVLTree *self, void *rdata){
+    if(!self || !self->root || !rdata) return 0;
+    return avl_tree_extract_min_(&self->root, rdata) && --self->n;
+}
+
+int avl_tree_remove_(AVLTreeNode **root, const void *data, int (*cmp) (const void *, const void *), void (*data_free) (void *)){
     /* return 1 if height decreased */
-    AVLTree tmp;
+    AVLTreeNode *tmp;
     int maj;
 
-    if(!*r)
+    if(!*root)
         return 0;
 
-    if((*r)->d->type_descriptor->lt(data, (*r)->data))
-        maj = (*r)->d->remove(&(*r)->left, data);
+    if(cmp(data, (*root)->data) < 0)
+        maj = avl_tree_remove_(&(*root)->left, data, cmp, data_free);
 
-    else if((*r)->d->type_descriptor->gt(data, (*r)->data))
-        maj = -(*r)->d->remove(&(*r)->right, data);
+    else if(cmp(data, (*root)->data) > 0)
+        maj = -avl_tree_remove_(&(*root)->right, data, cmp, data_free);
 
     else{
-        /* On a une égalité. On supprime le noeud.*/
+        /* Equal, so we remove the node */
 
-        if(!(*r)->left && !(*r)->right){
-            /* Est une feuille */
-            (*r)->d->free(r);
+        if(!(*root)->left && !(*root)->right){
+            /* is a leaf */
+            avl_tree_node_free(root, data_free);
             return 1;
 
         }else{
-            if(!(*r)->left){
-                /* Ne possède qu'un fils droit */
-                tmp = *r;
-                *r = (*r)->right;
+            if(!(*root)->left){
+                /* has a right child only */
+                tmp = *root;
+                *root = (*root)->right;
                 tmp->right = tmp->left = NULL;
-                (*r)->d->free(r);
+                avl_tree_node_free(root, data_free);
                 return 1;
 
-            } else if(!(*r)->right){
-                /* Ne possède qu'un fils gauche */
-                tmp = *r;
-                *r = (*r)->left;
+            } else if(!(*root)->right){
+                /* has a left child only */
+                tmp = *root;
+                *root = (*root)->left;
                 tmp->right = tmp->left = NULL;
-                (*r)->d->free(r);
+                avl_tree_node_free(root, data_free);
                 return 1;
 
             }else{
                 /* Possède deux fils */
-                if((*r)->balance <= 0) {
-                    if ((maj = (*r)->d->extract_max(&(*r)->left, &(*r)->data)))
-                        (*r)->d->n++;
+                if((*root)->balance <= 0) {
+                    maj = avl_tree_extract_max_(&(*root)->left, &(*root)->data);
                 }else{
                     /* Négatif, car l'extraction dans fg fait pencher vers fd */
-                    if((maj = -(*r)->d->extract_min(&(*r)->right, &(*r)->data)))
-                        (*r)->d->n++;
+                    maj = -avl_tree_extract_min_(&(*root)->right, &(*root)->data);
                 }
             }
         }
     }
 
-    /* Si on a réalisé une modif */
+    /* A modification has been made */
     if(maj != 0){
 
-        /* On met à jour la balance de la racine */
-        (*r)->balance = (*r)->balance + maj;
+        /* Update root balance */
+        (*root)->balance = (*root)->balance + maj;
 
-        /* Si la balance devient 1 ou -1, rien à faire */
-        if((*r)->balance == 1 || (*r)->balance == -1)
+        /* Balance 1 or -1, do nothing */
+        if((*root)->balance == 1 || (*root)->balance == -1)
             return 0;
 
-        /* si 0, alors n'était pas équilibré avant suppression  */
-        if((*r)->balance == 0)
+        /* If 0, then it was not balanced before deletion  */
+        if((*root)->balance == 0)
             return 1;
 
-        if((*r)->balance == -2){
-            if((*r)->left->balance == 0)
+        if((*root)->balance == -2){
+            if((*root)->left->balance == 0)
                 maj = 0;
             else
                 maj = 1;
         }
 
-        if((*r)->balance == 2){
-            if((*r)->right->balance == 0)
+        if((*root)->balance == 2){
+            if((*root)->right->balance == 0)
                 maj = 0;
             else
                 maj = 1;
         }
-        avl_tree_balance(r);
+        avl_tree_balance(root);
         return maj;
     }
     return 0;
 }
 
-int avl_tree_height(AVLTree t){
+int avl_tree_remove(AVLTree *self, const void *data){
+    if(!self || !self->root || !data) return 0;
+    return avl_tree_remove_(&self->root, data, self->td->cmp, self->td->data_free);
+}
+static int avl_tree_height_(const AVLTreeNode *root){
     int hln, hrn;
-    if (!t) return -1;
-    if (!t->left && !t->right) return 0;
-    hln = t->d->height(t->left);
-    hrn = t->d->height(t->right);
+    if (!root) return -1;
+    if (!root->left && !root->right) return 0;
+    hln = avl_tree_height_(root->left);
+    hrn = avl_tree_height_(root->right);
     return 1 + ((hln > hrn) ? hln : hrn);
 }
 
-int avl_tree_nb_nodes(AVLTree t){
-    if (!t) return 0;
-    return 1 + t->d->nb_nodes(t->left) + t->d->nb_nodes(t->right);
+int avl_tree_height(const AVLTree *self){
+    if(!self) return -1;
+    return avl_tree_height_(self->root);
 }
 
-int avl_tree_nb_leaves(AVLTree t){
-    if (!t) return 0;
-    if (!t->left && !t->right) return 1;
-    return t->d->nb_leaves(t->left) + t->d->nb_leaves(t->right);
+/*static int binary_search_tree_nb_nodes_(const BinarySearchTreeNode *root) {
+    if(!root) return 0;
+    return 1
+            + binary_search_tree_nb_nodes_(root->left)
+            + binary_search_tree_nb_nodes_(root->right);
+}*/
+int avl_tree_nb_nodes(const AVLTree *self){
+    if (!self) return 0;
+    return self->n;
 }
 
-int avl_tree_nb_internal_nodes(AVLTree t){
-    if (!t) return 0;
-    if (!t->left && !t->right) return 0;
-    return 1 + t->d->nb_internal_nodes(t->left) + t->d->nb_internal_nodes(t->right);
+static int avl_tree_nb_leaves_(const AVLTreeNode *root){
+    if (!root) return 0;
+    if (!root->left && !root->right) return 1;
+    return avl_tree_nb_leaves_(root->left)
+           + avl_tree_nb_leaves_(root->right);
 }
 
-int avl_tree_nb_two_children(AVLTree t){
+int avl_tree_nb_leaves(const AVLTree *self){
+    if(!self) return 0;
+    return avl_tree_nb_leaves_(self->root);
+}
+
+
+static int avl_tree_nb_internal_nodes_(const AVLTreeNode *root){
+    if (!root) return 0;
+    if (!root->left && !root->right) return 0;
+    return 1
+           + avl_tree_nb_internal_nodes_(root->left)
+           + avl_tree_nb_internal_nodes_(root->right);
+}
+int avl_tree_nb_internal_nodes(const AVLTree *self){
+    if(!self) return 0;
+    return avl_tree_nb_internal_nodes_(self->root);
+}
+
+
+static int avl_tree_nb_two_children_(const AVLTreeNode *root){
     int x = 0;
-    if (!t) return 0;
-    if (t->left && t->right) x = 1;
-    return x + t->d->nb_two_children(t->left) + t->d->nb_two_children(t->right);
+    if (!root) return 0;
+    if (root->left && root->right) x = 1;
+    return x
+           + avl_tree_nb_two_children_(root->left)
+           + avl_tree_nb_two_children_(root->right);
 }
 
-int avl_tree_is_perfect_bt(AVLTree t){
-    if (!t) return 1;
-    if ((!t->left && t->right) || (t->left && !t->right)) return 0;
-    return t->d->is_perfect_bt(t->left) && t->d->is_perfect_bt(t->right);
+int avl_tree_nb_two_children(const AVLTree *self){
+    if(!self) return 0;
+    return avl_tree_nb_two_children_(self->root);
 }
 
-int avl_tree_is_bst(AVLTree t){
-    AVLTree tmp, tmp2;
-    if (!t)
+static int avl_tree_is_perfect_bt_(const AVLTreeNode *root){
+    if (!root) return 1;
+    if ((!root->left && root->right) || (root->left && !root->right)) return 0;
+    return avl_tree_is_perfect_bt_(root->left)
+           && avl_tree_is_perfect_bt_(root->right);
+}
+
+int avl_tree_is_perfect_bt(const AVLTree *self){
+    if(!self) return 1;
+    return avl_tree_is_perfect_bt_(self->root);
+}
+
+static AVLTreeNode * avl_tree_min_(AVLTreeNode *root){
+    if (!root)
+        return NULL;
+    if (!root->left)
+        return root;
+    return avl_tree_min_(root->left);
+}
+
+AVLTreeNode * avl_tree_min(AVLTree *self){
+    if(!self) return NULL;
+    return avl_tree_min_(self->root);
+}
+
+static AVLTreeNode * avl_tree_max_(AVLTreeNode *root){
+    if (!root)
+        return NULL;
+    if (!root->right)
+        return root;
+    return avl_tree_max_(root->right);
+}
+
+AVLTreeNode * avl_tree_max(AVLTree *self){
+    if(!self) return NULL;
+    return avl_tree_max_(self->root);
+}
+
+static int avl_tree_is_bst_(const AVLTreeNode *root, int (*cmp) (const void *, const void *)){
+    AVLTreeNode *tmp, *tmp2;
+    if (!root)
         return 1;
-    tmp = t->d->max(t->left);
-    if (tmp && t->d->type_descriptor->eq(tmp->data, t->data))
+    tmp = avl_tree_max_(root->left);
+    if (tmp && cmp(tmp->data, root->data) >= 0)
         return 0;
-    tmp2 = t->d->min(t->right);
-    if (tmp2 && t->d->type_descriptor->eq(tmp2->data, t->data))
+    tmp2 = avl_tree_min_(root->right);
+    if (tmp2 && cmp(tmp2->data, root->data) <= 0)
         return 0;
-    return t->d->is_bst(t->left) && t->d->is_bst(t->right);
+    return avl_tree_is_bst_(root->left, cmp) && avl_tree_is_bst_(root->right, cmp);
 }
 
-AVLTree avl_tree_min(AVLTree t) {
-    if (!t)
+int avl_tree_is_bst(const AVLTree *self){
+    if(!self) return 1;
+    return avl_tree_is_bst_(self->root, self->td->cmp);
+}
+
+AVLTreeNode * avl_tree_search_(AVLTreeNode **root, const void *data, int (*cmp) (const void *, const void *)){
+    if (!*root)
         return NULL;
-    if (!t->left)
-        return t;
-    return t->d->min(t->left);
+    if (cmp((*root)->data, data) > 0)
+        return avl_tree_search_(&(*root)->left, data, cmp);
+    if (cmp((*root)->data, data) < 0)
+        return avl_tree_search_(&(*root)->right, data, cmp);
+    return *root;
 }
 
-AVLTree avl_tree_max(AVLTree t) {
-    if (!t)
-        return NULL;
-    if (!t->right)
-        return t;
-    return t->d->max(t->right);
+AVLTreeNode * avl_tree_search(AVLTree *self, const void *data){
+    if(!self || !self->root) return NULL;
+    return avl_tree_search_(&self->root, data, self->td->cmp);
 }
 
-AVLTree avl_tree_search(AVLTree * t, const void * data){
-    if (!*t)
-        return NULL;
-    if ((*t)->d->type_descriptor->gt((*t)->data, data))
-        return (*t)->d->search(&(*t)->left, data);
-    if ((*t)->d->type_descriptor->lt((*t)->data, data))
-        return (*t)->d->search(&(*t)->right, data);
-    return *t;
+static void avl_tree_fprint_preorder_(const AVLTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    avl_tree_node_fprint(root, stream, data_fprint);
+    avl_tree_fprint_preorder_(root->left, stream, data_fprint);
+    avl_tree_fprint_preorder_(root->right, stream, data_fprint);
 }
 
-void avl_tree_node_print (AVLTreeNode * n){
-    if(n) n->d->node_fprint(stdout, n);
+void avl_tree_fprint_preorder(const AVLTree *self, FILE *stream){
+    if(!self) return;
+    avl_tree_fprint_preorder_(self->root, stream, self->td->fprint);
 }
 
-void avl_tree_node_fprint (FILE * stream, AVLTreeNode * n){
-    if(n) n->d->type_descriptor->fprint(stream, n->data);
+static void avl_tree_fprint_inorder_(const AVLTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    avl_tree_fprint_inorder_(root->left, stream, data_fprint);
+    avl_tree_node_fprint(root, stream, data_fprint);
+    avl_tree_fprint_inorder_(root->right, stream, data_fprint);
 }
 
-void avl_tree_fprint_preorder(FILE * stream, AVLTree t){
-    if(!t) return;
-    t->d->node_fprint(stream, t);
-    t->d->fprint_preorder(stream, t->left);
-    t->d->fprint_preorder(stream, t->right);
+void avl_tree_fprint_inorder(const AVLTree *self, FILE *stream){
+    if(!self) return;
+    avl_tree_fprint_inorder_(self->root, stream, self->td->fprint);
 }
 
-void avl_tree_fprint_inorder(FILE * stream, AVLTree t){
-    if(!t) return;
-    t->d->fprint_inorder(stream, t->left);
-    t->d->node_fprint(stream, t);
-    t->d->fprint_inorder(stream, t->right);
+static void avl_tree_fprint_postorder_(const AVLTreeNode *root, FILE *stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    avl_tree_fprint_postorder_(root->left, stream, data_fprint);
+    avl_tree_fprint_postorder_(root->right, stream, data_fprint);
+    avl_tree_node_fprint(root, stream, data_fprint);
 }
 
-void avl_tree_fprint_postorder(FILE * stream, AVLTree t){
-    if(!t) return;
-    t->d->fprint_postorder(stream, t->left);
-    t->d->fprint_postorder(stream, t->right);
-    t->d->node_fprint(stream, t);
+void avl_tree_fprint_postorder(const AVLTree *self, FILE *stream){
+    if(!self) return;
+    avl_tree_fprint_postorder_(self->root, stream, self->td->fprint);
 }
 
-static void _avl_tree_to_dot(AVLTree avl, FILE * stream){
-    if(!avl) return;
-    fprintf(stream, "  n%p [label=\"<gauche>|{%d  | ", (void *) &*avl, avl->balance);
-    avl->d->node_fprint(stream, avl);
-    fprintf(stream, "}|<droit>\"]\n");
-    if(avl->left){
-        fprintf(stream, "  n%p:gauche -> n%p:n [color=\"#ab2222\"]\n", (void *) &*avl, (void *) avl->left);
-        _avl_tree_to_dot(avl->left, stream);
-    }
-    if(avl->right){
-        fprintf(stream, "  n%p:droit -> n%p:n [color=\"#2257ab\"]\n", (void *) &*avl, (void *) avl->right);
-        _avl_tree_to_dot(avl->right, stream);
-    }
+static void avl_tree_to_dot_(const AVLTreeNode *root, FILE * stream, void (*data_fprint) (const void *, FILE *)){
+    if(!root) return;
+    fprintf(stream, "  n%p [label=\"<left> | <valeur> ", (void *) &*root);
+    avl_tree_node_fprint(root, stream, data_fprint);
+    fprintf(stream, " | <right>\", color=\"#918d8d\"]\n");
+    if(root->left)
+        fprintf(stream, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*root, (void *) root->left);
+    avl_tree_to_dot_(root->left, stream, data_fprint);
+    if(root->right)
+        fprintf(stream, "  n%p:right:c -> n%p:valeur [color=blue];\n", (void *) &*root, (void *) root->right);
+    avl_tree_to_dot_(root->right, stream, data_fprint);
 }
 
-void avl_tree_to_dot(AVLTree avl, const char * dest_path){
+void avl_tree_to_dot(const AVLTree *self, const char *dest_path){
     FILE * stream;
-    if(!avl) return;
-    stream =fopen(dest_path, "w");
+    if(!self) return;
+    stream = fopen(dest_path, "w");
     if(!stream)
         printf("File can't be opened\n");
     fprintf(stream, "digraph arbre {\n"
-                  "  node [shape=record , height=.1 ]\n"
-                  "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
-    _avl_tree_to_dot(avl, stream);
+                    "  node [shape=record , height=.1 ]\n"
+                    "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
+    avl_tree_to_dot_(self->root, stream, self->td->fprint);
     fprintf(stream, "}\n");
     fclose(stream);
 }
 
-void avl_tree_descriptor_free(AVLTreeDescriptor ** bstd) {
-    if (!*bstd) return;
-    type_descriptor_free(&(*bstd)->type_descriptor);
-    free(*bstd);
-    *bstd = NULL;
+static void avl_tree_clear_(AVLTreeNode **root, void (*data_free) (void *)){
+    if(!*root) return;
+    avl_tree_clear_(&(*root)->left, data_free);
+    avl_tree_clear_(&(*root)->right, data_free);
+    avl_tree_node_free(root, data_free);
 }
 
-void avl_tree_free(AVLTree * t){
-    if(!*t) return;
-    (*t)->d->free(&(*t)->left);
-    (*t)->d->free(&(*t)->right);
-    (*t)->d->type_descriptor->data_free(&(*t)->data);
-    /* The tree will decrease of 1 node. */
-    (*t)->d->n--;
-    /* After that, the tree may be empty. Thus, the descriptor could no longer exist. */
-    if((*t)->d->n == 0)
-        avl_tree_descriptor_free(&(*t)->d);
-    free(*t);
-    *t = NULL;
+void avl_tree_clear(AVLTree *self, void (*data_free) (void *)){
+    if(!self) return;
+    avl_tree_clear_(&self->root, data_free);
+    self->n = 0;
 }
 
+void avl_tree_free(AVLTree **self){
+    if(!*self) return;
+    avl_tree_clear(*self, (*self)->td->data_free);
+    type_descriptor_free(&(*self)->td);
+    free(*self);
+    *self = NULL;
+}

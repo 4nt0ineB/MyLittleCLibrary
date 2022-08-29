@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../include/data-structures/Lists/MLCL_DoubleLinkedList.h"
 #include <assert.h>
@@ -88,7 +76,7 @@ void double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_
 }
 
 /*
-int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp) (const void *, const void *)){
+int double_linked_list_add_(DoubleLinkedList * dll, const void *data, int (*cmp) (const void *, const void *)){
     DoubleLinkedListNode * new_cell;
     *//* End of list OR Inside the list but inferior to the current cell *//*
     if(!*dll) return 0;
@@ -111,12 +99,12 @@ int double_linked_list_add_(DoubleLinkedList * dll, const void * data, int (*cmp
     return (*dll)->d->add_(&(*dll)->next, data, cmp);
 }*/
 /*
-int double_linked_list_ordered_add(DoubleLinkedList * dll, const void * data){
+int double_linked_list_ordered_add(DoubleLinkedList * dll, const void *data){
     if(!*dll) return 0;
     return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->lt);
 }
 
-int double_linked_list_reverse_ordered_add(DoubleLinkedList * dll, const void * data){
+int double_linked_list_reverse_ordered_add(DoubleLinkedList * dll, const void *data){
     if(!*dll) return 0;
     return (*dll)->d->add_(dll,  data, (*dll)->d->type_descriptor->ge);
 }*/
@@ -215,7 +203,7 @@ int double_linked_list_remove_all(DoubleLinkedList *self, const void *data, int 
 
 void * double_linked_list_shift_(DoubleLinkedListNode **self){
     DoubleLinkedListNode * tmp;
-    void * data;
+    void *data;
     if(!*self) return NULL;
     tmp = *self;
     data = tmp->data;
@@ -235,7 +223,7 @@ void * double_linked_list_shift(DoubleLinkedList *self) {
 
 static void * double_linked_list_pop_(DoubleLinkedListNode **self){
     DoubleLinkedListNode * tmp;
-    void * data;
+    void *data;
     if(!*self) return NULL;
     if((*self)->next)
         return double_linked_list_pop_(&(*self)->next);
@@ -293,7 +281,7 @@ void double_linked_list_print(const DoubleLinkedList *self){
     double_linked_list_fprint(self, stdout);
 }
 
-void double_linked_list_node_to_dot_(DoubleLinkedList *self, FILE * stream){
+void double_linked_list_to_dot_(DoubleLinkedList *self, FILE * stream){
     DoubleLinkedListNode *tmp;
     if(!self) return;
     tmp = self->head;
@@ -309,7 +297,7 @@ void double_linked_list_node_to_dot_(DoubleLinkedList *self, FILE * stream){
     }
 }
 
-void double_linked_list_node_to_dot(DoubleLinkedList *self, const char * dest_path){
+void double_linked_list_to_dot(DoubleLinkedList *self, const char * dest_path){
     FILE * stream;
     if(!self) return;
     stream =fopen(dest_path, "w");
@@ -320,7 +308,7 @@ void double_linked_list_node_to_dot(DoubleLinkedList *self, const char * dest_pa
                   "splines=ortho;\n"
                   "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
     );
-    double_linked_list_node_to_dot_(self, stream);
+    double_linked_list_to_dot_(self, stream);
     fprintf(stream, "}\n");
     fclose(stream);
 }

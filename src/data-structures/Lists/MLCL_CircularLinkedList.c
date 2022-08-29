@@ -1,20 +1,8 @@
 /*
- *   This file is part of the MLCL Library.
- *   Antoine Bastos 2022
- *
- *    This Library is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This Library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
-  */
+ *   This file is part of the MLCL Library
+ *   Copyright 2022 Antoine Bastos
+ *   SPDX-License-Identifier: Apache-2.0
+ */
 
 #include "../../../include/data-structures/Lists/MLCL_CircularLinkedList.h"
 #include <stdio.h>
@@ -105,7 +93,7 @@ void * circular_linked_list_shift(LinkedList *self){
 
 void * circular_linked_list_pop(LinkedList *self){
     LinkedListNode *tmp, *tmp_2;
-    void * data;
+    void *data;
     if(!self || !self->head) return NULL;
     tmp = self->head->next;
     /*
@@ -124,7 +112,7 @@ void * circular_linked_list_pop(LinkedList *self){
     return data;
     /*
      CircularLinkedListNode *tmp, *tmp_2;
-    void * data;
+    void *data;
     if(!self || !self->head) return NULL;
     tmp = self->head->next;
     if(tmp == self->head){
@@ -231,7 +219,7 @@ void circular_linked_list_free(LinkedList **self){
  **************************/
 
 
-/*int circular_linked_list_add_(CircularLinkedList * cll, const void * data, int (*cmp) (const void *, const void *)){
+/*int circular_linked_list_add_(CircularLinkedList * cll, const void *data, int (*cmp) (const void *, const void *)){
     LinkedCell * new_cell;
     LinkedCell * tmp;
     if(!*cll) return 0;
