@@ -73,8 +73,6 @@ void movie_free(void *x){
 	Movie *movie;
     if(!x) return;
     movie = (Movie *) x;
-    /* We have chosen that the cast will be a list of pointers to persons 
-    so we dont free the persons, because they still exists for other movies*/
     list_free(&movie->cast);
     person_free(movie->director);
     free(movie->title);
