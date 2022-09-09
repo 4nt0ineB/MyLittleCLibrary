@@ -194,7 +194,7 @@ int array_list_is_sorted(const ArrayList *self, int (*cmp) (const void *, const 
     return 1;
 }
 
-void array_list_bublle_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
+void array_list_bubble_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
     int i, j;
     void * tmp;
     if(!self) return;
@@ -263,8 +263,8 @@ static int partition(void ** l, int start, int end, int (*cmp) (const void *, co
             tmp = l[head1];
             l[head1] = l[head2];
             l[head2] = tmp;
-            head1 ++;
-            head2 --;
+            head1++;
+            head2--;
         }
     }
     tmp = l[start];
@@ -332,17 +332,23 @@ static void _array_list_merge_sort_merge(void ** l, int start, int mid, int end,
     }
 
     memcpy(l + start, tmp_array, sizeof(void *) * (end - start + 1));
+
     free(tmp_array);
 }
 
-static void _array_list_merge_sort(void ** l, int start, int end, int (*cmp) (const void *, const void *)){
+static void _array_list_merge_sort(void **l, int start, int end, int (*cmp) (const void *, const void *)){
     int mid;
+
     if(!l) return;
     if(start >= end) return;
     mid = (start + end) / 2;
-    _array_list_merge_sort(l, start, mid - 1, cmp);
+
+    _array_list_merge_sort(l, start, mid, cmp);
     _array_list_merge_sort(l, mid + 1, end, cmp);
+
+
     _array_list_merge_sort_merge(l, start, mid, end, cmp);
+
 }
 
 void array_list_merge_sort(ArrayList *self, int (*cmp) (const void *, const void *)){
@@ -363,22 +369,22 @@ void array_list_print(const ArrayList  *self){
     array_list_fprint(self, stdout);
 }
 
-void array_list_fprint(const ArrayList *self, FILE * stream){
+void array_list_fprint(const ArrayList *self, FILE *stream){
     int i;
     if(!self) return;
     if(self->count <= 0) return;
     for(i = 0; i < self->count - 1; i++){
-        self->td->fprint(stream, self->array[i]);
+        self->td->fprint(self->array[i], stream);
         fprintf(stream, "%s", self->separator);
     }
-    self->td->fprint(stream, self->array[i]);
+    self->td->fprint(self->array[i], stream);
 }
 
 void array_list_empty(ArrayList *self, void (*data_free) (void *)){
     int i;
     if(!self) return;
     /* Free the elements */
-    if(self->array){
+    if(self->array && self->count){
         for (i = 0; i < self->count; ++i) {
             if(self->array[i] && data_free)
                 data_free(self->array[i]);

@@ -20,7 +20,7 @@ char * new_str(const char *str){
     return p;
 }
 
-void str_m(TypeDescriptor * type_descriptor){
+void str_m(TypeDescriptor *type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
     type_descriptor->manifest = str_m;
@@ -45,7 +45,7 @@ int str_eq(const void *x, const void *y){
 }
 
 int str_lt(const void *x, const void *y){
-    return str_cmp(x, y) == -1;
+    return str_cmp(x, y) < 0;
 }
 
 int str_le(const void *x, const void *y){
@@ -53,7 +53,7 @@ int str_le(const void *x, const void *y){
 }
 
 int str_gt(const void *x, const void *y){
-    return str_cmp(x, y) == 1;
+    return str_cmp(x, y) > 0;
 }
 
 int str_ge(const void *x, const void *y){
@@ -65,8 +65,6 @@ void str_print(const void *x){
 }
 
 void str_fprint(const void *x, FILE *stream){
-    if(!x)
-        fprintf(stream, "Null");
     fprintf(stream, "%s",  (char *) x);
 }
 
@@ -96,7 +94,7 @@ char * new_char(char c){
     return p;
 }
 
-void char_m(TypeDescriptor * type_descriptor){
+void char_m(TypeDescriptor *type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
     type_descriptor->manifest = char_m;
@@ -141,8 +139,6 @@ void char_print(const void * x){
 }
 
 void char_fprint(const void *x, FILE *stream){
-    if(!x)
-        fprintf(stream, "Null");
     fprintf(stream, "%c",  *(char *) x);
 }
 
@@ -170,7 +166,7 @@ int * new_int(int x){
     return p;
 }
 
-void int_m(TypeDescriptor * type_descriptor){
+void int_m(TypeDescriptor *type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(int);
     type_descriptor->manifest = int_m;
@@ -215,8 +211,6 @@ void int_print(const void * x){
 }
 
 void int_fprint(const void *x, FILE *stream){
-    if(!x)
-        fprintf(stream, "Null");
     fprintf(stream, "%d",  *(int *) x);
 }
 
@@ -244,7 +238,7 @@ float * new_float(float x){
     return p;
 }
 
-void float_m(TypeDescriptor * type_descriptor){
+void float_m(TypeDescriptor *type_descriptor){
     assert(type_descriptor);
     type_descriptor->data_size = sizeof(float);
     type_descriptor->manifest = float_m;
@@ -260,27 +254,27 @@ void float_m(TypeDescriptor * type_descriptor){
     type_descriptor->ge = float_ge;
 }
 
-int float_cmp(const void * x, const void * y){
+int float_cmp(const void *x, const void *y){
     return (*(float *) x == *(float *) y) ? 0 : (*(float *) x < *(float *) y) ? -1 :  1;
 }
 
-int float_eq(const void * x, const void * y){
+int float_eq(const void *x, const void *y){
     return (*(float *) x) == (*(float *) y);
 }
 
-int float_lt(const void * x, const void * y){
+int float_lt(const void *x, const void *y){
     return (*(float *) x) < (*(float *) y);
 }
 
-int float_le(const void * x, const void * y){
+int float_le(const void *x, const void *y){
     return (*(float *) x) <= (*(float *) y);
 }
 
-int float_gt(const void * x, const void * y){
+int float_gt(const void *x, const void *y){
     return (*(float *) x) > (*(float *) y);
 }
 
-int float_ge(const void * x, const void * y){
+int float_ge(const void *x, const void *y){
     return (*(float *) x) >= (*(float *) y);
 }
 
@@ -289,8 +283,6 @@ void float_print(const void * x){
 }
 
 void float_fprint(const void *x, FILE *stream){
-    if(!x)
-        fprintf(stream, "Null");
     fprintf(stream, "%.2f",  *(float *) x);
 }
 

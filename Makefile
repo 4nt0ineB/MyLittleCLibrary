@@ -18,7 +18,7 @@ OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 DEP = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.d, $(SRC))
 
 # default target : create installation dir, make the lib, create its index
-all: --make_install_dir $(LIB_PATH) index
+all: --make_install_dir $(LIB_PATH) index buildpackage
 
 # make the lib and run tests
 test: all
@@ -37,6 +37,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 index: $(LIB_PATH)
 	ranlib $(LIB_NAME).a
+
+buildpackage:
+	mkdir -p MLCL
+	cp -R include MLCL/include
+	cp MLCL.h MLCL
+	cp libMLCL.a MLCL
 
 # to see lib index
 # nm -s libMLCL.a

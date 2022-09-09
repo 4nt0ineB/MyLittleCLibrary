@@ -145,7 +145,7 @@ int test_array_list_bubble_sort(){
     array_list_append(list, new_int(2));
     array_list_append(list, new_int(1));
 
-    array_list_bublle_sort(list, list->td->le);
+    array_list_bubble_sort(list, list->td->le);
 
     if(!array_list_is_sorted(list, list->td->le))
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -203,7 +203,7 @@ int test_array_list_quick_sort(){
 
     list = new_array_list(int_m);
     if(!list)
-    MLCL_ERR(1, MLCL_ERR_ALLOC)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
 
     array_list_append(list, new_int(6));
     array_list_append(list, new_int(3));
@@ -233,9 +233,11 @@ int test_array_list_merge_sort(){
     array_list_append(list, new_int(2));
     array_list_append(list, new_int(1));
 
-    array_list_merge_sort(list, list->td->le);
+    array_list_merge_sort(list, list->td->lt);
 
-    if(!array_list_is_sorted(list, list->td->le))
+    array_list_print(list);
+
+    if(!array_list_is_sorted(list, list->td->lt))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     array_list_free(&list);
