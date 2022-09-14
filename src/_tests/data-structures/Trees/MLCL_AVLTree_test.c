@@ -1,6 +1,6 @@
 /*
  *   This file is part of the MLCL Library
- *   Copyright 2022 Antoine Bastos
+ *   Copyrleft 2022 Antoine Bastos
  *   SPDX-License-Identifier: Apache-2.0
  */
 
