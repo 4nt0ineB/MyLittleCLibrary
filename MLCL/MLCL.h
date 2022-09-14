@@ -30,7 +30,7 @@
 
 #include "include/core/MLCL_TypeDescriptor.h"
 #include "include/core/MLCL_basic_types.h"
-/* Lists */
+/* List */
 #include "include/data-structures/Lists/MLCL_ArrayList.h"
 #include "include/data-structures/Lists/MLCL_LinkedList.h"
 #include "include/data-structures/Lists/MLCL_CircularLinkedList.h"
@@ -57,7 +57,7 @@
 #include "include/_tests/MLCL_exceptions.h"
 #include "include/_tests/MLCL_all_tests.h"
 #include "include/_tests/core/MLCL_TypeDescriptor_test.h"
-/* Lists */
+/* List */
 #include "include/_tests/data-structures/Lists/MLCL_ArrayList_test.h"
 #include "include/_tests/data-structures/Lists/MLCL_LinkedList_test.h"
 #include "include/_tests/data-structures/Lists/MLCL_CircularLinkedList_test.h"

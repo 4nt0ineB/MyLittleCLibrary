@@ -2,12 +2,25 @@
 
 site_name: My Little C Library
 repo_url: https://github.com/cydaw6/MyLittleCLibrary
+copyright: Copyright &copy; 2022 Antoine Bastos
 
 nav:
   - Home: 'index.md'
   - 'Data structures':
-    - Lists: 'data-structures/lists.md'
-    - Trees: 'data-structures/trees.md'
+    - Lists:
+        - 'data-structures/List/index.md'
+        - 'data-structures/List/array-list.md'
+        - 'data-structures/List/linked-list.md'
+        - 'data-structures/List/circular-linked-list.md'
+        - 'data-structures/List/double-linked-list.md'
+        - 'data-structures/List/circular-double-linked-list.md'
+    - Trees:
+        - 'data-structures/Tree/index.md'
+        - 'data-structures/Tree/binary-search-tree.md'
+        - 'data-structures/Tree/avl-tree.md'
+        - 'data-structures/Tree/ternary-search-tree.md'
+        - 'data-structures/Tree/bk-tree.md'
+        -
     - Types: 'data-structures/types.md'
   - 'Extended examples': 'extended-examples.md'
   - Implementation: 'implementation.md'
@@ -48,4 +61,6 @@ theme:
   features:
     - header.autohide
     - navigation.tracking
-#    - toc.integrate
+    - navigation.top
+    - navigation.indexes
+# - toc.integrate

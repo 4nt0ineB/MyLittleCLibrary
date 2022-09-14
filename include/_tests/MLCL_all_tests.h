@@ -11,7 +11,7 @@
 /* Timer */
 #include "../time/MLCL_Timer.h"
 
-/* Lists */
+/* List */
 #include "data-structures/Lists/MLCL_List_test.h"
 #include "data-structures/Lists/MLCL_ArrayList_test.h"
 #include "data-structures/Lists/MLCL_LinkedList_test.h"

@@ -13,7 +13,7 @@
 #define ARRAY_LIST_MAX_EMPTY_BLOCKS 2
 
 /**
- * @brief A generic Array Lists
+ * @brief A generic Array List
  * Compared to others structures of the lib
  * this one is not freed when empty. \n
  */
