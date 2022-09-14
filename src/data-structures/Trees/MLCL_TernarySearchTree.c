@@ -222,7 +222,7 @@ void ternary_search_tree_to_dot_(const TernarySearchTreeNode *root, FILE * strea
 
 void ternary_search_tree_to_dot(const TernarySearchTree *self, const char *path){
     FILE *file = fopen(path, "w");
-    fprintf(file, "digraph arbre {\n"
+    fprintf(file, "digraph tree {\n"
                   "graph [ splines=true]\n"
                   "  node [shape=circle,height=.1]\n"
                   "  \n\n");

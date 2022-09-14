@@ -10,7 +10,7 @@ int i;
 ArrayList *list = new_array_list(int_m);   
 
 for(i = 0; i < 5; i++)  
-    array_list_append(list, &i);
+    array_list_append(list, new_int(i));
     
 array_list_free(&list);  
 ```   
@@ -42,4 +42,9 @@ array_list_merge_sort(list, int_lt);
 ##### Quick Sort
 ```c
 array_list_quick_sort(list, int_lt);
+```
+
+#### To dot
+```c
+array_list_to_dot(list, "arraylist.dot");
 ```

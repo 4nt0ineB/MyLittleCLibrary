@@ -21,3 +21,8 @@ bk_tree_free(&tree);
 ```
 
 #### Fuzzy search
+
+#### To dot
+```c
+bk_tree_to_dot(list, "bktree.dot");
+```

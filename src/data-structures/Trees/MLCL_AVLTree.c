@@ -506,7 +506,7 @@ void avl_tree_to_dot(const AVLTree *self, const char *dest_path){
     stream = fopen(dest_path, "w");
     if(!stream)
         printf("File can't be opened\n");
-    fprintf(stream, "digraph arbre {\n"
+    fprintf(stream, "digraph tree {\n"
                     "  node [shape=record , height=.1 ]\n"
                     "  edge [tailclip=false , arrowtail = dot , dir=both];\n");
     avl_tree_to_dot_(self->root, stream, self->td->fprint);

@@ -21,3 +21,7 @@ for(i = 0; i < 5; i++)
 circular_linked_list_free(&list);    
 ``` 
 
+#### To dot
+```c
+circular_linked_list_to_dot(list, "circularlinkedlist.dot");
+```

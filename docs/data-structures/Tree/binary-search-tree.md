@@ -21,5 +21,10 @@ binary_search_tree_add(tree, new_int(8));
 binary_search_tree_add(tree, new_int(1));
 binary_search_tree_add(tree, new_int(3));
 
-binary_search_free(&tree);  
+binary_search_tree_free(&tree);  
 ```  
+
+#### To dot
+```c
+binary_search_tree_to_dot(list, "bst.dot");
+```

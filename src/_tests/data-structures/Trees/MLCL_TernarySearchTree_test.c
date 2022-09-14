@@ -26,10 +26,10 @@ int test_ternary_search_tree_add(){
     if(!tree)
         MLCL_ERR(1, MLCL_ERR_ALLOC)
 
-
     ternary_search_tree_add(tree, "Beetlejuice");
     ternary_search_tree_add(tree, "Foo");
     ternary_search_tree_add(tree, "Bar");
+    ternary_search_tree_to_dot(tree, "test.dot");
 
     if(* (char *) tree->root->data != 'B')
         MLCL_ERR(2, MLCL_ERR_TRUE)

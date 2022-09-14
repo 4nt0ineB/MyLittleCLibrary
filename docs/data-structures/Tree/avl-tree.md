@@ -15,11 +15,16 @@ flowchart TB
 ```c  
 AVLTree *tree = new_avl_tree(int_m);
 
-binary_search_tree_add(tree, new_int(6));    
-binary_search_tree_add(tree, new_int(8));  
-binary_search_tree_add(tree, new_int(1));
-binary_search_tree_add(tree, new_int(3));
-binary_search_tree_add(tree, new_int(2));
+avl_tree_add(tree, new_int(6));    
+avl_tree_add(tree, new_int(8));  
+avl_tree_add(tree, new_int(1));
+avl_tree_add(tree, new_int(3));
+avl_tree_add(tree, new_int(2));
 
-binary_search_free(&tree);  
+avl_tree_free(&tree);  
 ``` 
+
+#### To dot
+```c
+avl_tree_to_dot(list, "avltree.dot");
+```

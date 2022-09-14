@@ -228,7 +228,7 @@ void bk_tree_to_dot_(const BKTreeNode *root, FILE *stream, void (*data_fprint) (
 
 void bk_tree_to_dot(const BKTree *self, const char *path){
     FILE *file = fopen(path, "w");
-    fprintf(file, "digraph arbre {\n"
+    fprintf(file, "digraph tree {\n"
                   "\n"
                   "   \n"
                   "  \n\n");

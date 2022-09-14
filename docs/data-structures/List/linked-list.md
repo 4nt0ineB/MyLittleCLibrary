@@ -23,19 +23,15 @@ linked_list_free(&list);
 
 ##### Append
 ```c
-x = 2.5f;  
-linked_list_append(&l, &x);  
-x = 1.2f;  
-linked_list_append(&l, &x);
+linked_list_append(l, new_float(2.5f));
+linked_list_append(l, new_float(1.2f));
 /* [2.5, 1.2] */
 ```
 
 ##### Prepend
 ```c
-x = 2.5f;  
-linked_list_prepend(&l, &x);  
-x = 1.2f;  
-linked_list_prepend(&l, &x);
+linked_list_prepend(l, new_float(2.5f));
+linked_list_prepend(l, new_float(1.2f));
 /* [1.2, 2.5] */
 ```
 

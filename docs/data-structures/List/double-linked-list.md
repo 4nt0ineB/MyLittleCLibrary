@@ -21,3 +21,8 @@ for(i = 0; i < 5; i++)
     
 double_linked_list_free(&list);
 ```
+
+#### To dot
+```c
+double_linked_list_to_dot(list, "doublelinkedlist.dot");
+```
