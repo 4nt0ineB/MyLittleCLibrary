@@ -17,10 +17,9 @@ nav:
     - Trees:
         - 'data-structures/Tree/index.md'
         - 'data-structures/Tree/binary-search-tree.md'
-        - 'data-structures/Tree/avl-tree.md'
+        - AVL Tree: 'data-structures/Tree/avl-tree.md'
         - 'data-structures/Tree/ternary-search-tree.md'
-        - 'data-structures/Tree/bk-tree.md'
-        -
+        - BK Tree: 'data-structures/Tree/bk-tree.md'
     - Types: 'data-structures/types.md'
   - 'Extended examples': 'extended-examples.md'
   - Implementation: 'implementation.md'
