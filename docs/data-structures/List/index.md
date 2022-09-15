@@ -6,11 +6,11 @@ A circular linked list of strings:
 ```c  
 List *list = new_list(LINKED_LIST, str_m);  
   
-list_append(list, "hell");  
-list_append(list, "shell");  
-list_append(list, "Foo");  
-list_append(list, "bar");  
-list_append(list, "Bubble");  
+list_append(list, new_str("hell"));  
+list_append(list, new_str"shell"));  
+list_append(list, new_str"Foo"));  
+list_append(list, new_str"bar"));  
+list_append(list, new_str"Bubble"));  
     
 l_free(&list);  
 ```  
