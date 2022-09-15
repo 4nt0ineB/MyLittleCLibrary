@@ -1,10 +1,6 @@
 
 ### Array list
 
-<div style="text-align: center;">
-[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ]
-</div>
-
 ```c 
 int i; 
 ArrayList *list = new_array_list(int_m);   
@@ -14,8 +10,6 @@ for(i = 0; i < 5; i++)
     
 array_list_free(&list);  
 ```   
-
-
 
 #### Sorting
 
@@ -48,3 +42,23 @@ array_list_quick_sort(list, int_lt);
 ```c
 array_list_to_dot(list, "arraylist.dot");
 ```
+
+=== "Visualization"
+
+    ```dot
+    digraph {
+    
+        node [shape=record, fontcolor=black, fontsize=14, width=4.75, fixedsize=true];
+        values [label="0 | 1 | 2 | 3 | 4"];
+    }
+    ```
+
+=== "dot"
+
+    ``` dot
+    digraph {
+    
+        node [shape=record, fontcolor=black, fontsize=14, width=4.75, fixedsize=true];
+        values [label="0 | 1 | 2 | 3 | 4"];
+    }
+    ```

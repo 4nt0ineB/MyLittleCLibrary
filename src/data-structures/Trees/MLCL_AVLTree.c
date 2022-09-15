@@ -489,9 +489,9 @@ void avl_tree_fprint_postorder(const AVLTree *self, FILE *stream){
 
 static void avl_tree_to_dot_(const AVLTreeNode *root, FILE * stream, void (*data_fprint) (const void *, FILE *)){
     if(!root) return;
-    fprintf(stream, "  n%p [label=\"<left> | <valeur> ", (void *) &*root);
+    fprintf(stream, "  n%p [label=\"<left> | <value> ", (void *) &*root);
     avl_tree_node_fprint(root, stream, data_fprint);
-    fprintf(stream, " | <right>\", color=\"#918d8d\"]\n");
+    fprintf(stream, " | <right>\", color=\"#000000\"]\n");
     if(root->left)
         fprintf(stream, "  n%p:left:c -> n%p:valeur [color=red];\n", (void *) &*root, (void *) root->left);
     avl_tree_to_dot_(root->left, stream, data_fprint);

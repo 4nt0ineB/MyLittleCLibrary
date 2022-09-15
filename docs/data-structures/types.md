@@ -14,12 +14,12 @@ It requires (for now), few things:
 The *TypeDescriptor* gets those through a type manifest which handle specific functions of the type to be manipulated.  
 Its like defining you own type in Python (\_\_str__, \_\_eq__, \_\_lt__, etc...).
 
-When making new structures you passes the manifest of the type you want them to carry :
+When making new structures you pass the manifest of the type you want them to carry :
 ```c
-ArrayList l = new_array_list(int_m); 
-/* Voilà, you have got a brand new array list of int */
+ArrayList *l = new_array_list(int_m); 
+// int_m..anifest (easy to remember because it's also the m of mlcl)
 ```
-### Define your own type
+### Define your own structure/type
 
 Let say you implemented a Movie structure. You can take example on the basic types, and can do as follows:
 

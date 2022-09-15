@@ -145,8 +145,8 @@ void array_list_empty(ArrayList *self, void (*data_free) (void *));
  */
 void array_list_free(ArrayList **self);
 
-void array_list_to_dot_(const ArrayList *self, FILE * stream);
-void array_list_to_dot(const ArrayList *self, const char * path);
+void array_list_to_dot_(const ArrayList *self, FILE *stream);
+void array_list_to_dot(const ArrayList *self, const char *path);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */

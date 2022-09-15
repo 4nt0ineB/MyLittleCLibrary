@@ -188,7 +188,7 @@ void circular_linked_list_to_dot(LinkedList *self, const char *path){
     if(!stream) printf("Can't write in %s\n", path);
     fprintf(stream, "digraph {\n"
                     "rankdir=\"LR\";\n"
-                    "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
+                    "node [shape=square , height=.1, rank = same, color=\"#000000\"]\n"
     );
     circular_linked_list_to_dot_(self, stream);
     fprintf(stream, "}\n");

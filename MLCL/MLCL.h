@@ -36,6 +36,7 @@
 #include "include/data-structures/Trees/MLCL_BinarySearchTree.h"
 #include "include/data-structures/Trees/MLCL_TernarySearchTree.h"
 #include "include/data-structures/Trees/MLCL_AVLTree.h"
+#include "include/data-structures/Trees/MLCL_BKTree.h"
 /* Timer */
 #include "include/time/MLCL_Timer.h"
 

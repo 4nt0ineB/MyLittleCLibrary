@@ -15,7 +15,7 @@ ternary_search_tree_free(&tree);
 ternary_search_tree_to_dot(list, "tst.dot");
 ```
 
-=== "Visualisation"
+=== "Visualization"
 
     ```dot
         digraph tree {

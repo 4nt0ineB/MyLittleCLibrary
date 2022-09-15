@@ -362,7 +362,7 @@ void array_list_print_i(const ArrayList  *self, int i) {
 void array_list_fprint_i(const ArrayList *self, FILE *stream, int i) {
     if(i < 0 || i >= self->count)
         return;
-    self->td->fprint(stream, self->array[i]);
+    self->td->fprint(self->array[i], stream);
 }
 
 void array_list_print(const ArrayList  *self){

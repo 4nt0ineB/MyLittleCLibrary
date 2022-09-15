@@ -301,7 +301,7 @@ void linked_list_to_dot_(LinkedList *self, FILE *stream){
     while(cursor){
         fprintf(stream, "  n%p [label=\"", (void *) cursor);
         linked_list_node_fprint(cursor, stream, self->td->fprint);
-        fprintf(stream, "\" color=\"#918d8d\"]\n");
+        fprintf(stream, "\" color=\"#000000\"]\n");
         if(cursor->next)
             fprintf(stream, " n%p -> n%p\n", (void *) cursor, (void *) cursor->next);
         cursor = cursor->next;

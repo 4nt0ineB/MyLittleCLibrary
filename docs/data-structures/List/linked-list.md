@@ -1,13 +1,6 @@
 
 ### Linked list
 
-<div style="text-align: center;">
-```mermaid  
-flowchart  LR  
-    1.2 --> 2.5 --> 3.8 --> e( )
-```
-</div>
-
 ```c 
 LinkedList *list = new_linked_list(float_m);
 
@@ -46,3 +39,33 @@ linked_list_merge_sort(list, int_lt);
 ```c
 linked_list_to_dot(list, "linkedlist.dot");
 ```
+
+=== "Visualization"
+
+    ```dot
+    digraph {
+        rankdir="LR";
+        splines=ortho;
+        node [shape=square , height=.1, rank = same]
+          n0x556fa1c6a360 [label="1.20" color="#000000"]
+         n0x556fa1c6a360 -> n0x556fa1c6a3a0
+          n0x556fa1c6a3a0 [label="2.50" color="#000000"]
+         n0x556fa1c6a3a0 -> n0x556fa1c6a3e0
+          n0x556fa1c6a3e0 [label="3.80" color="#000000"]
+    }
+    ```
+
+=== "dot"
+
+    ``` dot
+    digraph {
+        rankdir="LR";
+        splines=ortho;
+        node [shape=square , height=.1, rank = same]
+        n0x556fa1c6a360 [label="1.20" color="#000000"]
+        n0x556fa1c6a360 -> n0x556fa1c6a3a0
+        n0x556fa1c6a3a0 [label="2.50" color="#000000"]
+        n0x556fa1c6a3a0 -> n0x556fa1c6a3e0
+        n0x556fa1c6a3e0 [label="3.80" color="#000000"]
+    }
+    ```

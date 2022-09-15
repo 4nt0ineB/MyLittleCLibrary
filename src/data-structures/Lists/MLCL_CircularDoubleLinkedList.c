@@ -202,7 +202,7 @@ void circular_double_linked_list_to_dot(CircularDoubleLinkedList *self, const ch
         printf("File can't be opened\n");
     fprintf(stream, "digraph {\n"
                     "rankdir=\"LR\";\n"
-                    "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
+                    "node [shape=square , height=.1, rank = same, color=\"#000000\"]\n"
     );
     circular_double_linked_list_to_dot_(self, stream);
     fprintf(stream, "}\n");

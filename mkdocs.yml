@@ -6,6 +6,8 @@ copyright: Copyleft 🄯 2022 Antoine Bastos - Apache-2.0 license
 
 nav:
   - Home: 'index.md'
+  - Download: 'download.md'
+  - Installation: 'installation.md'
   - 'Data structures':
     - Lists:
         - 'data-structures/List/index.md'
@@ -23,6 +25,7 @@ nav:
     - Types: 'data-structures/types.md'
   - 'Extended examples': 'extended-examples.md'
   - Implementation: 'implementation.md'
+  - Credits: 'credits.md'
 
 markdown_extensions:
   - toc:
@@ -66,9 +69,20 @@ theme:
     repo: fontawesome/brands/github
   favicon: images/favicon.png
   palette:
-    scheme: slate
-    primary: deep purple
-    accent: light blue
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
   features:
     - header.autohide
     - navigation.tracking

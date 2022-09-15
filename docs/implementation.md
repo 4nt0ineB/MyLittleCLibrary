@@ -78,13 +78,13 @@ flowchart  LR
     next0 --> cell1
     
     subgraph cell1[LinkedListNode]
-        v0(void *data)
+        v1(void *data)
         next1(next)
     end
     next1 --> cell2
     
     subgraph  cell2[LinkedListNode]
-        v0(void *data)
+        v2(void *data)
         next2(next)
     end
 ```

@@ -306,7 +306,7 @@ void double_linked_list_to_dot(DoubleLinkedList *self, const char * dest_path){
     fprintf(stream, "digraph {\n"
                   "rankdir=\"LR\";\n"
                   "splines=ortho;\n"
-                  "node [shape=square , height=.1, rank = same, color=\"#918d8d\"]\n"
+                  "node [shape=square , height=.1, rank = same, color=\"#000000\"]\n"
     );
     double_linked_list_to_dot_(self, stream);
     fprintf(stream, "}\n");
