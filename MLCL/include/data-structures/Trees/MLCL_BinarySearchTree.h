@@ -44,42 +44,6 @@ void binary_search_tree_node_print(const BinarySearchTreeNode *self,  void (data
  */
 void binary_search_tree_node_fprint (const BinarySearchTreeNode *self, FILE * stream,  void (data_fprint) (const void *, FILE *));
 
-
-
-/**
- * @brief Descriptor of the binary tree
- * The tree - the nodes - refers to a binary tree descriptor,
- * gathering implemented functions of the BinarySearchTree type, including
- * a TypeDescriptor allowing manipulation of the data, and the the number of nodes.
- */
-typedef struct s_binary_search_tree_descriptor {
-    int n; /**< Number of nodes in the tree */
-    TypeDescriptor * type_descriptor;
-    int (*height) (BinarySearchTree); /**< Return the height of the tree */
-    int (*nb_nodes) (BinarySearchTree); /**< Return the number of nodes. O(1) by the struct */
-    int (*nb_leaves) (BinarySearchTree); /**< Return the number of leaves */
-    int (*nb_internal_nodes) (BinarySearchTree); /**< Return the number of internal nodes */
-    int (*nb_two_children) (BinarySearchTree); /**< Number of nodes having two children */
-    int  (*add) (BinarySearchTree *, const void *); /**< add data to the tree */
-    BinarySearchTree (*min) (BinarySearchTree); /**< Return a pointer to the min node */
-    BinarySearchTree (*max) (BinarySearchTree); /**< Return a pointer to the the max node */
-    void * (*extract_min) (BinarySearchTree *); /**< Remove the min node in the tree and return the pointer of its data */
-    void * (*extract_max) (BinarySearchTree *); /**< Remove the max node in the tree and return the pointer of its data */
-    int  (*remove) (BinarySearchTree *, const void *); /**< Remove the first occurrence of the given data trough preorder traversal  */
-    BinarySearchTree  (*search) (BinarySearchTree *, const void *); /**< Return a pointer to the first occurrence of the node having data equal to the given one, trough preorder traversal */
-    int (*is_perfect_bt) (BinarySearchTree); /**< Return 1 if the tree is a perfect binary tree, else 0 */
-    int (*is_bst) (BinarySearchTree); /**< Return 1 if the tree is a binary search tree, else 0 */
-    void (*node_print) (BinarySearchTreeNode *); /**< Print the given node on stdout */
-    void (*node_fprint) (FILE *, BinarySearchTreeNode *); /**< Print the given node on the given stream */
-    void (*fprint_preorder) (FILE *, BinarySearchTree);
-    void (*fprint_inorder) (FILE *, BinarySearchTree);
-    void (*fprint_postorder) (FILE *, BinarySearchTree);
-    /* breadth-first traversal */
-    void (*to_dot) (BinarySearchTree, const char *); /**< Make a formatted dot file of the struct */
-    void (*free) (BinarySearchTree *); /**< Free to tree */
-} BinarySearchTreeDescriptor;
-
-
 /***************************************************
  * BinarySearchTreeNode
  ***************************************************/
