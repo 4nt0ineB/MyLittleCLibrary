@@ -29,4 +29,9 @@ void movie_print(const void * x);
 void movie_fprint(const void *x, FILE *stream);
 void movie_free(void *x);
 
+
+/* Filters */
+
+int movie_bfilter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate);
+
 #endif /* __MLCL_TEST_MOVIE_H__ */

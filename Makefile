@@ -63,5 +63,6 @@ mrproper: clean
 	rm -Rf docs/html/*
 	rm -Rf docs/html/search/*
 	rm -f *.dot *.pdf
+	rm -Rf MLCL/*
 	rmdir $(OUT_DIR)
 

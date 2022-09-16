@@ -102,7 +102,7 @@ int array_list_binary_search(ArrayList *self, const void *data, int *r_index);
  */
 int array_list_is_sorted(const ArrayList *self, int (*cmp) (const void *, const void *));
 
-void array_list_bublle_sort(ArrayList *self, int (*cmp) (const void *, const void *));
+void array_list_bubble_sort(ArrayList *self, int (*cmp) (const void *, const void *));
 void array_list_selection_sort(ArrayList *self, int (*cmp) (const void *, const void *));
 void array_list_insertion_sort(ArrayList *self, int (*cmp) (const void *, const void *));
 void array_list_quick_sort(ArrayList *self, int (*cmp) (const void *, const void *));
@@ -145,8 +145,8 @@ void array_list_empty(ArrayList *self, void (*data_free) (void *));
  */
 void array_list_free(ArrayList **self);
 
-void array_list_to_dot_(const ArrayList *self, FILE * stream);
-void array_list_to_dot(const ArrayList *self, const char * path);
+void array_list_to_dot_(const ArrayList *self, FILE *stream);
+void array_list_to_dot(const ArrayList *self, const char *path);
 
 
 #endif /* MYLITTLECLIBRARY_MLCL_DYNAMICARRAY_H */

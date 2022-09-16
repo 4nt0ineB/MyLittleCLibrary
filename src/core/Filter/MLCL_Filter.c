@@ -4,15 +4,18 @@
  *   SPDX-License-Identifier: Apache-2.0
  */
 
-#include "MLCL_Filter.h"
+#include "../../../include/core/Filter/MLCL_Filter.h"
 #include "assert.h"
+
+
+
 
 /***************************************************
  * BFilter
  ***************************************************/
 
 
-BFilter * new_bfilter(bfilter_f bfilter_function, void *field_value, ComparisonPredicate cmp_predicate,
+BFilter * new_bfilter(bfilter_f bfilter_function, void *field_value, comparison_predicate_t cmp_predicate,
                        void (*value_free) (void *data)){
     BFilter *bfilter;
     if(!bfilter_function) return NULL;
@@ -64,12 +67,12 @@ void wfilter_free(WFilter **self){
 
 Filter * new_filter(int n_filters){
     Filter *filter;
-    assert(n_filters > 1);
+    if(n_filters < 1) return NULL;
     filter = (Filter *) malloc(sizeof(Filter));
     if(!filter) return NULL;
     filter->bfilters = (BFilter **) calloc(n_filters, sizeof(BFilter *));
     filter->wfilters = (WFilter **) calloc(n_filters, sizeof(WFilter *));
-    if(!filter->bfilters || filter->wfilters){
+    if(!filter->bfilters || !filter->wfilters){
         filter_free(&filter);
         return NULL;
     }
@@ -114,12 +117,12 @@ int filter_w_evaluate(Filter *self, void *data){
 void filter_free(Filter **self){
     int i;
     if(!*self) return;
-    for(i = 0; i <= (*self)->n_filters; i++)
+    for(i = 0; i < (*self)->n_filters; i++)
         if((*self)->bfilters[i])
             bfilter_free(&(*self)->bfilters[i]);
-    for(i = 0; i <= (*self)->n_filters; i++)
-        if((*self)->bfilters[i])
-            bfilter_free(&(*self)->bfilters[i]);
+    for(i = 0; i < (*self)->n_filters; i++)
+        if((*self)->wfilters[i])
+            wfilter_free(&(*self)->wfilters[i]);
     free((*self)->bfilters);
     free((*self)->wfilters);
     free(*self);

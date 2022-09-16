@@ -1,6 +1,6 @@
 
 #include "../include/Movie.h"
-
+#include "../MLCL/include/core/Filter/MLCL_Filter.h"
 
 Movie * new_movie(char *title, short year){
     Movie *movie;
@@ -68,7 +68,6 @@ void movie_fprint(const void *x, FILE *stream){
     fprintf(stream, "%s (%hd)",  movie->title, movie->year);
 }  
 
-  
 void movie_free(void *x){  
 	Movie *movie;
     if(!x) return;
@@ -79,3 +78,12 @@ void movie_free(void *x){
 	free(x);
 }
 
+/* Filters */
+
+int movie_bfilter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate){
+    Movie *movie;
+    if(!self || !field_value) return 0;
+    movie = (Movie *) self;
+    printf("\n\nTITRE: %s et %s\n\n", movie->title, (char *) field_value);
+    return logic_cmp(strcmp(movie->title, field_value), cmp_predicate);
+}

@@ -7,8 +7,10 @@
 #ifndef MYLITTLECLIBRARY_MLCL_LOGIC_H
 #define MYLITTLECLIBRARY_MLCL_LOGIC_H
 
-typedef enum ComparisonPredicate {
+typedef enum comparison_predicate_t {
     EQ, NEQ, LT, LE, GT, GE
-} ComparisonPredicate;
+} comparison_predicate_t;
+
+int logic_cmp(int cmp_return, comparison_predicate_t cmp_predicate);
 
 #endif /* MYLITTLECLIBRARY_MLCL_LOGIC_H */

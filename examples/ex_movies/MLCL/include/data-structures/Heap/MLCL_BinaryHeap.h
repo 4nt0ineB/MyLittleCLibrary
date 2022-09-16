@@ -19,7 +19,7 @@ typedef struct BinaryHeap {
 
 BinaryHeap * new_binary_heap(BINARY_HEAP_ORDER order, void (*type_manifest) (TypeDescriptor *));
 int array_list_is_heap(const BinaryHeap *self);
-int binary_heap_cmp_data(const BinaryHeap *self, const void *x, const void *y);
+int binary_heap_cmp_data(const BinaryHeap *self, const void * x, const void * y);
 int binary_heap_get_child_index(const BinaryHeap *self, int i);
 
 /**
