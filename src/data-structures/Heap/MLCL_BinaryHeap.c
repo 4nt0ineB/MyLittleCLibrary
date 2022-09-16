@@ -36,7 +36,7 @@ int binary_heap_cmp_data(const BinaryHeap *self, const void * x, const void * y)
 int array_list_is_heap(const BinaryHeap *self){
     int i;
     if(!self) return 0;
-    for(i = 1; i < self->list->count; i++){
+    for(i = 1; i < self->list->length; i++){
         if(binary_heap_cmp_data(self, self->list->array[i], self->list->array[(i - 1) / 2]))
             return 0;
     }
@@ -44,9 +44,9 @@ int array_list_is_heap(const BinaryHeap *self){
 }
 
 int binary_heap_get_child_index(const BinaryHeap *self, int i){
-    if((2 * i + 1) >= self->list->count)
+    if((2 * i + 1) >= self->list->length)
         return -1;
-    if((2 * i + 2) == self->list->count)
+    if((2 * i + 2) == self->list->length)
         return 2 * i + 1;
     if(binary_heap_cmp_data(self, self->list->array[2 * i + 2], self->list->array[2 * i + 1]))
         return (2 * i + 2);
@@ -55,7 +55,7 @@ int binary_heap_get_child_index(const BinaryHeap *self, int i){
 
 int binary_heap_swap(BinaryHeap *self, int i, const void *data, char shallow_copy){
     int child;
-    if(!self || i > self->list->count) return 0;
+    if(!self || i > self->list->length) return 0;
 
     if(i > 0 && !binary_heap_cmp_data(self, self->list->array[(i - 1) / 2], data)) {
         self->list->array[i] = self->list->array[(i - 1) / 2];
@@ -81,17 +81,17 @@ void binary_heap_add(BinaryHeap *self, const void *data){
     /* We make sure there is enough space */
     if(!array_list_make_space(self->list))
         return;
-    if(binary_heap_swap(self, self->list->count, (void *) data, 0))
-        self->list->count++; /* increase length */
+    if(binary_heap_swap(self, self->list->length, (void *) data, 0))
+        self->list->length++; /* increase length */
 }
 
 void * binary_heap_pop(BinaryHeap *self){
     void * tmp;
     if(!self) return NULL;
     tmp = self->list->array[0];
-    if(binary_heap_swap(self, 0, self->list->array[self->list->count-1], 1)){
-        self->list->count--;
-        self->list->array[self->list->count] = NULL;
+    if(binary_heap_swap(self, 0, self->list->array[self->list->length-1], 1)){
+        self->list->length--;
+        self->list->array[self->list->length] = NULL;
         array_list_update_space(self->list);
     }
     return tmp;

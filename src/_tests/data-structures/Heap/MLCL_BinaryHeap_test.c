@@ -7,7 +7,7 @@
 #include "../../../../include/_tests/data-structures/Heap/MLCL_BinaryHeap_test.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/core/MLCL_TypeDescriptor.h"
-#include "../../../../include/core/MLCL_basic_types.h"
+#include "../../../../include/core/MLCL_primitive_types.h"
 
 
 int run_all_binary_heap_tests(){

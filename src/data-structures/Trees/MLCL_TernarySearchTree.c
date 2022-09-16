@@ -5,7 +5,7 @@
  */
 
 #include "../../../include/data-structures/Trees/MLCL_TernarySearchTree.h"
-#include "../../../include/core/MLCL_basic_types.h"
+#include "../../../include/core/MLCL_primitive_types.h"
 
 /***************************************************
  * TernarySearchTreeNode

@@ -3,7 +3,7 @@
 #include "../../../../include/_tests/data-structures/Lists/MLCL_LinkedList_test.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
 #include "../../../../include/data-structures/Lists/MLCL_LinkedList.h"
-#include "../../../../include/core/MLCL_basic_types.h"
+#include "../../../../include/core/MLCL_primitive_types.h"
 
 
 int run_all_linked_list_tests(){

@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: Apache-2.0
  */
 
-#include "../../include/core/MLCL_basic_types.h"
+#include "../../include/core/MLCL_primitive_types.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -85,6 +85,7 @@ void str_free(void *x){
 }
 
 
+
 /* ############## char ############## */
 
 char * new_char(char c){
@@ -157,6 +158,10 @@ void char_free(void *x){
     free(x);
 }
 
+int char_filter(void *x, void *y, comparison_predicate_t cmp_predicate){
+    return logic_cmp(int_cmp(x, y), cmp_predicate);
+}
+
 /* ############## int ############## */
 
 int * new_int(int x){
@@ -227,6 +232,10 @@ void * int_copy(const void *data){
 void int_free(void *x){
     if(!x) return;
     free(x);
+}
+
+int int_filter(void *x, void *y, comparison_predicate_t cmp_predicate){
+    return logic_cmp(int_cmp(x, y), cmp_predicate);
 }
 
 /* ############## float ############## */

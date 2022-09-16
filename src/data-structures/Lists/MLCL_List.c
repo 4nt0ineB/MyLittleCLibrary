@@ -53,7 +53,7 @@ int list_length(const List *self){
     if(!self) return 0;
     switch (self->type) {
         case ARRAY_LIST:
-            return self->s.array_list->count;
+            return self->s.array_list->length;
 
         case LINKED_LIST:
             return  self->s.linked_list->length;
@@ -95,7 +95,7 @@ void * list_head_peek(const List *self){
     if(!self) return 0;
     switch (self->type) {
         case ARRAY_LIST:
-            if(self->s.array_list->count)
+            if(self->s.array_list->length)
             return self->s.array_list->array[0];
 
         case LINKED_LIST:
@@ -117,8 +117,8 @@ void * list_tail_peek(const List *self){
     if(!self) return 0;
     switch (self->type) {
         case ARRAY_LIST:
-            if(self->s.array_list->count)
-                return self->s.array_list->array[self->s.array_list->count - 1];
+            if(self->s.array_list->length)
+                return self->s.array_list->array[self->s.array_list->length - 1];
 
         case LINKED_LIST:
             assert(1 == 0);

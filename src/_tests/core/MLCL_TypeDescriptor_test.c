@@ -5,7 +5,7 @@
  */
 
 #include "../../../include/_tests/core/MLCL_TypeDescriptor_test.h"
-#include "../../../include/core/MLCL_basic_types.h"
+#include "../../../include/core/MLCL_primitive_types.h"
 #include "../../../include/_tests/MLCL_exceptions.h"
 
 int run_all_type_descriptor_tests(){

@@ -7,7 +7,7 @@
 #include "../../../../include/_tests/data-structures/Lists/MLCL_ArrayList_test.h"
 #include "../../../../include/data-structures/Lists/MLCL_ArrayList.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
-#include "../../../../include/core/MLCL_basic_types.h"
+#include "../../../../include/core/MLCL_primitive_types.h"
 
 
 
@@ -43,7 +43,7 @@ int test_array_list_append(){
     if(*(int *) list->array[5] != 5)
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
-    if(list->count != 10)
+    if(list->length != 10)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     if(list->size != 10)
@@ -75,7 +75,7 @@ int test_array_list_pop(){
     free(array_list_pop(list));
     free(array_list_pop(list));
 
-    if(list->count != 0)
+    if(list->length != 0)
         MLCL_ERR(3, MLCL_ERR_TRUE)
     if(list->size != 10)
         MLCL_ERR(4, MLCL_ERR_TRUE)
@@ -106,7 +106,7 @@ int test_array_list_pop_i(){
         MLCL_ERR(2, MLCL_ERR_TRUE)
     free(x);
 
-    if(list->count != 3)
+    if(list->length != 3)
         MLCL_ERR(3, MLCL_ERR_TRUE)
     if(list->size != 10)
         MLCL_ERR(4, MLCL_ERR_TRUE)
@@ -246,7 +246,8 @@ int test_array_list_merge_sort(){
 
 int test_array_list_search(){
     ArrayList *list;
-    int x, index;
+    Filter *filter;
+    int index;
 
     list = new_array_list(int_m);
     if(!list)
@@ -260,8 +261,10 @@ int test_array_list_search(){
 
     array_list_quick_sort(list, list->td->le);
 
-    x = 28;
-    if(!array_list_search(list, &x, int_eq, &index))
+    filter = new_filter(1);
+    filter->bfilters[0] = new_bfilter(int_filter, new_int(28), EQ, int_free);
+
+    if(!array_list_search(list, filter, &index))
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     if(index != 4)
