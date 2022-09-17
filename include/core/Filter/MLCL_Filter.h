@@ -80,6 +80,12 @@ Filter * new_filter(int n_conditions);
 int filter_evaluate(Filter *self, void *data);
 
 /**
+ * Erase and free all conditions
+ * @param self
+ */
+void filter_clear(Filter *self);
+
+/**
  * @brief Free a filter
  * @param self
  */

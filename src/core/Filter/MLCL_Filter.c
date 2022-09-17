@@ -8,13 +8,9 @@
 #include "assert.h"
 
 
-
-
-
 /***************************************************
  * ConditionalFilter
  ***************************************************/
-
 
 ConditionalFilter * new_condition(cfilter_f filter_function, void *field_value, comparison_predicate_t cmp_predicate,
                        void (*value_free) (void *data)){
@@ -70,12 +66,17 @@ int filter_evaluate(Filter *self, void *data){
     return 1;
 }
 
-void filter_free(Filter **self){
+void filter_clear(Filter *self){
     int i;
-    if(!*self) return;
+    if(!self) return;
     for(i = 0; i < (*self)->n_conditions; i++)
         if((*self)->conditions[i])
             conditional_filter_free(&(*self)->conditions[i]);
+}
+
+void filter_free(Filter **self){
+    if(!*self) return;
+    filter_clear(*self);
     free((*self)->conditions);
     free(*self);
     *self = NULL;
