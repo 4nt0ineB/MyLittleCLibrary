@@ -264,7 +264,7 @@ int test_array_list_search(){
     array_list_quick_sort(list, list->td->le);
 
     filter = new_filter(1);
-    filter->bfilters[0] = new_bfilter(int_filter, new_int(28), EQ, int_free);
+    filter->conditions[0] = new_condition(int_filter, new_int(28), EQ, int_free);
 
     if(!array_list_search(list, filter, &index))
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -273,6 +273,7 @@ int test_array_list_search(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     array_list_free(&list);
+    filter_free(&filter);
     return 1;
 }
 
@@ -294,7 +295,7 @@ int test_array_list_remove(){
 
     filter = new_filter(1);
     /* Let's remove 28 */
-    filter->bfilters[0] = new_bfilter(int_filter, new_int(28), EQ, int_free);
+    filter->conditions[0] = new_condition(int_filter, new_int(28), EQ, int_free);
 
     if(!array_list_remove(list, filter))
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -304,6 +305,7 @@ int test_array_list_remove(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     array_list_free(&list);
+    filter_free(&filter);
     return 1;
 }
 
@@ -325,7 +327,7 @@ int test_array_list_remove_all(){
 
     filter = new_filter(1);
     /* We want to remove all int less or equal to 3 */
-    filter->bfilters[0] = new_bfilter(int_filter, new_int(3), LE, int_free);
+    filter->conditions[0] = new_condition(int_filter, new_int(3), LE, int_free);
 
     if(!array_list_remove_all(list, filter))
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -334,6 +336,7 @@ int test_array_list_remove_all(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     array_list_free(&list);
+    filter_free(&filter);
     return 1;
 }
 

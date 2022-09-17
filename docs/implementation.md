@@ -41,6 +41,7 @@ flowchart  TB
 	Stack --> List
 	
 	BinarySearchTree --> TypeDescriptor
+	TernarySearchTree --> TypeDescriptor
 	AVLTree --> TypeDescriptor
 	LexicalTree --> TypeDescriptor
 	BKTree --> TypeDescriptor

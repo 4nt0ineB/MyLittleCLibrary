@@ -15,7 +15,7 @@
 ConditionalFilter * new_condition(cfilter_f filter_function, void *field_value, comparison_predicate_t cmp_predicate,
                        void (*value_free) (void *data)){
     ConditionalFilter *cfilter;
-    if(!bfilter_function) return NULL;
+    if(!filter_function) return NULL;
     cfilter = (ConditionalFilter *) malloc(sizeof(ConditionalFilter));
     if(!cfilter) return NULL;
     cfilter->function = filter_function;
@@ -69,9 +69,9 @@ int filter_evaluate(Filter *self, void *data){
 void filter_clear(Filter *self){
     int i;
     if(!self) return;
-    for(i = 0; i < (*self)->n_conditions; i++)
-        if((*self)->conditions[i])
-            conditional_filter_free(&(*self)->conditions[i]);
+    for(i = 0; i < self->n_conditions; i++)
+        if(self->conditions[i])
+            conditional_filter_free(&self->conditions[i]);
 }
 
 void filter_free(Filter **self){

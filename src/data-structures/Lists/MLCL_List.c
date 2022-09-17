@@ -297,7 +297,7 @@ void list_clear(List *self, void (*data_free) (void *)){
             break;
 
         case LINKED_LIST:
-            linked_list_clear(self->s.linked_list, data_free);
+            linked_list_clear(self->s.linked_list);
             break;
 
         case CIRCULAR_LINKED_LIST:

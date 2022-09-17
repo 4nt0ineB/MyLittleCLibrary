@@ -12,33 +12,32 @@
 #include "../MLCL_logic.h"
 #include "stdlib.h"
 
-
 /***************************************************
- * BFilter
+ * FilterConditon
  ***************************************************/
 
-typedef int (*bfilter_f) (void *strct, void *field_value, comparison_predicate_t cmp_predicate);
+typedef int (*cfilter_f) (void *strct, void *field_value, comparison_predicate_t cmp_predicate);
 
 /**
- * @brief a filter that apply on a field of a struct
+ * @brief a test that apply on a struct, field of a struct
  */
-typedef struct BFilter{
-    bfilter_f test; /**< test function to check condition on field of a structure with a Filter */
+typedef struct ConditionalFilter{
+    cfilter_f function; /**< test function to check condition on field of a structure with a Filter */
     void *field_value; /**< tmp value given to test a field with */
     comparison_predicate_t cmp_predicate; /**< EQ, NEQ, LT, ... */
     void (*value_free) (void *data); /**< Function to free the given field_value. Set NULL to avoid to free */
-} BFilter;
+} ConditionalFilter;
 
 /**
  * @brief
- * @param bfilter_function test function to check condition on field of a structure with a Filter
+ * @param filter_function a function to check condition on structure/type with a Filter
  * @param value a value to compare the field with
  * @param cmp_predicate how to compare the field with the value
  * @param value_free Function to free the given field_value. Set NULL to avoid to free
  * @return
  */
-BFilter * new_bfilter(
-        bfilter_f bfilter_function,
+ConditionalFilter * new_condition(
+        cfilter_f filter_function,
         void *field_value,
         comparison_predicate_t cmp_predicate,
         void (*value_free) (void *data)
@@ -48,43 +47,7 @@ BFilter * new_bfilter(
  * @brief
  * @param self
  */
-void bfilter_free(BFilter **self);
-
-
-/***************************************************
- * WFilter
- ***************************************************/
-
-typedef int (*wfilter_f) (void *strct, void *data);
-
-/**
- * @brief a more complex custom filter that apply on the struct
- */
-typedef struct WFilter{
-    wfilter_f test; /**< test function to check a custom condition on structure/type with a Filter */
-    void *data; /**< tmp data to use if wanted */
-    void (*data_free) (void *data); /**< Function to free the given data. Give function, or NULL to avoid to free */
-} WFilter;
-
-/**
- * @brief
- * @param wfilter_function
- * @param data  tmp data to use if wanted
- * @param data_free Function to free the given data. Give function, or NULL to avoid to free
- * @return
- */
-WFilter * new_wfilter(
-        wfilter_f wfilter_function,
-        void *data,
-        void (*data_free) (void *data)
-);
-
-/**
- * @brief
- * @param self
- */
-void wfilter_free(WFilter **self);
-
+void conditional_filter_free(ConditionalFilter **self);
 
 /***************************************************
  * Filter
@@ -96,9 +59,8 @@ void wfilter_free(WFilter **self);
  */
 typedef struct Filter {
     TypeDescriptor *td;
-    BFilter **bfilters; /**< like "filter by " so b , for mnemonic purpose only */
-    WFilter **wfilters; /**< like "filter with " so w, for mnemonic purpose only */
-    int n_filters;
+    ConditionalFilter **conditions;
+    int n_conditions;
     int (*evaluate) (struct Filter *filter, void *strct);
 } Filter;
 
@@ -107,17 +69,21 @@ typedef struct Filter {
  * @param n_filters number of filters (each b and w types) the filter will have
  * @return
  */
-Filter * new_filter(int n_filters);
+Filter * new_filter(int n_conditions);
 
 /**
- * @brief Passes trough all bfilters and wfilters to check if the given struct/type validate all condition
+ * @brief Passes trough all conditions to check if the given struct/type validate all condition
  * @param self a pointer to a filter
  * @param strct the data of a struct
  * @return
  */
 int filter_evaluate(Filter *self, void *data);
-int filter_b_evaluate(Filter *self, void *data);
-int filter_w_evaluate(Filter *self, void *data);
+
+/**
+ * Erase and free all conditions
+ * @param self
+ */
+void filter_clear(Filter *self);
 
 /**
  * @brief Free a filter

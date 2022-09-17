@@ -12,14 +12,15 @@ int run_all_linked_list_tests(){
     MLCL_TEST(test_linked_list_prepend, "test_linked_list_prepend")
     MLCL_TEST(test_linked_list_append, "test_linked_list_append")
     MLCL_TEST(test_linked_list_search, "test_linked_list_search")
+    MLCL_TEST(test_linked_list_search_all, "test_linked_list_search_all")
     MLCL_TEST(test_linked_list_remove, "test_linked_list_remove")
+    MLCL_TEST(test_linked_list_remove_all, "test_linked_list_remove_all")
     MLCL_TEST(test_linked_list_shift, "test_linked_list_shift")
     MLCL_TEST(test_linked_list_pop, "test_linked_list_pop")
     MLCL_TEST(test_linked_list_merge_sort, "test_linked_list_merge_sort")
     
-    /*MLCL_TEST(test_linked_list_ordered_add, "test_linked_list_ordered_add")
-
-    MLCL_TEST(test_linked_list_filter, "test_linked_list_filter")
+    /*
+     MLCL_TEST(test_linked_list_ordered_add, "test_linked_list_ordered_add")
     */
     return 1;
 }
@@ -91,7 +92,8 @@ int test_linked_list_append(){
 
 int test_linked_list_search(){
     LinkedList *list;
-    int x;
+    Filter *filter;
+
     list = new_linked_list(int_m);
 
     if(!list)
@@ -104,17 +106,53 @@ int test_linked_list_search(){
     if((* (int *) list->head->data) != 7)
         MLCL_ERR(2, MLCL_ERR_EQ)
 
-    x = 6;
-    if(!linked_list_search(list, &x, int_eq))
+    filter = new_filter(1);
+    filter->conditions[0] = new_condition(int_filter, new_int(6), EQ, int_free);
+
+    if(!linked_list_search(list,filter))
         MLCL_ERR(3, MLCL_ERR_TRUE)
         
     linked_list_free(&list);
+    filter_free(&filter);
+    return 1;
+}
+
+int test_linked_list_search_all(){
+    LinkedList *list, *searched_data;
+    Filter *filter;
+
+    list = new_linked_list(int_m);
+
+    if(!list)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    linked_list_prepend(list, new_int(5));
+    linked_list_append(list, new_int(6));
+    linked_list_prepend(list, new_int(7));
+
+    if((* (int *) list->head->data) != 7)
+        MLCL_ERR(2, MLCL_ERR_EQ)
+
+    filter = new_filter(1);
+    filter->conditions[0] = new_condition(int_filter, new_int(7), LE, int_free);
+
+    searched_data = linked_list_search_all(list,filter);
+    if(!searched_data)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+
+    if(searched_data->length != 3)
+        MLCL_ERR(4, MLCL_ERR_TRUE)
+
+    linked_list_free(&list);
+    filter_free(&filter);
+    linked_list_free_w(&searched_data, NULL);
+
     return 1;
 }
 
 int test_linked_list_remove(){
     LinkedList *list;
-    int x;
+    Filter *filter;
 
     list = new_linked_list(int_m);
 
@@ -124,21 +162,55 @@ int test_linked_list_remove(){
     linked_list_prepend(list, new_int(5));
     linked_list_prepend(list, new_int(6));
 
-    x = 5;
-    linked_list_remove(list, &x, int_eq);
+    /* filter to target data = 5 */
+    filter = new_filter(1);
+    filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
+
+    linked_list_remove(list, filter);
     /*linked_list_print(list);*/
+
 
     if((* (int *) list->head->data) != 6)
         MLCL_ERR(2, MLCL_ERR_EQ)
 
-    x = 6;
-    linked_list_remove(list, &x, int_eq);
+    filter_clear(filter);
+    filter->conditions[0] = new_condition(int_filter, new_int(6), EQ, int_free);
+
+    linked_list_remove(list, filter);
 
     if(list->head)
         MLCL_ERR(3, MLCL_ERR_FALSE)
 
     linked_list_free(&list);
+    filter_free(&filter);
+    return 1;
+}
 
+int test_linked_list_remove_all(){
+    LinkedList *list;
+    Filter *filter;
+
+    list = new_linked_list(int_m);
+
+    if(!list)
+    MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    linked_list_prepend(list, new_int(5));
+    linked_list_prepend(list, new_int(6));
+
+    /* filter to target data < 7 */
+    filter = new_filter(1);
+    filter->conditions[0] = new_condition(int_filter, new_int(7), LT, int_free);
+
+    /*linked_list_print(list);*/
+    linked_list_remove_all(list, filter);
+    /*linked_list_print(list);*/
+
+  /*  if(list->head)
+        MLCL_ERR(3, MLCL_ERR_FALSE)*/
+
+    linked_list_free(&list);
+    filter_free(&filter);
     return 1;
 }
 
