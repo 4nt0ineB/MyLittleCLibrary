@@ -235,6 +235,7 @@ void int_free(void *x){
 }
 
 int int_filter(void *x, void *y, comparison_predicate_t cmp_predicate){
+    /*printf("\n - %d vs %d = %d\n", *(int *)x, *(int *)y, logic_cmp(int_cmp(x, y), cmp_predicate));*/
     return logic_cmp(int_cmp(x, y), cmp_predicate);
 }
 

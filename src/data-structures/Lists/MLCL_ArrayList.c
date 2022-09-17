@@ -222,11 +222,16 @@ ArrayList * array_list_extract_all(ArrayList *self, Filter *filter){
     /* On all data, evaluate the filter,
      if it doesn't pass, extract it with pop_i then add it to the list */
     for(i = 0; i < self->length; i++)
-        if(filter->evaluate(filter, self->array[i]))
+        if(filter->evaluate(filter, self->array[i])){
             array_list_append(filtered_data, array_list_pop_i(self, i));
+            /* we just removed a data, so we decrement
+             the iterator because we don't want to miss the next data
+             that just shifted to the current index */
+            i--;
+        }
     if(filtered_data->length == 0)
         array_list_free(&filtered_data);
-    return NULL;
+    return filtered_data;
 }
 
 int array_list_remove_w(ArrayList *self, Filter *filter, void (*data_free) (void *)){
@@ -247,9 +252,10 @@ int array_list_remove_all_w(ArrayList *self, Filter *filter, void (*data_free) (
     ArrayList *filtered_data;
     if (!self || !filter) return n;
     filtered_data = array_list_extract_all(self, filter);
-    if (filtered_data && data_free){
+    if (filtered_data){
         n = filtered_data->length;
-        array_list_free_w(&filtered_data, data_free);
+        if(data_free)
+            array_list_free_w(&filtered_data, data_free);
     }
     return n;
 }

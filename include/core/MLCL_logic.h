@@ -8,11 +8,11 @@
 #define MYLITTLECLIBRARY_MLCL_LOGIC_H
 
 typedef enum {
-    EQ, NEQ, LT, LE, GT, GE
+    EQ = 1, NEQ, LT, LE, GT, GE
 } comparison_predicate_t;
 
 typedef enum  {
-    ASC, DESC
+    ASC = 1, DESC
 } ordering_t;
 
 int logic_cmp(int cmp_return, comparison_predicate_t cmp_predicate);

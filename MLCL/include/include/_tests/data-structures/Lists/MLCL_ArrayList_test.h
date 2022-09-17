@@ -19,5 +19,7 @@ int test_array_list_selection_sort();
 int test_array_list_insertion_sort();
 int test_array_list_quick_sort();
 int test_array_list_merge_sort();
+int test_array_list_remove();
+int test_array_list_remove_all();
 
 #endif /* MYLITTLECLIBRARY_MLCL_ARRAYLIST_TEST_H */

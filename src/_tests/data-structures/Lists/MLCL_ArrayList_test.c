@@ -24,6 +24,8 @@ int run_all_array_list_tests(){
     MLCL_TEST(test_array_list_quick_sort, "test_array_list_quick_sort")
     MLCL_TEST(test_array_list_merge_sort, "test_array_list_merge_sort")
     MLCL_TEST(test_array_list_search, "test_array_list_search")
+    MLCL_TEST(test_array_list_remove, "test_array_list_remove")
+    MLCL_TEST(test_array_list_remove_all, "test_array_list_remove_all")
     MLCL_TEST(test_array_list_binary_search, "test_array_list_binary_search")
 
     return 1;
@@ -235,7 +237,7 @@ int test_array_list_merge_sort(){
 
     array_list_merge_sort(list, list->td->lt);
 
-    array_list_print(list);
+    /*array_list_print(list);*/
 
     if(!array_list_is_sorted(list, list->td->lt))
         MLCL_ERR(2, MLCL_ERR_TRUE)
@@ -268,6 +270,67 @@ int test_array_list_search(){
         MLCL_ERR(2, MLCL_ERR_TRUE)
 
     if(index != 4)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+
+    array_list_free(&list);
+    return 1;
+}
+
+int test_array_list_remove(){
+    ArrayList *list;
+    Filter *filter;
+
+    list = new_array_list(int_m);
+    if(!list)
+        MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
+
+    array_list_quick_sort(list, list->td->le);
+
+    filter = new_filter(1);
+    /* Let's remove 28 */
+    filter->bfilters[0] = new_bfilter(int_filter, new_int(28), EQ, int_free);
+
+    if(!array_list_remove(list, filter))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+
+    if(list->length != 4)
+        MLCL_ERR(3, MLCL_ERR_TRUE)
+
+    array_list_free(&list);
+    return 1;
+}
+
+int test_array_list_remove_all(){
+    ArrayList *list;
+    Filter *filter;
+
+    list = new_array_list(int_m);
+    if(!list)
+    MLCL_ERR(1, MLCL_ERR_ALLOC)
+
+    array_list_append(list, new_int(6));
+    array_list_append(list, new_int(3));
+    array_list_append(list, new_int(28));
+    array_list_append(list, new_int(2));
+    array_list_append(list, new_int(1));
+
+    array_list_quick_sort(list, list->td->le);
+
+    filter = new_filter(1);
+    /* We want to remove all int less or equal to 3 */
+    filter->bfilters[0] = new_bfilter(int_filter, new_int(3), LE, int_free);
+
+    if(!array_list_remove_all(list, filter))
+        MLCL_ERR(2, MLCL_ERR_TRUE)
+
+    if(list->length != 2)
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     array_list_free(&list);

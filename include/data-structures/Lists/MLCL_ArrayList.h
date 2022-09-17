@@ -126,10 +126,10 @@ void * array_list_extract(ArrayList *self, Filter *filter);
  */
 ArrayList * array_list_extract_all(ArrayList *self, Filter *filter);
 
-int array_list_remove(ArrayList *self, Filter *filter);
 int array_list_remove_w(ArrayList *self, Filter *filter, void (*data_free) (void *));
-int array_list_remove_all(ArrayList *self, Filter *filter);
+int array_list_remove(ArrayList *self, Filter *filter);
 int array_list_remove_all_w(ArrayList *self, Filter *filter, void (*data_free) (void *));
+int array_list_remove_all(ArrayList *self, Filter *filter);
 
 /**
  * Return Check if list is sorted according to given cmp function

@@ -149,7 +149,7 @@ int test_circular_double_linked_list_shift(){
     circular_double_linked_list_append(list, new_float(5.5f));
 
     data = circular_double_linked_list_shift(list);
-    circular_double_linked_list_print(list);
+    /*circular_double_linked_list_print(list);*/
 
     if(list->head->next->next != list->head)
         MLCL_ERR(2, MLCL_ERR_TRUE)
