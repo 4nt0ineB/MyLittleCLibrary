@@ -1,13 +1,12 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
-site_name: My Little C Library
+site_name: MyLittleCLibrary
 repo_name: cydaw6/MyLittleCLibrary
 repo_url: https://github.com/cydaw6/MyLittleCLibrary
 copyright: Copyleft 🄯 2022 Antoine Bastos - Apache-2.0 license
 
 nav:
   - Home: 'index.md'
-  - Download: 'download.md'
   - Installation: 'installation.md'
   - 'Data structures':
     - Lists:
@@ -23,7 +22,9 @@ nav:
         - AVL Tree: 'data-structures/Tree/avl-tree.md'
         - 'data-structures/Tree/ternary-search-tree.md'
         - BK Tree: 'data-structures/Tree/bk-tree.md'
-    - Types: 'data-structures/types.md'
+  - Core:
+      - 'core/filter.md'
+      - 'core/types.md'
   - 'Extended examples': 'extended-examples.md'
   - Implementation: 'implementation.md'
   - Credits: 'credits.md'

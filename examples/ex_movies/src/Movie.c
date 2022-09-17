@@ -74,16 +74,16 @@ void movie_free(void *x){
     movie = (Movie *) x;
     list_free(&movie->cast);
     person_free(movie->director);
+    printf("HEY\n");
     free(movie->title);
-	free(x);
+    free(x);
 }
 
 /* Filters */
 
-int movie_bfilter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate){
+int movie_filter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate){
     Movie *movie;
     if(!self || !field_value) return 0;
     movie = (Movie *) self;
-    printf("\n\nTITRE: %s et %s\n\n", movie->title, (char *) field_value);
     return logic_cmp(strcmp(movie->title, field_value), cmp_predicate);
 }

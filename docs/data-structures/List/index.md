@@ -24,6 +24,3 @@ list = new_list(ARRAY_LIST, int_m);
 array_list_merge_sort(list->s.array_list);  
 ```  
 You will notice that here we access the *ArrayList* implementation through the **s** (for "structure") field, depending on the type of implementation we set to create the *List*.
-
-#### Methods
-[Header file](https://github.com/cydaw6/MyLittleCLibrary/blob/main/include/Lists/MLCL_List.h)

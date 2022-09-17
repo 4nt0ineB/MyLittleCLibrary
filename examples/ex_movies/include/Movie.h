@@ -32,6 +32,6 @@ void movie_free(void *x);
 
 /* Filters */
 
-int movie_bfilter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate);
+int movie_filter_title(void *self, void *field_value, comparison_predicate_t cmp_predicate);
 
 #endif /* __MLCL_TEST_MOVIE_H__ */

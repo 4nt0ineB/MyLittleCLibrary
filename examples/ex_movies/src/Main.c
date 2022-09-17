@@ -15,10 +15,9 @@ int main(){
 
     List *movies;
     Movie *movie;
+    Filter *filter;
 
     movies = new_list(LINKED_LIST, movie_m);
-
-
 
     /**** Tron 1982 ****/
     movie = new_movie("Tron", 1982);
@@ -35,7 +34,6 @@ int main(){
 
     /* Append Tron to the movies list */
     list_prepend(movies, movie);
-
 
 
     /**** Tron legacy ****/
@@ -59,14 +57,14 @@ int main(){
     list_print(movies);
 
     /*  Let's search for a movie */
-    {
-        Filter *filter;
-        filter = new_filter(1);
-        filter->bfilters[0] = new_bfilter(movie_bfilter_title, new_str("Tron"), EQ, str_free);
-        printf("Valide ? %d\n", filter->evaluate(filter, movies->s.linked_list->head->data));
-        filter_free(&filter);
-    }
+    filter = new_filter(1);
+    filter->conditions[0] = new_condition(movie_filter_title, new_str("Tron"), EQ, str_free);
+    movie = linked_list_search(movies->s.linked_list, filter);
 
+    printf("\nFound: ");
+    movie_print(movie);
+
+    filter_free(&filter);
     printf("\n");
-	return 0;
+    return 0;
 }

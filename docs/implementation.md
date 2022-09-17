@@ -43,7 +43,6 @@ flowchart  TB
 	BinarySearchTree --> TypeDescriptor
 	TernarySearchTree --> TypeDescriptor
 	AVLTree --> TypeDescriptor
-	LexicalTree --> TypeDescriptor
 	BKTree --> TypeDescriptor
 	
 ```
