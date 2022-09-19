@@ -165,21 +165,59 @@ void * double_linked_list_search(const DoubleLinkedList *self, const void *data,
     return double_linked_list_search_(self->head, data, filter);
 }
 
-static int double_linked_list_remove_(DoubleLinkedListNode **self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data)){
+
+static void * double_linked_list_extract_(DoubleLinkedListNode **self, Filter *filter){
+    if(!*self || !filter) return NULL;
+    if(filter->evaluate(filter, (*self)->data))
+        return double_linked_list_node_extract(self);
+    return double_linked_list_extract_(&(*self)->next, filter);
+}
+
+void * double_linked_list_extract(DoubleLinkedList *self, Filter *filter){
+    if(!self || !filter) return NULL;
+    return double_linked_list_extract_(&self->head, filter);
+}
+
+int double_linked_list_extract_all_(DoubleLinkedListNode **self, Filter *filter, DoubleLinkedList *extracted){
+    if(extracted && extracted->head) return 1;
     if(!*self || !filter) return 0;
-    if(filter((*self)->data, data)){
-        data_free(double_linked_list_node_extract(self));
-        return 1;
+    if(filter->evaluate(filter, (*self)->data))
+        double_linked_list_append(extracted, double_linked_list_node_extract(self));
+    double_linked_list_extract_all_(&(*self)->next, filter, extracted);
+    return 1;
+}
+
+DoubleLinkedList * double_linked_list_extract_all(DoubleLinkedList *self, Filter *filter){
+    DoubleLinkedList *extracted_data;
+    if(!self || !filter) return NULL;
+    extracted_data = new_double_linked_list(self->td->manifest);
+    double_linked_list_extract_all_(&self->head, filter, extracted_data);
+    return extracted_data;
+}
+
+static int double_linked_list_remove_w_(DoubleLinkedListNode **self, Filter *filter, void (*data_free) (void *data)){
+    DoubleLinkedList *extracted;
+    int n;
+    if(!*self || !filter) return 0;
+    extracted = double_linked_list_extract_(&(*self)->next, filter);
+    if(extracted){
+        n = extracted->length;
+        double_linked_list_free_w(&extracted, data_free);
     }
-    return double_linked_list_remove_(&(*self)->next, data, filter, data_free);
+    return n;
 }
 
-int double_linked_list_remove(DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data)){
-    if(!self || !self->head || !filter || !data_free) return 0;
-    return double_linked_list_remove_(&self->head, data, filter, data_free) && (--self->length || 1);
+int double_linked_list_remove_w(DoubleLinkedList *self, Filter *filter, void (*data_free) (void *data)){
+    if(!self || !self->head || !filter) return 0;
+    return double_linked_list_remove_w_(&self->head, filter, data_free) && (--self->length || 1);
 }
 
-static int double_linked_list_remove_all_(DoubleLinkedListNode **self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data)){
+int double_linked_list_remove(DoubleLinkedList *self, Filter *filter){
+    if(!self) return 0;
+    return double_linked_list_remove_w(self, filter, self->td->data_free);
+}
+
+static int double_linked_list_remove_all_(DoubleLinkedListNode **self, Filter *filter, void (data_free)){
     DoubleLinkedListNode **tmp;
     int i;
     if(!*self || !filter) return 0;
@@ -235,6 +273,7 @@ static void * double_linked_list_pop_(DoubleLinkedListNode **self){
     free(tmp);
     return data;
 }
+
 void * double_linked_list_pop(DoubleLinkedList *self){
     void *tmp;
     if(!self || !self->head) return NULL;
@@ -243,8 +282,8 @@ void * double_linked_list_pop(DoubleLinkedList *self){
     return  tmp;
 }
 
-void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data)){
-    DoubleLinkedListNode *tmp, *tmp_2;
+void double_linked_list_clear_w(DoubleLinkedList *self, void (*data_free) (void *data)){
+    DoubleLinkedListNode *tmp,  *tmp_2;
     if(!self || !self->head || !data_free) return;
     tmp = self->head;
     while(tmp){
@@ -256,12 +295,22 @@ void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *d
     self->head = NULL;
 }
 
-void double_linked_list_free(DoubleLinkedList **self){
+void double_linked_list_clear(DoubleLinkedList *self){
+    if(self)
+        double_linked_list_clear_w(self, self->td->data_free);
+}
+
+void double_linked_list_free_w(DoubleLinkedList **self, void (data_free) (void *)){
     if(!*self) return;
-    double_linked_list_clear(*self, (*self)->td->data_free);
+    double_linked_list_clear_w(*self, data_free);
     type_descriptor_free(&(*self)->td);
     free(*self);
     *self = NULL;
+}
+
+void double_linked_list_free(DoubleLinkedList **self){
+    if(*self)
+        double_linked_list_free_w(self, (*self)->td->data_free);
 }
 
 void double_linked_list_fprint(const DoubleLinkedList *self, FILE *stream){

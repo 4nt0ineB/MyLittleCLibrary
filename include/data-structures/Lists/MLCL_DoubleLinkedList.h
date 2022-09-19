@@ -9,6 +9,7 @@
 
 #include <stdlib.h>
 #include "../../core/MLCL_TypeDescriptor.h"
+#include "../../core/Filter/MLCL_Filter.h"
 
 /**
  * @brief A generic Double linked list \n
@@ -49,14 +50,27 @@ int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (c
 int double_linked_list_prepend(DoubleLinkedList *self, void *data);
 void * double_linked_list_shift(DoubleLinkedList *self);
 void * double_linked_list_pop(DoubleLinkedList *self);
-void * double_linked_list_search(const DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *));
-int double_linked_list_remove(DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data));
-int double_linked_list_remove_all(DoubleLinkedList *self, const void *data, int (*filter) (const void *, const void *), void (*data_free) (void *data));
+
+
+void * double_linked_list_search(const DoubleLinkedList *self, Filter *filter);
+DoubleLinkedList * double_linked_list_search_all(const DoubleLinkedList *self, Filter *filter);
+
+void * double_linked_list_extract(DoubleLinkedList *self, Filter *filter);
+DoubleLinkedList * double_linked_list_extract_all(DoubleLinkedList *self, Filter *filter);
+
+int double_linked_list_remove_w(DoubleLinkedList *self, Filter *filter, void (*data_free) (void *data));
+int double_linked_list_remove(DoubleLinkedList *self, Filter *filter);
+int double_linked_list_remove_all_W(DoubleLinkedList *self, Filter *filter, void (*data_free) (void *data));
+int double_linked_list_remove_all(DoubleLinkedList *self, Filter *filter, void (*data_free) (void *data));
+
+
 void double_linked_list_fprint(const DoubleLinkedList *self, FILE *stream);
 void double_linked_list_print(const DoubleLinkedList *self);
 void double_linked_list_to_dot_(DoubleLinkedList *self, FILE *stream);
 void double_linked_list_to_dot(DoubleLinkedList *self, const char *path);
-void double_linked_list_clear(DoubleLinkedList *self, void (*data_free) (void *data));
+void double_linked_list_clear_w(DoubleLinkedList *self, void (*data_free) (void *data));
+void double_linked_list_clear(DoubleLinkedList *self);
+void double_linked_list_free_w(DoubleLinkedList **self, void (data_free) (void *));
 void double_linked_list_free(DoubleLinkedList **self);
 
 #endif /* MYLITTLECLIBRARY_DOUBLELINKEDLIST_H */
