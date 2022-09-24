@@ -31,6 +31,7 @@ list_print(movie->cast);
 list_free(&movies)
 ```
 
+## Purpose 
 I started to make this lib because, during a C project I was bored to reimplement same data structures over again
 for different objects. I was convinced there must exist a way to juste simply write generic data structures.
 
@@ -48,12 +49,9 @@ Two quotes from computer scientists I read online illustrate the idea.
 So, I think this lib could be ok to use for small projects or to visualize some data structures, while learning C
 but not much more.
 
-# Todo list
-Lists:
-for all kind of implementation use iterative rather than recursive.
+### Roadmap/todo list
+[Dashboard](https://github.com/users/cydaw6/projects/1)
 
-Trees:
-Rename ternary search tree to lexical tree or prefix tree
 
 
 Antoine Bastos 2022 - Apache-2.0 licensed
