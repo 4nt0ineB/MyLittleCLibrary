@@ -56,13 +56,10 @@ buildpackage:
 .PHONY: clean
 clean:
 	@rm -rf $(OBJ_DIR)
-
-mrproper: clean
 	rm -f $(LIB_NAME).a
-	rm -f $(OUT_DIR)/MLCLTests
+	rm -frR $(OUT_DIR)/MLCLTests
 	rm -Rf docs/html/*
 	rm -Rf docs/html/search/*
 	rm -f *.dot *.pdf
 	rm -Rf MLCL/*
-	rmdir $(OUT_DIR)
 

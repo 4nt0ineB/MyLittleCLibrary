@@ -115,6 +115,7 @@ int test_double_linked_list_search(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     double_linked_list_free(&list);
+    filter_free(&filter);
     return 1;
 }
 
@@ -147,7 +148,7 @@ int test_double_linked_list_remove(){
         MLCL_ERR(3, MLCL_ERR_TRUE)
 
     double_linked_list_free(&list);
-
+    filter_free(&filter);
     return 1;
 }
 
