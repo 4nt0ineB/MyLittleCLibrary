@@ -43,7 +43,9 @@ But while working on it I realized few things:
 But hey I knew it. Tough it's quite interesting to experiment these limitation with a practical example.
 
 Two quotes from computer scientists I read online illustrate the idea.
+
 “Any problem in computer science can be solved by adding another layer of abstraction.” - David Wheeler
+
 “Any performance problem in computer science can be solved by removing a layer of abstraction.” - Dave Clark
 
 So, I think this lib could be ok to use for small projects or to visualize some data structures, while learning C
