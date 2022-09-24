@@ -305,7 +305,7 @@ void list_clear(List *self, void (*data_free) (void *)){
             break;
 
         case DOUBLE_LINKED_LIST:
-            double_linked_list_clear(self->s.double_linked_list, data_free);
+            double_linked_list_clear_w(self->s.double_linked_list, data_free);
             break;
 
         case CIRCULAR_DOUBLE_LINKED_LIST:
