@@ -1,4 +1,30 @@
 # My Little C Library
-A static ANSI C library gathering things I learned in college, to implement things faster for my homework and projects.
+A static ANSI C library gathering things I learned in college.
 
-Apache-2.0 licensed
+I started to make this lib because, during a C project I was bored to reimplement same data structures over again
+for different objects. I was convinced there must exist a way to juste simply write generic data structures.
+
+But while working on it I realized few things:
+    - Genericity need abstraction. And the more you want a user to get rid of types manipulation 
+        the more abstraction you'll need and the bigger the lib will be - and thus much more work.
+    - More abstraction mean lower performance
+
+But hey I knew it. Tough it's quite interesting to experiment these limitation with a practical example.
+
+As I was reading online I found to quote from two computer science illustrating the idea here
+“Any problem in computer science can be solved by adding another layer of abstraction.” - David Wheeler
+“Any performance problem in computer science can be solved by removing a layer of abstraction.” - Dave Clark
+
+
+So, I think this lib could be ok to use for small projects or to visualize some data structures, while learning C 
+but not so much more else.
+
+# Todo list
+Lists:
+    for all kind of implementation use iterative rather than recursive.
+
+Trees:
+    Rename ternary search tree to lexical tree or prefix tree
+    
+
+Antoine Bastos 2022 - Apache-2.0 licensed

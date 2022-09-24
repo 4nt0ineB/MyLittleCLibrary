@@ -9,7 +9,13 @@
 
 #include <stdio.h>
 
+#define TEST_DETAIL 0
+#if TEST_DETAIL == 1
 #define MLCL_TEST(result, str) {printf("├ %s :", str);if(result()){printf(" ok\n");}else{return 0;}}
+#else
+#define MLCL_TEST(result, str) {if(!result()){printf("├ %s :", str); return 0;}}
+#endif
+
 #define MLCL_ERR(id, msg) {printf("\n\t[%d]: " msg "\n", id); return 0;}
 #define MLCL_OK() {printf("\tok\n");}
 #define MLCL_ERR_ALLOC "Allocation failed."

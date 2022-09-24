@@ -1,6 +1,6 @@
 /*
  *   This file is part of the MLCL Library
- *   Copyrleft 2022 Antoine Bastos
+ *   Antoine Bastos 2022
  *   SPDX-License-Identifier: Apache-2.0
  */
 
@@ -132,8 +132,9 @@ int test_double_linked_list_remove(){
 
     filter = new_filter(1);
     filter->conditions[0] = new_condition(int_filter, new_int(6), EQ, int_free);
+
     double_linked_list_remove(list, filter);
-    double_linked_list_print(list);
+    /*double_linked_list_print(list);*/
 
     if((* (int *) list->head->data) != 5)
         MLCL_ERR(2, MLCL_ERR_EQ)

@@ -10,7 +10,6 @@
 
 int run_all_double_linked_list_tests();
 int test_new_double_linked_list();
-int test_double_linked_list_ordered_add();
 int test_double_linked_list_prepend();
 int test_double_linked_list_append();
 int test_double_linked_list_search();

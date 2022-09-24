@@ -1,6 +1,6 @@
 /*
  *   This file is part of the MLCL Library
- *   Copyrleft 2022 Antoine Bastos
+ *   Antoine Bastos 2022
  *   SPDX-License-Identifier: Apache-2.0
  */
 
@@ -21,18 +21,23 @@ DoubleLinkedListNode * new_circular_double_linked_list_node(void *data){
     node->prev = node->next = node;
     return node;
 }
+
 int circular_double_linked_list_node_insert(DoubleLinkedListNode **self, void *data){
     return double_linked_list_node_insert(self, data);
 }
+
 void * circular_double_linked_list_node_extract(DoubleLinkedListNode **self){
     return double_linked_list_node_extract(self);
 }
+
 void circular_double_linked_list_node_fprint(const DoubleLinkedListNode *self, FILE *stream, void (data_fprint) (const void *, FILE *)){
     double_linked_list_node_fprint(self, stream, data_fprint);
 }
+
 void circular_double_linked_list_node_print(const DoubleLinkedListNode *self, void (data_fprint) (const void *, FILE *)){
     circular_double_linked_list_node_fprint(self, stdout, data_fprint);
 }
+
 void circular_double_linked_list_node_free(DoubleLinkedListNode **self, void (*data_free_f) (void *data)){
     double_linked_list_node_free(self, data_free_f);
 }
@@ -69,13 +74,12 @@ static int circular_double_linked_list_append_(DoubleLinkedListNode **self, void
     (*self)->prev = node;
     return 1;
 }
+
 int circular_double_linked_list_append(DoubleLinkedList *self, void *data){
     if(!self || !data) return 0;
     return circular_double_linked_list_append_(&self->head, data) && ++self->length;
 }
-/*
-int linked_list_append_sorted(LinkedList *self, const void *, int (*ordering) (const void *, const void *));
-*/
+
 static int circular_double_linked_list_prepend_(DoubleLinkedListNode **self, void *data){
     DoubleLinkedListNode *node, *tmp;
 
@@ -97,34 +101,16 @@ static int circular_double_linked_list_prepend_(DoubleLinkedListNode **self, voi
     node->next = tmp;
     return 1;
 }
+
 int circular_double_linked_list_prepend(DoubleLinkedList *self, void *data){
     if(!self || !data) return 0;
     return circular_double_linked_list_prepend_(&self->head, data) && ++self->length;
 }
 
-/*static void * circular_double_linked_list_shift_(DoubleLinkedListNode **self){
-    *//*DoubleLinkedListNode *tmp;
-    void *data;
-    if(!*self) return NULL;
-    data = (*self)->data;
-    tmp = *self;
-    (*self)->next->prev = (*self)->prev;
-    (*self)->prev->next = (*self)->next;
-    *self = (*self)->next;*//*
-
-    return NULL;
-}*/
 void * circular_double_linked_list_shift(DoubleLinkedList *self){
     if(!self || !self->head) return NULL;
     self->head = self->head->next;
     return circular_double_linked_list_pop(self);
-    /*void *tmp;
-    if(!self || !self->head) return NULL;
-    tmp = circular_double_linked_list_shift_(&self->head);
-    if(tmp)
-        --self->head;
-
-    return tmp;*/
 }
 
 static void * circular_double_linked_list_pop_(DoubleLinkedListNode **self){
@@ -229,43 +215,3 @@ void circular_double_linked_list_free(DoubleLinkedList **self){
     free(*self);
     *self = NULL;
 }
-
-/****************************************************************
- ****************************************************************/
-
-/*int circular_double_linked_list_add_(CircularDoubleLinkedList * cll, const void *data, int (*cmp) (const void *, const void *)){
-    DoubleLinkedListNode * new_cell;
-    DoubleLinkedListNode * tmp;
-    if(!*cll) return 0;
-    *//* Prepend *//*
-    if(cmp(data, (*cll)->data))
-        return (*cll)->d->prepend(cll, data);
-    *//* Insert *//*
-    if(!(new_cell = double_linked_list_builder(data, (*cll)->d)))
-        return 0;
-    tmp = (*cll)->next;
-    while(tmp != *cll){
-        if(cmp(data, (*cll)->data)){
-            new_cell->next = tmp->next;
-            tmp->next->prev = new_cell;
-            tmp->next = new_cell;
-            (*cll)->d->length++;
-            return 1;
-        }
-        tmp = tmp->next;
-    }
-    *//* after "last" cell *//*
-    new_cell->next = tmp->next;
-    tmp->next->prev = new_cell;
-    tmp->next = new_cell;
-    (*cll)->d->length++;
-    return 1;
-}*/
-
-
-/*
-
-    static int circular_double_linked_list_remove_(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
-    static int circular_double_linked_list_remove_all_(DoubleLinkedList *self, int (*filter) (const void *), void (*data_free) (void *data));
-
- */

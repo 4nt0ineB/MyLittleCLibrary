@@ -1,14 +1,12 @@
 /*
  *   This file is part of the MLCL Library
- *   Copyrleft 2022 Antoine Bastos
+ *   Antoine Bastos 2022
  *   SPDX-License-Identifier: Apache-2.0
  */
 
 #include "../../../../include/_tests/data-structures/Lists/MLCL_ArrayList_test.h"
 #include "../../../../include/data-structures/Lists/MLCL_ArrayList.h"
 #include "../../../../include/_tests/MLCL_exceptions.h"
-#include "../../../../include/core/MLCL_primitive_types.h"
-
 
 
 int run_all_array_list_tests(){
