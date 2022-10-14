@@ -14,12 +14,12 @@
 unsigned short lfsr = 0xACE1u;
 unsigned bit;
 
-unsigned mlcl_unsigned_rand(){
+unsigned munsigned_rand(){
     bit  = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5) ) & 1;
     return lfsr =  (lfsr >> 1) | (bit << 15);
 }
 
-int int_rand(int a, int b){
+int mint_rand(int a, int b){
     return (rand() % (b + 1 - a)) + a;
 }
 
@@ -27,23 +27,20 @@ float float_rand(float min, float max){
     return min + (rand() / (float) RAND_MAX) * (max - min);
 }
 
-int proper_modulo(int a, int b) {
+int mmodulo(int a, int b) {
     int mod;
     assert(b != 0);
     mod = a % b;
     return mod >= 0 ? mod : mod + b;
 }
 
-
-int mlcl_levenshtein(const char *s1, const char *s2){
+int mlevenshtein(const char *s1, const char *s2){
     unsigned int len1, len2;
     unsigned int i, j;
     int result;
     unsigned int **mat;
-
     len1 = strlen(s1);
     len2 = strlen(s2);
-
     mat = (unsigned int **) malloc(sizeof(int*) * (len2 + 1));
     for(j = 0; j <= len2; j++)
         mat[j] = (unsigned int *) malloc(sizeof(int) * (len1 + 1));
@@ -57,7 +54,6 @@ int mlcl_levenshtein(const char *s1, const char *s2){
     for (i = 1; i <= len2; i++)
         for (j = 1; j <= len1; j++)
             mat[i][j] = MIN3(mat[i-1][j] + 1, mat[i][j-1] + 1, mat[i-1][j-1] + (s1[j-1] == s2[i-1] ? 0 : 1));
-
     /* Save result */
     result = (int) mat[len2][len1];
     /* Free array */

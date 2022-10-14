@@ -108,7 +108,7 @@ void * array_list_pop_i(ArrayList *self, int index){
 }
 
 void * array_list_pop(ArrayList *self){
-    void * tmp;
+    void *tmp;
     if(!self) return NULL;
     if(self->length <= 0) return NULL;
     tmp = self->array[self->length - 1];
@@ -120,14 +120,13 @@ void * array_list_pop(ArrayList *self){
 
 /**
  *
- * @param l
+ * @param array the array
  * @param length
- * @param data
- * @param cmp must return 1 or 0
- * @param res
- * @return
+ * @param filter
+ * @param r_index index return of found data
+ * @return 1 if found, 0 else
  */
-static int array_list_search_(void **array, int length, Filter *filter, int * r_index){
+static int array_list_search_(void **array, int length, Filter *filter, int *r_index){
     int i;
     if(!*array || !filter) return 0;
     for(i = 0; i < length; i++){

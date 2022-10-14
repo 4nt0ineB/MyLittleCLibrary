@@ -4,8 +4,8 @@
  *   SPDX-License-Identifier: Apache-2.0
  */
 
-#include "../../include/time/MLCL_Timer.h"
-#include "../../include/utils/MLCL_utils.h"
+#include "../../../include/utils/time/MLCL_Timer.h"
+#include "../../../include/utils/MLCL_utils.h"
 #include <stdlib.h>
 
 int timer_diff_time(struct timeval start, struct timeval end){
@@ -13,19 +13,19 @@ int timer_diff_time(struct timeval start, struct timeval end){
 }
 
 int timer_ms_to_ss(int ms) {
-    return proper_modulo(ms / 10, 100);
+    return mmodulo(ms / 10, 100);
 }
 
 int timer_ms_to_s(int ms) {
-    return proper_modulo(ms / 1000, 60);
+    return mmodulo(ms / 1000, 60);
 }
 
 int timer_ms_to_m(int ms) {
-    return proper_modulo(ms / (1000 * 60), 60);
+    return mmodulo(ms / (1000 * 60), 60);
 }
 
 int timer_ms_to_h(int ms) {
-    return proper_modulo(ms / (3.6 * 1000000), 100);
+    return mmodulo(ms / (3.6 * 1000000), 100);
 }
 
 Timer * new_timer(){
@@ -46,7 +46,7 @@ int timer_get_delta(const Timer *t){
     return timer_diff_time(t->start, t->end);
 }
 
-void timer_fprint(FILE * stream, const Timer *t){
+void timer_fprint(const Timer *t, FILE * stream){
     int ss, s, m, h, ms;
     ms = timer_get_delta(t);
     ss = timer_ms_to_ss(ms);
@@ -57,6 +57,6 @@ void timer_fprint(FILE * stream, const Timer *t){
 }
 
 void timer_print(const Timer *t){
-    timer_fprint(stdout, t);
+    timer_fprint(t, stdout);
 }
 

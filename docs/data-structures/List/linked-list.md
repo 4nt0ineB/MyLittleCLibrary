@@ -1,13 +1,11 @@
 
 
 ```c 
-LinkedList *list = new_linked_list(float_m);
-
-linked_list_append(list, new_float(1.2f));  
-linked_list_append(list, new_float(2.5f));  
-linked_list_append(list, new_float(3.8f));
-
-linked_list_free(&list); 
+CircularLinkedList *list = new_circular_linked_list(float_m);
+circular_linked_list_append(list, new_float(1.2f));  
+circular_linked_list_append(list, new_float(2.5f));  
+circular_linked_list_append(list, new_float(3.8f));
+circular_linked_list_free(&list); 
 ```
 
 
@@ -15,54 +13,58 @@ linked_list_free(&list);
 
 ##### Append
 ```c
-linked_list_append(l, new_float(2.5f));
-linked_list_append(l, new_float(1.2f));
+circular_linked_list_append(l, new_float(2.5f));
+circular_linked_list_append(l, new_float(1.2f));
 /* [2.5, 1.2] */
 ```
 
 ##### Prepend
 ```c
-linked_list_prepend(l, new_float(2.5f));
-linked_list_prepend(l, new_float(1.2f));
+circular_linked_list_prepend(l, new_float(2.5f));
+circular_linked_list_prepend(l, new_float(1.2f));
 /* [1.2, 2.5] */
 ```
 
-#### Sorting
-
-##### Merge sort
-```c
-linked_list_merge_sort(list, int_lt);
-```
 
 ### Searching
 ##### Search
 ```c
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-linked_list_search(list, filter);
+circular_linked_list_search(list, filter);
 ```
 ##### Search all
 ```c
 ArrayList *filtered;
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-filtered = linked_list_search_all(list, filter);
+filtered = circular_linked_list_search_all(list, filter);
 ```
 
 ### Extraction
+
+##### Pop
+```c
+circular_linked_list_pop(l);
+```
+##### Shift
+```c
+circular_linked_list_shift(l);
+```
+
 ##### Exctract
 ```c
 void *data;
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-data = linked_list_extract(list, filter);
+data = circular_linked_list_extract(list, filter);
 ```
 ##### Extract all
 ```c
 ArrayList *filtered;
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-filtered = linked_list_extract_all(list, filter);
+filtered = circular_linked_list_extract_all(list, filter);
 ```
 
 ### Deletion
@@ -70,34 +72,34 @@ filtered = linked_list_extract_all(list, filter);
 ```c
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-linked_list_remove(list, filter);
+circular_linked_list_remove(list, filter);
 ```
 ##### Remove all
 ```c
 Filter *filter = new_filter(1);
 filter->conditions[0] = new_condition(int_filter, new_int(5), EQ, int_free);
-linked_list_remove_all(list, filter);
+circular_linked_list_remove_all(list, filter);
 ```
 
 ### Free
 ##### Clear
 ```c
-linked_list_w(&list, int_free);
+circular_linked_list_w(&list, int_free);
 ```
 ```c
-linked_list_clear(&list);
+circular_linked_list_clear(&list);
 ```
 ##### Free
 ```c
-linked_list_free_w(&list, int_free);
+circular_linked_list_free_w(&list, int_free);
 ```
 ```c
-linked_list_quick_sort(&list);
+circular_linked_list_quick_sort(&list);
 ```
 
 ### To dot
 ```c
-linked_list_to_dot(list, "linkedlist.dot");
+circular_linked_list_to_dot(list, "linkedlist.dot");
 ```
 
 === "Visualization"

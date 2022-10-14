@@ -29,7 +29,4 @@ Movie.o: src/Movie.c include/Movie.h include/Person.h
 .PHONY: clean mrproper
 
 clean:
-	rm -f *.o
-
-mrproper: clean
-	rm -f $(EXE)
+	rm -f *.o $(EXE)

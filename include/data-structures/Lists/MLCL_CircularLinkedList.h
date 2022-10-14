@@ -37,7 +37,9 @@ void circular_linked_list_fprint(const LinkedList *self, FILE *stream);
 void circular_linked_list_print(const LinkedList *self);
 void circular_linked_list_to_dot_(LinkedList *self, FILE *stream);
 void circular_linked_list_to_dot(LinkedList *self, const char *path);
-void circular_linked_list_clear(LinkedList *self, void (*data_free) (void *data));
+void circular_linked_list_clear_w(LinkedList *self, void (*data_free) (void *data));
+void circular_linked_list_clear(LinkedList *self);
+void circular_linked_list_free_w(LinkedList **self, void (*data_free) (void *data));
 void circular_linked_list_free(LinkedList **self);
 
 /*

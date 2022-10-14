@@ -58,7 +58,7 @@ static int bk_tree_insert_node_(BKTreeNode **root, BKTreeNode *bk_tree_node) {
         *root = bk_tree_node;
         return 1;
     }
-    d = mlcl_levenshtein((*root)->data, bk_tree_node->data);
+    d = mlevenshtein((*root)->data, bk_tree_node->data);
 
     /* Already exists ?*/
     if (d == 0) {
@@ -131,7 +131,7 @@ int bk_tree_fuzzy_search_(const BKTreeNode *root, int *s, const char *word, List
     int d;
     BKTreeNode *tmp;
     if(!root) return 0;
-    d = mlcl_levenshtein(word, root->data);
+    d = mlevenshtein(word, root->data);
 
     if(d < *s){
         *s = d;

@@ -49,7 +49,7 @@ data = array_list_pop(list);
 ##### Pop index
 ```c
 void *data;
-data = array_list_pop(list, 5);
+data = array_list_pop_i(list, 5);
 ```
 ##### Extract
 ```c

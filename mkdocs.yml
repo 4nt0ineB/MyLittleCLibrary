@@ -22,6 +22,8 @@ nav:
         - AVL Tree: 'data-structures/Tree/avl-tree.md'
         - 'data-structures/Tree/ternary-search-tree.md'
         - BK Tree: 'data-structures/Tree/bk-tree.md'
+  - 'Util':
+        - 'util/time/timer.md'
   - Core:
       - 'core/filter.md'
       - 'core/types.md'

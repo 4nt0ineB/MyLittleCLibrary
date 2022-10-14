@@ -49,8 +49,8 @@ add_library(MLCL STATIC
         src/_tests/data-structures/Lists/MLCL_DoubleLinkedList_test.c
         src/_tests/core
         src/_tests/core/MLCL_TypeDescriptor_test.c
-        src/time
-        src/time/MLCL_Timer.c
+        src/utils/time
+        src/utils/time/MLCL_Timer.c
         src/utils
         src/utils/MLCL_utils.c
         )

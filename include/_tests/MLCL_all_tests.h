@@ -9,7 +9,7 @@
 
 #include "core/MLCL_TypeDescriptor_test.h"
 /* Timer */
-#include "../time/MLCL_Timer.h"
+#include "../utils/time/MLCL_Timer.h"
 
 /* List */
 #include "data-structures/Lists/MLCL_List_test.h"
