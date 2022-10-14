@@ -29,23 +29,16 @@ int run_all_tests(){
             , run_all_bk_tree_tests
             , NULL
     };
-
     timer = new_timer();
     timer_start(timer);
-
     printf("┌[▓▒ MLCL ▒▓]\n");
-
     for(i = 0; tests[i]; i++)
         if(!(*tests[i])())
             return 0;
-
     printf("└[▓▒ All tests successfully passed in ");
-
     timer_update(timer);
     timer_print(timer);
     printf("]▒▓]\n");
-
     free(timer);
-
     return 1;
 }

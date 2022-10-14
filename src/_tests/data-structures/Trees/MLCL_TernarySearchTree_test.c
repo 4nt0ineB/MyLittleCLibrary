@@ -10,10 +10,10 @@
 
 
 int run_all_ternary_search_tree_tests(){
-    printf("▒▒▒ Running all TernarySearchTree tests ▒▒▒\n");
-    MLCL_TEST(test_ternary_search_tree_add, "test_ternary_search_tree_add")
-    MLCL_TEST(test_ternary_search_tree_remove, "test_ternary_search_tree_remove")
-    MLCL_TEST(test_ternary_search_tree_search, "test_ternary_search_tree_search")
+    printf("▒▒▒ Running all TernarySearchTree tests \n");
+    MLCL_TEST(test_ternary_search_tree_add)
+    MLCL_TEST(test_ternary_search_tree_remove)
+    MLCL_TEST(test_ternary_search_tree_search)
     return 1;
 }
 

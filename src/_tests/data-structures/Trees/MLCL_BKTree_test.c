@@ -11,9 +11,9 @@
 
 
 int run_all_bk_tree_tests(){
-    printf("▒▒▒ Running all BKTree tests ▒▒▒\n");
-    MLCL_TEST(test_bk_tree_add, "test_avl_tree_add")
-    MLCL_TEST(test_bk_tree_fuzzy_search, "test_avl_tree_fuzzy_search")
+    printf("▒▒▒ Running all BKTree tests \n");
+    MLCL_TEST(test_bk_tree_add)
+    MLCL_TEST(test_bk_tree_fuzzy_search)
     return 1;
 }
 

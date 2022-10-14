@@ -10,7 +10,7 @@
 
 int run_all_type_descriptor_tests(){
     printf("▒▓ Running all TypeDescriptor tests\n");
-    MLCL_TEST(test_new_int_descriptor, "test_new_int_descriptor")
+    MLCL_TEST(test_new_int_descriptor)
     return 1;
 }
 

@@ -2,6 +2,9 @@ bin/
 libMLCL.a
 Google_tests/
 
+cmake-build-mlcl/
+cmake-build-mlcl-coverage/
+
 *.dot
 *.pdf
 
