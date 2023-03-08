@@ -28,8 +28,8 @@ Any performance problem in computer science can be solved by removing a layer of
 ```
 Dave Clark
 
-So, I think this lib could be ok to use for small projects or to visualize some data structures while learning C in college,
-but not when there are strict needs in time performance or memory limitation.
+~~So, I think this lib could be ok to use for small projects or to visualize some data structures while learning C in college,
+but not when there are strict needs in time performance or memory limitation.~~ **Use java**
 
 ### Roadmap/todo list
 [Dashboard](https://github.com/users/cydaw6/projects/1)
