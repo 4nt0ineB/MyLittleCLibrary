@@ -15,7 +15,7 @@ However that's how we learn, and while working on it, I was able to really grasp
 - More abstraction mean lower performance
 
 But hey, I knew it. In fact, it was only like theoretical knowledge, I had to experiment with it.
-It still allowed me to practise and get a bit more comfortable with the C.
+It still allowed me to practise and get a bit more comfortable with C.
 
 Two quotes from computer scientists I read online perfectly illustrate the idea:
 
